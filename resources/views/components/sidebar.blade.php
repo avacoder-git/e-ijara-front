@@ -35,7 +35,7 @@
                 <li class="app-sidebar__heading">Dashboards</li>
                 <li>
                     <a href="{{ route('user.application') }}" class="mm-active">
-                        <i class="metismenu-icon pe-7s-rocket"></i>
+                        <i class="metismenu-icon pe-7s-news-paper"></i>
                         Ariza Topshirish
                     </a>
                 </li>

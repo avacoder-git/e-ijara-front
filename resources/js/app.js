@@ -10,7 +10,6 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import VueTheMask from 'vue-the-mask';
 import routes from './routes'
 import App from './components/Page/App'
-import Index from './components/Dashboard/Index'
 
 
 Vue.use(VueRouter)
@@ -51,15 +50,6 @@ const app = new Vue({
     },
     components: { App },
     router: new VueRouter(routes)
-});
-
-
-
-
-const app2 = new Vue({
-    el: '#dashboard',
-
-    components: { Index },
 });
 
 

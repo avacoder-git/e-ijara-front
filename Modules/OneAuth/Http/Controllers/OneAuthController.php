@@ -45,6 +45,6 @@ class OneAuthController extends Controller
         }
 
         // redirect user on successfully authorization
-        return redirect('/')->with('status', "Тизимга кирдингиз");
+        return redirect('/user')->with('status', "Тизимга кирдингиз");
     }
 }

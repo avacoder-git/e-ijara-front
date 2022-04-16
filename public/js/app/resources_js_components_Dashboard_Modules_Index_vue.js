@@ -16,30 +16,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Index",
   data: function data() {
@@ -138,84 +114,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-5 my-3" }, [
-          _c("div", { staticClass: "form-group form-check" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.agree,
-                  expression: "agree",
-                },
-              ],
-              staticClass: "form-check-input",
-              attrs: { type: "checkbox", id: "agree" },
-              domProps: {
-                checked: Array.isArray(_vm.agree)
-                  ? _vm._i(_vm.agree, null) > -1
-                  : _vm.agree,
-              },
-              on: {
-                change: function ($event) {
-                  var $$a = _vm.agree,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = null,
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.agree = $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        (_vm.agree = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
-                    }
-                  } else {
-                    _vm.agree = $$c
-                  }
-                },
-              },
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              { staticClass: "form-check-label", attrs: { for: "agree" } },
-              [
-                _vm._v(
-                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, eligendi?"
-                ),
-              ]
-            ),
-          ]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c(
-          "div",
-          { staticClass: "col-2 my-3" },
-          [
-            _c(
-              !_vm.agree ? "span" : "router-link",
-              {
-                tag: "router-link",
-                staticClass: "btn w-100 btn-success shadow",
-                class: !_vm.agree ? "disabled" : "",
-                attrs: { to: { name: "user.region" } },
-              },
-              [_vm._v("\n          Ariza topshirish\n        ")]
-            ),
-          ],
-          1
-        ),
-      ]),
-    ]),
-  ])
+  return _c("div")
 }
 var staticRenderFns = []
 render._withStripped = true

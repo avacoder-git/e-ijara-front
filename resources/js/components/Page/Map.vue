@@ -437,7 +437,7 @@ export default {
             type: null,
             land_purposes: [],
             land_purpose: null,
-            url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            url: 'https://a.tile.openstreetmap.de/${z}/${x}/${y}.png',
             attribution:
                 '<a target="_blank" href="http://www.agro.uz"> www.agro.uz &copy; AgroDigital</a>',
             zoom: 13,
