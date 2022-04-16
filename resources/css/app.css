@@ -1,0 +1,380 @@
+/*.style-chooser .vs__search::placeholder,*/
+/*.style-chooser .vs__dropdown-toggle,*/
+/*.style-chooser .vs__dropdown-menu {*/
+/*    background: #fff;*/
+/*    border: none;*/
+/*    color: #4caf50;*/
+/*    font-variant: small-caps;*/
+/*}*/
+
+
+/*.vs__dropdown-menu li:hover {*/
+/*    background: #4caf50;*/
+/* }*/
+
+.vs__dropdown-option--selected,
+.vs__dropdown-option--highlight {
+    background: #4caf50 !important;
+    color: #fff !important;
+}
+
+.vs__dropdown-toggle {
+    border: transparent !important;
+}
+
+
+.vuejs-countdown .digit {
+    font-size: 1.42857rem !important;
+    font-weight: 700 !important;
+    color: #4caf50 !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+}
+
+.vuejs-countdown .text {
+    font-size: 0.85714rem !important;
+    box-sizing: border-box;
+    color: #4caf50 !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+}
+
+.vuejs-countdown li:after {
+    content: "" !important;
+    position: absolute;
+    top: 0;
+    right: -13px;
+    font-size: 32px;
+}
+
+[v-cloak] {
+    display: none !important;
+}
+
+.morebtn {
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+li.nav-item a.active {
+    color: #196b5e;
+    border-bottom: 2px solid #f4c23d;
+}
+
+li.nav-item a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 530;
+    color: #333333;
+    text-transform: uppercase;
+    transition: all linear 0.15s;
+    border-radius: 0px;
+    padding-bottom: 10px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background: none;
+}
+
+.bg_photo {
+    width: 370px;
+    height: 270px;
+}
+
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgb(12 131 86 / 0%) !important;
+}
+
+.table-wrap {
+    background: rgb(12 131 86 / 0%) !important;
+}
+
+.sidebar-content {
+
+    /* background-color: rgb(12 131 86) !important;*/
+    border-left: 1px solid #fff;
+    /* background: rgb(12 131 86) !important;*/
+    background-image: url('/img/sidenav4.jpeg');
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+
+/*.sidebar-content img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.6;
+}*/
+
+/*.sidebar-content:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.6;
+    background-image: url('../img/sidenav4.jpeg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}*/
+.proporties {
+    color: #000 !important;
+}
+
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+
+    border-top: 1px solid #fff !important;
+    color: #fff;
+}
+
+.table > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #fff !important;
+    color: #fff;
+}
+
+.regions {
+    vertical-align: bottom;
+    /*border-bottom: 1px solid #fff !important;*/
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.districts {
+    vertical-align: bottom;
+    /*border-bottom: 1px solid #fff !important;*/
+    color: #fff;
+    font-weight: normal;
+}
+
+
+.simple-tree-table-icon {
+
+    background-color: #f4971a !important;
+
+}
+
+.sidebar.leaflet-touch {
+    border: 0px solid #0c8356 !important;
+}
+
+@media (min-width: 768px) {
+    .sidebar.leaflet-touch {
+        border: 0px solid #0c8356 !important;
+    }
+}
+
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+    background-color: #F49917 !important;
+    border-bottom: 1px solid #fff !important;
+
+    color: white !important;
+}
+
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+    border: 0px solid rgba(0, 0, 0, 0.2) !important;
+
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #fff !important;
+    background-color: #0c8356 !important;
+    background-image: none;
+    border: 1px solid #fff !important;
+    border-radius: 0px !important;
+    /* -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%); */
+    box-shadow: none !important;
+    /* -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s; */
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    /* transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; */
+}
+
+/*.form-group label {*/
+
+/*    color: #fff !important;*/
+/*}*/
+
+/*.form-group label {*/
+
+/*    color: #fff !important;*/
+/*}*/
+
+.sidebar-tabs {
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: #0c8356 !important;
+}
+
+.sidebar.leaflet-touch {
+    border: 0px solid #0c8356 !important;
+}
+
+.leaflet-sidebar-tabs, .leaflet-sidebar-tabs > ul {
+    position: absolute;
+    width: 40px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background-color: #0c8356;
+    color: #fff;
+}
+
+.leaflet-sidebar-tabs, .leaflet-sidebar-tabs > ul {
+    position: absolute;
+    width: 40px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background-color: #0c8356;
+    color: #fff !important;
+}
+
+.leaflet-sidebar-tabs {
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: #0c8356 !important;
+    color: #fff !important;
+}
+
+.leaflet-sidebar-tabs > li, .leaflet-sidebar-tabs > ul > li {
+    width: 100%;
+    height: 40px;
+    color: #fff !important;
+    font-size: 12pt;
+    overflow: hidden;
+    transition: all 80ms;
+}
+
+.leaflet-sidebar-tabs > li:hover, .leaflet-sidebar-tabs > ul > li:hover {
+    color: #ffffff;
+    background-color: #f49819 !important;
+}
+
+.leaflet-sidebar-tabs > li.active, .leaflet-sidebar-tabs > ul > li.active {
+    color: #ffffff;
+    background-color: #f49819 !important;
+}
+
+.leaflet-sidebar-header {
+    margin: -10px -20px 0;
+    height: 40px;
+    padding: 0 20px;
+    line-height: 40px;
+    font-size: 14.4pt;
+    color: #fff;
+    background-color: #0c8356 !important;
+}
+
+.leaflet-sidebar-content {
+    /* background-color: rgb(12 131 86) !important; */
+    border-left: 1px;
+    background-image: url(/img/sidenav4.jpeg);
+    box-shadow: inset 0px 0px 10px rgb(0 0 0 / 50%);
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: rgb(240, 173, 78);
+    border-color: rgb(238, 162, 54);
+}
+
+.btn-primary:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(236, 151, 31);
+    border-color: rgb(213, 133, 18);
+}
+
+.btn-primary:focus {
+    color: rgb(255, 255, 255);
+    background-color: rgb(240, 173, 78);
+    border-color: rgb(238, 162, 54);
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0 !important;
+}
+
+.modalFont {
+    color: #000 !important;
+}
+
+.svg-map {
+    width: 100%;
+    height: auto;
+    stroke: #666;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.svg-map__location {
+    fill: #a1d99b;
+    cursor: pointer;
+}
+
+.svg-map__location:focus, .svg-map__location:hover {
+    fill: #b8e2b3;
+    outline: 0;
+}
+
+.svg-map__location[aria-checked="true"] {
+    fill: #f4bc44;
+}
+
+.minh {
+    min-height: 50vh;
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    color: #000!important;
+}
+
+div#loader {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.7);
+    z-index: 999;
+}
+
+div#loader > svg {
+    width: 75px;
+    height: calc(100%);
+}
+
+.p-relative {
+    position: relative;
+}
+
+

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="referrer" content="strict-origin" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Meta -->
+    <meta name="description" content="ер участкалари бериш бўйича материалларни тўплаш, кўриб чиқиш ва ваколатли органлар ва ташкилотлар билан келишиш ҳамда танловни ташкил этиш ва ўтказиш учун зарур ахборотни киритиш, сақлаш, қайта ишлаш ва ҳужжатларни расмийлаштириш, шунингдек, манфаатдор шахсларнинг танлов жараёнларидан бевосита фойдаланиш имконини таъминлайдиган ахборот тизими">
+    <meta name="author" content="AgroDigital">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <title>Бош саҳифа | E-IJARA TANLOV v.1.0</title>
+    <!-- icon css -->
+    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../lib/@fortawesome/css/all.min.css" rel="stylesheet">
+    <link href="../lib/simple-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <!-- vendor css -->
+    <link href="../lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="../lib/select2/css/select2.min.css" rel="stylesheet">
+    <link href="../lib/multiselect/multiselect.css" rel="stylesheet">
+    <link href="../lib/treetable/bootstrap-table-expandable.css" rel="stylesheet">
+    <link href="../lib/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+    <!-- template css -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/menu.css">
+</head>
+
+<body>
+  <div class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo"><img src="../assets/img/logo.svg"></a>
+        </div><!-- sidebar-header -->
+        <div id="dpSidebarBody" class="sidebar-body">
+            <ul class="nav nav-sidebar">
+                <li class="nav-label"><label class="content-label">Ер участкалари</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Ер участкалари</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="#" class="nav-sub-link">Бўш ер участкалари</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Тизимга киритилганлар</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Лойиҳалашда</a></li>
+                <li class="nav-item"> <a href="#" class="nav-sub-link">Келишувда</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Якунланганлар</a></li>
+                <li class="nav-item"> <a href="#" class="nav-sub-link tx-danger">Рад этилганлар</a></li>
+                </nav>
+                </li>
+                <li class="nav-label"><label class="content-label">Танлов</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Танловлар</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="#" class="nav-sub-link">Танловга қўйилган</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Танловдан олинган</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Танловга қайта қўйилган</a></li>
+                <li class="nav-item"> <a href="#" class="nav-sub-link">Якунланганлар</a></li>
+                </nav>
+                </li>
+                <li class="nav-label"><label class="content-label">Баҳолаш</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Баҳолаш жараёни</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="#" class="nav-sub-link">Талабгорлар</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Баҳолаш натижалари</a></li>
+                <li class="nav-item"> <a href="#" class="nav-sub-link">Ғолиблар реестри</a></li>
+                </nav>
+                </li>
+                <li class="nav-label"><label class="content-label">Ҳисобот шакллари</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Ҳисоботлар</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="#" class="nav-sub-link">Ер участкалари</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Танлов ҳисоботлари</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Бошқа ҳисоботлар</a></li>
+                </nav>
+                </li>
+                <li class="nav-label"><label class="content-label">Тизим созламалари</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Созламалар</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="page-users.html" class="nav-sub-link">Фойдаланувчилар</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Фойдаланувчи роли</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Ташкилотлар</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Баҳолаш мезонлари</a></li>
+                </nav>
+                </li>
+            </ul>
+            <hr class="mg-t-30 mg-b-25">
+            <ul class="nav nav-sidebar">
+                <li class="nav-item"><a href="#" target="_blank" class="nav-link">Профиль</a></li>
+                <li class="nav-item"><a href="#" target="_blank" class="nav-link">Қўлланма</a></li>
+                <li class="nav-item"><a href="#info_system" class="nav-link off-canvas-menu">Тизим ҳақида</a></li>
+                <li class="nav-item"> <a href="#exit" data-toggle="modal" class="nav-link">Тизимдан чиқиш</a></li>
+            </ul>
+        </div><!-- sidebar-body -->
+    </div><!-- sidebar -->
+    <div class="content content-page">
+        <div class="header">
+            <div class="header-left">
+                <a href="" class="burger-menu"><i data-feather="menu"></i></a>
+            </div><!-- header-left -->
+            <div class="header-right">
+                <div class="dropdown dropdown-notification">
+                    <a href="" class="dropdown-link new" data-toggle="dropdown"><i data-feather="bell"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu-header">
+                            <h6>Эслатма</h6>
+                            <a href=""><i data-feather="more-vertical"></i></a>
+                        </div><!-- dropdown-menu-header -->
+                        <div class="dropdown-menu-body">
+                            <a href="" class="dropdown-item">
+                                <div class="dropdown-item-body">
+                                    <p>Z1726202550-0025-сон лойиҳа <strong>Сув хўжалиги бўлими</strong> томонидан рад этилди.</p>
+                                    <span>5 соат аввал</span>
+                                </div>
+                            </a>
+                            <a href="" class="dropdown-item">
+                                <div class="dropdown-item-body">
+                                    <p>Z1726202550-0025-сон лойиҳа <strong>Экология бўлими</strong> томонидан келишилди</p>
+                                    <span>5 соат аввал</span>
+                                </div>
+                            </a>
+                        </div><!-- dropdown-menu-body -->
+                        <div class="dropdown-menu-footer">
+                            <a href="">Барчасини кўриш</a>
+                        </div>
+                    </div><!-- dropdown-menu -->
+                </div>
+                <div class="dropdown dropdown-loggeduser mg-r-30">
+                    <a href="" class="dropdown-link" data-toggle="dropdown">
+                        <img src="../assets/svg/language.svg" class="toolbar-icon" alt="">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="" class="dropdown-item tx-14 mg-t-5">Ўзбекча</a>
+                        <a href="" class="dropdown-item tx-14 mg-b-5">Русский</a>
+                    </div><!-- dropdown-menu -->
+                </div>
+            </div><!-- header-right -->
+        </div><!-- header -->
+        <div class="content-header">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="page-users.html">Фойдаланувчилар</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">foruh</li>
+                    </ol>
+                </nav>
+            </div>
+        </div><!-- content-header -->
+        <div class="content-body">
+            <div class="row row-xs">
+                <div class="col-md-4">
+                    <ul class="list-group list-group-settings">
+                        <li class="list-group-item list-group-item-action">
+                            <a href="#userInfo" data-toggle="tab" class="media active">
+                                <span class="d-md-none d-lg-none"><i class="fas fa-md fa-user"></i></span>
+                                <div class="media-body">
+                                    <h6>Фойдаланувчи</h6>
+                                    <span>шахсий маълумотлар</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item list-group-item-action">
+                            <a href="#userRole" data-toggle="tab" class="media">
+                                <span class="d-md-none d-lg-none"><i class="fas fa-md fa-user-cog"></i></span>
+                                <div class="media-body">
+                                    <h6>Созламалар</h6>
+                                    <span>фойдаланувчи роли ва ҳуқуқлари</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item list-group-item-action">
+                            <a href="#userOrg" data-toggle="tab" class="media">
+                                <span class="d-md-none d-lg-none"><i class="fas fa-md fa-sitemap"></i></span>
+                                <div class="media-body">
+                                    <h6>Ташкилот</h6>
+                                    <span>ташкилот маълумотлари</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="list-group-item list-group-item-action">
+                            <a href="#userLogs" data-toggle="tab" class="media">
+                                <span class="d-md-none d-lg-none"><i class="fas fa-md fa-stream"></i></span>
+                                <div class="media-body">
+                                    <h6>Харакатлар тарихи</h6>
+                                    <span>фойдаланувчи ҳаракатлари</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- col -->
+                <div class="col-md-8">
+                    <div class="card card-body pd-sm-40 pd-md-30 pd-xl-y-35 pd-xl-x-40">
+                        <div class="tab-content">
+                            <div id="userInfo" class="tab-pane active show">
+                                <section>
+                                    <!-- ONE ID маълумотлари -->
+                                    <div class="divider-text mg-b-20">ONE ID маълумотлари</div>
+                                    <form class="row row-sm" action="#" data-parsley-validate>
+                                        <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                            <label class="form-label">Исм</label>
+                                            <input type="text" class="form-control" value="" disabled="" placeholder="ФОРУХ" required>
+                                        </div><!-- col -->
+                                        <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                            <label class="form-label">Фамилия</label>
+                                            <input type="text" class="form-control" value="" disabled="" placeholder="БОЛТАБАЕВ" required>
+                                        </div><!-- col -->
+                                        <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                            <label class="form-label">Шарифи</label>
+                                            <input type="text" class="form-control" value="" disabled="" placeholder="НАЗИРУЛЛАЕВИЧ" required>
+                                        </div><!-- col -->
+                                        <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                            <label class="form-label">Паспорт с/р</label>
+                                            <input type="text" class="form-control" value="" disabled="" placeholder="АВ1838830" required>
+                                        </div><!-- col -->
+                                        <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                            <label class="form-label">Амал қилиш муддати</label>
+                                            <input type="text" class="form-control" value="" disabled="" placeholder="2025-10-11" required>
+                                        </div><!-- col -->
+                                        <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                            <label class="form-label">СТИР</label>
+                                            <input type="text" class="form-control" value="" disabled="" placeholder="511602813" required>
+                                        </div><!-- col -->
+                                    </form><!-- form-row -->
+                                    <span class="tx-13 tx-color-04 mg-t-5 text-right">Шахсий маълумотларни ўзгартириш <a href="#">Ягона идентификация тизими</a> орқали амалга оширилади.</span>
+                                    <div class="divider-text mg-b-20">Қўшимча маълумотлар (ихтиёрий)</div>
+                                    <form class="row row-sm" action="#" data-parsley-validate>
+                                        <div class="col-sm-12 mg-t-10 mg-b-20 mg-sm-t-0">
+                                            <label class="form-label">Қўшимча маълумотлар</label>
+                                            <textarea class="form-control" rows="3" placeholder=""></textarea>
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                            <label class="form-label">Телефон</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">+998</span>
+                                                </div>
+                                                <input id="inputPhoneNumber" type="text" class="form-control" placeholder="Телефон рақам">
+                                            </div>
+                                        </div><!-- col -->
+                                        <div class="form-group col-sm-3">
+                                            <label class="form-label">E-mail</label>
+                                            <input type="email" class="form-control" value="" placeholder="E-mail манзил" required>
+                                        </div><!-- col -->
+                                    </form>
+                                    <hr class="op-0">
+                                    <button class="btn btn-sm btn-outline-success" type="submit">Маълумотларни янгилаш</button>
+                                    <button class="btn btn-sm btn-outline-light mg-l-2">Ўзгаришларни бекор қилиш</button>
+                                </section>
+                            </div><!-- tab-panelInfo  -->
+                            <div id="userRole" class="tab-pane">
+                                <section>
+                                    <!-- Фойдаланувчи роли  -->
+                                    <div class="divider-text mg-b-20">Фойдаланувчи роли</div>
+                                    <div class="form-settings row row-sm">
+                                        <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                            <label class="form-label">Роль</label>
+                                            <select class="custom-select form-control mg-b-5">
+                                                <option>Аниқланмаган</option>
+                                                <option>Оператор</option>
+                                                <option>Ижрочи</option>
+                                                <option>Хокимият</option>
+                                                <option>Ваколатли орган</option>
+                                                <option>Комиссия</option>
+                                                <option>Назорат</option>
+                                                <option>Администратор</option>
+                                            </select>
+                                        </div><!-- col -->
+                                        <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                            <label class="form-label">Ҳолати</label>
+                                            <select class="custom-select form-control mg-b-5">
+                                                <option>Фаол</option>
+                                                <option>Фаол эмас</option>
+                                            </select>
+                                        </div><!-- col -->
+                                        <div class="col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                            <label class="form-label">Сўнгги ташриф</label>
+                                            <input type="text" class="form-control" value="" disabled="" placeholder="21.08.2021 11:32:56" required="">
+                                        </div><!-- col -->
+                                    </div><!-- form-settings -->
+                                    <div class="divider-text mg-b-20">Фойдаланувчи ҳуқуқлари</div>
+                                    <div class="form-settings row row-sm">
+                                        <div class="d-flex">
+                                            <div>
+                                                <label class="form-label">Бўш ер участкалари</label>
+                                                <hr>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="land_view">
+                                                    <label class="custom-control-label" for="land_view">Кўриш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="land_create">
+                                                    <label class="custom-control-label" for="land_create">Тизимга киритиш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="land_change">
+                                                    <label class="custom-control-label" for="land_change">Ўзгартириш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="land_сonfirmation">
+                                                    <label class="custom-control-label" for="land_сonfirmation">Тасдиқлаш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="land_delete">
+                                                    <label class="custom-control-label tx-danger" for="land_delete">Ўчириш</label>
+                                                </div>
+                                            </div>
+                                            <div class="mg-sm-l-40">
+                                                <label class="form-label">Лотлар</label>
+                                                <hr>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="lot_view">
+                                                    <label class="custom-control-label" for="lot_view">Кўриш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="lot_change">
+                                                    <label class="custom-control-label" for="lot_change">Ўзгартириш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="lot_rating">
+                                                    <label class="custom-control-label" for="lot_rating">Баҳолаш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="lot_сonfirmation">
+                                                    <label class="custom-control-label" for="lot_сonfirmation">Танловга чиқариш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="lot_delete">
+                                                    <label class="custom-control-label tx-danger" for="lot_delete">Ўчириш</label>
+                                                </div>
+                                            </div>
+                                            <div class="mg-sm-l-40">
+                                                <label class="form-label">Фойдаланувчилар</label>
+                                                <hr>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="user_view">
+                                                    <label class="custom-control-label" for="user_view">Кўриш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="user_create">
+                                                    <label class="custom-control-label" for="user_create">Тизимга киритиш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="user_change">
+                                                    <label class="custom-control-label" for="user_change">Ўзгартириш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="user_delete">
+                                                    <label class="custom-control-label tx-danger" for="user_delete">Ўчириш</label>
+                                                </div>
+                                            </div>
+                                            <div class="mg-sm-l-40">
+                                                <label class="form-label">Ташкилотлар</label>
+                                                <hr>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="org_view">
+                                                    <label class="custom-control-label" for="org_view">Кўриш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="org_create">
+                                                    <label class="custom-control-label" for="org_create">Тизимга киритиш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="org_change">
+                                                    <label class="custom-control-label" for="org_change">Ўзгартириш</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="org_delete">
+                                                    <label class="custom-control-label tx-danger" for="org_delete">Ўчириш</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- form-settings -->
+                                    <hr class="op-0">
+                                    <button class="btn btn-sm btn-outline-primary" type="submit">Барчасини танлаш</button>
+                                    <button class="btn btn-sm btn-outline-success" type="submit">Маълумотларни янгилаш</button>
+                                    <button class="btn btn-sm btn-outline-light mg-l-2">Ўзгаришларни бекор қилиш</button>
+                                </section>
+                            </div><!-- tab-panelFiles  -->
+                            <div id="userOrg" class="tab-pane">
+                                <section>
+                                    <!-- Ташкилот&ҳудуд  -->
+                                    <div class="divider-text mg-b-20">Ташкилот ва ҳудуд маълумотлари</div>
+                                    <div class="form-settings">
+                                        <div class="form-group">
+                                            <div class="input-group mg-b-10">
+                                                <input type="text" class="form-control" placeholder="Юқори турувчи ташкилот СТИР ни киритинг" aria-label="Юқори турувчи ташкилот СТИР ни киритинг" aria-describedby="button-addon1">
+                                                <div class="input-group-prepend">
+                                                    <button class="btn btn-outline-light" type="button" id="button-addon1"><i data-feather="search"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="tx-11 tx-sans tx-color-04 mg-t-5 text-right">Вазирлик/идора СТИР ни киритинг.</div>
+                                        </div><!-- form-group -->
+                                        <form class="row row-sm" action="#" data-parsley-validate>
+                                            <div class="form-group col-sm-6 col-xs-12 col-md-6 col-lg-6">
+                                                <label class="form-label">Вазирлик/идора номи</label>
+                                                <input type="text" class="form-control" value="" disabled="" placeholder="Тошкент вилояти сув хўжалиги бош бошқармаси" required>
+                                            </div><!-- col -->
+                                            <div class="form-group col-sm-6 col-xs-12 col-md-6 col-lg-6">
+                                                <label class="form-label">СТИР</label>
+                                                <input type="text" class="form-control" value="" disabled="" placeholder="202314563" required>
+                                            </div><!-- col -->
+                                            <div class="form-group col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                                                <label class="form-label">Юридик манзил</label>
+                                                <input type="text" class="form-control" value="" disabled="" placeholder="Тошкент вил., Нурафшон шаҳар, Амир Темур кўчаси 14 уй" required>
+                                            </div><!-- col -->
+                                            <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                                <label class="form-label">Почта индекс</label>
+                                                <input type="text" class="form-control" value="" disabled="" placeholder="100052" required>
+                                            </div><!-- col -->
+                                            <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                                <label class="form-label">E-mail</label>
+                                                <input type="email" class="form-control" value="" disabled="" placeholder="info@info.uz" required>
+                                            </div><!-- col -->
+                                            <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                                <label class="form-label">Телефон</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">+998</span>
+                                                    </div>
+                                                    <input id="inputPhoneNumber" type="text" class="form-control" placeholder="ХХХХХХХХХ" required>
+                                                </div>
+                                            </div><!-- col -->
+                                            <div class="divider-text col-sm-12">Бошқарма/бўлимлар</div>
+                                            <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                                <label class="form-label">Бошқарма/бўлим</label>
+                                                <select class="custom-select form-control mg-b-5">
+                                                    <option>Танланг</option>
+                                                    <option>Марказий аппарат</option>
+                                                    <option>Вилоят бошқармаси</option>
+                                                    <option>Туман/шаҳар бўлими</option>
+                                                    <option>Ҳудудий бошқарма</option>
+                                                </select>
+                                            </div><!-- col -->
+                                            <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                                <label class="form-label">Вилоят</label>
+                                                <select class="custom-select form-control mg-b-5">
+                                                    <option>Танланг</option>
+                                                    <option>Республика Каракалпакстан</option>
+                                                    <option>Андижанской область</option>
+                                                    <option>Бухарской область</option>
+                                                    <option>Джизакской область</option>
+                                                    <option>Кашкадарьинской область</option>
+                                                    <option>Навоийской область</option>
+                                                    <option>Наманганской область</option>
+                                                    <option>Самаркандской область</option>
+                                                    <option>Сурхандарьинской область</option>
+                                                    <option>Сырдарьинской область</option>
+                                                    <option>Ташкентской область</option>
+                                                    <option>Ферганской область</option>
+                                                    <option>Хорезмской область</option>
+                                                    <option>город Ташкент</option>
+                                                </select>
+                                            </div><!-- col -->
+                                            <div class="form-group col-sm-4 col-xs-12 col-md-4 col-lg-4">
+                                                <label class="form-label">Туман/шаҳар</label>
+                                                <select class="custom-select form-control mg-b-5">
+                                                    <option>Танланг</option>
+                                                    <option>Амударьинский район</option>
+                                                    <option>Берунийский район</option>
+                                                    <option>Канлыкульский район</option>
+                                                    <option>Караузякский район</option>
+                                                    <option>Кегейлийский район</option>
+                                                    <option>Кунградский район</option>
+                                                    <option>Муйнакский район</option>
+                                                    <option>Нукус</option>
+                                                    <option>Нукусский район</option>
+                                                    <option>Тахтакупырский район</option>
+                                                    <option>Турткульский район</option>
+                                                    <option>Ходжейлийский район</option>
+                                                    <option>Чимбайский район</option>
+                                                    <option>Шуманайский район</option>
+                                                    <option>Элликкалинский район</option>
+                                                </select>
+                                            </div><!-- col -->
+                                        </form><!-- form-row -->
+                                        <hr class="op-0">
+                                        <button class="btn btn-sm btn-outline-success" type="submit">Маълумотларни янгилаш</button>
+                                        <button class="btn btn-sm btn-outline-light mg-l-2">Ўзгаришларни бекор қилиш</button>
+                                    </div>
+                                </section>
+                            </div><!-- tab-pane -->
+                            <div id="userLogs" class="tab-pane">
+                                <div class="table-responsive">
+                                    <table class="table table-sm mg-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Дата</th>
+                                                <th scope="col" class="wd-5p">Страница</th>
+                                                <th scope="col">IP адрес</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">06.08.2021 23:21:23</th>
+                                                <td class="tx-short">file:///Applications/MAMP/htdocs/ijara/pages/page-profile.html</td>
+                                                <td>213.230.100.109:37240</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">06.08.2021 23:14:26</th>
+                                                <td class="tx-short">file:///Applications/MAMP/htdocs/ijara/pages/page-profile.html</td>
+                                                <td>213.230.100.109:37240</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">06.08.2021 23:12:31</th>
+                                                <td class="tx-short">file:///Applications/MAMP/htdocs/ijara/pages/page-profile.html</td>
+                                                <td>213.230.100.109:37240</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- tab-pane -->
+                        </div><!-- tab-content -->
+                    </div><!-- card -->
+                </div><!-- col -->
+            </div><!-- row -->
+        </div><!-- content-body -->
+    </div><!-- content -->
+    <!-- Настройка доступа -->
+    <!-- Подтверждение выйти modal -->
+    <div class="modal" id="exit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel7" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel7">Тизимдан чиқиш</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i data-feather="x"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="mg-b-0">Сиз ҳақиқатдан ҳам тизимдан чиқмоқчимисиз?</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-sm btn-outline-danger" data-dismiss="modal">Бекор қилиш</a>
+                    <a class="btn btn-sm btn-primary" href="login.html">Чиқиш</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Подтверждение  выйти modal -->
+    <!-- Свидения о системе -->
+    <div id="info_system" class="off-canvas off-canvas-overlay off-canvas-right">
+        <a href="#" class="close"><i data-feather="x"></i></a>
+        <div class="card-access-list">
+            <div class="card-header bg-transparent mg-b-5">
+                <h6 class="card-title mg-b-0 tx-light">Тизим ҳақида</h6>
+            </div><!-- card-header -->
+            <div class="card-body">
+                <a href="" class="nav-link pd-l-30"><img src="../assets/img/logo.svg"></a>
+                <hr>
+                <p class="tx-color-03 mg-l-20 tx-14">Тизим бўйича мутлақ ҳуқуқлар Ўзбекистон Республикаси Қишлоқ хўжалиги вазирлигига тегишлидир. Мазкур тизим муаллифлик ҳуқуқи тўғрисидаги қонунчилик билан ҳимояланган.</p>
+                <p class="tx-color-03 mg-l-20 tx-14"> Bootstrap талқини: 4.4.1</p>
+                <p class="tx-color-03 mg-l-20 tx-14"> © Laravel LLC фреймворки компонентларидан фойдаланилган.</p>
+            </div>
+            <div class="card-footer mg-l-20">
+                Тизим ишлаб чиқарувчиси © <a href="http://agrodigital.uz" target="_blank" class="card-link">AgroDigital</a> 2021
+            </div>
+        </div><!-- card -->
+    </div>
+    <!-- Конец Свидения о системе -->
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/feather-icons/feather.min.js"></script>
+    <script src="../lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../lib/js-cookie/js.cookie.js"></script>
+    <script src="../lib/prismjs/prism.js"></script>
+    <script src="../lib/select2/js/select2.min.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.stack.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.resize.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.threshold.js"></script>
+    <script src="../lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <!--     <script src="../lib/datatables.net/js/dataTables.editor.min.js"></script>
+    <script src="../lib/datatables.net/js/dataTables.buttons.min.js"></script>
+    <script src="../lib/datatables.net/js/dataTables.select.min.js"></script>
+    <script src="../lib/datatables.net/js/buttons.colVis.min.js"></script>
+    <script src="../lib/datatables.net/js/buttons.html5.min.js"></script>
+    <script src="../lib/datatables.net/js/pdfmake.min.js"></script>
+    <script src="../lib/datatables.net/js/buttons.print.min.js"></script> -->
+    <script src="../lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="../lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+    <script src="../lib/treetable/bootstrap-table-expandable.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/custom.js"></script>
+    <script src="../lib/multiselect/multiselect.js"></script>
+    <script src="../assets/js/type-objects.js"></script>
+    <script src="../assets/js/land-tree-table.js"></script>
+    <script src="../lib/quill/quill.min.js"></script>
+    <script src="../lib/cleave.js/cleave.min.js"></script>
+    <script src="../lib/cleave.js/addons/cleave-phone.uz.js"></script>
+    <script>
+    $(function() {
+        'use strict'
+
+
+        // US Format Phone Number
+        var cleaveB = new Cleave('#inputPhoneNumber', {
+            phone: true,
+            phoneRegionCode: 'UZ'
+        });
+
+
+
+
+
+    });
+    </script>
+    <script>
+    $('#reason').on('change', function() {
+        if ($(this).val() === "union_land") {
+            $("#adjacent_land").show()
+        } else {
+            $("#adjacent_land").hide()
+        }
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="referrer" content="strict-origin" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Meta -->
+    <meta name="description" content="ер участкалари бериш бўйича материалларни тўплаш, кўриб чиқиш ва ваколатли органлар ва ташкилотлар билан келишиш ҳамда танловни ташкил этиш ва ўтказиш учун зарур ахборотни киритиш, сақлаш, қайта ишлаш ва ҳужжатларни расмийлаштириш, шунингдек, манфаатдор шахсларнинг танлов жараёнларидан бевосита фойдаланиш имконини таъминлайдиган ахборот тизими">
+    <meta name="author" content="AgroDigital">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+    <title>Бош саҳифа | E-IJARA TANLOV v.1.0</title>
+    <!-- vendor css -->
+    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../lib/@fortawesome/css/all.min.css" rel="stylesheet">
+    <link href="../lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link href="../lib/select2/css/select2.min.css" rel="stylesheet">
+    <link href="../lib/treetable/bootstrap-table-expandable.css" rel="stylesheet">
+    <link href="../lib/simple-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <!-- template css -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/menu.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo"><img src="../assets/img/logo.svg"></a>
+        </div><!-- sidebar-header -->
+        <div id="dpSidebarBody" class="sidebar-body">
+            <ul class="nav nav-sidebar">
+                <li class="nav-label"><label class="content-label">Ер участкалари</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Ер участкалари</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="#" class="nav-sub-link">Бўш ер участкалари</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Тизимга киритилганлар</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Лойиҳалашда</a></li>
+                <li class="nav-item"> <a href="#" class="nav-sub-link">Келишувда</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Якунланганлар</a></li>
+                <li class="nav-item"> <a href="#" class="nav-sub-link tx-danger">Рад этилганлар</a></li>
+                </nav>
+                </li>
+                <li class="nav-label"><label class="content-label">Танлов</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Танловлар</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="#" class="nav-sub-link">Танловга қўйилган</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Танловдан олинган</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Танловга қайта қўйилган</a></li>
+                <li class="nav-item"> <a href="#" class="nav-sub-link">Якунланганлар</a></li>
+                </nav>
+                </li>
+                <li class="nav-label"><label class="content-label">Баҳолаш</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Баҳолаш жараёни</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="#" class="nav-sub-link">Талабгорлар</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Баҳолаш натижалари</a></li>
+                <li class="nav-item"> <a href="#" class="nav-sub-link">Ғолиблар реестри</a></li>
+                </nav>
+                </li>
+                <li class="nav-label"><label class="content-label">Ҳисобот шакллари</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Ҳисоботлар</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="#" class="nav-sub-link">Ер участкалари</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Танлов ҳисоботлари</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Бошқа ҳисоботлар</a></li>
+                </nav>
+                </li>
+                <li class="nav-label"><label class="content-label">Тизим созламалари</label></li>
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">Созламалар</a>
+                    <nav class="nav nav-sub">
+                <li class="nav-item"><a href="page-users.html" class="nav-sub-link">Фойдаланувчилар</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Фойдаланувчи роли</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Ташкилотлар</a></li>
+                <li class="nav-item"><a href="#" class="nav-sub-link">Баҳолаш мезонлари</a></li>
+                </nav>
+                </li>
+            </ul>
+            <hr class="mg-t-30 mg-b-25">
+            <ul class="nav nav-sidebar">
+                <li class="nav-item"><a href="#" target="_blank" class="nav-link">Профиль</a></li>
+                <li class="nav-item"><a href="#" target="_blank" class="nav-link">Қўлланма</a></li>
+                <li class="nav-item"><a href="#info_system" class="nav-link off-canvas-menu">Тизим ҳақида</a></li>
+                <li class="nav-item"> <a href="#exit" data-toggle="modal" class="nav-link">Тизимдан чиқиш</a></li>
+            </ul>
+        </div><!-- sidebar-body -->
+    </div><!-- sidebar -->
+    <div class="content">
+        <div class="header">
+            <div class="header-left">
+                <a href="" class="burger-menu"><i data-feather="menu"></i></a>
+            </div><!-- header-left -->
+            <div class="header-right">
+                <div class="dropdown dropdown-notification">
+                    <a href="" class="dropdown-link new" data-toggle="dropdown"><i class="fas fa-3x fa-bell toolbar-icon"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu-header">
+                            <h6>Эслатма</h6>
+                            <a href=""><i data-feather="more-vertical"></i></a>
+                        </div><!-- dropdown-menu-header -->
+                        <div class="dropdown-menu-body">
+                            <a href="" class="dropdown-item">
+                                <div class="dropdown-item-body">
+                                    <p>Z1726202550-0025-сон лойиҳа <strong>Сув хўжалиги бўлими</strong> томонидан рад этилди.</p>
+                                    <span>5 соат аввал</span>
+                                </div>
+                            </a>
+                            <a href="" class="dropdown-item">
+                                <div class="dropdown-item-body">
+                                    <p>Z1726202550-0025-сон лойиҳа <strong>Экология бўлими</strong> томонидан келишилди</p>
+                                    <span>5 соат аввал</span>
+                                </div>
+                            </a>
+                        </div><!-- dropdown-menu-body -->
+                        <div class="dropdown-menu-footer">
+                            <a href="">Барчасини кўриш</a>
+                        </div>
+                    </div><!-- dropdown-menu -->
+                </div>
+                <div class="dropdown dropdown-loggeduser mg-r-30 hidden-xs">
+                    <a href="" class="dropdown-link" data-toggle="dropdown">
+                        <!--  <i class="fas fa-6x fa-language toolbar-icon"></i> -->
+                        <img src="../assets/svg/language.svg" class="toolbar-icon" alt="">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="" class="dropdown-item tx-14 mg-t-5">Ўзбекча</a>
+                        <a href="" class="dropdown-item tx-14 mg-b-5">Русский</a>
+                    </div><!-- dropdown-menu -->
+                </div>
+            </div><!-- header-right -->
+        </div><!-- header -->
+        <div class="content-body mg-t-20">
+            <div class="card card-hover card-task-one mg-b-25">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <h6 class="card-title">Жами</h6>
+                            <div class="d-flex align-items-center justify-content-between mg-b-10">
+                                <h1 class="card-value">932</h1>
+                                <div class="chart-wrapper">
+                                    <div id="flotChart1" class="flot-chart"></div>
+                                </div>
+                            </div>
+                        </div><!-- col -->
+                        <div class="col-sm-6 col-md-3 mg-t-20 mg-sm-t-0">
+                            <h6 class="card-title">Лойиҳалашда</h6>
+                            <div class="d-flex align-items-center justify-content-between mg-b-10">
+                                <h1 class="card-value">268</h1>
+                                <div class="chart-wrapper">
+                                    <div id="flotChart2" class="flot-chart"></div>
+                                </div>
+                            </div>
+                        </div><!-- col -->
+                        <div class="col-sm-6 col-md-3 mg-t-20 mg-md-t-0">
+                            <h6 class="card-title">Келишувда</h6>
+                            <div class="d-flex align-items-center justify-content-between mg-b-10">
+                                <h1 class="card-value">746</h1>
+                                <div class="chart-wrapper">
+                                    <div id="flotChart3" class="flot-chart"></div>
+                                </div>
+                            </div>
+                        </div><!-- col -->
+                        <div class="col-sm-6 col-md-3 mg-t-20 mg-md-t-0">
+                            <h6 class="card-title">Танловда</h6>
+                            <div class="d-flex align-items-center justify-content-between mg-b-10">
+                                <h1 class="card-value">231</h1>
+                                <div class="chart-wrapper">
+                                    <div id="flotChart4" class="flot-chart"></div>
+                                </div>
+                            </div>
+                        </div><!-- col -->
+                    </div><!-- row -->
+                </div><!-- card-body -->
+            </div><!-- card -->
+            <div class="bg-transparent hidden-xs mg-r-15">
+                <div class="chart-legend">
+                    <label><span class="bg-blue"></span> Лойиҳалашда</label>
+                    <label><span class="bg-warning"></span> Қайта ишлашда</label>
+                    <label><span class="bg-orange"></span> Келишувда</label>
+                    <label><span class="bg-green"></span> Танловда</label>
+                    <label><span class="bg-danger"></span> Рад қилинган</label>
+                </div>
+            </div><!-- статуслар мазмуни-->
+            <div class="card card-invoice mg-t-20">
+                <div class="card-header">
+                    <div class="d-lg-inline">
+                        <div class="search-form mg-l-10">
+                            <input type="search" id="SearchInbox" onkeyup="myFunction()" class="form-control" placeholder="Излаш">
+                            <button class="btn" type="button"><i data-feather="search"></i></button>
+                        </div><!-- search-form -->
+                    </div>
+                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-2 hidden-xs type-land" role="group" aria-label="Турлар бўйича">
+                            <button type="button" class="btn btn-outline-light">Деҳқон хўжалиги</button>
+                            <button type="button" class="btn btn-outline-light">Бошқа мақсадлар</button>
+                        </div>
+                        <div class="btn-group hidden-xs mr-2" role="group" aria-label="Печать, обновить">
+                            <button type="button" class="btn btn-outline-light"><i class="fas fa-file-excel size-sm"></i></button>
+                            <button type="button" class="btn btn-outline-light"><i class="fas fa-print size-sm"></i></button>
+                            <button type="button" class="btn btn-outline-light"><i class="fas fa-sync-alt size-sm"></i></button>
+                        </div>
+                        <div class="btn-group hidden-xs" role="group" aria-label="Фильтр">
+                            <button type="button" class="btn btn-outline-light off-canvas-menu" href="#filterListLands"><i class="fas fa-sliders-h size-sm"></i></button>
+                        </div>
+                    </div>
+                </div><!-- card-header -->
+                <div class="card-body">
+                    <ul class="mail-list scrollbar-sm" id="lots">
+                        <li class="mail-item">
+                            <div class="status badge-success"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Деҳқон хўжалиги</span>
+                                    <span class="hidden-xs">Қорақалпоғистон Республикаси, Тупроққалъа тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6 class="tx-color-03">B1703202-00001</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-blue"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Бошқа мақсад</span>
+                                    <span class="hidden-xs">Наманган вилояти, Давлатобод тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-00221</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-danger"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Деҳқон хўжалиги</span>
+                                    <span class="hidden-xs">Тошкент вилояти, Чиноз тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-00541</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-orange"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Деҳқон хўжалиги</span>
+                                    <span class="hidden-xs">Қорақалпоғистон Республикаси, Тупроққалъа тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-00651</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-blue"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Бошқа мақсад</span>
+                                    <span class="hidden-xs">Бухоро вилояти, Олот тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-08701</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-green"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Бошқа мақсад</span>
+                                    <span class="hidden-xs">Андижон вилояти, Олтинкўл тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-09001</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-warning"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Деҳқон хўжалиги</span>
+                                    <span class="hidden-xs">Сурхондарё вилояти, Қумқўрғон тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-04701</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-blue"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Бошқа мақсад</span>
+                                    <span class="hidden-xs">Наманган вилояти, Давлатобод тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-00631</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-danger"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Деҳқон хўжалиги</span>
+                                    <span class="hidden-xs">Тошкент вилояти, Чиноз тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-03801</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-orange"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Деҳқон хўжалиги</span>
+                                    <span class="hidden-xs">Қорақалпоғистон Республикаси, Тупроққалъа тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-07201</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-blue"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Бошқа мақсад</span>
+                                    <span class="hidden-xs">Бухоро вилояти, Олот тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-05971</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mail-item">
+                            <div class="status bg-orange"></div>
+                            <div class="mail-item-body">
+                                <div>
+                                    <span>Деҳқон хўжалиги</span>
+                                    <span class="hidden-xs">Қорақалпоғистон Республикаси, Тупроққалъа тумани</span>
+                                </div>
+                                <a href="page-add.html">
+                                    <h6>B1703202-00581</h6>
+                                    <p>Майдони: 0.4 Га</p>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <hr>
+                    <nav aria-label="Страница лотов">
+                        <ul class="pagination pagination-space justify-content-end mg-b-0">
+                            <li class="page-item disabled"><a class="page-link page-link-icon" href="#"><i data-feather="chevron-left"></i></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link page-link-icon" href="#"><i data-feather="chevron-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </div><!-- card-body -->
+            </div><!-- card -->
+        </div>
+    </div><!-- content -->
+    <!-- Фильтр таблиц -->
+    <div id="filterListLands" class="off-canvas off-canvas-overlay off-canvas-right">
+        <a href="#" class="close"><i data-feather="x"></i></a>
+        <div class="card-access-list">
+            <div class="card-header bg-transparent">
+                <h5 class="card-title mb-0 tx-light">Саралаш</h5>
+            </div><!-- card-header -->
+            <div class="card-body">
+                <div class="divider-text">Ҳудудлар кесимида</div>
+                <div class="col-12">
+                    <select class="custom-select form-control mg-b-5">
+                        <option selected="">Республика бўйича</option>
+                        <option disabled>_________</option>
+                        <option>Қоракалпағистон</option>
+                        <option>Андижон вилояти</option>
+                        <option>Бухоро вилояти</option>
+                        <option>Жиззах вилояти</option>
+                        <option>Қашқадарё вилояти </option>
+                        <option>Навоий вилояти</option>
+                        <option>Наманган вилояти</option>
+                        <option>Самарқанд вилояти</option>
+                        <option>Сурхондарё вилояти</option>
+                        <option>Сирдарё вилояти</option>
+                        <option>Тошкент вилояти</option>
+                        <option>Фарғона вилояти</option>
+                        <option>Хоразм вилояти</option>
+                        <option>Тошкент ш.</option>
+                    </select>
+                    <select class="custom-select form-control">
+                        <option selected="">Туман(шаҳар)ни танланг</option>
+                        <option>Амударё тумани</option>
+                        <option>Беруни тумани</option>
+                        <option>Канлыкульский тумани</option>
+                        <option>Қораузак тумани</option>
+                        <option>Кегейли тумани</option>
+                        <option>Қўнғирод тумани</option>
+                        <option>Мўйноқ тумани</option>
+                        <option>Нукус шаҳри</option>
+                        <option>Нукум тумани</option>
+                        <option>Тахтакўпир тумани</option>
+                        <option>Тўрткўл тумани</option>
+                        <option>Хўжайли тумани</option>
+                        <option>Чимбой тумани</option>
+                        <option>Шуманай тумани</option>
+                        <option>Элликқалъа тумани</option>
+                    </select>
+                </div>
+                <div class="divider-text">Лойиҳа тури</div>
+                <div class="col-12">
+                    <select class="custom-select form-control mg-b-5">
+                        <option selected="">Барчаси</option>
+                        <option>Деҳқон хўжалиги</option>
+                        <option>Бошқа мақсадлар</option>
+                    </select>
+                </div>
+                <div class="divider-text">Ҳолати бўйича</div>
+                <div class="col-12">
+                    <select class="custom-select form-control mg-b-5">
+                        <option selected="">Барчаси</option>
+                        <option>Лойиҳалашда</option>
+                        <option>Келишувда</option>
+                        <option>Қайта ишлашда</option>
+                        <option>Танловда</option>
+                        <option>Комиссияда</option>
+                        <option>Рад этилганлар</option>
+                    </select>
+                </div>
+                <div class="divider-text">Фойдаланувчилар кесимида</div>
+                <div class="col-12">
+                    <select class="custom-select form-control mg-b-5">
+                        <option selected="">Барчаси</option>
+                        <option>Ижрочида</option>
+                        <option>Операторда</option>
+                        <option>Ваколатли органларда</option>
+                        <option>Хокимиятда</option>
+                        <option>Комиссияда</option>
+                    </select>
+                </div>
+                <div class="divider-text">Сана бўйича</div>
+                <div class="col-12 row mg-l-5">
+                    <div class="col-6">
+                        <input type="text" id="dateFrom" class="form-control" placeholder="c">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" id="dateTo" class="form-control" placeholder="до">
+                    </div>
+                </div>
+                <hr>
+                <button type="button" class="btn btn-primary ml-10">Саралаш</button>
+            </div>
+        </div><!-- card -->
+    </div>
+    <!-- Конец Фильтр таблиц -->
+    <!-- Подтверждение выйти modal -->
+    <div class="modal" id="exit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel7" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel7">Тизимдан чиқиш</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i data-feather="x"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="mg-b-0">Сиз ҳақиқатдан ҳам тизимдан чиқмоқчимисиз?</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-sm btn-outline-danger" data-dismiss="modal">Бекор қилиш</a>
+                    <a class="btn btn-sm btn-primary" href="login.html">Чиқиш</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Подтверждение  выйти modal -->
+    <!-- Свидения о системе -->
+    <div id="info_system" class="off-canvas off-canvas-overlay off-canvas-right">
+        <a href="#" class="close"><i data-feather="x"></i></a>
+        <div class="card-access-list">
+            <div class="card-header bg-transparent mg-b-5">
+                <h6 class="card-title mg-b-0 tx-light">Тизим ҳақида</h6>
+            </div><!-- card-header -->
+            <div class="card-body">
+                <a href="" class="nav-link pd-l-30"><img src="../assets/img/logo.svg"></a>
+                <hr>
+                <p class="tx-color-03 mg-l-20 tx-14">Тизим бўйича мутлақ ҳуқуқлар Ўзбекистон Республикаси Қишлоқ хўжалиги вазирлигига тегишлидир. Мазкур тизим муаллифлик ҳуқуқи тўғрисидаги қонунчилик билан ҳимояланган.</p>
+                <p class="tx-color-03 mg-l-20 tx-14"> Bootstrap талқини: 4.4.1</p>
+                <p class="tx-color-03 mg-l-20 tx-14"> © Laravel LLC фреймворки компонентларидан фойдаланилган.</p>
+            </div>
+            <div class="card-footer mg-l-20">
+                Тизим ишлаб чиқарувчиси © <a href="http://agrodigital.uz" target="_blank" class="card-link">AgroDigital</a> 2021
+            </div>
+        </div><!-- card -->
+    </div>
+    <!-- Конец Свидения о системе -->
+    <script src="../lib/@fortawesome/js/all.js"></script>
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/feather-icons/feather.min.js"></script>
+    <script src="../lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../lib/js-cookie/js.cookie.js"></script>
+    <script src="../lib/prismjs/prism.js"></script>
+    <script src="../lib/select2/js/select2.min.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.stack.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.resize.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.threshold.js"></script>
+    <script src="../lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <!--     <script src="../lib/datatables.net/js/dataTables.editor.min.js"></script>
+    <script src="../lib/datatables.net/js/dataTables.buttons.min.js"></script>
+    <script src="../lib/datatables.net/js/dataTables.select.min.js"></script>
+    <script src="../lib/datatables.net/js/buttons.colVis.min.js"></script>
+    <script src="../lib/datatables.net/js/buttons.html5.min.js"></script>
+    <script src="../lib/datatables.net/js/pdfmake.min.js"></script>
+    <script src="../lib/datatables.net/js/buttons.print.min.js"></script> -->
+    <script src="../lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="../lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+    <script src="../lib/treetable/bootstrap-table-expandable.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/custom.js"></script>
+    <script src="../assets/js/land-tree-table.js"></script>
+    <script src="../lib/quill/quill.min.js"></script>
+    <script src="../assets/js/flot.sampledata.js"></script>
+    <script>
+    $(function() {
+
+        'use strict'
+
+        $.plot('#flotChart1', [{
+            data: df1,
+            color: '#38c4fa'
+        }], {
+            series: {
+                shadowSize: 0,
+                lines: {
+                    show: true,
+                    lineWidth: 1.5,
+                    fill: true,
+                    fillColor: { colors: [{ opacity: 0 }, { opacity: 0.5 }] }
+                },
+                points: {
+                    show: false,
+                    radius: 2,
+                    lineWidth: 1.5
+                }
+            },
+            grid: {
+                borderWidth: 0,
+                labelMargin: 0,
+            },
+            yaxis: { show: false },
+            xaxis: {
+                show: false,
+                min: 40,
+                max: 80
+            }
+        });
+
+        $.plot('#flotChart2', [{
+            data: df1,
+            color: '#22d273'
+        }], {
+            series: {
+                shadowSize: 0,
+                lines: {
+                    show: true,
+                    lineWidth: 1.5,
+                    fill: true,
+                    fillColor: { colors: [{ opacity: 0 }, { opacity: 0.5 }] }
+                },
+                points: {
+                    show: false,
+                    radius: 2,
+                    lineWidth: 1.5
+                }
+            },
+            grid: {
+                borderWidth: 0,
+                labelMargin: 0,
+            },
+            yaxis: { show: false },
+            xaxis: {
+                show: false,
+                min: 20,
+                max: 60
+            }
+        });
+
+        $.plot('#flotChart3', [{
+            data: df1,
+            color: '#ffc107'
+        }], {
+            series: {
+                shadowSize: 0,
+                lines: {
+                    show: true,
+                    lineWidth: 1.5,
+                    fill: true,
+                    fillColor: { colors: [{ opacity: 0 }, { opacity: 0.5 }] }
+                },
+                points: {
+                    show: false,
+                    radius: 2,
+                    lineWidth: 1.5
+                }
+            },
+            grid: {
+                borderWidth: 0,
+                labelMargin: 0,
+            },
+            yaxis: { show: false },
+            xaxis: {
+                show: false,
+                min: 60,
+                max: 100
+            }
+        });
+
+        $.plot('#flotChart4', [{
+            data: df1,
+            color: '#fd7e14'
+        }], {
+            series: {
+                shadowSize: 0,
+                lines: {
+                    show: true,
+                    lineWidth: 1.5,
+                    fill: true,
+                    fillColor: { colors: [{ opacity: 0 }, { opacity: 0.5 }] }
+                },
+                points: {
+                    show: false,
+                    radius: 2,
+                    lineWidth: 1.5
+                }
+            },
+            grid: {
+                borderWidth: 0,
+                labelMargin: 0,
+            },
+            yaxis: { show: false },
+            xaxis: {
+                show: false,
+                min: 100,
+                max: 140
+            }
+        });
+
+        // card-calendar-one widget
+        $('#datepicker1').datepicker({
+            showOtherMonths: true
+        });
+
+    })
+    </script>
+    <script>
+    function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("SearchInbox");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("lots");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -0) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
