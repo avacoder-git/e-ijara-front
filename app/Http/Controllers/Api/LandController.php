@@ -16,8 +16,9 @@ class LandController extends Controller
             $land = Land::find(request('id'));
             return new LandResource($land);
         } else {
-            $lands = Land::select('address','area','cad_number','status_id','id','created_at','parent_id','regnum','region_id','district_id')->with( 'region:regionid,nameuz', 'district:regionid,areaid,nameuz','land_files')->
-            when(request('status_id', '') != '' && request('status_id') != 'all', function ($query) {
+            $lands = Land::select('address','area','cad_number','status_id','id','created_at','parent_id','regnum','region_id','district_id')
+            ->with( 'region:regionid,nameuz', 'district:regionid,areaid,nameuz','land_files')
+            ->when(request('status_id', '') != '' && request('status_id') != 'all', function ($query) {
                 if (request('status_id') == 2)
                     $query->whereNotNull('parent_id');
                 elseif(request('status_id') == 3)
@@ -49,8 +50,6 @@ class LandController extends Controller
                 return LandResource::collection($lands->where('is_merged_lot','=' ,0)->where('region_id',1727)->orderByRaw('parent_id NULLS FIRST')->get());
                 else
                     return LandResource::collection($lands->where('is_merged_lot','=' ,0)->orderByRaw('parent_id NULLS FIRST')->get());
-
-
             }
             else
             {

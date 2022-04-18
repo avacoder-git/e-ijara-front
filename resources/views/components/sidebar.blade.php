@@ -11,15 +11,7 @@
             </div>
         </div>
     </div>
-    <div class="app-header__mobile-menu">
-        <div>
-            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-            </button>
-        </div>
-    </div>
+    
     <div class="app-header__menu">
         <span>
             <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
@@ -32,15 +24,15 @@
     <div class="scrollbar-sidebar">
         <div class="app-sidebar__inner">
             <ul class="vertical-nav-menu">
-                <li class="app-sidebar__heading">Dashboards</li>
+                <li class="app-sidebar__heading">Dashboard</li>
                 <li>
-                    <a href="{{ route('user.application') }}" class="mm-active">
+                    <a href="{{ route('user.main') }}" @if(Route::currentRouteName() == 'user.main') class="mm-active" @endif>
                         <i class="metismenu-icon pe-7s-news-paper"></i>
-                        Ariza Topshirish
+                        Аризаларим
                     </a>
                 </li>
-            
             </ul>
         </div>
     </div>
+
 </div>
