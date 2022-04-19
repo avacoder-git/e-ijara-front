@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\RegionResource;
+use App\Models\LandPurposes;
 use App\Models\Regions;
 class ApplicationController extends Controller
 {
@@ -18,9 +19,15 @@ class ApplicationController extends Controller
 
     public function map(Request $request)
     {
+        
         $data = $request->validate([
             'region' => 'required',
         ]);
-        return view('user.map', compact('data'));
+        
+        $regions =  Regions::with('districts')->get();
+
+        $land_purposes = LandPurposes::all();
+    
+        return view('user.map', compact('data','regions', 'land_purposes'));
     }
 }

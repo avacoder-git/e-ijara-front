@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+   
 
     <!-- Scripts -->
     <link href="{{ asset('assets/main.css') }}" rel="stylesheet">
@@ -35,15 +35,21 @@
         </div>
     </div>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
     <div class="modal-dialog modal-lg">
+
         <div class="modal-content">
+
             <div class="modal-header">
+
                 <h5 class="modal-title" id="exampleModalLongTitle">Фойдаланиш шартлари</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+
             </div>
+
             <div class="modal-body ht-250 scrollbar-sm pos-relative" style="overflow-y: auto;">
                     <h6 class="tx-color-01 text-center">Фойдаланиш шартларининг қўлланиш кўлами</h6>
                     <p class="mg-b-20 text-justify">Фойдаланиш келишуви “E-IJARA TANLOV” электрон савдо майдончасига
@@ -65,13 +71,17 @@
                         маълумотлар ўзгартирилмаслиги ҳамда юқоридаги маълумотлар ва ушбу маълумотлар мавжуд бўлган
                         ҳужжатлар кафолатланиши ва айтиб ўтилиши ва тизимнинг қонуний ҳуқуқлари ва манфаатлари сақлаб
                         қолиниши керак.</p>
-                </div>
+            </div>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Ёпиш</button>
                 <a href="{{ route('user.application.region.get') }}" type="button" class="btn d-block btn-primary">Розиман</a>  
-            </div>8
+            </div>
+
         </div>
+
     </div>
+
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
