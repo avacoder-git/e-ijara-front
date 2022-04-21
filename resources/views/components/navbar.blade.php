@@ -40,11 +40,6 @@
                             </div>
                         </div>
                         <div class="widget-content-right header-user-info ml-3">     
-                                    <button class="btn-shadow p-1 btn btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">
-                                            Ариза топшириш
-                                    </button>
-                        </div>
-                        <div class="widget-content-right header-user-info ml-3">     
                                     <a href={{ route('user.logout') }} class="btn-shadow p-1 btn btn-primary btn-sm">
                                             Чиқиш
                                     </a>

@@ -22,9 +22,15 @@ class IndexController extends Controller
         return redirect()->route('login');
     }
 
-    public function user()
+    public function profile()
     {
-        return auth()->user();
+        $user = Auth::user();
+        return view('user.profile', compact('user'));
+    }
+
+    public function application()
+    {
+        return view('user.application');
     }
 
     public function region($title)
@@ -33,8 +39,8 @@ class IndexController extends Controller
         return response()->json($region);
     }
 
-    public function district($title)
+    public function user()
     {
-        # code...
+        return Auth::user();
     }
 }

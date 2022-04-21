@@ -28,6 +28,6 @@ class ApplicationController extends Controller
 
         $land_purposes = LandPurposes::all();
     
-        return view('user.map', compact('data','regions', 'land_purposes'));
+        return view('user.yandexmap', compact('data','regions', 'land_purposes'));
     }
 }

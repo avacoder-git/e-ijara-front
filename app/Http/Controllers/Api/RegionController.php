@@ -3,85 +3,50 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\RegionResource;
-use App\Models\Regions;
+use App\Http\Resources\Front\RegionResource;
+use App\Models\Front\District;
+use App\Models\Front\Region;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return RegionResource::collection(Regions::withCount('lands')->get());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = json_decode(file_get_contents(storage_path('tuman.json')), true)['features'];
+        $name = '';
+        foreach($data as $key => $item)
+        {
+  
+            $region = new District();
+    
+            $geometry = $item['geometry'];
+            $geometry['csr'] = ['type'=> 'name','properties' => ['name'=>'EPSG:4326']];
+            $geometry = json_encode($geometry);
+            // dd($geometry);
+            $name = $item['properties']['name'];
+
+            $geometry =  DB::raw("ST_GeomFromGeoJSON('$geometry')");
+            // dd($geometry);
+            // dd($name);
+            $region->nameuz = $name;
+            $region->nameru = $name;
+            $region->regioncode = $item['properties']['kadastr'];
+            $region->geometry = $geometry;
+            $region->save();
+            // dd(Region::truncate());
+            
+            // $data = DB::statement("INSERT INTO regions (nameuz, geometry) VALUES ('$name',  $geometry)");
+    
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function index()
     {
-        //
+        return DB::select('select nameuz, regioncode, ST_AsGeoJSON(geometry) from regions');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

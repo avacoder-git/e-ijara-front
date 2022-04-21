@@ -27,8 +27,20 @@
                 <li class="app-sidebar__heading">Dashboard</li>
                 <li>
                     <a href="{{ route('user.main') }}" @if(Route::currentRouteName() == 'user.main') class="mm-active" @endif>
-                        <i class="metismenu-icon pe-7s-news-paper"></i>
+                        <i class="metismenu-icon pe-7s-box1"></i>
                         Аризаларим
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('user.application') }}" @if(Route::currentRouteName() == 'user.application') class="mm-active" @endif>
+                        <i class="metismenu-icon pe-7s-note2"></i>
+                        Ариза топширирш
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('user.profile') }}" @if(Route::currentRouteName() == 'user.profile') class="mm-active" @endif>
+                        <i class="metismenu-icon pe-7s-user"></i>
+                        малумотларим
                     </a>
                 </li>
             </ul>

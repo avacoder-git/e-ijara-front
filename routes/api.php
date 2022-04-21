@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\RegionController;
 use App\Http\Resources\LandResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,7 +47,8 @@ Route::prefix('geojson')->group(function () {
 });
 Route::apiResource('lands', \App\Http\Controllers\Api\LandController::class);
 Route::apiResource('land_offers', \App\Http\Controllers\Api\LandOffersController::class);
-
+Route::post('/json/regions', [RegionController::class,'store']);
+Route::get('/json/regions', [RegionController::class,'index']);
 
 
 //Route::middleware('auth')->get('/user', function (Request $request) {
