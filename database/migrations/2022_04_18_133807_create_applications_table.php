@@ -21,6 +21,7 @@ class CreateApplicationsTable extends Migration
             $table->integer('land_purpose_id');
             $table->integer('period');
             $table->geometry('geometry');
+            $table->intager('status_id');
             $table->timestamps();
 
             $table->foreign('user_id')

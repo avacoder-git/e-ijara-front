@@ -7,6 +7,7 @@ use App\Http\Controllers\User\IndexController;
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth', 'as' => 'user.'], function () {
     Route::get('/profile', [IndexController::class, 'profile'])->name('profile');
+    Route::post('/changeProfile', [IndexController::class, 'changeProfile'])->name('changeProfile');
     Route::get('/user', [IndexController::class, 'user'])->name('user');
     Route::get('/', [IndexController::class, 'dashboard'])->name('main');
     Route::get('/application', [IndexController::class, 'application'])->name('application');

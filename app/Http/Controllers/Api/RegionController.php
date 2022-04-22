@@ -44,9 +44,12 @@ class RegionController extends Controller
 
     public function index()
     {
-        return DB::select('select nameuz, regioncode, ST_AsGeoJSON(geometry) from regions');
+        return DB::select('select id, nameuz, regioncode, lat,long from regions');
     }
-
-
+ 
+    public function show($region)
+    {
+        return new RegionResource(DB::select('select id, nameuz, regioncode, ST_AsGeoJSON(geometry) from regions where id = '. $region)[0]);
+    }
 
 }

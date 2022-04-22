@@ -40,7 +40,7 @@
                 <li>
                     <a href="{{ route('user.profile') }}" @if(Route::currentRouteName() == 'user.profile') class="mm-active" @endif>
                         <i class="metismenu-icon pe-7s-user"></i>
-                        малумотларим
+                        Малумотларим
                     </a>
                 </li>
             </ul>

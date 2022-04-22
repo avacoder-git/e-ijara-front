@@ -107,60 +107,60 @@ $code = $data['region'];
 //$long = null;
 //$lat = null;
 
-switch($data['region']) {
-case '1703':
-$long = 72.35939;
-$lat = 40.769654;
-break;
-case '1706':
-$long = 64.412842;
-$lat = 39.786262;
-break;
-case '1708':
-$long = 67.872932;
-$lat = 40.130333;
-break;
-case '1710':
-$long = 65.783899;
-$lat = 38.858500;
-break;
-case '1712':
-$long = 65.366498;
-$lat = 40.102320;
-break;
-case '1714':
-$long = 71.638784;
-$lat = 40.998954;
-break;
-case '1718':
-$long = 66.973035;
-$lat = 39.624009;
-break;
-case '1722':
-$long = 67.331372;
-$lat = 37.817498;
-break;
-case '1724':
-$long = 68.779778;
-$lat = 40.491668;
-break;
-case '1727':
-$long = 69.251899;
-$lat = 41.311980;
-break;
-case '1730':
-$long = 71.749777;
-$lat = 40.412322;
-break;
-case '1733':
-$long = 60.612778;
-$lat = 41.582929;
-break;
-case '1735':
-$long = 59.505616;
-$lat = 42.963678;
-break;
-// code block
+                                switch($data['region']) {
+                                case '1703':
+                                $long = 72.35939;
+                                $lat = 40.769654;
+                                break;
+                                case '1706':
+                                $long = 64.412842;
+                                $lat = 39.786262;
+                                break;
+                                case '1708':
+                                $long = 67.872932;
+                                $lat = 40.130333;
+                                break;
+                                case '1710':
+                                $long = 65.783899;
+                                $lat = 38.858500;
+                                break;
+                                case '1712':
+                                $long = 65.366498;
+                                $lat = 40.102320;
+                                break;
+                                case '1714':
+                                $long = 71.638784;
+                                $lat = 40.998954;
+                                break;
+                                case '1718':
+                                $long = 66.973035;
+                                $lat = 39.624009;
+                                break;
+                                case '1722':
+                                $long = 67.331372;
+                                $lat = 37.817498;
+                                break;
+                                case '1724':
+                                $long = 68.779778;
+                                $lat = 40.491668;
+                                break;
+                                case '1727':
+                                $long = 69.251899;
+                                $lat = 41.311980;
+                                break;
+                                case '1730':
+                                $long = 71.749777;
+                                $lat = 40.412322;
+                                break;
+                                case '1733':
+                                $long = 60.612778;
+                                $lat = 41.582929;
+                                break;
+                                case '1735':
+                                $long = 59.505616;
+                                $lat = 42.963678;
+                                break;
+                                // code block
 }
 @endphp
 

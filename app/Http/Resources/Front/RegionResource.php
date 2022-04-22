@@ -17,10 +17,9 @@ class RegionResource extends JsonResource
     {
         // dd($this->geometry);
         return [
-            'regioncode' => $this->regioncode,
             'name' => $this->nameuz,
             // 'geometry' =>  DB::raw("ST_AsGeoJSON('$this->geometry')")
-            'geometry' => $this->geometry,
+            'geometry' => json_decode($this->st_asgeojson),
         ];
     }
 }
