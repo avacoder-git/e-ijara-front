@@ -69,7 +69,7 @@
 
 
 <div id="app">
-    <app v-cloak></app>
+
 </div>
 
 <script src="{{mix('js/app.js')}}"></script>

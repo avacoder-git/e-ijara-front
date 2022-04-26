@@ -1,0 +1,9 @@
+<svg width="696" height="464" viewBox="0 0 696 464" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.7">
+<path d="M333 216.46V247.54C333 249.91 335.61 251.35 337.62 250.06L362.04 234.52C363.9 233.35 363.9 230.65 362.04 229.45L337.62 213.94C335.61 212.65 333 214.09 333 216.46Z" fill="white"/>
+</g>
+<circle opacity="0.3" cx="348" cy="232" r="87.5" stroke="white"/>
+<circle opacity="0.2" cx="348" cy="232" r="162.5" stroke="white"/>
+<circle opacity="0.1" cx="348" cy="232" r="259.5" stroke="white"/>
+<circle opacity="0.05" cx="348" cy="232" r="347.5" stroke="white"/>
+</svg>
