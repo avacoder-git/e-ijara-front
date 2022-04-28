@@ -36,10 +36,10 @@
                     <div class="widget-content-wrapper">
                         <div class="widget-content-left  ml-3 header-user-info">
                             <div class="widget-heading">
-                                {{ auth()->user()->fullname    }}
+                                {{  auth()->check()? auth()->user()->fullname:''    }}
                             </div>
                         </div>
-                        <div class="widget-content-right header-user-info ml-3">     
+                        <div class="widget-content-right header-user-info ml-3">
                                     <a href={{ route('user.logout') }} class="btn-shadow p-1 btn btn-primary btn-sm">
                                             Чиқиш
                                     </a>

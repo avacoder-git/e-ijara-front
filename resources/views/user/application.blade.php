@@ -33,7 +33,7 @@
             </div>
 
             <div class="modal-footer">
-                <a href="{{ route('user.application.region.get') }}" type="button" class="btn d-block btn-primary">Розиман</a>
+                <a href="{{ route('user.application.map') }}" type="button" class="btn d-block btn-primary">Розиман</a>
             </div>
 
         </div>

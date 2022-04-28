@@ -17,17 +17,13 @@ class ApplicationController extends Controller
         return view('user.region', compact('regions'));
     }
 
-    public function map(Request $request)
+    public function map()
     {
-        
-        $data = $request->validate([
-            'region' => 'required',
-        ]);
-        
+
         $regions =  Regions::with('districts')->get();
 
         $land_purposes = LandPurposes::all();
-    
-        return view('user.yandexmap', compact('data','regions', 'land_purposes'));
+
+        return view('user.map', compact('regions', 'land_purposes'));
     }
 }

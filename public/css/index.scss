@@ -219,12 +219,17 @@ $green: #08705F;
         }
     }
 
-
-    .carousel-nav {
+    position: relative;
+    .owl-nav {
         display: flex;
         flex-direction: row;
+        position: absolute;
+        top: -40px;
+        right: 0;
 
-        a {
+        .owl-next-a {
+            background: $green;
+            margin-left: 8px;
             opacity: 1;
             width: 40px;
             height: 40px;
@@ -232,17 +237,21 @@ $green: #08705F;
             border: 2px solid $green;
             color: $green;
             box-sizing: border-box;
-            padding: 10px;
+            padding: 6px;
             position: initial;
         }
 
-        .carousel-control-next {
-            background: $green;
-            margin-left: 8px;
-        }
-
-        .carousel-control-prev {
+        .owl-prev-a {
             margin-left: auto;
+            opacity: 1;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid $green;
+            color: $green;
+            box-sizing: border-box;
+            padding: 6px;
+            position: initial;
         }
     }
 
@@ -299,9 +308,9 @@ $green: #08705F;
             }
         }
 
-        .carousel {
-            .carousel-nav {
-                a {
+        .owl-carousel {
+            .owl-nav {
+                button {
                     width: 36px;
                     height: 36px;
                     border-radius: 50%;
@@ -312,11 +321,15 @@ $green: #08705F;
                     box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
                 }
 
-                .carousel-control-prev {
+                .owl-prev {
                     left: -18px;
+                    .carousel-control-prev{
+                        margin: auto;
+                        display: block;
+                    }
                 }
 
-                .carousel-control-next {
+                .owl-next {
                     right: -18px;
 
                     img {
@@ -819,5 +832,18 @@ footer{
             }
         }
     }
+
+}
+@media only screen and (max-width: 600px) {
+
+    .video{
+        height: 475px!important;
+
+        video{
+            height: 100%;
+        }
+    }
+
+
 
 }

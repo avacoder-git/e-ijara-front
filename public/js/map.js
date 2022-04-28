@@ -1,164 +1,104 @@
-ymaps.ready(init);
-var regions
+var map = L.map('map', {
+    zoom: 6,
+    center: [41.66655, 66.3235],
+})
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+
+    attribution: '<a target="_blank" href="http://www.agro.uz"> www.agro.uz &copy; AgroDigital</a>'
+}).addTo(map);
+map.pm.addControls({
+    position: 'topleft',
+    drawCircle: false,
+    drawMarker: false,
+    drawCircleMarker: false,
+    drawPolyline: false,
+    drawRectangle: false,
+    editLayers: false,
+    editMode: false,
+    dragMode: false,
+    cutPolygon: false,
+});
+
+
+map.on('pm:create', function (e) {
+    let geojson = e.layer.toGeoJSON().geometry.coordinates[0]
+    var latlong = [geojson[0][1], geojson[0][0]]
+    var seeArea = turf.area(e.layer.toGeoJSON());
+
+    seeArea = Math.round(seeArea)
+
+    getRegionName(geojson[0])
+    console.log(window.selected)
+    var text = "Umumiy maydoni: " + Math.round(seeArea / 10000) + " ga <br>"
+    var btn = "<button class='btn btn-primary' id='submit' data-toggle='modal' data-target='#values_modal'>Davom etish</button>"
+    $("#area").val()
+    var popup = L.popup()
+        .setLatLng(latlong)
+        .setContent('<p>Yerni tanladingniz<br />' + text + btn)
+        .openOn(map);
+
+    $('#submit').click(function () {
+
+    })
+    // console.log(seeArea)
+})
+
+makeRegionList()
+
+$('.region').click(function (){
+
+    $('#regionName').text($(this).text())
+
+    makeDistrictList($(this).data('region'))
+
+    map.panTo(new L.LatLng($(this).data('lat'), $(this).data('long')));
+    map.setZoom(8);
+
+    var geojson = getRegion($(this).data('region'))
+
+    L.geoJSON([geojson,geojson]).addTo(map)
+
+
+})
 
 
 
+function makeDistrictList(regionId)
+{
+    text = ""
+    data =    getDistricts(regionId)
 
-
-function init() {
-    var myMap = new ymaps.Map("map", {
-        center: [41.66655, 66.3235],
-        zoom: 6,
-        controls: ['zoomControl', 'typeSelector', 'fullscreenControl']
-    });
-
-
-    // Creating a custom drop-down list layout.
-    ListBoxLayout = ymaps.templateLayoutFactory.createClass(
-        "<button id='my-listbox-header' class='btn btn-success dropdown-toggle' data-toggle='dropdown'>" +
-        "{{data.title}} <span class='caret'></span>" +
-        "</button>" +
-        /**
-         * This element will serve as a container for list items.
-         * Depending on whether the list is expanded or collapsed, this container will be
-         * hidden or shown together with its child elements.
-         */
-        "<ul id='my-listbox'" +
-        " class='dropdown-menu' role='menu' aria-labelledby='dropdownMenu'" +
-        " style='display: {% if state.expanded %}block{% else %}none{% endif %};'></ul>", {
-
-        build: function () {
-            /**
-             * Calling the build method of the parent class before
-             * performing additional actions.
-             */
-            ListBoxLayout.superclass.build.call(this);
-
-            this.childContainerElement = $('#my-listbox').get(0);
-            /**
-             * Generating a special event that notifies the control
-             * of changes to the child element container.
-             */
-            this.events.fire('childcontainerchange', {
-                newChildContainerElement: this.childContainerElement,
-                oldChildContainerElement: null
-            });
-        },
-
-        /**
-         * Overriding the interface method that returns a reference
-         * to the child element container.
-         */
-        getChildContainerElement: function () {
-            return this.childContainerElement;
-        },
-
-        clear: function () {
-            /**
-             * Forcing the control to remove child elements from the parent
-             * before cleaning the layout. 
-             * This will protect us from unexpected errors associated
-             * with the destruction of DOM elements in earlier versions of IE.
-             */
-            this.events.fire('childcontainerchange', {
-                newChildContainerElement: null,
-                oldChildContainerElement: this.childContainerElement
-            });
-            this.childContainerElement = null;
-            /**
-             * Calling the "clear" method of the parent class
-             * after performing additional actions.
-             */
-            ListBoxLayout.superclass.clear.call(this);
-        }
-    }),
-
-        // Also creating a layout for a separate list item.
-        ListBoxItemLayout = ymaps.templateLayoutFactory.createClass(
-            "<li class='dropdown-item'><a>{{data.content}}</a></li>"
-        ),
-        // Creating two items in a drop-down list
-        listBoxItems = makeListBoxItems()
-    // Now we'll create a list containing the two items.
-    listBox = new ymaps.control.ListBox({
-        items: listBoxItems,
-        data: {
-            title: 'Viloyatni tanlang'
-        },
-        options: {
-            // You can use options to specify the layout directly for the list,
-            layout: ListBoxLayout,
-            /**
-             * or the layout for the child elements of the list. To define options for child
-             * elements through the parent element,
-             * add the 'item' prefix to option names.
-             */
-            itemLayout: ListBoxItemLayout
-        }
-    });
-
-    listBox.events.add('click', function (e) {
-        /**
-         * Getting a reference to the clicked object.
-         * List item events propagate and can be 
-         * listened to on the parent element.
-         */
-        var item = e.get('target');
-        // A click on the drop-down list title does not need to be processed.
-        if (item != listBox) {
-            var id = item.data.get('id')
-            myMap.setCenter(
-                item.data.get('center'),
-                item.data.get('zoom')
-            );
-                
-        }
-
-
-
-
-
-    });
-
-
-    myMap.controls.add(listBox, { float: 'left' });
-
-
-
-
-}
-
-
-
-function makeListBoxItems() {
-    data = getRegions()
-    list = []
     for (let i = 0; i < data.length; i++) {
-        list.push(
-            new ymaps.control.ListBoxItem({
-                data: {
-                    content: data[i].nameuz,
-                    center: [data[i].lat, data[i].long],
-                    id: data[i].id,
-                    zoom: 8
-                }
-            }))
+        text += '<button type="button" tabIndex="0" data-region="' + data[i].regioncode + '" class="dropdown-item district">' + data[i].nameuz + '</button>'
     }
-    return list;
+
+    $('#districts').html(text)
+
+    $('.district').click(function (){
+        $('#districtName').text($(this).text())
+    })
+
 }
 
-// console.log(getOnlyGeoJSONFromRegion(6))
-// function getOnlyGeoJSONFromRegion(id)
-// {
-//     return  JSON.parse(getRegion(id).data.geometry)
 
-// }
+function makeRegionList() {
+    var text = ""
+    data = getRegions()
+
+    for (let i = 0; i < data.length; i++) {
+        text += '<button type="button"  data-lat="' + data[i].lat + '" data-long="' + data[i].long + '"  tabIndex="0" data-region="' + data[i].regioncode + '" class="dropdown-item region">' + data[i].nameuz + '</button>'
+    }
+
+    $('#regions').html(text)
+
+}
 
 function getRegions() {
 
     var result = false;
-    $.ajax({
-        url: 'http://ijarafront.odya/api/json/regions',
+    jQuery.ajax({
+        url: domain()+'/api/json/regions',
         dataType: "json",
         type: "get",
         async: false,
@@ -176,7 +116,7 @@ function getRegion(id) {
 
     var result = false;
     $.ajax({
-        url: 'http://ijarafront.odya/api/json/regions/' + id,
+        url: domain()+'/api/json/regions/' + id,
         dataType: "json",
         type: "get",
         async: false,
@@ -186,4 +126,40 @@ function getRegion(id) {
     });
 
     return result;
+}
+function getDistricts(id) {
+
+    var result = false;
+    $.ajax({
+        url: domain()+'/api/json/districts/' + id,
+        dataType: "json",
+        type: "get",
+        async: false,
+        success: function (data) {
+            result = data;
+        },
+    });
+
+    return result;
+}
+
+function getRegionGeoJson(id) {
+
+    var result = false;
+    $.ajax({
+        url: domain()+'/api/json/regions/' + id,
+        dataType: "json",
+        type: "get",
+        async: false,
+        success: function (data) {
+            result = data;
+        },
+    });
+
+    return result;
+}
+
+function domain()
+{
+    return "http://ijara.front.git"
 }

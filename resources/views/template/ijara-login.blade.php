@@ -24,7 +24,7 @@
 </head>
 
 <body>
-<div class="signin-panel" id="app">
+{{--<div class="signin-panel" id="app">--}}
     <div style="display: contents;"><img src="{{ asset('ijara/assets/img/bg1.svg') }}" class="svg-bg"></div>
     <div class="signin-sidebar">
         <div class="signin-sidebar-body">
@@ -42,7 +42,7 @@
                 хўжалиги вазирлиги.</p>
         </div><!-- signin-sidebar -->
     </div><!-- signin-panel -->
-</div>
+{{--</div>--}}
 
 @yield('modal')
 {{-- eimzo --}}

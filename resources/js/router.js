@@ -5,12 +5,8 @@ const routes = [
         path: "/",
         component: () => import('./components/Modules/Index'),
         name:'index'
-    },
-    {
-        path: "/*",
-        component: () => import('./components/pages/NotFound'),
-        name:'notfound'
     }
+
 ]
 
 const router = createRouter({

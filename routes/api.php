@@ -50,6 +50,7 @@ Route::apiResource('land_offers', \App\Http\Controllers\Api\LandOffersController
 Route::post('/json/regions', [RegionController::class,'store']);
 Route::get('/json/regions', [RegionController::class,'index']);
 Route::get('/json/regions/{region}', [RegionController::class,'show']);
+Route::get('/json/districts/{region}', [\App\Http\Controllers\DistrictController::class,'show']);
 
 
 //Route::middleware('auth')->get('/user', function (Request $request) {

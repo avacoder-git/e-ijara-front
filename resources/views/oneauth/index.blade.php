@@ -33,8 +33,8 @@
                 </div>
                 <div class="form-group mg-b-30">
                     <button class="btn btn-primary btn-uppercase flex-fill full-width" :disabled="!oneAuthConfirmation"
-                            data="{{ json_encode(config('oneauth.one_id')) }}"
-                            v-on:click="oneAuth('{{ json_encode(config('oneauth.one_id')) }}')">Тизимга кириш
+
+                            onclick="oneAuth('{{ json_encode(config('oneauth.one_id')) }}')">Тизимга кириш
                     </button>
                 </div>
             </div>
@@ -56,7 +56,13 @@
     </div>
     <div class="clearfix"></div>
 @endsection
-
+<script>
+    function oneAuth(config) {
+        console.log('sdsd');
+        var config = JSON.parse(config);
+        window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + config.CLIENT_ID + "&redirect_uri=" + config.REDIRECT_URI + "/oneauth/auth&scope=" + config.SCOPE + "&state=testState";
+    }
+</script>
 @section('modal')
     <!-- ФОЙДАЛАНИШ ШАРТЛАРИ -->
     <div class="modal fade" id="agreement" tabindex="-1" role="dialog" aria-labelledby="agreementModal"
@@ -101,30 +107,10 @@
 @endsection
 @section('script')
     <script>
-        const app = new Vue({
-            el: '#app',
-            data() {
-                return {
-                    oneAuthConfirmation: false,
-                }
-            },
-            methods: {
-                oneAuth: function (config) {
-                    console.log('sdsd');
-                    var config = JSON.parse(config);
-                    window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + config.CLIENT_ID + "&redirect_uri=" + config.REDIRECT_URI + "/oneauth/auth&scope=" + config.SCOPE + "&state=testState";
-                },
-                currentUser() {
-                    axios.get('/api/me')
-                        .then(response => {
-                            this.user = response.data;
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        })
-                }
-
-            }
-        });
+        function oneAuth(config) {
+            console.log('sdsd');
+            var config = JSON.parse(config);
+            window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + config.CLIENT_ID + "&redirect_uri=" + config.REDIRECT_URI + "/oneauth/auth&scope=" + config.SCOPE + "&state=testState";
+        }
     </script>
 @endsection

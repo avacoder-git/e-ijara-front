@@ -8,6 +8,7 @@ use App\Models\Front\District;
 use App\Models\Front\Region;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
 
 class RegionController extends Controller
@@ -18,9 +19,9 @@ class RegionController extends Controller
         $name = '';
         foreach($data as $key => $item)
         {
-  
+
             $region = new District();
-    
+
             $geometry = $item['geometry'];
             $geometry['csr'] = ['type'=> 'name','properties' => ['name'=>'EPSG:4326']];
             $geometry = json_encode($geometry);
@@ -36,9 +37,9 @@ class RegionController extends Controller
             $region->geometry = $geometry;
             $region->save();
             // dd(Region::truncate());
-            
+
             // $data = DB::statement("INSERT INTO regions (nameuz, geometry) VALUES ('$name',  $geometry)");
-    
+
         }
     }
 
@@ -46,10 +47,24 @@ class RegionController extends Controller
     {
         return DB::select('select id, nameuz, regioncode, lat,long from regions');
     }
- 
+
     public function show($region)
     {
-        return new RegionResource(DB::select('select id, nameuz, regioncode, ST_AsGeoJSON(geometry) from regions where id = '. $region)[0]);
+        $data =  json_decode(DB::select('select  ST_AsGeoJSON(geometry) from regions where regioncode = '. $region)[0]->st_asgeojson);
+
+        $arr['type'] = "FeatureCollection";
+        $arr['features'] = [[
+            'type' => "Feature",
+            "id" => 0,
+            "geometry" => $data,
+            "properties" =>[
+                "name" => "Многоугольник 1"
+            ]
+        ]];
+
+
+        return $arr;
     }
+
 
 }

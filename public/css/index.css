@@ -75,6 +75,7 @@
 .section {
   margin-top: 72px;
   padding: 0 60px;
+  position: relative;
 }
 .section h1 {
   font-family: "Raleway";
@@ -139,11 +140,16 @@
   padding: 10px;
   background: #FFFFFF;
 }
-.section .carousel-nav {
+.section .owl-nav {
   display: flex;
   flex-direction: row;
+  position: absolute;
+  top: -40px;
+  right: 0;
 }
-.section .carousel-nav a {
+.section .owl-nav .owl-next-a {
+  background: #08705F;
+  margin-left: 8px;
   opacity: 1;
   width: 40px;
   height: 40px;
@@ -151,15 +157,20 @@
   border: 2px solid #08705F;
   color: #08705F;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 6px;
   position: initial;
 }
-.section .carousel-nav .carousel-control-next {
-  background: #08705F;
-  margin-left: 8px;
-}
-.section .carousel-nav .carousel-control-prev {
+.section .owl-nav .owl-prev-a {
   margin-left: auto;
+  opacity: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #08705F;
+  color: #08705F;
+  box-sizing: border-box;
+  padding: 6px;
+  position: initial;
 }
 
 .carousel-indicators {
@@ -215,7 +226,7 @@
   color: #7E858B;
   text-decoration: none;
 }
-.section-2 #fields .carousel .carousel-nav a {
+.section-2 #fields .owl-carousel .owl-nav button {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -225,13 +236,17 @@
   opacity: 1;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
-.section-2 #fields .carousel .carousel-nav .carousel-control-prev {
+.section-2 #fields .owl-carousel .owl-nav .owl-prev {
   left: -18px;
 }
-.section-2 #fields .carousel .carousel-nav .carousel-control-next {
+.section-2 #fields .owl-carousel .owl-nav .owl-prev .carousel-control-prev {
+  margin: auto;
+  display: block;
+}
+.section-2 #fields .owl-carousel .owl-nav .owl-next {
   right: -18px;
 }
-.section-2 #fields .carousel .carousel-nav .carousel-control-next img {
+.section-2 #fields .owl-carousel .owl-nav .owl-next img {
   transform: rotate(180deg);
 }
 .section-2 #fields .rectangle {
@@ -728,6 +743,15 @@ footer .footer .section-2 a {
 footer .footer .section-2 a b {
   font-weight: 500;
   border-bottom: 1px solid white;
+}
+
+@media only screen and (max-width: 600px) {
+  .video {
+    height: 475px !important;
+  }
+  .video video {
+    height: 100%;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,21 +1,21 @@
-.carousel-indicators li{
-    background: #CEE2DF;
-    border-radius: 7px;
-    height: 6px;
-    width: 52px;
-    padding: 0;
-    border: 0;
-    margin: 0 2px;
-    opacity: 1;
-    overflow: hidden;
+.owl-dots button{
+    background: #CEE2DF!important;
+    border-radius: 7px!important;;
+    height: 6px!important;;
+    width: 52px!important;;
+    padding: 0!important;;
+    border: 0!important;;
+    margin: 0 2px!important;;
+    opacity: 1!important;;
+    overflow: hidden!important;;
 }
-.carousel-indicators li span{
-    background: #539B8F;
-    border-radius: 7px;
-    height: 100%;
-    padding: 0;
-    display: block;
-    border: 0;
-    width: 0;
+.owl-dots .active{
+    background-color: #539B8F!important;;
 }
 
+.owl-dots{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 24px;
+}

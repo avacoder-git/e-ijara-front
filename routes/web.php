@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\IndexController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,10 @@ Route::get('/report/export',[\App\Http\Controllers\LandExportController::class,'
 //})->middleware(['auth'])->name('home');
 
 require __DIR__.'/auth.php';
-require __DIR__.'/user.php';
+    require __DIR__.'/user.php';
+
+
 
 Route::get('/{any?}', function () {
-    return view('template.app');    
-})->where('any', '.*')->name('home');   
+    return view('template.app');
+})->where(['any'=> '[\/\w\.-]*'])->name('home');
