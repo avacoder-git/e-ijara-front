@@ -11,9 +11,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'user.'],
     Route::get('/user', [IndexController::class, 'user'])->name('user');
     Route::get('/', [IndexController::class, 'dashboard'])->name('main');
     Route::get('/application', [IndexController::class, 'application'])->name('application');
-    Route::get('/regionByName/{title}', [IndexController::class, 'region'])->name('region');
-    Route::get('/districtByName/{title}', [IndexController::class, 'district'])->name('district');
     Route::get('/logout', [IndexController::class, 'logout'])->name('logout');
     // Route::get
 });
-Route::get('dashboard/application/map', [ApplicationController::class, 'map'])->name('application.map');
+Route::get('dashboard/application/map', [ApplicationController::class, 'map'])->name('user.application.map');

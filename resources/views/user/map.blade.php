@@ -13,7 +13,7 @@
 
     <style>
         #map {
-            height: 90%;
+            height: 80%;
         }
     </style>
 
@@ -45,6 +45,10 @@
     <div id="map">
 
     </div>
+
+
+
+
 
 
 @endsection

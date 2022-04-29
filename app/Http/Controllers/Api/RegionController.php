@@ -24,18 +24,19 @@ class RegionController extends Controller
 
             $geometry = $item['geometry'];
             $geometry['csr'] = ['type'=> 'name','properties' => ['name'=>'EPSG:4326']];
+            dd($geometry);
             $geometry = json_encode($geometry);
-            // dd($geometry);
+             dd($geometry);
             $name = $item['properties']['name'];
 
             $geometry =  DB::raw("ST_GeomFromGeoJSON('$geometry')");
-            // dd($geometry);
+             dd($geometry);
             // dd($name);
             $region->nameuz = $name;
             $region->nameru = $name;
             $region->regioncode = $item['properties']['kadastr'];
             $region->geometry = $geometry;
-            $region->save();
+//            $region->save();
             // dd(Region::truncate());
 
             // $data = DB::statement("INSERT INTO regions (nameuz, geometry) VALUES ('$name',  $geometry)");
@@ -50,7 +51,13 @@ class RegionController extends Controller
 
     public function show($region)
     {
-        $data =  json_decode(DB::select('select  ST_AsGeoJSON(geometry) from regions where regioncode = '. $region)[0]->st_asgeojson);
+        $data =  json_decode(DB::select('select  ST_AsGeoJSON(geometry) from regions where regioncode = '. $region  )[0]->st_asgeojson, true);
+        $item = $data["coordinates"][0];
+
+
+
+        unset($data['coordinates']);
+        $data['coordinates']= [$item,$item];
 
         $arr['type'] = "FeatureCollection";
         $arr['features'] = [[
@@ -63,7 +70,7 @@ class RegionController extends Controller
         ]];
 
 
-        return $arr;
+        return $data;
     }
 
 

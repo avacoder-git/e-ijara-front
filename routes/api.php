@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\RegionController;
+use App\Http\Controllers\User\IndexController;
 use App\Http\Resources\LandResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +51,9 @@ Route::apiResource('land_offers', \App\Http\Controllers\Api\LandOffersController
 Route::post('/json/regions', [RegionController::class,'store']);
 Route::get('/json/regions', [RegionController::class,'index']);
 Route::get('/json/regions/{region}', [RegionController::class,'show']);
-Route::get('/json/districts/{region}', [\App\Http\Controllers\DistrictController::class,'show']);
+Route::get('/json/districts/{region}', [\App\Http\Controllers\DistrictController::class,'index']);
+Route::get('/json/district/{district}', [\App\Http\Controllers\DistrictController::class,'show']);
+Route::post('/application', [IndexController::class, 'submit'])->name('application.submit');
 
 
 //Route::middleware('auth')->get('/user', function (Request $request) {

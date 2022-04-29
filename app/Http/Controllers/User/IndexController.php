@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PurposeStoreRequest;
+use App\Models\Application;
 use App\Models\Regions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +15,9 @@ class IndexController extends Controller
 {
     public function dashboard()
     {
-        return view('user.main');
+        $applications = Application::with(['region','district','land_purpose','status'])->get();
+
+        return view('user.main', compact('applications'));
     }
 
     public function logout()
@@ -52,4 +56,28 @@ class IndexController extends Controller
     {
         return Auth::user();
     }
+
+    public function submit(PurposeStoreRequest $request)
+    {
+        $data = $request->validated();
+        $data['user_id'] = auth()->user()->id;
+        $data['status_id'] = 1;
+        $geometry = json_decode( $data['geojson'],true)['geometry'];
+        $geometry['csr'] = ['type'=> 'name','properties' => ['name'=>'EPSG:4326']];
+        $geometry = json_encode($geometry);
+
+        unset($data['geojson']);
+
+        $data['geometry'] = DB::raw("ST_GeomFromGeoJSON('$geometry')");
+
+        $application = Application::create($data);
+
+
+
+        return response()->json(['success' => true, 'message' => "Successfully created"]);
+    }
+
+
+
+
 }
