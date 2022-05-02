@@ -19,3 +19,9 @@
     justify-content: center;
     margin-top: 24px;
 }
+@media only screen and (max-width: 600px) {
+
+    .owl-dots{
+        display: none;
+    }
+}

@@ -339,22 +339,29 @@
   overflow: hidden;
   position: relative;
 }
-.section-2 .about-video .video-content {
-  width: 471px;
-  margin-left: 112px;
-  margin-top: 138px;
+.section-2 .about-video #videoCarousel .carousel-item img {
+  width: 100%;
 }
-.section-2 .about-video .video-content .text-1 {
+.section-2 .about-video #videoCarousel .carousel-item .video-content {
+  position: absolute;
+  top: 138px;
+  left: 112px;
+  width: 100%;
+}
+.section-2 .about-video #videoCarousel .carousel-item .video-content .text-1 {
   font-family: "Raleway";
   font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 32px;
-  color: #313131;
+  font-weight: 700;
+  font-size: 32px;
   line-height: 40px;
+  /* identical to box height, or 125% */
+  display: flex;
+  align-items: center;
+  /* Neutral/White */
+  color: #FFFFFF;
   color: white;
 }
-.section-2 .about-video .video-content .text-2 {
+.section-2 .about-video #videoCarousel .carousel-item .video-content .text-2 {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 500;
@@ -364,53 +371,43 @@
   /* Neutral/Black 1 */
   color: #0D1012;
   color: white;
-  line-height: 28px;
   margin-top: 16px;
 }
-.section-2 .about-video .video-content .carousel-nav {
-  margin-top: 28px;
+.section-2 .about-video #videoCarousel .carousel-item .video-content .play-btn {
+  background-color: transparent;
+  transform: translate(-20%, -30%);
+  opacity: 0.5;
+  border: 0;
+}
+.section-2 .about-video #videoCarousel .carousel-item .video-content .play-btn:hover {
+  opacity: 1;
+}
+.section-2 .about-video .carousel-nav {
+  position: absolute;
+  top: 60%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+  left: 119px;
 }
-.section-2 .about-video .video-content .carousel-nav a {
-  position: initial !important;
-}
-.section-2 .about-video .video-content .carousel-nav .carousel-control-next {
+.section-2 .about-video .carousel-nav .carousel-control-next {
   transform: rotate(180deg);
+  position: initial;
+  top: 0;
 }
-.section-2 .about-video .video-content .carousel-nav .carousel-indicators {
-  margin: 0;
+.section-2 .about-video .carousel-nav .carousel-control-prev {
+  position: initial;
+  top: 0;
 }
-.section-2 .about-video .video-content .carousel-nav .carousel-indicators li {
-  width: 8px;
+.section-2 .about-video .carousel-nav .carousel-indicators {
+  width: 70px;
+}
+.section-2 .about-video .carousel-nav .carousel-indicators li {
+  width: 8px !important;
   height: 8px;
   border-radius: 50%;
-  margin: 8px;
-}
-.section-2 .about-video .video-gradient {
-  background: linear-gradient(90deg, #010F0C 0%, rgba(1, 15, 12, 0.6) 52.31%, rgba(1, 15, 12, 0) 82.29%), transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-}
-.section-2 .about-video #videoCarousel {
-  width: 100%;
-  height: 100%;
-}
-.section-2 .about-video #videoCarousel .carousel-item .play-btn {
-  background-color: transparent;
-  position: absolute;
-  border: 0;
-  top: 0;
-  left: 50%;
-  z-index: 100;
-  opacity: 0.5;
-}
-.section-2 .about-video #videoCarousel .carousel-item .play-btn:hover {
-  opacity: 1;
+  margin: auto;
 }
 .section-2 .offer {
   padding: 124px 112px;
@@ -745,11 +742,147 @@ footer .footer .section-2 a b {
   border-bottom: 1px solid white;
 }
 
+.border-black {
+  border-color: black !important;
+}
+
 @media only screen and (max-width: 600px) {
+  .navbar {
+    padding: 20px;
+  }
+
+  .langdropdown {
+    margin-right: 70px;
+  }
+  .langdropdown .dropdown-menu {
+    left: -100px;
+  }
+
+  .navbar-toggler {
+    width: 18px;
+    height: 14px;
+    padding: 0 !important;
+    margin-right: 20px !important;
+    margin-top: 7px !important;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    position: absolute;
+    right: 20px;
+    top: 32px;
+    z-index: 100;
+  }
+  .navbar-toggler .toggle-line {
+    width: 22px;
+    border-radius: 50rem;
+    margin-bottom: 5px;
+    border: 1px solid white;
+    transition: 0.3s;
+  }
+  .navbar-toggler .line1 {
+    transform: translate(0, 8px) rotate(45deg);
+    width: 30px;
+  }
+  .navbar-toggler .line2 {
+    opacity: 0;
+  }
+  .navbar-toggler .line3 {
+    transform: translate(0, -7px) rotate(-45deg);
+    width: 30px;
+  }
+
+  .navbar-collapse {
+    background-color: white;
+    border-radius: 16px 0 0 16px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 56px;
+    padding: 80px 24px;
+    display: block;
+  }
+  .navbar-collapse .lang-lg {
+    display: none;
+  }
+  .navbar-collapse .nav-item {
+    margin: 0 !important;
+    border-bottom: 1px solid #F2F4F5;
+  }
+  .navbar-collapse .nav-item .check-offer {
+    margin: 16px 0 !important;
+    width: 100%;
+    text-align: center;
+    background: #08705F !important;
+    color: white !important;
+    border-radius: 8px !important;
+    padding: 12px 0 !important;
+  }
+  .navbar-collapse .nav-item .nav-link-mini {
+    color: #0D1012 !important;
+    padding: 16px 0 !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  .navbar-collapse .nav-item .login {
+    padding: 12px 0 !important;
+    color: #08705F !important;
+    border-color: #08705F !important;
+    text-align: center;
+  }
+
   .video {
     height: 475px !important;
+    top: 0 !important;
   }
   .video video {
+    height: 100%;
+    width: initial !important;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+  .video .video-text {
+    width: initial !important;
+    margin: 287px 24px !important;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .section {
+    margin-top: 40px;
+    padding: 0 16px;
+  }
+
+  .section-2 {
+    margin-top: 40px;
+    padding: 0 16px;
+  }
+
+  .d-sm-none {
+    display: none !important;
+  }
+
+  .barchasi {
+    width: 100%;
+    text-align: center;
+    padding: 16px 0;
+    color: #08705F;
+    border: 1px solid #08705F;
+    border-radius: 8px;
+    background-color: white;
+    margin-top: 24px;
+  }
+
+  .about-video {
+    height: 545px !important;
+  }
+  .about-video .video-content {
+    top: 0 !important;
+  }
+  .about-video .carousel-item img {
+    width: initial !important;
     height: 100%;
   }
 }
