@@ -8,10 +8,15 @@
 
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="image/video-thumbnail1.jpg" alt="Video">
+                                <img src="image/video-thumbnail1.jpg" class="carousel-img" alt="Video">
                                 <div class="video-content">
                                     <div class="row">
-                                        <div class="col-lg-5">
+                                        <div class="col-lg-5  col-12">
+                                            <button type="button" class="play-btn d-lg-none" data-video="1"
+                                                    data-toggle="modal"
+                                                    data-target="#video"><img
+                                                src="image/play_btn.svg" class="play-img" alt="">
+                                            </button>
                                             <div class="w-100">
                                                 <div class="text-1">
                                                     Tizim haqida videorolik
@@ -34,18 +39,16 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="image/video-thumbnail1.jpg" alt="Video">
+                                <img src="image/video-thumbnail1.jpg" class="carousel-img" alt="Video">
                                 <div class="video-content">
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <button type="button" class="play-btn"
+                                        <div class="col-lg-5">
+                                            <button type="button" class="play-btn d-lg-none"
                                                     data-video="2" data-toggle="modal"
                                                     data-target="#video"><img
                                                 src="image/play_btn.svg" class="play-img"
                                                 alt="">
                                             </button>
-                                        </div>
-                                        <div class="col-lg-5">
                                             <div class="w-100">
                                                 <div class="text-1">
                                                     Tizim haqida videorolik

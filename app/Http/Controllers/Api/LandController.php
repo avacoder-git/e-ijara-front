@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LandResource;
-use App\Models\Land;
 use App\Models\Regions;
+use App\Models\Land;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class LandController extends Controller
@@ -16,7 +17,7 @@ class LandController extends Controller
             $land = Land::find(request('id'));
             return new LandResource($land);
         } else {
-            $lands = Land::select('address','area','cad_number','status_id','id','created_at','parent_id','regnum','region_id','district_id')
+            $lands = Land::select('id','area','created_at','regnum','region_id','district_id')
             ->with( 'region:regionid,nameuz', 'district:regionid,areaid,nameuz','land_files')
             ->when(request('status_id', '') != '' && request('status_id') != 'all', function ($query) {
                 if (request('status_id') == 2)
@@ -100,19 +101,43 @@ class LandController extends Controller
 
     }
 
+    public function GetCountRegion($region)
+    {
+        $region = Regions::query()->select('nameuz','regionid')->where('regionid',$region)->first();
+        abort_if(!$region,404,'Not Found');
+        $lands = Land::query()->select('count','sum(area)')->where('region_id',$region->regionid);
+
+
+        $time = Carbon::now();
+
+        return response()->json([
+            'count' =>  $lands->count() ,
+            'region' => $region->nameuz,
+            'all_area' => round($lands->sum('area'), 2),
+        ]);
+    }
+
+
+    public function GetAllCountByStatus()
+    {
+        $lands = Land::query();
+        $ajratilgan = 1;
+        $new = 1;
+        $tanlov = 1;
+        $loyiha = 1;
+
+        $new_lands =  ['count'=> $lands->where('status_id',$new)->count(), 'area' => round( $lands->where('status_id',$new)->sum('area'),1) ];
+        $ajratilgan_lands =  ['count'=> $lands->where('status_id',$ajratilgan)->count(), 'area' =>  round($lands->where('status_id',$ajratilgan)->sum('area'),1) ];
+        $tanlovdagi_lands =  ['count'=> $lands->where('status_id',$tanlov)->count(), 'area' =>  round($lands->where('status_id',$tanlov)->sum('area'),1) ];
+        $loyihalashdagi_lands =  ['count'=> $lands->where('status_id',$loyiha)->count(), 'area' => round( $lands->where('status_id',$loyiha)->sum('area'),1) ];
+
+        return response()->json(compact('new_lands','ajratilgan_lands','tanlovdagi_lands','loyihalashdagi_lands'));
+    }
+
+
     public function GetAllCount()
     {
-        $regions = Regions::select('nameuz')->withCount('lands_count')->withSum('lands_count','area')->get();
-
-        $arr = [];
-
-//        foreach ($regions as $item) {
-//            array_push($arr, [
-//                'region' => $item->nameuz,
-//                'count' => $item->lands->whereNull('parent_id')->count(),
-//                'area' => round($item->lands->whereNull('parent_id')->sum('area')),
-//            ]);
-//        }
+        $regions = Regions::select('nameuz')->withCount('new_lands','lands_auction')->withSum('new_lands','area')->withSum('lands_auction','area')->get();
         return response()->json($regions);
     }
 }

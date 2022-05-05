@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <footer class="bg-white mt-5 pt-5">
         <div class="container-fluid section-2">
             <div class="row">
                 <div class="col-12">
@@ -18,12 +18,12 @@
                             <div class="footer-header">Menu</div>
 
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-6">
                                     <router-link to="" class="footer-link">Tizim xaqida</router-link>
                                     <router-link to="" class="footer-link">Ochiq xarita</router-link>
                                     <router-link to="" class="footer-link">Meyoriy xujjatlar</router-link>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-6">
                                     <router-link to="" class="footer-link">Qo’llanmalar</router-link>
                                     <router-link to="" class="footer-link">Ko’p beriladigan savollar</router-link>
                                 </div>
@@ -42,9 +42,9 @@
 
         <div class="footer">
             <div class="container-fluid section-2">
-                <div class="d-flex flex-row justify-content-between align-items-center">
-                    <a href="">© 2022 <b>Barcha huquqlar himoyalangan.</b></a>
-                    <a href=""><img src="image/digital-center.svg" alt=""></a>
+                <div class="d-lg-flex flex-row justify-content-between align-items-center">
+                    <a href="" class="mt-sm-3">© 2022 <b>Barcha huquqlar himoyalangan.</b></a>
+                    <a href="" class="mt-sm-3"><img src="image/digital-center.svg" alt=""></a>
 
                 </div>
             </div>

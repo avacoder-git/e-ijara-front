@@ -43,7 +43,9 @@ Route::prefix('directory')->group(function () {
 Route::prefix('geojson')->group(function () {
     Route::apiResource('geojson', \App\Http\Controllers\Api\GeojsonController::class);
     Route::get('/getCount',[\App\Http\Controllers\Api\LandController::class,'GetCount'])->name('land.getcount');
+    Route::get('/getCount/{region}',[\App\Http\Controllers\Api\LandController::class,'GetCountRegion']);
     Route::get('/GetAllCount',[\App\Http\Controllers\Api\LandController::class,'GetAllCount'])->name('land.GetAllCount');
+    Route::get('/GetAllCountByStatus',[\App\Http\Controllers\Api\LandController::class,'GetAllCountByStatus'])->name('land.GetAllCount');
 
 });
 Route::apiResource('lands', \App\Http\Controllers\Api\LandController::class);

@@ -31,6 +31,15 @@ class Regions extends Model
     }
 
 
+    public function new_lands()
+    {
+        return $this->hasMany(Land::class,'region_id','regionid')->whereNull('parent_id');
+    }
+    public function lands_auction()
+    {
+        return $this->hasMany(Land::class,'region_id','regionid')->whereNull('parent_id');
+    }
+
     public function planned_reduced()
     {
         return $this->hasOne(PlanedReduced::class,'region_id','regionid')->where('year',Carbon::now()->year);
