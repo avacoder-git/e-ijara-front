@@ -25,6 +25,16 @@ const routes = [
         path: "/faq",
         component: () => import('./components/Modules/FAQ'),
         name:'faq'
+    },
+    {
+        path: "/contact",
+        component: () => import('./components/Modules/Contact'),
+        name:'contact'
+    },
+    {
+        path: "/map",
+        component: () => import('./components/Modules/Map'),
+        name:'map'
     }
 
 
@@ -34,6 +44,7 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     mode: 'history',
-    routes
+    routes,
+    linkActiveClass: "active",
 })
 export default router

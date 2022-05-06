@@ -6,18 +6,32 @@
         <div class="row">
 
             <div class="col-lg-12">
-                <p>
-                    <button class="question" type="button" data-id="1" @toggle="animate(1)">
-                        Ro‘yxatdan qanday o‘tiladi?
-                        <i class="fa-regular fa-circle-plus"></i>
+                <div class="card card-body">
+                    <button class="question" type="button" data-id="1" @click="animate(1)">
+                        <span>Ro‘yxatdan qanday o‘tiladi?</span>
+                        <span class="icon"></span>
                     </button>
-                </p>
-                <div id="question1" class="h-0 ">
-                    <div class="card card-body">
-                        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                    <div class="answer" :class="selected === 1 ? 'answer-active':''">
+                        <div class="">
+                            Some placeholder content for the collapse component. This panel is hidden by default but
+                            revealed when the user activates the relevant trigger.
+                        </div>
                     </div>
                 </div>
-
+                <div class="card card-body">
+                    <p>
+                        <button class="question" type="button" data-id="1" @click="animate(2)">
+                            <span>Ro‘yxatdan qanday o‘tiladi?</span>
+                            <span class="icon"></span>
+                        </button>
+                    </p>
+                    <div class="answer" :class="selected === 2 ? 'answer-active':''">
+                        <div class="">
+                            Some placeholder content for the collapse component. This panel is hidden by default but
+                            revealed when the user activates the relevant trigger.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -29,14 +43,18 @@
 export default {
     name: "FAQ",
 
+    data() {
+        return {
+            selected: 0
+        }
+    },
+
 
     methods: {
-        animate(id)
-        {
-            alert(id)
+        animate(id) {
+            this.selected = this.selected === id ? 0 : id
         }
     }
-
 
 
 }

@@ -1,3 +1,78 @@
+.not-gradient {
+  background-color: white !important;
+  background-image: none !important;
+}
+.not-gradient .active {
+  color: #08705F !important;
+}
+.not-gradient .nav-link {
+  color: black;
+}
+.not-gradient .check-offer {
+  background-color: #08705F !important;
+  color: white !important;
+}
+.not-gradient .check-offer:hover {
+  background-color: white !important;
+  color: #08705F !important;
+}
+.not-gradient .login {
+  border-color: #08705F !important;
+  color: #08705F !important;
+}
+.not-gradient .login:hover {
+  background-color: #08705F !important;
+  color: white !important;
+}
+.not-gradient .navbar-brand path {
+  fill: #08705F !important;
+}
+
+.gradient .nav-link {
+  color: white;
+}
+
+.preloader {
+  position: absolute;
+  background-color: black;
+  width: 100%;
+  z-index: 10000;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.preloader .logo {
+  display: block;
+}
+.preloader .logo svg {
+  transform: scale(3);
+}
+.preloader .logo svg path:nth-child(1n) {
+  animation: animation 1s ease-in infinite;
+}
+.preloader .logo svg path:nth-child(2n) {
+  animation: animation 1s ease-in infinite 0.25s;
+}
+.preloader .logo svg path:nth-child(3n) {
+  animation: animation 1s ease-in infinite 0.5s;
+}
+.preloader .logo svg path:nth-child(4n) {
+  animation: animation 1s ease-in infinite 0.75s;
+}
+@keyframes animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .navbar {
   font-family: "Raleway";
   font-style: normal;
@@ -20,7 +95,6 @@
 }
 .navbar .navbar-nav .nav-item .nav-link {
   padding: 10px 16px;
-  color: white;
 }
 .navbar .navbar-nav .nav-item .check-offer {
   background: rgba(8, 112, 95, 0.2);
@@ -196,6 +270,34 @@
   border-bottom: 3px solid #08705F;
 }
 
+.answer-active {
+  height: initial !important;
+}
+
+#mapContainer {
+  width: 100%;
+  height: 400px;
+  border: 1px solid #9CA3A9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tab-menu {
+  display: flex;
+  gap: 24px;
+}
+.tab-menu .tab-btn {
+  border: 0;
+  background-color: transparent;
+  color: black;
+  padding: 12px 0;
+  border-bottom: 2px solid transparent;
+}
+.tab-menu .active {
+  color: #08705F;
+  border-bottom: 2px solid #08705F;
+}
+
 .container {
   margin-top: 140px;
 }
@@ -212,7 +314,6 @@
 .container .question {
   border-radius: 16px;
   background: #FFFFFF;
-  padding: 26px 32px;
   font-style: normal;
   font-weight: 700;
   font-size: 22px;
@@ -222,6 +323,24 @@
   width: 100%;
   text-align: left;
   font-family: "Raleway";
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container .question .icon {
+  background-image: url("../image/plus-circle.svg");
+  display: flex;
+  width: 32px;
+  height: 32px;
+}
+.container .answer {
+  transition: 0.2s;
+  overflow: hidden;
+  margin: 0 !important;
+  height: 0;
+}
+.container .answer div {
+  margin-top: 18px;
 }
 .container .card {
   background: #FFFFFF;
@@ -230,6 +349,25 @@
   padding: 32px;
   margin-top: 24px;
   position: relative;
+}
+.container .card .col-lg-4 {
+  margin: 0;
+}
+.container .card .col-lg-4 p {
+  margin: 0;
+}
+.container .card div {
+  color: #08705F;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  text-transform: capitalize;
+  margin-bottom: 16px;
+}
+.container .card div a {
+  color: #08705F;
 }
 .container .card .file {
   width: 100%;
@@ -256,6 +394,10 @@
 }
 .container .card .file p {
   color: #A9ABBD;
+  margin: 0;
+}
+.container .card .file .mx-5 {
+  margin-bottom: 0;
 }
 .container .card .file i {
   color: #08705F;
@@ -277,6 +419,7 @@
   color: #0D1012;
   line-height: 28px;
   font-weight: 400;
+  color: #60676D;
 }
 .container .card blockquote {
   color: #08705F;
@@ -1091,6 +1234,10 @@ footer .footer .section-2 a b {
     border-radius: 8px;
     background-color: white;
     margin-top: 24px;
+  }
+
+  .container .card {
+    padding: 16px;
   }
 
   .mt-sm-3 {

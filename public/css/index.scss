@@ -97,6 +97,102 @@
 }
 
 $green: #08705F;
+
+.not-gradient {
+    background-color: white !important;
+    background-image: none !important;
+
+    .active {
+        color: $green !important;
+    }
+
+    .nav-link {
+        color: black;
+    }
+
+    .check-offer{
+        background-color: $green!important;
+        color: white!important;
+    }
+    .check-offer:hover{
+        background-color: white!important;
+        color: $green!important;
+    }
+    .login{
+        border-color: $green!important;
+        color: $green!important;
+
+    }
+    .login:hover{
+        background-color: $green!important;
+        color: white!important;
+    }
+    .navbar-brand {
+        path {
+            fill: $green !important;
+
+        }
+    }
+}
+
+.gradient {
+    .nav-link {
+        color: white;
+    }
+}
+
+
+.preloader {
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    z-index: 10000;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+        display: block;
+
+        svg {
+            transform: scale(3);
+
+            path:nth-child(1n) {
+                animation: animation 1s ease-in infinite;
+            }
+
+            path:nth-child(2n) {
+                animation: animation 1s ease-in infinite 0.25s;
+            }
+
+            path:nth-child(3n) {
+                animation: animation 1s ease-in infinite 0.5s;
+            }
+
+            path:nth-child(4n) {
+                animation: animation 1s ease-in infinite 0.75s;
+            }
+        }
+
+        @keyframes animation {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+
+        }
+    }
+
+}
+
+
 .navbar {
     @include text-14();
     padding: 26px 60px;
@@ -104,6 +200,7 @@ $green: #08705F;
     top: 0;
     z-index: 1000;
     background-image: linear-gradient(black, transparent);
+
 
     .navbar-nav {
         width: 100%;
@@ -113,7 +210,6 @@ $green: #08705F;
 
             .nav-link {
                 padding: 10px 16px;
-                color: white;
             }
 
             .check-offer {
@@ -288,6 +384,33 @@ $green: #08705F;
     }
 }
 
+.answer-active{
+    height: initial!important;
+}
+#mapContainer{
+    width: 100%;
+    height: 400px;
+    border: 1px solid #9CA3A9;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tab-menu{
+    display: flex;
+    gap: 24px;
+
+    .tab-btn{
+        border: 0;
+        background-color: transparent;
+        color: black;
+        padding: 12px 0;
+        border-bottom: 2px solid transparent;
+    }
+    .active{
+        color: $green;
+        border-bottom: 2px solid $green;
+    }
+}
 .container {
     margin-top: 140px;
 
@@ -306,7 +429,6 @@ $green: #08705F;
     .question {
         border-radius: 16px;
         background: #FFFFFF;
-        padding: 26px 32px;
 
         font-style: normal;
         font-weight: 700;
@@ -317,7 +439,26 @@ $green: #08705F;
         width: 100%;
         text-align: left;
         font-family: 'Raleway';
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
+        .icon{
+            background-image: url("../image/plus-circle.svg");
+            display: flex;
+            width: 32px;
+            height: 32px;
+        }
+
+    }
+    .answer{
+        transition: 0.2s;
+        overflow: hidden;
+        margin: 0!important;
+        height: 0;
+        div{
+            margin-top: 18px;
+        }
 
     }
 
@@ -328,6 +469,26 @@ $green: #08705F;
         padding: 32px;
         margin-top: 24px;
         position: relative;
+
+        .col-lg-4{
+            margin: 0;
+            p{
+                margin: 0;
+            }
+        }
+        div {
+            color: $green;
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 28px;
+            text-transform: capitalize;
+            margin-bottom: 16px;
+            a{
+                color: $green;
+            }
+        }
 
         .file {
             width: 100%;
@@ -356,6 +517,10 @@ $green: #08705F;
 
             p {
                 color: #A9ABBD;
+                margin: 0;
+            }
+            .mx-5{
+                margin-bottom: 0;
             }
 
             i {
@@ -376,6 +541,7 @@ $green: #08705F;
             @include text-18();
             line-height: 28px;
             font-weight: 400;
+            color: #60676D;
         }
 
         blockquote {
@@ -1246,7 +1412,11 @@ footer {
         margin-top: 24px;
     }
 
-
+    .container {
+        .card {
+            padding: 16px;
+        }
+    }
     .mt-sm-3 {
         margin-top: 16px;
         display: block;
