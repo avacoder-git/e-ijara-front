@@ -30,11 +30,6 @@ const routes = [
         path: "/contact",
         component: () => import('./components/Modules/Contact'),
         name:'contact'
-    },
-    {
-        path: "/map",
-        component: () => import('./components/Modules/Map'),
-        name:'map'
     }
 
 

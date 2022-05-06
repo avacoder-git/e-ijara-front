@@ -75,7 +75,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><router-link to="/about" class="nav-link nav-link-mini" href="#">Tizim xaqida</router-link></li>
-                <li class="nav-item"><router-link to="/map" class="nav-link nav-link-mini" href="#">Ochiq xarita</router-link></li>
+                <li class="nav-item"><a class="nav-link nav-link-mini" href="#">Ochiq xarita</a></li>
                 <li class="nav-item"><router-link to="/documents" class="nav-link nav-link-mini" href="#">Meyoriy xujjatlar</router-link></li>
                 <li class="nav-item"><router-link to="/manuals" class="nav-link nav-link-mini" href="#">Qo’llanmalar</router-link></li>
                 <li class="nav-item"><router-link to="/faq" class="nav-link nav-link-mini" href="#">Ko’p beriladigan savollar</router-link></li>
