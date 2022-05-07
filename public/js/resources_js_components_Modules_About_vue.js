@@ -1,31 +1,76 @@
 "use strict";
-/*
- * ATTENTION: An "eval-source-map" devtool has been used.
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Modules_About_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/About.vue?vue&type=script&lang=js":
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/About.vue?vue&type=script&lang=js ***!
-  \*******************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/About.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/About.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  name: \"About\"\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ub2RlX21vZHVsZXMvYmFiZWwtbG9hZGVyL2xpYi9pbmRleC5qcz8/Y2xvbmVkUnVsZVNldC01LnVzZVswXSEuL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2Rpc3QvaW5kZXguanM/P3J1bGVTZXRbMF0udXNlWzBdIS4vcmVzb3VyY2VzL2pzL2NvbXBvbmVudHMvTW9kdWxlcy9BYm91dC52dWU/dnVlJnR5cGU9c2NyaXB0Jmxhbmc9anMuanMiLCJtYXBwaW5ncyI6Ijs7OztBQTBEQSxpRUFBZTtBQUNYQSxNQUFJLEVBQUU7QUFESyxDQUFmIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2pzL2NvbXBvbmVudHMvTW9kdWxlcy9BYm91dC52dWU/YjEyMyJdLCJzb3VyY2VzQ29udGVudCI6WyI8dGVtcGxhdGU+XG4gICAgPGRpdiBjbGFzcz1cImNvbnRhaW5lclwiPlxuICAgICAgICA8aDE+XG4gICAgICAgICAgICBUaXppbSBoYXFpZGFcbiAgICAgICAgPC9oMT5cbiAgICAgICAgPGRpdiBjbGFzcz1cInJvd1wiPlxuXG4gICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY29sLWxnLTEyXCI+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNhcmRcIj5cbiAgICAgICAgICAgICAgICAgICAgPHA+4oCcRS1JSkFSQeKAnSBheGJvcm90IHRpemltaSDigJxcIkFHUk9TQU5PQVROSSBSQVFBTUxBU0hUSVJJU0ggTUFSS0FaSVwiIGRhdmxhdCBtdWFzc2FzYXNpIHRvbW9uaWRhblxuICAgICAgICAgICAgICAgICAgICAgICAgaXNobGFiIGNoaXFpbGdhbiBib+KAmGxpYiwgcWlzaGxvcSB4b+KAmGphbGlnaSBtYXFzYWRsYXJpLCBqdW1sYWRhbiBkZWhxb24geG/igJhqYWxpZ2kgdmEgZmVybWVyXG4gICAgICAgICAgICAgICAgICAgICAgICB4b+KAmGphbGlnaW5pIHl1cml0aXNoIHVjaHVuIHllciB1Y2hhc3RrYWxhcmluaSBpamFyYWdhIGJlcmlzaCBib+KAmHlpY2hhIGh1amphdGxhcm5pIHRv4oCYcGxhc2gsXG4gICAgICAgICAgICAgICAgICAgICAgICBrb+KAmHJpYiBjaGlxaXNoLCB1bGFybmkgdmFrb2xhdGxpIG9yZ2FubGFyIHZhIHRhc2hraWxvdGxhciBiaWxhbiBrZWxpc2hpc2ggdWNodW4gbW/igJhsamFsbGFuZ2FuLlxuICAgICAgICAgICAgICAgICAgICAgICAgU2l6IGRlaHFvbiB5b2tpIGZlcm1lciB4b+KAmGphbGlnaW5pIHl1cml0YXNpem1pIHlva2kgZGVocW9uY2hpbGlrIGJpbGFuIHNodWfigJh1bGxhbm1vcWNoaW1pc2l6IHZhXG4gICAgICAgICAgICAgICAgICAgICAgICBzaHUgbWFxc2FkZGEgaWphcmFnYSB5ZXIgb2xpc2huaSB4b2hsYXlzaXosIGxla2luIHFhbmRheSBxaWxpYiBiaWxtYXlhcHNpej8gWW9raSBzaXogcWF5ZXJkYW5cbiAgICAgICAgICAgICAgICAgICAgICAgIHllciBvbGlzaG5pIHhveGxheW90Z2FuaW5naXpuaSBiaWxhc2l6LCBsZWtpbiB1bmkgcWFuZGF5IHRhcnRpYmRhIGlqYXJhZ2Egb2xpc2huaSB2YSBraW1nYVxuICAgICAgICAgICAgICAgICAgICAgICAgbXVyb2phYXQgcWlsaXNobmkgYmlsbWF5YXBzaXptaT8g4oCcRS1JSkFSQeKAnSBheGJvcm90IHRpemltaSBxaXNobG9xIHhv4oCYamFsaWdpZ2EgbW/igJhsamFsbGFuZ2FuIHllclxuICAgICAgICAgICAgICAgICAgICAgICAgdWNoYXN0a2FsYXJpbmkgaWphcmFnYSBvbGlzaCBqYXJheW9uaWRhIGJhcmNoYSBhcml6YSBiZXJ1dmNoaWxhciB1Y2h1biBzaGFmZm9mbGlrIHZhIHRlbmdsaWtuaVxuICAgICAgICAgICAgICAgICAgICAgICAgdGHKvG1pbmxhc2hkYSBxdWxheSB2YSB0dXNodW5hcmxpIHZvc2l0YWRpci4gU2h1bmluZ2RlaywgdGl6aW0gbWF0ZXJpYWxsYXJuaSB5ZXIgdWNoYXN0a2FsYXJpbmlcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hdGVyaWFsbGFybmkgdGF5eW9ybGFzaCwga2VsaXNoaXNoIHZhIG9saXNoIGphcmF5b25sYXJpZGEgdGFzaHFpIGFyYWxhc2h1dm5pLCBieXVyb2tyYXRpa1xuICAgICAgICAgICAgICAgICAgICAgICAgdG/igJhzaXEgdmEga29ycnVwc2l5YXZpeSB0YXNoa2lsIGV0dXZjaGlsYXJuaSBpc3Rpc25vIHFpbGFkaS48L3A+XG4gICAgICAgICAgICAgICAgICAgIDxwPuKAnEUtSUpBUkHigJ0gYXhib3JvdCB0aXppbWkgeW9yZGFtaWRhIHR1bWFuIChzaGFoYXIpbGFyIGhva2ltbGlrbGFyaSBub21pZ2EgZGF2bGF0IG11bGtpIHNpZmF0aWRhXG4gICAgICAgICAgICAgICAgICAgICAgICBkYXZsYXQgcm/igJh5eGF0aWRhbiBv4oCYdGthemlsZ2FuLCB5dXJpZGlrIHZhIGppc21vbml5IHNoYXhzbGFyZ2EgYmVyaWxtYWdhbiBxaXNobG9xIHhv4oCYamFsaWdpZ2FcbiAgICAgICAgICAgICAgICAgICAgICAgIG1v4oCYbGphbGxhbmdhbiB5ZXIgdWNoYXN0a2FsYXJpbmkgdG/igJhn4oCYcmlzaWRhZ2kgZGFzdGxhYmtpIG1hyrxsdW1vdGxhcm5pIE/igJh6YmVraXN0b24gUmVzcHVibGlrYXNpXG4gICAgICAgICAgICAgICAgICAgICAgICBEYXZsYXQgc29saXEgcW/igJhtaXRhc2kgaHV6dXJpZGFnaSBLYWRhc3RyIGFnZW50bGlnaW5pbmcgRGF2bGF0IGthZGFzdHJsYXJpIHBhbGF0YXNpZGFuIGVsZWt0cm9uXG4gICAgICAgICAgICAgICAgICAgICAgICBhbG1hc2hpbnV2IG9ycWFsaSBxYWJ1bCBxaWxpc2hkYW4gb2NoaXEgZWxla3Ryb24gdGFubG92Z2EgY2hpcWFyZ3VuY2hhIHFhZGFyIGJhcmNoYSBqYXJheW9ubGFyXG4gICAgICAgICAgICAgICAgICAgICAgICBxYW1yYWIgb2xpbmdhbiwg4oCcRWxla3Ryb24gb25sYXluLWF1a3Npb25sYXJuaSB0YXNoa2lsIGV0aXNoIG1hcmthemnigJ0gZGF2bGF0IHVuaXRhciBrb3J4b25hc2luaW5nXG4gICAgICAgICAgICAgICAgICAgICAgICDigJxFLUFVS1NJT07igJ0gZWxla3Ryb24gc2F2ZG8gcGxhdGZvcm1hc2lkYSB0YW5sb3YgZ+KAmG9saWJpbmkgYW5pcWxhbmdhbmRhbiBzb+KAmG5nIHRlZ2lzaGxpIG1haGFsbGl5XG4gICAgICAgICAgICAgICAgICAgICAgICBkYXZsYXQgaG9raW1peWF0aSBvcmdhbmxhcmluaW5nIHFhcm9yaW5pIHFhYnVsIHFpbGlzaCB1Y2h1biBBZGxpeWEgdmF6aXJsaWdpbmluZyDigJxFLVFBUk9S4oCdXG4gICAgICAgICAgICAgICAgICAgICAgICBheGJvcm90IHRpemltaWdhIHZhIGfigJhvbGlibmluZyB5ZXIgdWNoYXN0a2FzaWRhbiBmb3lkYWxhbmlzaCBodXF1cWxhcmluaSByb+KAmHl4YXRkYW4gb+KAmHRrYXppc2hcbiAgICAgICAgICAgICAgICAgICAgICAgIHVjaHVuIERhdmxhdCBrYWRhc3RybGFyaSBwYWxhdGFzaWdhIHphcnVyaXkgbWHKvGx1bW90bGFybmkgdGFxZGltIGV0aXNoIGFtYWxnYSBvc2hpcmlsYWRpLjwvcD5cbiAgICAgICAgICAgICAgICAgICAgPHA+XG4gICAgICAgICAgICAgICAgICAgICAgICBEZWhxb24geG/igJhqYWxpZ2luaSB5dXJpdGlzaCwgcWlzaGxvcSB4b+KAmGphbGlnaSBtYXFzYWRsYXJpIHVjaHVuIHllciB1Y2hhc3RrYWxhcmluaSBP4oCYemJla2lzdG9uXG4gICAgICAgICAgICAgICAgICAgICAgICBSZXNwdWJsaWthc2luaW5nIFllciBrb2Rla3NpIHZhIMKrRGVocW9uIHhv4oCYamFsaWdpIHRv4oCYZ+KAmHJpc2lkYcK7Z2kgUW9udW5pZGEgYmVsZ2lsYW5nYW4gbXVkZGF0bGFyXG4gICAgICAgICAgICAgICAgICAgICAgICB2YSBv4oCYbGNoYW1sYXIgdGFubG92Z2EgY2hpcWFyaXNoIHZhIHRhbmxvdiBn4oCYb2xpYmxhcmlnYSBpamFyYWdhIGJlcmlzaCB0Ycq8bWlubGFuYWRpLlxuICAgICAgICAgICAgICAgICAgICA8L3A+XG4gICAgICAgICAgICAgICAgICAgIDxwPlxuICAgICAgICAgICAgICAgICAgICAgICAgVGl6aW0gcmVzcHVibGlrYW5pbmcgYmFyY2hhIGh1ZHVkaSBib+KAmHlpY2hhIGJv4oCYc2ggcWlzaGxvcSB4b+KAmGphbGlnaSB1Y2hhc3RrYWxhcmkgYm/igJh5aWNoYSB0b+KAmGxpcVxuICAgICAgICAgICAgICAgICAgICAgICAgbWHKvGx1bW90bmkgb2xpc2gsIGZpbHRybGFzaCB2YSB0dXJsaSB5b+KAmG5hbGlzaGxhciBib+KAmHlpY2hhIHllciB1Y2hhc3RrYWxhcmluaSB0YW5sYXNoIGlta29uaW5pXG4gICAgICAgICAgICAgICAgICAgICAgICBiZXJhZGk6XG4gICAgICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgICAgICAgPGJsb2NrcXVvdGU+XG4gICAgICAgICAgICAgICAgICAgICAgICDigJwg0KTQvtC50LTQsNC70LDQvdGD0LLRh9C40L3QuNC90LMg0YjQsNGF0YHQuNC5INC60LDQsdC40L3QtdGC0LjQtNCwINGC0LDQvdC70L7QsiDQvdCw0YLQuNC20LDQu9Cw0YDQuCwg0LHQsNGA0YfQsCDRgtC10LPQuNGI0LvQuCDSs9GD0LbQttCw0YLQu9Cw0YAg0LLQsCDSm9C40YjQu9C+0ptcbiAgICAgICAgICAgICAgICAgICAgICAgINGF0Z7QttCw0LvQuNCz0Lgg0LXRgNC70LDRgNC40LTQsNC9INGE0L7QudC00LDQu9Cw0L3QuNGIINKz0YPSm9GD0pvQuNC90Lgg0YDRntC50YXQsNGC0LTQsNC9INGe0YLQutCw0LfQuNGI0L3QuCDRj9C60YPQvdC70LDRiCDRgtCw0YDRgtC40LHQvdC4INCx0LjQu9Cw0L0g0LHQvtKT0LvQuNKbXG4gICAgICAgICAgICAgICAgICAgICAgICDQvNCw0YrQu9GD0LzQvtGC0LvQsNGAINGC0LDSm9C00LjQvCDRjdGC0LjQu9Cw0LTQuCDigJ0gLlxuICAgICAgICAgICAgICAgICAgICA8L2Jsb2NrcXVvdGU+XG4gICAgICAgICAgICAgICAgICAgIDxwPlxuICAgICAgICAgICAgICAgICAgICAgICAgVGl6aW0gT+KAmHpiZWtpc3RvbiBSZXNwdWJsaWthc2kgRGF2bGF0IHNvbGlxIHFv4oCYbWl0YXNpLCBEYXZsYXQga2FkYXN0ciBhZ2VudGxpZ2luaW5nIGF4Ym9yb3RcbiAgICAgICAgICAgICAgICAgICAgICAgIHRpemltbGFyaSwg4oCcWWUtQVVLU0lPTuKAnSwg4oCcWWUtUUFST1LigJ0gZWxla3Ryb24gcGxhdGZvcm1hbGFyaSBoYW1kYSBTTVMgeGFiYXJsYXJuaSB0YXFkaW0gZXRpc2ggdmFcbiAgICAgICAgICAgICAgICAgICAgICAgIGVsZWt0cm9uIHhhYmFybm9tYWxhcm5pIGpv4oCYbmF0aXNoIHhpem1hdGkgYmlsYW4gaW50ZWdyYXRzaXlhIHFpbGluZ2FuLlxuICAgICAgICAgICAgICAgICAgICA8L3A+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG48L3RlbXBsYXRlPlxuXG48c2NyaXB0PlxuZXhwb3J0IGRlZmF1bHQge1xuICAgIG5hbWU6IFwiQWJvdXRcIlxufVxuPC9zY3JpcHQ+XG5cbjxzdHlsZSBzY29wZWQ+XG5cbjwvc3R5bGU+XG4iXSwibmFtZXMiOlsibmFtZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/About.vue?vue&type=script&lang=js\n");
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"render\": () => (/* binding */ render)\n/* harmony export */ });\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.esm-bundler.js\");\n\nvar _hoisted_1 = {\n  \"class\": \"container\"\n};\n\nvar _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"h1\", null, \" Tizim haqida \", -1\n/* HOISTED */\n);\n\nvar _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"div\", {\n  \"class\": \"row\"\n}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"div\", {\n  \"class\": \"col-lg-12\"\n}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"div\", {\n  \"class\": \"card\"\n}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, \"“E-IJARA” axborot tizimi “\\\"AGROSANOATNI RAQAMLASHTIRISH MARKAZI\\\" davlat muassasasi tomonidan ishlab chiqilgan bo‘lib, qishloq xo‘jaligi maqsadlari, jumladan dehqon xo‘jaligi va fermer xo‘jaligini yuritish uchun yer uchastkalarini ijaraga berish bo‘yicha hujjatlarni to‘plash, ko‘rib chiqish, ularni vakolatli organlar va tashkilotlar bilan kelishish uchun mo‘ljallangan. Siz dehqon yoki fermer xo‘jaligini yuritasizmi yoki dehqonchilik bilan shug‘ullanmoqchimisiz va shu maqsadda ijaraga yer olishni xohlaysiz, lekin qanday qilib bilmayapsiz? Yoki siz qayerdan yer olishni xoxlayotganingizni bilasiz, lekin uni qanday tartibda ijaraga olishni va kimga murojaat qilishni bilmayapsizmi? “E-IJARA” axborot tizimi qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga olish jarayonida barcha ariza beruvchilar uchun shaffoflik va tenglikni taʼminlashda qulay va tushunarli vositadir. Shuningdek, tizim materiallarni yer uchastkalarini materiallarni tayyorlash, kelishish va olish jarayonlarida tashqi aralashuvni, byurokratik to‘siq va korrupsiyaviy tashkil etuvchilarni istisno qiladi.\"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, \"“E-IJARA” axborot tizimi yordamida tuman (shahar)lar hokimliklari nomiga davlat mulki sifatida davlat ro‘yxatidan o‘tkazilgan, yuridik va jismoniy shaxslarga berilmagan qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini to‘g‘risidagi dastlabki maʼlumotlarni O‘zbekiston Respublikasi Davlat soliq qo‘mitasi huzuridagi Kadastr agentligining Davlat kadastrlari palatasidan elektron almashinuv orqali qabul qilishdan ochiq elektron tanlovga chiqarguncha qadar barcha jarayonlar qamrab olingan, “Elektron onlayn-auksionlarni tashkil etish markazi” davlat unitar korxonasining “E-AUKSION” elektron savdo platformasida tanlov g‘olibini aniqlangandan so‘ng tegishli mahalliy davlat hokimiyati organlarining qarorini qabul qilish uchun Adliya vazirligining “E-QAROR” axborot tizimiga va g‘olibning yer uchastkasidan foydalanish huquqlarini ro‘yxatdan o‘tkazish uchun Davlat kadastrlari palatasiga zaruriy maʼlumotlarni taqdim etish amalga oshiriladi.\"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, \" Dehqon xo‘jaligini yuritish, qishloq xo‘jaligi maqsadlari uchun yer uchastkalarini O‘zbekiston Respublikasining Yer kodeksi va «Dehqon xo‘jaligi to‘g‘risida»gi Qonunida belgilangan muddatlar va o‘lchamlar tanlovga chiqarish va tanlov g‘oliblariga ijaraga berish taʼminlanadi. \"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, \" Tizim respublikaning barcha hududi bo‘yicha bo‘sh qishloq xo‘jaligi uchastkalari bo‘yicha to‘liq maʼlumotni olish, filtrlash va turli yo‘nalishlar bo‘yicha yer uchastkalarini tanlash imkonini beradi: \"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"blockquote\", null, \" “ Фойдаланувчининг шахсий кабинетида танлов натижалари, барча тегишли ҳужжатлар ва қишлоқ хўжалиги ерларидан фойдаланиш ҳуқуқини рўйхатдан ўтказишни якунлаш тартибни билан боғлиқ маълумотлар тақдим этилади ” . \"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, \" Tizim O‘zbekiston Respublikasi Davlat soliq qo‘mitasi, Davlat kadastr agentligining axborot tizimlari, “Ye-AUKSION”, “Ye-QAROR” elektron platformalari hamda SMS xabarlarni taqdim etish va elektron xabarnomalarni jo‘natish xizmati bilan integratsiya qilingan. \")])])], -1\n/* HOISTED */\n);\n\nvar _hoisted_4 = [_hoisted_2, _hoisted_3];\nfunction render(_ctx, _cache, $props, $setup, $data, $options) {\n  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(\"div\", _hoisted_1, _hoisted_4);\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ub2RlX21vZHVsZXMvYmFiZWwtbG9hZGVyL2xpYi9pbmRleC5qcz8/Y2xvbmVkUnVsZVNldC01LnVzZVswXSEuL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2Rpc3QvdGVtcGxhdGVMb2FkZXIuanM/P3J1bGVTZXRbMV0ucnVsZXNbMl0hLi9ub2RlX21vZHVsZXMvdnVlLWxvYWRlci9kaXN0L2luZGV4LmpzPz9ydWxlU2V0WzBdLnVzZVswXSEuL3Jlc291cmNlcy9qcy9jb21wb25lbnRzL01vZHVsZXMvQWJvdXQudnVlP3Z1ZSZ0eXBlPXRlbXBsYXRlJmlkPTExMDU3ZmVjLmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFDUyxXQUFNOzs7OEJBQ1BBLHVEQUFBQSxDQUVLLElBRkwsRUFFSyxJQUZMLEVBQUksZ0JBQUosRUFFQTtBQUFBO0FBRkE7OzhCQUdBQSx1REFBQUEsQ0FnRE0sS0FoRE4sRUFnRE07QUFoREQsV0FBTTtBQWdETCxDQWhETixFQUFnQixjQUVaQSx1REFBQUEsQ0E2Q00sS0E3Q04sRUE2Q007QUE3Q0QsV0FBTTtBQTZDTCxDQTdDTixFQUFzQixjQUNsQkEsdURBQUFBLENBMkNNLEtBM0NOLEVBMkNNO0FBM0NELFdBQU07QUEyQ0wsQ0EzQ04sRUFBaUIsY0FDYkEsdURBQUFBLENBV29FLEdBWHBFLEVBV29FLElBWHBFLEVBQUcscWtDQUFILENBRGEsZUFhYkEsdURBQUFBLENBU2lHLEdBVGpHLEVBU2lHLElBVGpHLEVBQUcsaTdCQUFILENBYmEsZUF1QmJBLHVEQUFBQSxDQUlJLEdBSkosRUFJSSxJQUpKLEVBQUcsdVJBQUgsQ0F2QmEsZUE0QmJBLHVEQUFBQSxDQUlJLEdBSkosRUFJSSxJQUpKLEVBQUcsMk1BQUgsQ0E1QmEsZUFpQ2JBLHVEQUFBQSxDQUlhLFlBSmIsRUFJYSxJQUpiLEVBQVkscU5BQVosQ0FqQ2EsZUFzQ2JBLHVEQUFBQSxDQUlJLEdBSkosRUFJSSxJQUpKLEVBQUcsc1FBQUgsQ0F0Q2EsQ0FBakIsQ0FEa0IsQ0FBdEIsQ0FGWSxDQUFoQjs7QUFBQTs7a0JBSEFDLFlBR0FDOzsyREFKSkMsdURBQUFBLENBcURNLEtBckROLGNBcURNQyxVQXJETiIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3Jlc291cmNlcy9qcy9jb21wb25lbnRzL01vZHVsZXMvQWJvdXQudnVlP2IxMjMiXSwic291cmNlc0NvbnRlbnQiOlsiPHRlbXBsYXRlPlxuICAgIDxkaXYgY2xhc3M9XCJjb250YWluZXJcIj5cbiAgICAgICAgPGgxPlxuICAgICAgICAgICAgVGl6aW0gaGFxaWRhXG4gICAgICAgIDwvaDE+XG4gICAgICAgIDxkaXYgY2xhc3M9XCJyb3dcIj5cblxuICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNvbC1sZy0xMlwiPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gICAgICAgICAgICAgICAgICAgIDxwPuKAnEUtSUpBUkHigJ0gYXhib3JvdCB0aXppbWkg4oCcXCJBR1JPU0FOT0FUTkkgUkFRQU1MQVNIVElSSVNIIE1BUktBWklcIiBkYXZsYXQgbXVhc3Nhc2FzaSB0b21vbmlkYW5cbiAgICAgICAgICAgICAgICAgICAgICAgIGlzaGxhYiBjaGlxaWxnYW4gYm/igJhsaWIsIHFpc2hsb3EgeG/igJhqYWxpZ2kgbWFxc2FkbGFyaSwganVtbGFkYW4gZGVocW9uIHhv4oCYamFsaWdpIHZhIGZlcm1lclxuICAgICAgICAgICAgICAgICAgICAgICAgeG/igJhqYWxpZ2luaSB5dXJpdGlzaCB1Y2h1biB5ZXIgdWNoYXN0a2FsYXJpbmkgaWphcmFnYSBiZXJpc2ggYm/igJh5aWNoYSBodWpqYXRsYXJuaSB0b+KAmHBsYXNoLFxuICAgICAgICAgICAgICAgICAgICAgICAga2/igJhyaWIgY2hpcWlzaCwgdWxhcm5pIHZha29sYXRsaSBvcmdhbmxhciB2YSB0YXNoa2lsb3RsYXIgYmlsYW4ga2VsaXNoaXNoIHVjaHVuIG1v4oCYbGphbGxhbmdhbi5cbiAgICAgICAgICAgICAgICAgICAgICAgIFNpeiBkZWhxb24geW9raSBmZXJtZXIgeG/igJhqYWxpZ2luaSB5dXJpdGFzaXptaSB5b2tpIGRlaHFvbmNoaWxpayBiaWxhbiBzaHVn4oCYdWxsYW5tb3FjaGltaXNpeiB2YVxuICAgICAgICAgICAgICAgICAgICAgICAgc2h1IG1hcXNhZGRhIGlqYXJhZ2EgeWVyIG9saXNobmkgeG9obGF5c2l6LCBsZWtpbiBxYW5kYXkgcWlsaWIgYmlsbWF5YXBzaXo/IFlva2kgc2l6IHFheWVyZGFuXG4gICAgICAgICAgICAgICAgICAgICAgICB5ZXIgb2xpc2huaSB4b3hsYXlvdGdhbmluZ2l6bmkgYmlsYXNpeiwgbGVraW4gdW5pIHFhbmRheSB0YXJ0aWJkYSBpamFyYWdhIG9saXNobmkgdmEga2ltZ2FcbiAgICAgICAgICAgICAgICAgICAgICAgIG11cm9qYWF0IHFpbGlzaG5pIGJpbG1heWFwc2l6bWk/IOKAnEUtSUpBUkHigJ0gYXhib3JvdCB0aXppbWkgcWlzaGxvcSB4b+KAmGphbGlnaWdhIG1v4oCYbGphbGxhbmdhbiB5ZXJcbiAgICAgICAgICAgICAgICAgICAgICAgIHVjaGFzdGthbGFyaW5pIGlqYXJhZ2Egb2xpc2ggamFyYXlvbmlkYSBiYXJjaGEgYXJpemEgYmVydXZjaGlsYXIgdWNodW4gc2hhZmZvZmxpayB2YSB0ZW5nbGlrbmlcbiAgICAgICAgICAgICAgICAgICAgICAgIHRhyrxtaW5sYXNoZGEgcXVsYXkgdmEgdHVzaHVuYXJsaSB2b3NpdGFkaXIuIFNodW5pbmdkZWssIHRpemltIG1hdGVyaWFsbGFybmkgeWVyIHVjaGFzdGthbGFyaW5pXG4gICAgICAgICAgICAgICAgICAgICAgICBtYXRlcmlhbGxhcm5pIHRheXlvcmxhc2gsIGtlbGlzaGlzaCB2YSBvbGlzaCBqYXJheW9ubGFyaWRhIHRhc2hxaSBhcmFsYXNodXZuaSwgYnl1cm9rcmF0aWtcbiAgICAgICAgICAgICAgICAgICAgICAgIHRv4oCYc2lxIHZhIGtvcnJ1cHNpeWF2aXkgdGFzaGtpbCBldHV2Y2hpbGFybmkgaXN0aXNubyBxaWxhZGkuPC9wPlxuICAgICAgICAgICAgICAgICAgICA8cD7igJxFLUlKQVJB4oCdIGF4Ym9yb3QgdGl6aW1pIHlvcmRhbWlkYSB0dW1hbiAoc2hhaGFyKWxhciBob2tpbWxpa2xhcmkgbm9taWdhIGRhdmxhdCBtdWxraSBzaWZhdGlkYVxuICAgICAgICAgICAgICAgICAgICAgICAgZGF2bGF0IHJv4oCYeXhhdGlkYW4gb+KAmHRrYXppbGdhbiwgeXVyaWRpayB2YSBqaXNtb25peSBzaGF4c2xhcmdhIGJlcmlsbWFnYW4gcWlzaGxvcSB4b+KAmGphbGlnaWdhXG4gICAgICAgICAgICAgICAgICAgICAgICBtb+KAmGxqYWxsYW5nYW4geWVyIHVjaGFzdGthbGFyaW5pIHRv4oCYZ+KAmHJpc2lkYWdpIGRhc3RsYWJraSBtYcq8bHVtb3RsYXJuaSBP4oCYemJla2lzdG9uIFJlc3B1Ymxpa2FzaVxuICAgICAgICAgICAgICAgICAgICAgICAgRGF2bGF0IHNvbGlxIHFv4oCYbWl0YXNpIGh1enVyaWRhZ2kgS2FkYXN0ciBhZ2VudGxpZ2luaW5nIERhdmxhdCBrYWRhc3RybGFyaSBwYWxhdGFzaWRhbiBlbGVrdHJvblxuICAgICAgICAgICAgICAgICAgICAgICAgYWxtYXNoaW51diBvcnFhbGkgcWFidWwgcWlsaXNoZGFuIG9jaGlxIGVsZWt0cm9uIHRhbmxvdmdhIGNoaXFhcmd1bmNoYSBxYWRhciBiYXJjaGEgamFyYXlvbmxhclxuICAgICAgICAgICAgICAgICAgICAgICAgcWFtcmFiIG9saW5nYW4sIOKAnEVsZWt0cm9uIG9ubGF5bi1hdWtzaW9ubGFybmkgdGFzaGtpbCBldGlzaCBtYXJrYXpp4oCdIGRhdmxhdCB1bml0YXIga29yeG9uYXNpbmluZ1xuICAgICAgICAgICAgICAgICAgICAgICAg4oCcRS1BVUtTSU9O4oCdIGVsZWt0cm9uIHNhdmRvIHBsYXRmb3JtYXNpZGEgdGFubG92IGfigJhvbGliaW5pIGFuaXFsYW5nYW5kYW4gc2/igJhuZyB0ZWdpc2hsaSBtYWhhbGxpeVxuICAgICAgICAgICAgICAgICAgICAgICAgZGF2bGF0IGhva2ltaXlhdGkgb3JnYW5sYXJpbmluZyBxYXJvcmluaSBxYWJ1bCBxaWxpc2ggdWNodW4gQWRsaXlhIHZhemlybGlnaW5pbmcg4oCcRS1RQVJPUuKAnVxuICAgICAgICAgICAgICAgICAgICAgICAgYXhib3JvdCB0aXppbWlnYSB2YSBn4oCYb2xpYm5pbmcgeWVyIHVjaGFzdGthc2lkYW4gZm95ZGFsYW5pc2ggaHVxdXFsYXJpbmkgcm/igJh5eGF0ZGFuIG/igJh0a2F6aXNoXG4gICAgICAgICAgICAgICAgICAgICAgICB1Y2h1biBEYXZsYXQga2FkYXN0cmxhcmkgcGFsYXRhc2lnYSB6YXJ1cml5IG1hyrxsdW1vdGxhcm5pIHRhcWRpbSBldGlzaCBhbWFsZ2Egb3NoaXJpbGFkaS48L3A+XG4gICAgICAgICAgICAgICAgICAgIDxwPlxuICAgICAgICAgICAgICAgICAgICAgICAgRGVocW9uIHhv4oCYamFsaWdpbmkgeXVyaXRpc2gsIHFpc2hsb3EgeG/igJhqYWxpZ2kgbWFxc2FkbGFyaSB1Y2h1biB5ZXIgdWNoYXN0a2FsYXJpbmkgT+KAmHpiZWtpc3RvblxuICAgICAgICAgICAgICAgICAgICAgICAgUmVzcHVibGlrYXNpbmluZyBZZXIga29kZWtzaSB2YSDCq0RlaHFvbiB4b+KAmGphbGlnaSB0b+KAmGfigJhyaXNpZGHCu2dpIFFvbnVuaWRhIGJlbGdpbGFuZ2FuIG11ZGRhdGxhclxuICAgICAgICAgICAgICAgICAgICAgICAgdmEgb+KAmGxjaGFtbGFyIHRhbmxvdmdhIGNoaXFhcmlzaCB2YSB0YW5sb3YgZ+KAmG9saWJsYXJpZ2EgaWphcmFnYSBiZXJpc2ggdGHKvG1pbmxhbmFkaS5cbiAgICAgICAgICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgICAgICAgICA8cD5cbiAgICAgICAgICAgICAgICAgICAgICAgIFRpemltIHJlc3B1Ymxpa2FuaW5nIGJhcmNoYSBodWR1ZGkgYm/igJh5aWNoYSBib+KAmHNoIHFpc2hsb3EgeG/igJhqYWxpZ2kgdWNoYXN0a2FsYXJpIGJv4oCYeWljaGEgdG/igJhsaXFcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hyrxsdW1vdG5pIG9saXNoLCBmaWx0cmxhc2ggdmEgdHVybGkgeW/igJhuYWxpc2hsYXIgYm/igJh5aWNoYSB5ZXIgdWNoYXN0a2FsYXJpbmkgdGFubGFzaCBpbWtvbmluaVxuICAgICAgICAgICAgICAgICAgICAgICAgYmVyYWRpOlxuICAgICAgICAgICAgICAgICAgICA8L3A+XG4gICAgICAgICAgICAgICAgICAgIDxibG9ja3F1b3RlPlxuICAgICAgICAgICAgICAgICAgICAgICAg4oCcINCk0L7QudC00LDQu9Cw0L3Rg9Cy0YfQuNC90LjQvdCzINGI0LDRhdGB0LjQuSDQutCw0LHQuNC90LXRgtC40LTQsCDRgtCw0L3Qu9C+0LIg0L3QsNGC0LjQttCw0LvQsNGA0LgsINCx0LDRgNGH0LAg0YLQtdCz0LjRiNC70Lgg0rPRg9C20LbQsNGC0LvQsNGAINCy0LAg0pvQuNGI0LvQvtKbXG4gICAgICAgICAgICAgICAgICAgICAgICDRhdGe0LbQsNC70LjQs9C4INC10YDQu9Cw0YDQuNC00LDQvSDRhNC+0LnQtNCw0LvQsNC90LjRiCDSs9GD0pvRg9Kb0LjQvdC4INGA0Z7QudGF0LDRgtC00LDQvSDRntGC0LrQsNC30LjRiNC90Lgg0Y/QutGD0L3Qu9Cw0Ygg0YLQsNGA0YLQuNCx0L3QuCDQsdC40LvQsNC9INCx0L7Sk9C70LjSm1xuICAgICAgICAgICAgICAgICAgICAgICAg0LzQsNGK0LvRg9C80L7RgtC70LDRgCDRgtCw0pvQtNC40Lwg0Y3RgtC40LvQsNC00Lgg4oCdIC5cbiAgICAgICAgICAgICAgICAgICAgPC9ibG9ja3F1b3RlPlxuICAgICAgICAgICAgICAgICAgICA8cD5cbiAgICAgICAgICAgICAgICAgICAgICAgIFRpemltIE/igJh6YmVraXN0b24gUmVzcHVibGlrYXNpIERhdmxhdCBzb2xpcSBxb+KAmG1pdGFzaSwgRGF2bGF0IGthZGFzdHIgYWdlbnRsaWdpbmluZyBheGJvcm90XG4gICAgICAgICAgICAgICAgICAgICAgICB0aXppbWxhcmksIOKAnFllLUFVS1NJT07igJ0sIOKAnFllLVFBUk9S4oCdIGVsZWt0cm9uIHBsYXRmb3JtYWxhcmkgaGFtZGEgU01TIHhhYmFybGFybmkgdGFxZGltIGV0aXNoIHZhXG4gICAgICAgICAgICAgICAgICAgICAgICBlbGVrdHJvbiB4YWJhcm5vbWFsYXJuaSBqb+KAmG5hdGlzaCB4aXptYXRpIGJpbGFuIGludGVncmF0c2l5YSBxaWxpbmdhbi5cbiAgICAgICAgICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuPC90ZW1wbGF0ZT5cblxuPHNjcmlwdD5cbmV4cG9ydCBkZWZhdWx0IHtcbiAgICBuYW1lOiBcIkFib3V0XCJcbn1cbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuXG48L3N0eWxlPlxuIl0sIm5hbWVzIjpbIl9jcmVhdGVFbGVtZW50Vk5vZGUiLCJfaG9pc3RlZF8yIiwiX2hvaXN0ZWRfMyIsIl9jcmVhdGVFbGVtZW50QmxvY2siLCJfaG9pc3RlZF80Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec\n");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "About"
+});
 
 /***/ }),
 
@@ -35,31 +80,140 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _About_vue_vue_type_template_id_11057fec__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./About.vue?vue&type=template&id=11057fec */ \"./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec\");\n/* harmony import */ var _About_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./About.vue?vue&type=script&lang=js */ \"./resources/js/components/Modules/About.vue?vue&type=script&lang=js\");\n/* harmony import */ var D_OpenServer_domains_e_ijara_e_ijara_front_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ \"./node_modules/vue-loader/dist/exportHelper.js\");\n\n\n\n\n;\nconst __exports__ = /*#__PURE__*/(0,D_OpenServer_domains_e_ijara_e_ijara_front_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(_About_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"], [['render',_About_vue_vue_type_template_id_11057fec__WEBPACK_IMPORTED_MODULE_0__.render],['__file',\"resources/js/components/Modules/About.vue\"]])\n/* hot reload */\nif (false) {}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvY29tcG9uZW50cy9Nb2R1bGVzL0Fib3V0LnZ1ZS5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQWtFO0FBQ1Y7QUFDTDs7QUFFbkQsQ0FBOEg7QUFDOUgsaUNBQWlDLG1JQUFlLENBQUMsMEVBQU0sYUFBYSw0RUFBTTtBQUMxRTtBQUNBLElBQUksS0FBVSxFQUFFLEVBWWY7OztBQUdELGlFQUFlIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2pzL2NvbXBvbmVudHMvTW9kdWxlcy9BYm91dC52dWU/MjM4MCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyByZW5kZXIgfSBmcm9tIFwiLi9BYm91dC52dWU/dnVlJnR5cGU9dGVtcGxhdGUmaWQ9MTEwNTdmZWNcIlxuaW1wb3J0IHNjcmlwdCBmcm9tIFwiLi9BYm91dC52dWU/dnVlJnR5cGU9c2NyaXB0Jmxhbmc9anNcIlxuZXhwb3J0ICogZnJvbSBcIi4vQWJvdXQudnVlP3Z1ZSZ0eXBlPXNjcmlwdCZsYW5nPWpzXCJcblxuaW1wb3J0IGV4cG9ydENvbXBvbmVudCBmcm9tIFwiRDpcXFxcT3BlblNlcnZlclxcXFxkb21haW5zXFxcXGUtaWphcmFcXFxcZS1pamFyYS1mcm9udFxcXFxub2RlX21vZHVsZXNcXFxcdnVlLWxvYWRlclxcXFxkaXN0XFxcXGV4cG9ydEhlbHBlci5qc1wiXG5jb25zdCBfX2V4cG9ydHNfXyA9IC8qI19fUFVSRV9fKi9leHBvcnRDb21wb25lbnQoc2NyaXB0LCBbWydyZW5kZXInLHJlbmRlcl0sWydfX2ZpbGUnLFwicmVzb3VyY2VzL2pzL2NvbXBvbmVudHMvTW9kdWxlcy9BYm91dC52dWVcIl1dKVxuLyogaG90IHJlbG9hZCAqL1xuaWYgKG1vZHVsZS5ob3QpIHtcbiAgX19leHBvcnRzX18uX19obXJJZCA9IFwiMTEwNTdmZWNcIlxuICBjb25zdCBhcGkgPSBfX1ZVRV9ITVJfUlVOVElNRV9fXG4gIG1vZHVsZS5ob3QuYWNjZXB0KClcbiAgaWYgKCFhcGkuY3JlYXRlUmVjb3JkKCcxMTA1N2ZlYycsIF9fZXhwb3J0c19fKSkge1xuICAgIGFwaS5yZWxvYWQoJzExMDU3ZmVjJywgX19leHBvcnRzX18pXG4gIH1cbiAgXG4gIG1vZHVsZS5ob3QuYWNjZXB0KFwiLi9BYm91dC52dWU/dnVlJnR5cGU9dGVtcGxhdGUmaWQ9MTEwNTdmZWNcIiwgKCkgPT4ge1xuICAgIGFwaS5yZXJlbmRlcignMTEwNTdmZWMnLCByZW5kZXIpXG4gIH0pXG5cbn1cblxuXG5leHBvcnQgZGVmYXVsdCBfX2V4cG9ydHNfXyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/components/Modules/About.vue\n");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _About_vue_vue_type_template_id_11057fec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./About.vue?vue&type=template&id=11057fec&scoped=true& */ "./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec&scoped=true&");
+/* harmony import */ var _About_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./About.vue?vue&type=script&lang=js& */ "./resources/js/components/Modules/About.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _About_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _About_vue_vue_type_template_id_11057fec_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _About_vue_vue_type_template_id_11057fec_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "11057fec",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Modules/About.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Modules/About.vue?vue&type=script&lang=js":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/Modules/About.vue?vue&type=script&lang=js ***!
-  \***************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_About_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])\n/* harmony export */ });\n/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_About_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./About.vue?vue&type=script&lang=js */ \"./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/About.vue?vue&type=script&lang=js\");\n //# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvY29tcG9uZW50cy9Nb2R1bGVzL0Fib3V0LnZ1ZT92dWUmdHlwZT1zY3JpcHQmbGFuZz1qcy5qcyIsIm1hcHBpbmdzIjoiOzs7OztBQUFnTiIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3Jlc291cmNlcy9qcy9jb21wb25lbnRzL01vZHVsZXMvQWJvdXQudnVlP2EwMjkiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IHsgZGVmYXVsdCB9IGZyb20gXCItIS4uLy4uLy4uLy4uL25vZGVfbW9kdWxlcy9iYWJlbC1sb2FkZXIvbGliL2luZGV4LmpzPz9jbG9uZWRSdWxlU2V0LTUudXNlWzBdIS4uLy4uLy4uLy4uL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2Rpc3QvaW5kZXguanM/P3J1bGVTZXRbMF0udXNlWzBdIS4vQWJvdXQudnVlP3Z1ZSZ0eXBlPXNjcmlwdCZsYW5nPWpzXCI7IGV4cG9ydCAqIGZyb20gXCItIS4uLy4uLy4uLy4uL25vZGVfbW9kdWxlcy9iYWJlbC1sb2FkZXIvbGliL2luZGV4LmpzPz9jbG9uZWRSdWxlU2V0LTUudXNlWzBdIS4uLy4uLy4uLy4uL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2Rpc3QvaW5kZXguanM/P3J1bGVTZXRbMF0udXNlWzBdIS4vQWJvdXQudnVlP3Z1ZSZ0eXBlPXNjcmlwdCZsYW5nPWpzXCIiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/js/components/Modules/About.vue?vue&type=script&lang=js\n");
-
-/***/ }),
-
-/***/ "./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec ***!
-  \*********************************************************************************/
+/***/ "./resources/js/components/Modules/About.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/Modules/About.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_About_vue_vue_type_template_id_11057fec__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_About_vue_vue_type_template_id_11057fec__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./About.vue?vue&type=template&id=11057fec */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./About.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/About.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec&scoped=true& ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_template_id_11057fec_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_template_id_11057fec_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_About_vue_vue_type_template_id_11057fec_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./About.vue?vue&type=template&id=11057fec&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/About.vue?vue&type=template&id=11057fec&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("h1", [_vm._v("\n        Tizim haqida\n    ")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("p", [
+              _vm._v(
+                '“E-IJARA” axborot tizimi “"AGROSANOATNI RAQAMLASHTIRISH MARKAZI" davlat muassasasi tomonidan\n                    ishlab chiqilgan bo‘lib, qishloq xo‘jaligi maqsadlari, jumladan dehqon xo‘jaligi va fermer\n                    xo‘jaligini yuritish uchun yer uchastkalarini ijaraga berish bo‘yicha hujjatlarni to‘plash,\n                    ko‘rib chiqish, ularni vakolatli organlar va tashkilotlar bilan kelishish uchun mo‘ljallangan.\n                    Siz dehqon yoki fermer xo‘jaligini yuritasizmi yoki dehqonchilik bilan shug‘ullanmoqchimisiz va\n                    shu maqsadda ijaraga yer olishni xohlaysiz, lekin qanday qilib bilmayapsiz? Yoki siz qayerdan\n                    yer olishni xoxlayotganingizni bilasiz, lekin uni qanday tartibda ijaraga olishni va kimga\n                    murojaat qilishni bilmayapsizmi? “E-IJARA” axborot tizimi qishloq xo‘jaligiga mo‘ljallangan yer\n                    uchastkalarini ijaraga olish jarayonida barcha ariza beruvchilar uchun shaffoflik va tenglikni\n                    taʼminlashda qulay va tushunarli vositadir. Shuningdek, tizim materiallarni yer uchastkalarini\n                    materiallarni tayyorlash, kelishish va olish jarayonlarida tashqi aralashuvni, byurokratik\n                    to‘siq va korrupsiyaviy tashkil etuvchilarni istisno qiladi.'
+              ),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "“E-IJARA” axborot tizimi yordamida tuman (shahar)lar hokimliklari nomiga davlat mulki sifatida\n                    davlat ro‘yxatidan o‘tkazilgan, yuridik va jismoniy shaxslarga berilmagan qishloq xo‘jaligiga\n                    mo‘ljallangan yer uchastkalarini to‘g‘risidagi dastlabki maʼlumotlarni O‘zbekiston Respublikasi\n                    Davlat soliq qo‘mitasi huzuridagi Kadastr agentligining Davlat kadastrlari palatasidan elektron\n                    almashinuv orqali qabul qilishdan ochiq elektron tanlovga chiqarguncha qadar barcha jarayonlar\n                    qamrab olingan, “Elektron onlayn-auksionlarni tashkil etish markazi” davlat unitar korxonasining\n                    “E-AUKSION” elektron savdo platformasida tanlov g‘olibini aniqlangandan so‘ng tegishli mahalliy\n                    davlat hokimiyati organlarining qarorini qabul qilish uchun Adliya vazirligining “E-QAROR”\n                    axborot tizimiga va g‘olibning yer uchastkasidan foydalanish huquqlarini ro‘yxatdan o‘tkazish\n                    uchun Davlat kadastrlari palatasiga zaruriy maʼlumotlarni taqdim etish amalga oshiriladi."
+              ),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    Dehqon xo‘jaligini yuritish, qishloq xo‘jaligi maqsadlari uchun yer uchastkalarini O‘zbekiston\n                    Respublikasining Yer kodeksi va «Dehqon xo‘jaligi to‘g‘risida»gi Qonunida belgilangan muddatlar\n                    va o‘lchamlar tanlovga chiqarish va tanlov g‘oliblariga ijaraga berish taʼminlanadi.\n                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    Tizim respublikaning barcha hududi bo‘yicha bo‘sh qishloq xo‘jaligi uchastkalari bo‘yicha to‘liq\n                    maʼlumotni olish, filtrlash va turli yo‘nalishlar bo‘yicha yer uchastkalarini tanlash imkonini\n                    beradi:\n                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("blockquote", [
+              _vm._v(
+                "\n                    “ Фойдаланувчининг шахсий кабинетида танлов натижалари, барча тегишли ҳужжатлар ва қишлоқ\n                    хўжалиги ерларидан фойдаланиш ҳуқуқини рўйхатдан ўтказишни якунлаш тартибни билан боғлиқ\n                    маълумотлар тақдим этилади ” .\n                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    Tizim O‘zbekiston Respublikasi Davlat soliq qo‘mitasi, Davlat kadastr agentligining axborot\n                    tizimlari, “Ye-AUKSION”, “Ye-QAROR” elektron platformalari hamda SMS xabarlarni taqdim etish va\n                    elektron xabarnomalarni jo‘natish xizmati bilan integratsiya qilingan.\n                "
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
 
 
 /***/ })

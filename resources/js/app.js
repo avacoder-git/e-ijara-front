@@ -1,21 +1,18 @@
-import {createApp} from 'vue'
+import Vue from 'vue'
 import Index from './components/Index'
-import router from './router'
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-/* import specific icons */
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-
-/* import font awesome icon component */
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-
-library.add(faUserSecret)
-
+import router from "./router";
+import VueRouter from 'vue-router'
+import $ from 'jquery'
 
 require('./bootstrap');
 
-const app = createApp(Index)
-app.use(router)
-app.component('font-awesome-icon', FontAwesomeIcon)
-app.mount('#app')
+Vue.use(VueRouter)
+
+const app = new Vue({
+    el: '#app',
+    components: {
+        'index': Index,
+        $
+    },
+    router
+});

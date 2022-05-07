@@ -1,31 +1,81 @@
 "use strict";
-/*
- * ATTENTION: An "eval-source-map" devtool has been used.
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_Modules_Docs_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js":
-/*!******************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js ***!
-  \******************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  name: \"Docs\"\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ub2RlX21vZHVsZXMvYmFiZWwtbG9hZGVyL2xpYi9pbmRleC5qcz8/Y2xvbmVkUnVsZVNldC01LnVzZVswXSEuL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2Rpc3QvaW5kZXguanM/P3J1bGVTZXRbMF0udXNlWzBdIS4vcmVzb3VyY2VzL2pzL2NvbXBvbmVudHMvTW9kdWxlcy9Eb2NzLnZ1ZT92dWUmdHlwZT1zY3JpcHQmbGFuZz1qcy5qcyIsIm1hcHBpbmdzIjoiOzs7O0FBK0RBLGlFQUFlO0FBQ1hBLE1BQUksRUFBRTtBQURLLENBQWYiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvY29tcG9uZW50cy9Nb2R1bGVzL0RvY3MudnVlP2Y5NzEiXSwic291cmNlc0NvbnRlbnQiOlsiPHRlbXBsYXRlPlxuICAgIDxkaXYgY2xhc3M9XCJjb250YWluZXJcIj5cbiAgICAgICAgPGgxPlxuICAgICAgICAgICAgTWV5b3JpeSB4dWpqYXRsYXJcbiAgICAgICAgPC9oMT5cbiAgICAgICAgPGRpdiBjbGFzcz1cInJvd1wiPlxuXG4gICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY29sLWxnLTEyXCI+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNhcmRcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInJvdyBhbGlnbi1pdGVtcy1jZW50ZXJcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjb2wtMTAgY29sLWxnLTExXCI+T+KAmFpCRUtJU1RPTiBSRVNQVUJMSUtBU0kgUFJFWklERU5USU5JTkcgMjAyMSBZSUwgOCBJWVVOREFHSVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIFBGLTYyNDMtU09OIEZBUk1PTkk8L2Rpdj5cblxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNvbC0yIGNvbC1sZy0xXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGEgaHJlZj1cIlwiPjxpIGNsYXNzPVwiZmEgZmEtYXJyb3ctcmlnaHRcIiBhcmlhLWhpZGRlbj1cInRydWVcIj48L2k+PC9hPlxuICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgICAgICAgICAgPHA+XG4gICAgICAgICAgICAgICAgICAgICAgICBP4oCYemJla2lzdG9uIFJlc3B1Ymxpa2FzaSBQcmV6aWRlbnRpbmluZyAyMDIxIHlpbCA4IElZVU5EQUdJIMKrWWVyIG11bm9zYWJhdGxhcmlkYSB0ZW5nbGlrIHZhXG4gICAgICAgICAgICAgICAgICAgICAgICBzaGFmZm9mbGlrbmkgdGHKvG1pbmxhc2gsIHllcmdhIGJv4oCYbGdhbiBodXF1cWxhcm5pIGlzaG9uY2hsaSBoaW1veWEgcWlsaXNoIHZhIHVsYXJuaSBib3pvclxuICAgICAgICAgICAgICAgICAgICAgICAgYWt0aXZpZ2EgYXlsYW50aXJpc2ggY2hvcmEtdGFkYmlybGFyaSB0b+KAmGfigJhyaXNpZGHCu2dpIFBGLTYyNDMtc29uIEZhcm1vbmkgPC9wPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJyb3cgYWxpZ24taXRlbXMtY2VudGVyXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY29sLTEwIGNvbC1sZy0xMVwiPk/igJhaQkVLSVNUT04gUkVTUFVCTElLQVNJIFBSRVpJREVOVElOSU5HIDIwMjEgWUlMIDggSVlVTkRBR0lcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBQRi02MjQzLVNPTiBGQVJNT05JPC9kaXY+XG5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjb2wtMiBjb2wtbGctMVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9XCJcIj48aSBjbGFzcz1cImZhIGZhLWFycm93LXJpZ2h0XCIgYXJpYS1oaWRkZW49XCJ0cnVlXCI+PC9pPjwvYT5cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgICAgICAgIDxwPlxuICAgICAgICAgICAgICAgICAgICAgICAgT+KAmHpiZWtpc3RvbiBSZXNwdWJsaWthc2kgUHJlemlkZW50aW5pbmcgMjAyMSB5aWwgOCBJWVVOREFHSSDCq1llciBtdW5vc2FiYXRsYXJpZGEgdGVuZ2xpayB2YVxuICAgICAgICAgICAgICAgICAgICAgICAgc2hhZmZvZmxpa25pIHRhyrxtaW5sYXNoLCB5ZXJnYSBib+KAmGxnYW4gaHVxdXFsYXJuaSBpc2hvbmNobGkgaGltb3lhIHFpbGlzaCB2YSB1bGFybmkgYm96b3JcbiAgICAgICAgICAgICAgICAgICAgICAgIGFrdGl2aWdhIGF5bGFudGlyaXNoIGNob3JhLXRhZGJpcmxhcmkgdG/igJhn4oCYcmlzaWRhwrtnaSBQRi02MjQzLXNvbiBGYXJtb25pIDwvcD5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY2FyZFwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwicm93IGFsaWduLWl0ZW1zLWNlbnRlclwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNvbC0xMCBjb2wtbGctMTFcIj5P4oCYWkJFS0lTVE9OIFJFU1BVQkxJS0FTSSBQUkVaSURFTlRJTklORyAyMDIxIFlJTCA4IElZVU5EQUdJXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgUEYtNjI0My1TT04gRkFSTU9OSTwvZGl2PlxuXG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY29sLTIgY29sLWxnLTFcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YSBocmVmPVwiXCI+PGkgY2xhc3M9XCJmYSBmYS1hcnJvdy1yaWdodFwiIGFyaWEtaGlkZGVuPVwidHJ1ZVwiPjwvaT48L2E+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgICAgICAgICA8cD5cbiAgICAgICAgICAgICAgICAgICAgICAgIE/igJh6YmVraXN0b24gUmVzcHVibGlrYXNpIFByZXppZGVudGluaW5nIDIwMjEgeWlsIDggSVlVTkRBR0kgwqtZZXIgbXVub3NhYmF0bGFyaWRhIHRlbmdsaWsgdmFcbiAgICAgICAgICAgICAgICAgICAgICAgIHNoYWZmb2ZsaWtuaSB0Ycq8bWlubGFzaCwgeWVyZ2EgYm/igJhsZ2FuIGh1cXVxbGFybmkgaXNob25jaGxpIGhpbW95YSBxaWxpc2ggdmEgdWxhcm5pIGJvem9yXG4gICAgICAgICAgICAgICAgICAgICAgICBha3RpdmlnYSBheWxhbnRpcmlzaCBjaG9yYS10YWRiaXJsYXJpIHRv4oCYZ+KAmHJpc2lkYcK7Z2kgUEYtNjI0My1zb24gRmFybW9uaSA8L3A+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQ+XG5leHBvcnQgZGVmYXVsdCB7XG4gICAgbmFtZTogXCJEb2NzXCJcbn1cbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuXG48L3N0eWxlPlxuIl0sIm5hbWVzIjpbIm5hbWUiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js\n");
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364 ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"render\": () => (/* binding */ render)\n/* harmony export */ });\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.esm-bundler.js\");\n\nvar _hoisted_1 = {\n  \"class\": \"container\"\n};\n\nvar _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)(\"<h1> Meyoriy xujjatlar </h1><div class=\\\"row\\\"><div class=\\\"col-lg-12\\\"><div class=\\\"card\\\"><div class=\\\"row align-items-center\\\"><div class=\\\"col-10 col-lg-11\\\">O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI PF-6243-SON FARMONI</div><div class=\\\"col-2 col-lg-1\\\"><a href=\\\"\\\"><i class=\\\"fa fa-arrow-right\\\" aria-hidden=\\\"true\\\"></i></a></div></div><p> O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni </p></div><div class=\\\"card\\\"><div class=\\\"row align-items-center\\\"><div class=\\\"col-10 col-lg-11\\\">O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI PF-6243-SON FARMONI</div><div class=\\\"col-2 col-lg-1\\\"><a href=\\\"\\\"><i class=\\\"fa fa-arrow-right\\\" aria-hidden=\\\"true\\\"></i></a></div></div><p> O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni </p></div><div class=\\\"card\\\"><div class=\\\"row align-items-center\\\"><div class=\\\"col-10 col-lg-11\\\">O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI PF-6243-SON FARMONI</div><div class=\\\"col-2 col-lg-1\\\"><a href=\\\"\\\"><i class=\\\"fa fa-arrow-right\\\" aria-hidden=\\\"true\\\"></i></a></div></div><p> O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni </p></div></div></div>\", 2);\n\nvar _hoisted_4 = [_hoisted_2];\nfunction render(_ctx, _cache, $props, $setup, $data, $options) {\n  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(\"div\", _hoisted_1, _hoisted_4);\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ub2RlX21vZHVsZXMvYmFiZWwtbG9hZGVyL2xpYi9pbmRleC5qcz8/Y2xvbmVkUnVsZVNldC01LnVzZVswXSEuL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2Rpc3QvdGVtcGxhdGVMb2FkZXIuanM/P3J1bGVTZXRbMV0ucnVsZXNbMl0hLi9ub2RlX21vZHVsZXMvdnVlLWxvYWRlci9kaXN0L2luZGV4LmpzPz9ydWxlU2V0WzBdLnVzZVswXSEuL3Jlc291cmNlcy9qcy9jb21wb25lbnRzL01vZHVsZXMvRG9jcy52dWU/dnVlJnR5cGU9dGVtcGxhdGUmaWQ9NWI0ZGIzNjQuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUNTLFdBQU07Ozs7O2tCQUNQQTs7MkRBREpDLHVEQUFBQSxDQTBETSxLQTFETixjQTBETUMsVUExRE4iLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvY29tcG9uZW50cy9Nb2R1bGVzL0RvY3MudnVlP2Y5NzEiXSwic291cmNlc0NvbnRlbnQiOlsiPHRlbXBsYXRlPlxuICAgIDxkaXYgY2xhc3M9XCJjb250YWluZXJcIj5cbiAgICAgICAgPGgxPlxuICAgICAgICAgICAgTWV5b3JpeSB4dWpqYXRsYXJcbiAgICAgICAgPC9oMT5cbiAgICAgICAgPGRpdiBjbGFzcz1cInJvd1wiPlxuXG4gICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY29sLWxnLTEyXCI+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNhcmRcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInJvdyBhbGlnbi1pdGVtcy1jZW50ZXJcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjb2wtMTAgY29sLWxnLTExXCI+T+KAmFpCRUtJU1RPTiBSRVNQVUJMSUtBU0kgUFJFWklERU5USU5JTkcgMjAyMSBZSUwgOCBJWVVOREFHSVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIFBGLTYyNDMtU09OIEZBUk1PTkk8L2Rpdj5cblxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNvbC0yIGNvbC1sZy0xXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPGEgaHJlZj1cIlwiPjxpIGNsYXNzPVwiZmEgZmEtYXJyb3ctcmlnaHRcIiBhcmlhLWhpZGRlbj1cInRydWVcIj48L2k+PC9hPlxuICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgICAgICAgICAgPHA+XG4gICAgICAgICAgICAgICAgICAgICAgICBP4oCYemJla2lzdG9uIFJlc3B1Ymxpa2FzaSBQcmV6aWRlbnRpbmluZyAyMDIxIHlpbCA4IElZVU5EQUdJIMKrWWVyIG11bm9zYWJhdGxhcmlkYSB0ZW5nbGlrIHZhXG4gICAgICAgICAgICAgICAgICAgICAgICBzaGFmZm9mbGlrbmkgdGHKvG1pbmxhc2gsIHllcmdhIGJv4oCYbGdhbiBodXF1cWxhcm5pIGlzaG9uY2hsaSBoaW1veWEgcWlsaXNoIHZhIHVsYXJuaSBib3pvclxuICAgICAgICAgICAgICAgICAgICAgICAgYWt0aXZpZ2EgYXlsYW50aXJpc2ggY2hvcmEtdGFkYmlybGFyaSB0b+KAmGfigJhyaXNpZGHCu2dpIFBGLTYyNDMtc29uIEZhcm1vbmkgPC9wPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjYXJkXCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJyb3cgYWxpZ24taXRlbXMtY2VudGVyXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY29sLTEwIGNvbC1sZy0xMVwiPk/igJhaQkVLSVNUT04gUkVTUFVCTElLQVNJIFBSRVpJREVOVElOSU5HIDIwMjEgWUlMIDggSVlVTkRBR0lcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBQRi02MjQzLVNPTiBGQVJNT05JPC9kaXY+XG5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjb2wtMiBjb2wtbGctMVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9XCJcIj48aSBjbGFzcz1cImZhIGZhLWFycm93LXJpZ2h0XCIgYXJpYS1oaWRkZW49XCJ0cnVlXCI+PC9pPjwvYT5cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgICAgICAgIDxwPlxuICAgICAgICAgICAgICAgICAgICAgICAgT+KAmHpiZWtpc3RvbiBSZXNwdWJsaWthc2kgUHJlemlkZW50aW5pbmcgMjAyMSB5aWwgOCBJWVVOREFHSSDCq1llciBtdW5vc2FiYXRsYXJpZGEgdGVuZ2xpayB2YVxuICAgICAgICAgICAgICAgICAgICAgICAgc2hhZmZvZmxpa25pIHRhyrxtaW5sYXNoLCB5ZXJnYSBib+KAmGxnYW4gaHVxdXFsYXJuaSBpc2hvbmNobGkgaGltb3lhIHFpbGlzaCB2YSB1bGFybmkgYm96b3JcbiAgICAgICAgICAgICAgICAgICAgICAgIGFrdGl2aWdhIGF5bGFudGlyaXNoIGNob3JhLXRhZGJpcmxhcmkgdG/igJhn4oCYcmlzaWRhwrtnaSBQRi02MjQzLXNvbiBGYXJtb25pIDwvcD5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY2FyZFwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwicm93IGFsaWduLWl0ZW1zLWNlbnRlclwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNvbC0xMCBjb2wtbGctMTFcIj5P4oCYWkJFS0lTVE9OIFJFU1BVQkxJS0FTSSBQUkVaSURFTlRJTklORyAyMDIxIFlJTCA4IElZVU5EQUdJXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgUEYtNjI0My1TT04gRkFSTU9OSTwvZGl2PlxuXG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY29sLTIgY29sLWxnLTFcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YSBocmVmPVwiXCI+PGkgY2xhc3M9XCJmYSBmYS1hcnJvdy1yaWdodFwiIGFyaWEtaGlkZGVuPVwidHJ1ZVwiPjwvaT48L2E+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgICAgICAgICA8cD5cbiAgICAgICAgICAgICAgICAgICAgICAgIE/igJh6YmVraXN0b24gUmVzcHVibGlrYXNpIFByZXppZGVudGluaW5nIDIwMjEgeWlsIDggSVlVTkRBR0kgwqtZZXIgbXVub3NhYmF0bGFyaWRhIHRlbmdsaWsgdmFcbiAgICAgICAgICAgICAgICAgICAgICAgIHNoYWZmb2ZsaWtuaSB0Ycq8bWlubGFzaCwgeWVyZ2EgYm/igJhsZ2FuIGh1cXVxbGFybmkgaXNob25jaGxpIGhpbW95YSBxaWxpc2ggdmEgdWxhcm5pIGJvem9yXG4gICAgICAgICAgICAgICAgICAgICAgICBha3RpdmlnYSBheWxhbnRpcmlzaCBjaG9yYS10YWRiaXJsYXJpIHRv4oCYZ+KAmHJpc2lkYcK7Z2kgUEYtNjI0My1zb24gRmFybW9uaSA8L3A+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbjwvdGVtcGxhdGU+XG5cbjxzY3JpcHQ+XG5leHBvcnQgZGVmYXVsdCB7XG4gICAgbmFtZTogXCJEb2NzXCJcbn1cbjwvc2NyaXB0PlxuXG48c3R5bGUgc2NvcGVkPlxuXG48L3N0eWxlPlxuIl0sIm5hbWVzIjpbIl9ob2lzdGVkXzIiLCJfY3JlYXRlRWxlbWVudEJsb2NrIiwiX2hvaXN0ZWRfNCJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364\n");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "Docs"
+});
 
 /***/ }),
 
@@ -35,31 +85,177 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Docs_vue_vue_type_template_id_5b4db364__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Docs.vue?vue&type=template&id=5b4db364 */ \"./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364\");\n/* harmony import */ var _Docs_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Docs.vue?vue&type=script&lang=js */ \"./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js\");\n/* harmony import */ var D_OpenServer_domains_e_ijara_e_ijara_front_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ \"./node_modules/vue-loader/dist/exportHelper.js\");\n\n\n\n\n;\nconst __exports__ = /*#__PURE__*/(0,D_OpenServer_domains_e_ijara_e_ijara_front_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(_Docs_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"], [['render',_Docs_vue_vue_type_template_id_5b4db364__WEBPACK_IMPORTED_MODULE_0__.render],['__file',\"resources/js/components/Modules/Docs.vue\"]])\n/* hot reload */\nif (false) {}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvY29tcG9uZW50cy9Nb2R1bGVzL0RvY3MudnVlLmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFBaUU7QUFDVjtBQUNMOztBQUVsRCxDQUE4SDtBQUM5SCxpQ0FBaUMsbUlBQWUsQ0FBQyx5RUFBTSxhQUFhLDJFQUFNO0FBQzFFO0FBQ0EsSUFBSSxLQUFVLEVBQUUsRUFZZjs7O0FBR0QsaUVBQWUiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvY29tcG9uZW50cy9Nb2R1bGVzL0RvY3MudnVlPzY1NzIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgcmVuZGVyIH0gZnJvbSBcIi4vRG9jcy52dWU/dnVlJnR5cGU9dGVtcGxhdGUmaWQ9NWI0ZGIzNjRcIlxuaW1wb3J0IHNjcmlwdCBmcm9tIFwiLi9Eb2NzLnZ1ZT92dWUmdHlwZT1zY3JpcHQmbGFuZz1qc1wiXG5leHBvcnQgKiBmcm9tIFwiLi9Eb2NzLnZ1ZT92dWUmdHlwZT1zY3JpcHQmbGFuZz1qc1wiXG5cbmltcG9ydCBleHBvcnRDb21wb25lbnQgZnJvbSBcIkQ6XFxcXE9wZW5TZXJ2ZXJcXFxcZG9tYWluc1xcXFxlLWlqYXJhXFxcXGUtaWphcmEtZnJvbnRcXFxcbm9kZV9tb2R1bGVzXFxcXHZ1ZS1sb2FkZXJcXFxcZGlzdFxcXFxleHBvcnRIZWxwZXIuanNcIlxuY29uc3QgX19leHBvcnRzX18gPSAvKiNfX1BVUkVfXyovZXhwb3J0Q29tcG9uZW50KHNjcmlwdCwgW1sncmVuZGVyJyxyZW5kZXJdLFsnX19maWxlJyxcInJlc291cmNlcy9qcy9jb21wb25lbnRzL01vZHVsZXMvRG9jcy52dWVcIl1dKVxuLyogaG90IHJlbG9hZCAqL1xuaWYgKG1vZHVsZS5ob3QpIHtcbiAgX19leHBvcnRzX18uX19obXJJZCA9IFwiNWI0ZGIzNjRcIlxuICBjb25zdCBhcGkgPSBfX1ZVRV9ITVJfUlVOVElNRV9fXG4gIG1vZHVsZS5ob3QuYWNjZXB0KClcbiAgaWYgKCFhcGkuY3JlYXRlUmVjb3JkKCc1YjRkYjM2NCcsIF9fZXhwb3J0c19fKSkge1xuICAgIGFwaS5yZWxvYWQoJzViNGRiMzY0JywgX19leHBvcnRzX18pXG4gIH1cbiAgXG4gIG1vZHVsZS5ob3QuYWNjZXB0KFwiLi9Eb2NzLnZ1ZT92dWUmdHlwZT10ZW1wbGF0ZSZpZD01YjRkYjM2NFwiLCAoKSA9PiB7XG4gICAgYXBpLnJlcmVuZGVyKCc1YjRkYjM2NCcsIHJlbmRlcilcbiAgfSlcblxufVxuXG5cbmV4cG9ydCBkZWZhdWx0IF9fZXhwb3J0c19fIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/components/Modules/Docs.vue\n");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Docs_vue_vue_type_template_id_5b4db364_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Docs.vue?vue&type=template&id=5b4db364&scoped=true& */ "./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364&scoped=true&");
+/* harmony import */ var _Docs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Docs.vue?vue&type=script&lang=js& */ "./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Docs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Docs_vue_vue_type_template_id_5b4db364_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Docs_vue_vue_type_template_id_5b4db364_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "5b4db364",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Modules/Docs.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Docs_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])\n/* harmony export */ });\n/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Docs_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Docs.vue?vue&type=script&lang=js */ \"./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js\");\n //# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvY29tcG9uZW50cy9Nb2R1bGVzL0RvY3MudnVlP3Z1ZSZ0eXBlPXNjcmlwdCZsYW5nPWpzLmpzIiwibWFwcGluZ3MiOiI7Ozs7O0FBQStNIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2pzL2NvbXBvbmVudHMvTW9kdWxlcy9Eb2NzLnZ1ZT9mZGI1Il0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IGRlZmF1bHQgfSBmcm9tIFwiLSEuLi8uLi8uLi8uLi9ub2RlX21vZHVsZXMvYmFiZWwtbG9hZGVyL2xpYi9pbmRleC5qcz8/Y2xvbmVkUnVsZVNldC01LnVzZVswXSEuLi8uLi8uLi8uLi9ub2RlX21vZHVsZXMvdnVlLWxvYWRlci9kaXN0L2luZGV4LmpzPz9ydWxlU2V0WzBdLnVzZVswXSEuL0RvY3MudnVlP3Z1ZSZ0eXBlPXNjcmlwdCZsYW5nPWpzXCI7IGV4cG9ydCAqIGZyb20gXCItIS4uLy4uLy4uLy4uL25vZGVfbW9kdWxlcy9iYWJlbC1sb2FkZXIvbGliL2luZGV4LmpzPz9jbG9uZWRSdWxlU2V0LTUudXNlWzBdIS4uLy4uLy4uLy4uL25vZGVfbW9kdWxlcy92dWUtbG9hZGVyL2Rpc3QvaW5kZXguanM/P3J1bGVTZXRbMF0udXNlWzBdIS4vRG9jcy52dWU/dnVlJnR5cGU9c2NyaXB0Jmxhbmc9anNcIiJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js\n");
-
-/***/ }),
-
-/***/ "./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364":
-/*!********************************************************************************!*\
-  !*** ./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364 ***!
-  \********************************************************************************/
+/***/ "./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Docs_vue_vue_type_template_id_5b4db364__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Docs_vue_vue_type_template_id_5b4db364__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Docs.vue?vue&type=template&id=5b4db364 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Docs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Docs.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Docs.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Docs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364&scoped=true&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364&scoped=true& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Docs_vue_vue_type_template_id_5b4db364_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Docs_vue_vue_type_template_id_5b4db364_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Docs_vue_vue_type_template_id_5b4db364_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Docs.vue?vue&type=template&id=5b4db364&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Docs.vue?vue&type=template&id=5b4db364&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("h1", [_vm._v("\n        Meyoriy xujjatlar\n    ")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col-10 col-lg-11" }, [
+                _vm._v(
+                  "O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\n                        PF-6243-SON FARMONI"
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-2 col-lg-1" }, [
+                _c("a", { attrs: { href: "" } }, [
+                  _c("i", {
+                    staticClass: "fa fa-arrow-right",
+                    attrs: { "aria-hidden": "true" },
+                  }),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va\n                    shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor\n                    aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col-10 col-lg-11" }, [
+                _vm._v(
+                  "O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\n                        PF-6243-SON FARMONI"
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-2 col-lg-1" }, [
+                _c("a", { attrs: { href: "" } }, [
+                  _c("i", {
+                    staticClass: "fa fa-arrow-right",
+                    attrs: { "aria-hidden": "true" },
+                  }),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va\n                    shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor\n                    aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col-10 col-lg-11" }, [
+                _vm._v(
+                  "O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\n                        PF-6243-SON FARMONI"
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-2 col-lg-1" }, [
+                _c("a", { attrs: { href: "" } }, [
+                  _c("i", {
+                    staticClass: "fa fa-arrow-right",
+                    attrs: { "aria-hidden": "true" },
+                  }),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va\n                    shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor\n                    aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni "
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
 
 
 /***/ })

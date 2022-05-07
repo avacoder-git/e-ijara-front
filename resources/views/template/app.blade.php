@@ -36,7 +36,12 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl-carousel-custom.css') }}" rel="stylesheet">
 </head>
-<body id="app">
+<body >
+
+<div id="app">
+    <Index></Index>
+
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

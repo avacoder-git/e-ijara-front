@@ -1,4 +1,4 @@
-import {VueRouter, createWebHistory, createRouter} from 'vue-router'
+import VueRouter from 'vue-router'
 
 const routes = [
     {
@@ -36,8 +36,7 @@ const routes = [
 
 ]
 
-const router = createRouter({
-    history: createWebHistory(),
+const router = new VueRouter({
     mode: 'history',
     routes,
     linkActiveClass: "active",

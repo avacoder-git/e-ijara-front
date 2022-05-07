@@ -107,9 +107,6 @@ class LandController extends Controller
         abort_if(!$region,404,'Not Found');
         $lands = Land::query()->select('count','sum(area)')->where('region_id',$region->regionid);
 
-
-        $time = Carbon::now();
-
         return response()->json([
             'count' =>  $lands->count() ,
             'region' => $region->nameuz,
@@ -131,13 +128,15 @@ class LandController extends Controller
         $tanlovdagi_lands =  ['count'=> $lands->where('status_id',$tanlov)->count(), 'area' =>  round($lands->where('status_id',$tanlov)->sum('area'),1) ];
         $loyihalashdagi_lands =  ['count'=> $lands->where('status_id',$loyiha)->count(), 'area' => round( $lands->where('status_id',$loyiha)->sum('area'),1) ];
 
-        return response()->json(compact('new_lands','ajratilgan_lands','tanlovdagi_lands','loyihalashdagi_lands'));
+        $data = compact('new_lands','ajratilgan_lands','tanlovdagi_lands','loyihalashdagi_lands');
+        return response()->json($data);
     }
 
 
     public function GetAllCount()
     {
         $regions = Regions::select('nameuz')->withCount('new_lands','lands_auction')->withSum('new_lands','area')->withSum('lands_auction','area')->get();
+
         return response()->json($regions);
     }
 }
