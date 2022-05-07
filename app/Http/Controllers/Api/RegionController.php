@@ -51,13 +51,13 @@ class RegionController extends Controller
 
     public function show($region)
     {
-        $data =  json_decode(DB::select('select  ST_AsGeoJSON(geometry) from regions where regioncode = '. $region  )[0]->st_asgeojson, true);
+        $data = cache()->remember('region-' . $region, 60 * 60 * 24, function () use ($region){
+            return $this->getCachedRegion($region);
+        });
         $item = $data["coordinates"][0];
 
-
-
         unset($data['coordinates']);
-        $data['coordinates']= [$item,$item];
+        $data['coordinates']= [$item];
 
         $arr['type'] = "FeatureCollection";
         $arr['features'] = [[
@@ -72,6 +72,12 @@ class RegionController extends Controller
 
         return $data;
     }
+
+    public function getCachedRegion($region)
+    {
+        return json_decode(DB::select('select  ST_AsGeoJSON(geometry) from regions where regioncode = '. $region  )[0]->st_asgeojson, true);
+    }
+
 
 
 }

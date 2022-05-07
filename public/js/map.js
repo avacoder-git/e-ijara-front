@@ -2,12 +2,25 @@ var map = L.map('map', {
     zoom: 6,
     center: [41.66655, 66.3235],
 })
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    tag: 'tile',
+var districtJSON = []
+const googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+    maxZoom: 20,
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+});
 
-    attribution: '<a target="_blank" href="http://www.agro.uz"> www.agro.uz &copy; AgroDigital</a>'
-}).addTo(map);
+const googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+    maxZoom: 20,
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+});
+
+
+const googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+    maxZoom: 20,
+    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+})
+
+googleHybrid.addTo(map)
+
 function addControls()
 {
     map.pm.addControls({
@@ -25,7 +38,7 @@ function addControls()
 }
 
 
-map.on('pm:create', function (e) {
+ map.on('pm:create', function (e) {
     let geojson = e.layer.toGeoJSON().geometry.coordinates[0]
     var latlong = [geojson[0][1], geojson[0][0]]
     var seeArea = turf.area(e.layer.toGeoJSON());
@@ -34,19 +47,41 @@ map.on('pm:create', function (e) {
 
     var dataJSON = e.layer.toGeoJSON()
 
+     if (checkIfInDistrict(geojson))
+     {
+         var text = "Umumiy maydoni: " + seeArea + " ga <br>"
+         var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Davom etish</button>"
+         var popup = L.popup()
+             .setLatLng(latlong)
+             .setContent('<p>Yerni tanladingniz<br />' + text + btn)
+             .openOn(map);
+
+         $("#geojson").text(JSON.stringify(dataJSON))
+         $("#area").val(seeArea)
+
+     }else {
+         map.removeLayer(e.layer);
+
+         alert('Chizilgan yer tanlangan tuman hududiga kirmaydi!')
+     }
 
 
-    var text = "Umumiy maydoni: " + seeArea + " ga <br>"
-    var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Davom etish</button>"
-    var popup = L.popup()
-        .setLatLng(latlong)
-        .setContent('<p>Yerni tanladingniz<br />' + text + btn)
-        .openOn(map);
 
-    $("#geojson").text(JSON.stringify(dataJSON))
-    $("#area").val(seeArea)
 
-})
+ })
+
+
+function checkIfInDistrict(geojson)
+{
+    var poly1 = turf.polygon([geojson]);
+
+    var poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0]]);
+
+    var intersection = turf.intersect(poly1, poly2);
+    return intersection != null
+}
+
+
 
 $('#submit').click(function (){
 
@@ -109,7 +144,6 @@ $('.region').click(function (){
     var geojson = getRegion($(this).data('region'))
 
     makeGeoJSON(geojson)
-
 })
 
 
@@ -117,12 +151,20 @@ function makeGeoJSON(geojson)
 {
 
     removeMarkers();
-    let geoJSON = L.geoJSON(geojson,{
+    let geoJSON = L.geoJSON(geojson,
+    {
+        style: {
+            color: 'red',
+            opacity: 1,
+            fillOpacity: 0.9
+        },
+        invert: true,
         onEachFeature: function (feature, layer) {
             layer.myTag = "myGeoJSON"
         }
     }).addTo(map)
     map.fitBounds(geoJSON.getBounds());
+    districtJSON = geojson
 
 }
 
