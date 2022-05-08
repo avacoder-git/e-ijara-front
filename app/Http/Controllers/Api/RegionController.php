@@ -46,7 +46,11 @@ class RegionController extends Controller
 
     public function index()
     {
-        return DB::select('select id, nameuz, regioncode, lat,long from regions');
+        $regions = cache()->remember('regions',60*60*24*365, function (){
+            return DB::select('select id, nameuz, regioncode from regions');
+        });
+
+        return $regions;
     }
 
     public function show($region)

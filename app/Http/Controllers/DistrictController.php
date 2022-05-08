@@ -13,7 +13,7 @@ class DistrictController extends Controller
 
     public function index($region)
     {
-        return DB::select('select id, nameuz, regioncode from districts where regioncode = ' . $region);
+        return $this->getCachedDistricts($region);
     }
 
     public function show($district)
@@ -43,6 +43,11 @@ class DistrictController extends Controller
     public function getCachedDistrict($district)
     {
         return json_decode(DB::select('select  ST_AsGeoJSON(geometry) from districts where id = ' . $district)[0]->st_asgeojson, true);
+    }
+
+    public function getCachedDistricts($regioncode)
+    {
+        return DB::select('select id, nameuz, regioncode from districts where regioncode = ' . $regioncode);
     }
 
 }

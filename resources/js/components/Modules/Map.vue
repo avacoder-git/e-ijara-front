@@ -9,8 +9,21 @@
                     <button class="tab-btn">Yer uchastkalari</button>
                 </div>
 
-                <div class="d-flex">
-                    <v-select :options="['Canada', 'United States']"></v-select>
+                <div class="d-flex mt-3">
+                    <v-select
+                        @change="setDistricts"
+                        v-model="selectedRegion"
+                        @input="setDistricts"
+                        :reduce="(option) => option.regioncode"
+                        class="select-2" label="nameuz" :options="regions"></v-select>
+                    <v-select
+                        v-model="selectedDistrict"
+                        @change="setMap()"
+                        @input="setMap"
+
+                        class="select-2"
+                        :reduce="(option) => option.id" label="nameuz"
+                        :options="districts"></v-select>
 
                 </div>
 
@@ -19,19 +32,26 @@
         </div>
 
         <div class="container-fluid mt-4 section-2">
-            <div id="mapContainer"></div>
+            <l-map
+                ref="map"
+                :zoom="zoom"
+                :center="center">
+                <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+                <l-control-zoom position="bottomright"  ></l-control-zoom>
+
+            </l-map>
+
         </div>
 
     </div>
 </template>
 
 <script>
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-import "@tweenjs/tween.js";
-import "@elfalem/leaflet-curve";
-import "vue-select-3/dist/vue-select.css";
 
+
+import 'vue-select/dist/vue-select.css';
+import L from 'leaflet';
+import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 
 
 export default {
@@ -39,16 +59,105 @@ export default {
     data() {
         return {
             map: null,
-        };
-    },
-
-    mounted() {
-        this.map = L.map("mapContainer").setView( [39.449269626, 67.237035371], 7);
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            regions: [],
+            districts: [],
+            zoom: 6,
+            center: [41.66655, 66.3235],
+            url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             attribution:
                 '<a target="_blank" href="http://www.agro.uz"> www.agro.uz &copy; AgroDigital</a>',
-        }).addTo(this.map);
-        //use a mix of renderers
+            selectedRegion: null,
+            selectedDistrict: null
+        };
+    },
+    components: {
+        LMap,
+        LTileLayer,
+        LMarker,
+    },
+    methods: {
+        getRegions() {
+            axios.get('api/json/regions')
+                .then(response => {
+                    this.regions = response.data
+                })
+        },
+
+        getDistricts(regioncode) {
+            axios.get(`api/json/districts/${regioncode}`)
+                .then(response => {
+                    this.districts = response.data
+                })
+        },
+        setDistricts() {
+            this.districts = []
+            this.getDistricts(this.selectedRegion)
+            this.getRegionGeoJSON(this.selectedRegion)
+
+        },
+        setMap() {
+            console.log(234324);
+            axios.get(`api/json/district/${this.selectedDistrict}`)
+                .then(response => {
+                    var geojson = response.data
+                    this.makeGeoJSON(geojson)
+                })
+        },
+
+        getRegionGeoJSON($region) {
+            axios.get(`api/json/regions/${$region}`)
+                .then(response => {
+                    var geojson = response.data
+                    this.makeGeoJSON(geojson)
+                })
+
+
+        },
+        makeGeoJSON(geojson) {
+            this.removeMarkers()
+            let geoJSON = L.geoJSON(geojson,
+                {
+                    invert: true,
+                    style: {
+                        color: 'transparent',
+                        fillColor: 'transparent'
+
+                    },
+                    onEachFeature: function (feature, layer) {
+                        layer.myTag = "myGeoJSON"
+                    }
+                }).addTo(this.$refs.map.mapObject)
+            this.$refs.map.mapObject.fitBounds(geoJSON.getBounds());
+        },
+        removeMarkers() {
+            var map = this.$refs.map.mapObject
+            map.eachLayer( function(layer) {
+                if ( layer.myTag &&  layer.myTag === "myGeoJSON") {
+                    map.removeLayer(layer)
+                }
+
+            });
+
+        },
+
+        getCenter(map)
+        {
+
+        }
+
+
+    },
+
+
+    mounted() {
+        this.getRegions()
+        const map = this.$refs.map.mapObject;
+
+        map.on('moveend', function(e) {
+            var bounds = map.getBounds();
+            console.log(bounds);
+        });
+
     }
 
 
@@ -56,7 +165,18 @@ export default {
 </script>
 
 <style scoped>
+.vue2leaflet-map {
+    height: 400px;
+}
 
+.select-2 {
+    height: 48px;
+    width: 237px;
+    border-radius: 8px;
+}
 
+.d-flex {
+    gap: 24px;
+}
 
 </style>

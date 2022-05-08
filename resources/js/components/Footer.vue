@@ -1,6 +1,6 @@
 <template>
-    <footer class="bg-white mt-5 pt-5">
-        <div class="container-fluid section-2">
+    <footer class="bg-white mt-5">
+        <div class="container-fluid section-2" style="">
             <div class="row">
                 <div class="col-12">
                     <div class="row">

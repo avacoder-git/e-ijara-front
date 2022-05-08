@@ -58,6 +58,7 @@ Route::get('/json/district/{district}', [\App\Http\Controllers\DistrictControlle
 Route::post('/application', [IndexController::class, 'submit'])->name('application.submit');
 
 
+
 //Route::middleware('auth')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
