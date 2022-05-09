@@ -204,13 +204,12 @@ export default {
         },
         redirect()
         {
-            var client_id = process.env.MIX_CLIENT_ID
+            var client_id = "at_agrosanoat_markazi"
             var client_secret = process.env.MIX_CLIENT_SECRET
-            var scope = process.env.MIX_SCOPE
-            var redirect_uri = process.env.MIX_REDIRECT_URI
-            console.log(client_id)
-            // window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" +
-            //     redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
+            var scope = "at_agrosanoat_markazi"
+            var redirect_uri = "http://ijara.front.git"
+            window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" +
+                redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
         }
     },
     mounted() {

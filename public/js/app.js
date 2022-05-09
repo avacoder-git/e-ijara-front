@@ -5473,7 +5473,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 //
 //
 //
@@ -5675,12 +5674,11 @@ __webpack_require__.r(__webpack_exports__);
       this.agree = !this.agree;
     },
     redirect: function redirect() {
-      var client_id = process.env.MIX_CLIENT_ID;
-      var client_secret = process.env.MIX_CLIENT_SECRET;
-      var scope = process.env.MIX_SCOPE;
-      var redirect_uri = process.env.MIX_REDIRECT_URI;
-      console.log(client_id); // window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" +
-      //     redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
+      var client_id = "at_agrosanoat_markazi";
+      var client_secret = "nCeV5BFAcruvPxW9sK721qdR";
+      var scope = "at_agrosanoat_markazi";
+      var redirect_uri = "http://ijara.front.git";
+      window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" + redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
     }
   },
   mounted: function mounted() {
