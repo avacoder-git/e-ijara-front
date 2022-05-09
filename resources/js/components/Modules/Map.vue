@@ -15,14 +15,16 @@
                         v-model="selectedRegion"
                         @input="setDistricts"
                         :reduce="(option) => option.regioncode"
-                        class="select-2" label="nameuz" :options="regions"></v-select>
+                        class="select-2"
+                        label="nameuz"
+                        :options="regions"></v-select>
                     <v-select
                         v-model="selectedDistrict"
                         @change="setMap()"
                         @input="setMap"
-
                         class="select-2"
-                        :reduce="(option) => option.id" label="nameuz"
+                        :reduce="(option) => option.id"
+                        label="nameuz"
                         :options="districts"></v-select>
 
                 </div>
@@ -51,7 +53,7 @@
 
 import 'vue-select/dist/vue-select.css';
 import L from 'leaflet';
-import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
+import {LMap, LTileLayer, LMarker, LControlZoom } from 'vue2-leaflet';
 
 
 export default {
@@ -67,19 +69,34 @@ export default {
             attribution:
                 '<a target="_blank" href="http://www.agro.uz"> www.agro.uz &copy; AgroDigital</a>',
             selectedRegion: null,
-            selectedDistrict: null
+            selectedDistrict: null,
         };
     },
     components: {
         LMap,
         LTileLayer,
         LMarker,
+        LControlZoom
     },
     methods: {
         getRegions() {
             axios.get('api/json/regions')
                 .then(response => {
                     this.regions = response.data
+                    this.regions.push({
+                        id:0,
+                        nameuz: "Xudud",
+                        regioncode: 0
+
+                    })
+                    this.selectedRegion = this.selectedRegion?? 0
+                    this.districts.push({
+                        id:0,
+                        nameuz: "Tuman (shaxar)",
+                        regioncode: 0
+                    })
+                    this.selectedDistrict = this.selectedDistrict ?? 0
+
                 })
         },
 
@@ -87,6 +104,7 @@ export default {
             axios.get(`api/json/districts/${regioncode}`)
                 .then(response => {
                     this.districts = response.data
+
                 })
         },
         setDistricts() {
@@ -139,11 +157,6 @@ export default {
             });
 
         },
-
-        getCenter(map)
-        {
-
-        }
 
 
     },

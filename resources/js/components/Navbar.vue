@@ -120,7 +120,7 @@
                                class="form-control border-0 bg-light shadow-none">
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-check">Tekshirish</button>
+                        <button class="btn btn-check1">Tekshirish</button>
                     </div>
                 </div>
             </div>
@@ -171,7 +171,7 @@
                                     <p class="w-75 ml-3  cursor-pointer"  @click.prevent="agreeToggle">Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href="">foydalanish shartlariga</a> roziman.</p>
                                 </div>
 
-                                <button class="btn btn-check" :class="agree ? '' : 'disabled'" :disabled="!agree">Tizimga kirish</button>
+                                <button type="button" class="btn btn-check1" @click="redirect" :class="agree ? '' : 'disabled'" :disabled="!agree">Tizimga kirish</button>
 
                             </div>
                         </div>
@@ -201,6 +201,16 @@ export default {
     methods:{
         agreeToggle(){
             this.agree = !this.agree
+        },
+        redirect()
+        {
+            var client_id = process.env.MIX_CLIENT_ID
+            var client_secret = process.env.MIX_CLIENT_SECRET
+            var scope = process.env.MIX_SCOPE
+            var redirect_uri = process.env.MIX_REDIRECT_URI
+            console.log(client_id)
+            // window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" +
+            //     redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
         }
     },
     mounted() {
@@ -244,5 +254,18 @@ export default {
 </script>
 
 <style scoped>
+.btn-check1 {
+    background-color: #08705F;
+    color: white;
+    width: 100%;
+    padding: 12px 0 !important;
+    border-radius: 8px;
+    border: 1px solid #08705F;
+}
+
+.btn-check1:hover {
+    background-color: white;
+    color: #08705F;
+}
 
 </style>
