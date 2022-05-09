@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "laravel-vue-pagination": "^3.0.0",
         "leaflet": "^1.8.0",
         "leaflet.snogylop": "^0.4.0",
         "moment": "^2.29.3",

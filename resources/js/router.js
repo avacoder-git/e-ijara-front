@@ -35,6 +35,11 @@ const routes = [
         path: "/map",
         component: () => import('./components/Modules/Map'),
         name:'map'
+    }    ,
+    {
+        path: "/all",
+        component: () => import('./components/Modules/AllLands'),
+        name:'all'
     }
 
 

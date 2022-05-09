@@ -21,9 +21,9 @@
                            aria-controls="contact" aria-selected="false">Tanlovda</a>
                     </li>
                     <li class="date-list d-sm-none">
-                        <div class="date"><a href="">Hammasini ko'rish <img src="image/left.svg"
+                        <div class="date"><router-link to="/all">Hammasini ko'rish <img src="image/left.svg"
                                                                             style="transform: rotate(180deg); margin-left: 16px"
-                                                                            alt=""></a></div>
+                                                                            alt=""></router-link></div>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
 
-                <button class="barchasi d-lg-none">Hammasini ko'rish</button>
+                <router-link to="/all" class="barchasi d-lg-none">Hammasini ko'rish</router-link>
 
 
             </div>

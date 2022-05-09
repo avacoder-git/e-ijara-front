@@ -5853,6 +5853,12 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_components_Modules_Map_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Modules/Map */ "./resources/js/components/Modules/Map.vue"));
   },
   name: 'map'
+}, {
+  path: "/all",
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_Modules_AllLands_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Modules/AllLands */ "./resources/js/components/Modules/AllLands.vue"));
+  },
+  name: 'all'
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
@@ -73032,7 +73038,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\OpenServer\\\\doma
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Modules_Index_vue":1,"resources_js_components_Modules_About_vue":1,"resources_js_components_Modules_Docs_vue":1,"resources_js_components_Modules_Manuals_vue":1,"resources_js_components_Modules_FAQ_vue":1,"resources_js_components_Modules_Contact_vue":1,"resources_js_components_Modules_Map_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Modules_Index_vue":1,"resources_js_components_Modules_About_vue":1,"resources_js_components_Modules_Docs_vue":1,"resources_js_components_Modules_Manuals_vue":1,"resources_js_components_Modules_FAQ_vue":1,"resources_js_components_Modules_Contact_vue":1,"resources_js_components_Modules_Map_vue":1,"resources_js_components_Modules_AllLands_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

@@ -23911,259 +23911,305 @@ var render = function () {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 ", attrs: { id: "fields" } }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "tab-content", attrs: { id: "myTabContent" } },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "tab-pane fade show active",
-                attrs: {
-                  id: "home",
-                  role: "tabpanel",
-                  "aria-labelledby": "home-tab",
-                },
-              },
-              [
+      _c(
+        "div",
+        { staticClass: "col-12 ", attrs: { id: "fields" } },
+        [
+          _c(
+            "ul",
+            {
+              staticClass: "nav nav-tabs",
+              attrs: { id: "myTab", role: "tablist" },
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c("li", { staticClass: "date-list d-sm-none" }, [
                 _c(
                   "div",
-                  {
-                    staticClass: "owl-carousel owl-custom",
-                    attrs: { id: "fields1Indicators" },
+                  { staticClass: "date" },
+                  [
+                    _c("router-link", { attrs: { to: "/all" } }, [
+                      _vm._v("Hammasini ko'rish "),
+                      _c("img", {
+                        staticStyle: {
+                          transform: "rotate(180deg)",
+                          "margin-left": "16px",
+                        },
+                        attrs: { src: "image/left.svg", alt: "" },
+                      }),
+                    ]),
+                  ],
+                  1
+                ),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "tab-content", attrs: { id: "myTabContent" } },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "tab-pane fade show active",
+                  attrs: {
+                    id: "home",
+                    role: "tabpanel",
+                    "aria-labelledby": "home-tab",
                   },
-                  [
-                    _vm._l(_vm.data, function (item) {
-                      return [
-                        _c(
-                          "div",
-                          { staticClass: "rectangle position-relative" },
-                          [
-                            _c("div", { staticClass: "rectangle-img" }, [
-                              _c("img", {
-                                attrs: {
-                                  src: _vm.bg_photo[
-                                    Math.floor(
-                                      Math.random() * _vm.bg_photo.length
-                                    )
-                                  ],
-                                  alt: "",
-                                },
-                              }),
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "d-flex justify-content-between" },
-                              [
-                                _c("div", { staticClass: "rectangle-lot" }, [
-                                  _vm._v(_vm._s(item.created_at)),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "rectangle-lot" }, [
-                                  _vm._v(_vm._s(item.regnum)),
-                                ]),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "rectangle-name mb-auto" },
-                              [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(item.region) +
-                                    " , " +
-                                    _vm._s(item.district) +
-                                    "\n                                "
-                                ),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "rectangle-footer" }, [
-                              _c("div", { staticClass: "rectangle-ga" }, [
-                                _vm._v(_vm._s(item.area) + " Ga"),
-                              ]),
-                              _vm._v(" "),
-                              _vm._m(2, true),
-                            ]),
-                          ]
-                        ),
-                      ]
-                    }),
-                  ],
-                  2
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "tab-pane fade",
-                attrs: {
-                  id: "profile",
-                  role: "tabpanel",
-                  "aria-labelledby": "profile-tab",
                 },
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "owl-carousel owl-custom" },
-                  [
-                    _vm._l(_vm.data2, function (item) {
-                      return [
-                        _c(
-                          "div",
-                          { staticClass: "rectangle position-relative" },
-                          [
-                            _c("div", { staticClass: "rectangle-img" }, [
-                              _c("img", {
-                                attrs: {
-                                  src: _vm.bg_photo[
-                                    Math.floor(
-                                      Math.random() * _vm.bg_photo.length
-                                    )
-                                  ],
-                                  alt: "",
-                                },
-                              }),
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "d-flex justify-content-between" },
-                              [
-                                _c("div", { staticClass: "rectangle-lot" }, [
-                                  _vm._v(_vm._s(item.created_at)),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "rectangle-lot" }, [
-                                  _vm._v(_vm._s(item.regnum)),
-                                ]),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "rectangle-name mb-auto" },
-                              [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(item.region) +
-                                    " , " +
-                                    _vm._s(item.district) +
-                                    "\n                                "
-                                ),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "rectangle-footer" }, [
-                              _c("div", { staticClass: "rectangle-ga" }, [
-                                _vm._v(_vm._s(item.area) + " Ga"),
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "owl-carousel owl-custom",
+                      attrs: { id: "fields1Indicators" },
+                    },
+                    [
+                      _vm._l(_vm.data, function (item) {
+                        return [
+                          _c(
+                            "div",
+                            { staticClass: "rectangle position-relative" },
+                            [
+                              _c("div", { staticClass: "rectangle-img" }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: _vm.bg_photo[
+                                      Math.floor(
+                                        Math.random() * _vm.bg_photo.length
+                                      )
+                                    ],
+                                    alt: "",
+                                  },
+                                }),
                               ]),
                               _vm._v(" "),
-                              _vm._m(3, true),
-                            ]),
-                          ]
-                        ),
-                      ]
-                    }),
-                  ],
-                  2
-                ),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "tab-pane fade",
-                attrs: {
-                  id: "contact",
-                  role: "tabpanel",
-                  "aria-labelledby": "contact-tab",
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "d-flex justify-content-between",
+                                },
+                                [
+                                  _c("div", { staticClass: "rectangle-lot" }, [
+                                    _vm._v(_vm._s(item.created_at)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "rectangle-lot" }, [
+                                    _vm._v(_vm._s(item.regnum)),
+                                  ]),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "rectangle-name mb-auto" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(item.region) +
+                                      " , " +
+                                      _vm._s(item.district) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "rectangle-footer" }, [
+                                _c("div", { staticClass: "rectangle-ga" }, [
+                                  _vm._v(_vm._s(item.area) + " Ga"),
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(4, true),
+                              ]),
+                            ]
+                          ),
+                        ]
+                      }),
+                    ],
+                    2
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "tab-pane fade",
+                  attrs: {
+                    id: "profile",
+                    role: "tabpanel",
+                    "aria-labelledby": "profile-tab",
+                  },
                 },
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "owl-carousel owl-custom" },
-                  [
-                    _vm._l(_vm.data3, function (item) {
-                      return [
-                        _c(
-                          "div",
-                          { staticClass: "rectangle position-relative" },
-                          [
-                            _c("div", { staticClass: "rectangle-img" }, [
-                              _c("img", {
-                                attrs: {
-                                  src: _vm.bg_photo[
-                                    Math.floor(
-                                      Math.random() * _vm.bg_photo.length
-                                    )
-                                  ],
-                                  alt: "",
-                                },
-                              }),
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "d-flex justify-content-between" },
-                              [
-                                _c("div", { staticClass: "rectangle-lot" }, [
-                                  _vm._v(_vm._s(item.created_at)),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "rectangle-lot" }, [
-                                  _vm._v(_vm._s(item.regnum)),
-                                ]),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "rectangle-name mb-auto" },
-                              [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(item.region) +
-                                    " , " +
-                                    _vm._s(item.district) +
-                                    "\n                                "
-                                ),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "rectangle-footer" }, [
-                              _c("div", { staticClass: "rectangle-ga" }, [
-                                _vm._v(_vm._s(item.area) + " Ga"),
+                [
+                  _c(
+                    "div",
+                    { staticClass: "owl-carousel owl-custom" },
+                    [
+                      _vm._l(_vm.data2, function (item) {
+                        return [
+                          _c(
+                            "div",
+                            { staticClass: "rectangle position-relative" },
+                            [
+                              _c("div", { staticClass: "rectangle-img" }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: _vm.bg_photo[
+                                      Math.floor(
+                                        Math.random() * _vm.bg_photo.length
+                                      )
+                                    ],
+                                    alt: "",
+                                  },
+                                }),
                               ]),
                               _vm._v(" "),
-                              _vm._m(4, true),
-                            ]),
-                          ]
-                        ),
-                      ]
-                    }),
-                  ],
-                  2
-                ),
-              ]
-            ),
-          ]
-        ),
-        _vm._v(" "),
-        _c("button", { staticClass: "barchasi d-lg-none" }, [
-          _vm._v("Hammasini ko'rish"),
-        ]),
-      ]),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "d-flex justify-content-between",
+                                },
+                                [
+                                  _c("div", { staticClass: "rectangle-lot" }, [
+                                    _vm._v(_vm._s(item.created_at)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "rectangle-lot" }, [
+                                    _vm._v(_vm._s(item.regnum)),
+                                  ]),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "rectangle-name mb-auto" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(item.region) +
+                                      " , " +
+                                      _vm._s(item.district) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "rectangle-footer" }, [
+                                _c("div", { staticClass: "rectangle-ga" }, [
+                                  _vm._v(_vm._s(item.area) + " Ga"),
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(5, true),
+                              ]),
+                            ]
+                          ),
+                        ]
+                      }),
+                    ],
+                    2
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "tab-pane fade",
+                  attrs: {
+                    id: "contact",
+                    role: "tabpanel",
+                    "aria-labelledby": "contact-tab",
+                  },
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "owl-carousel owl-custom" },
+                    [
+                      _vm._l(_vm.data3, function (item) {
+                        return [
+                          _c(
+                            "div",
+                            { staticClass: "rectangle position-relative" },
+                            [
+                              _c("div", { staticClass: "rectangle-img" }, [
+                                _c("img", {
+                                  attrs: {
+                                    src: _vm.bg_photo[
+                                      Math.floor(
+                                        Math.random() * _vm.bg_photo.length
+                                      )
+                                    ],
+                                    alt: "",
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "d-flex justify-content-between",
+                                },
+                                [
+                                  _c("div", { staticClass: "rectangle-lot" }, [
+                                    _vm._v(_vm._s(item.created_at)),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "rectangle-lot" }, [
+                                    _vm._v(_vm._s(item.regnum)),
+                                  ]),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "rectangle-name mb-auto" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(item.region) +
+                                      " , " +
+                                      _vm._s(item.district) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "rectangle-footer" }, [
+                                _c("div", { staticClass: "rectangle-ga" }, [
+                                  _vm._v(_vm._s(item.area) + " Ga"),
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(6, true),
+                              ]),
+                            ]
+                          ),
+                        ]
+                      }),
+                    ],
+                    2
+                  ),
+                ]
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { staticClass: "barchasi d-lg-none", attrs: { to: "/all" } },
+            [_vm._v("Hammasini ko'rish")]
+          ),
+        ],
+        1
+      ),
     ]),
   ])
 }
@@ -24183,77 +24229,76 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "ul",
-      { staticClass: "nav nav-tabs", attrs: { id: "myTab", role: "tablist" } },
+      "li",
+      { staticClass: "nav-item", attrs: { role: "presentation" } },
       [
-        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link active",
-              attrs: {
-                id: "home-tab",
-                "data-toggle": "tab",
-                href: "#home",
-                role: "tab",
-                "aria-controls": "home",
-                "aria-selected": "true",
-              },
+        _c(
+          "a",
+          {
+            staticClass: "nav-link active",
+            attrs: {
+              id: "home-tab",
+              "data-toggle": "tab",
+              href: "#home",
+              role: "tab",
+              "aria-controls": "home",
+              "aria-selected": "true",
             },
-            [_vm._v("Bo'sh yerlar")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                id: "profile-tab",
-                "data-toggle": "tab",
-                href: "#profile",
-                role: "tab",
-                "aria-controls": "profile",
-                "aria-selected": "false",
-              },
+          },
+          [_vm._v("Bo'sh yerlar")]
+        ),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "nav-item", attrs: { role: "presentation" } },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link",
+            attrs: {
+              id: "profile-tab",
+              "data-toggle": "tab",
+              href: "#profile",
+              role: "tab",
+              "aria-controls": "profile",
+              "aria-selected": "false",
             },
-            [_vm._v("Loyihalashda")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                id: "contact-tab",
-                "data-toggle": "tab",
-                href: "#contact",
-                role: "tab",
-                "aria-controls": "contact",
-                "aria-selected": "false",
-              },
+          },
+          [_vm._v("Loyihalashda")]
+        ),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "nav-item", attrs: { role: "presentation" } },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link",
+            attrs: {
+              id: "contact-tab",
+              "data-toggle": "tab",
+              href: "#contact",
+              role: "tab",
+              "aria-controls": "contact",
+              "aria-selected": "false",
             },
-            [_vm._v("Tanlovda")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "date-list d-sm-none" }, [
-          _c("div", { staticClass: "date" }, [
-            _c("a", { attrs: { href: "" } }, [
-              _vm._v("Hammasini ko'rish "),
-              _c("img", {
-                staticStyle: {
-                  transform: "rotate(180deg)",
-                  "margin-left": "16px",
-                },
-                attrs: { src: "image/left.svg", alt: "" },
-              }),
-            ]),
-          ]),
-        ]),
+          },
+          [_vm._v("Tanlovda")]
+        ),
       ]
     )
   },

@@ -37,6 +37,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Manuals"
 });
@@ -140,24 +160,83 @@ var staticRenderFns = [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-12" }, [
           _c("div", { staticClass: "card" }, [
-            _c("a", { staticClass: "file", attrs: { href: "" } }, [
-              _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
-              _vm._v(" "),
-              _c("div", { staticClass: "mx-5" }, [
-                _c("h3", [
-                  _vm._v(
-                    "ID.EGOV.UZ TIZIMIDA AKKAUNTNI ERI BILAN TASDIQLASH BO‘YICHA YO‘RIQNOMA"
-                  ),
+            _c(
+              "a",
+              {
+                staticClass: "file",
+                attrs: { href: "/pdf/E-IJARA_АТ_manual.pdf", target: "_blank" },
+              },
+              [
+                _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "mx-5" }, [
+                  _c("h3", [
+                    _vm._v(
+                      "ID.EGOV.UZ TIZIMIDA AKKAUNTNI ERI BILAN TASDIQLASH BO‘YICHA YO‘RIQNOMA"
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("187KB   -   DOC file")]),
                 ]),
                 _vm._v(" "),
-                _c("p", [_vm._v("187KB   -   DOC file")]),
-              ]),
-              _vm._v(" "),
-              _c("i", {
-                staticClass: "fa fa-arrow-right",
-                attrs: { "aria-hidden": "true" },
-              }),
-            ]),
+                _c("i", {
+                  staticClass: "fa fa-arrow-right",
+                  attrs: { "aria-hidden": "true" },
+                }),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "file",
+                attrs: { href: "/pdf/ID_EGOV_UZ_manual.pdf", target: "_blank" },
+              },
+              [
+                _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "mx-5" }, [
+                  _c("h3", [
+                    _vm._v(
+                      "“E-IJARA” AXBOROT TIZIMI FOYDALANUVCHI QO‘LLANMASI"
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("187KB   -   DOC file")]),
+                ]),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "fa fa-arrow-right",
+                  attrs: { "aria-hidden": "true" },
+                }),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "file",
+                attrs: { href: "/pdf/OneID_manual.pdf", target: "_blank" },
+              },
+              [
+                _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "mx-5" }, [
+                  _c("h3", [
+                    _vm._v(
+                      "ONE ID YAGONA IDENTIFIKATSIYA TIZIMIDA RO‘YXATDAN O‘TISH"
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("187KB   -   DOC file")]),
+                ]),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "fa fa-arrow-right",
+                  attrs: { "aria-hidden": "true" },
+                }),
+              ]
+            ),
           ]),
         ]),
       ]),
