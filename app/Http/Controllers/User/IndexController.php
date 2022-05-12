@@ -15,7 +15,9 @@ class IndexController extends Controller
 {
     public function dashboard()
     {
-        $applications = Application::with(['region','district','land_purpose','status'])->get();
+        $applications = Application::with(['region','district','land_purpose','status'])
+            ->where('user_id', Auth::id())
+            ->get();
 
         return view('user.main', compact('applications'));
     }

@@ -11,7 +11,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="app-header__menu">
         <span>
             <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
@@ -41,6 +41,12 @@
                     <a href="{{ route('user.profile') }}" @if(Route::currentRouteName() == 'user.profile') class="mm-active" @endif>
                         <i class="metismenu-icon pe-7s-user"></i>
                         Малумотларим
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('user.report') }}" @if(Route::currentRouteName() == 'user.report') class="mm-active" @endif>
+                        <i class="metismenu-icon pe-7s-print"></i>
+                        Хисоботлар
                     </a>
                 </li>
             </ul>

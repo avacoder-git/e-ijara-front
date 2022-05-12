@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Front\District;
 use App\Models\Front\Region;
+use App\Models\Front\LocalStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,7 +34,7 @@ class Application extends Model
 
     public function status()
     {
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(LocalStatus::class, 'status_id', 'id');
     }
     public function user()
     {

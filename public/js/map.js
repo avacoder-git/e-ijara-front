@@ -340,5 +340,5 @@ function getRegionGeoJson(id) {
 
 function domain()
 {
-    return "http://ijara.front.git"
+    return "http://eijara.front.git/"
 }
