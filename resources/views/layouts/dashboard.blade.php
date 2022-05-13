@@ -133,9 +133,3 @@
 </body>
 
 </html>
-<script>
-    import Button from "../../../vendor/laravel/breeze/stubs/inertia-vue/resources/js/Components/Button";
-    export default {
-        components: {Button}
-    }
-</script>

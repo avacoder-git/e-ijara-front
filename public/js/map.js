@@ -1,3 +1,4 @@
+
 var map = L.map('map', {
     zoom: 6,
     center: [41.66655, 66.3235],
@@ -153,11 +154,11 @@ function makeGeoJSON(geojson)
     removeMarkers();
     let geoJSON = L.geoJSON(geojson,
     {
-        style: {
-            color: 'red',
-            opacity: 1,
-            fillOpacity: 0.9
-        },
+        // style: {
+        //     color: 'red',
+        //     opacity: 1,
+        //     fillOpacity: 0.9
+        // },
         invert: true,
         onEachFeature: function (feature, layer) {
             layer.myTag = "myGeoJSON"
@@ -167,6 +168,8 @@ function makeGeoJSON(geojson)
     districtJSON = geojson
 
 }
+
+
 
 
 
@@ -190,7 +193,7 @@ function makeDistrictList(regionId)
     data =    getDistricts(regionId)
 
     for (let i = 0; i < data.length; i++) {
-        text += '<button type="button" tabIndex="0" data-id="' + data[i].id + '" class="dropdown-item district">' + data[i].nameuz + '</button>'
+        text += '<button type="button" tabIndex="0" data-cad="'+ data[i].cad_num +'" data-id="' + data[i].id + '" class="dropdown-item district">' + data[i].nameuz + '</button>'
     }
 
     $('#districts').html(text)
@@ -200,9 +203,10 @@ function makeDistrictList(regionId)
         $('#district_name').val($(this).text())
         $('#district_id').val($(this).data('id'))
         var geojson = getDistrict($(this).data('id'))
-
         makeGeoJSON(geojson)
         addControls()
+        makeLandsGeojson($(this).data('cad'))
+
     })
 
 }
@@ -220,6 +224,91 @@ function makeRegionList() {
 
 }
 
+
+var geojsonStyle = {
+    fillColor:"#0090ff",
+    color: "#000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.7,
+};
+
+var options = {
+    maxZoom: 20,
+    tolerance: 3,
+    debug: 0,
+    style: geojsonStyle
+};
+
+var geojsonStyle2 = {
+    fillColor:"#ff0000",
+    color: "#000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.7,
+};
+
+var options2 = {
+    maxZoom: 20,
+    tolerance: 3,
+    debug: 0,
+    style: geojsonStyle2
+};
+
+console.log(getCadLands("15:10"));
+
+function makeLandsGeojson(cad_num)
+{
+    var lands = getLands(cad_num)
+    var cadLands = getCadLands(cad_num)
+
+    var geojson = {
+        features: lands.data,
+        type: "FeatureCollection"
+    }
+    L.geoJson.vt(geojson, options).addTo(map);
+    L.geoJson.vt(cadLands, options2).addTo(map);
+
+}
+
+
+function getCadLands(prefix)
+{
+    var result = false;
+    jQuery.ajax({
+        url: "https://api.agro.uz/gis_bridge/eijara",
+        dataType: "json",
+        type: "get",
+        async: false,
+        data: {
+            prefix
+        },
+        success: function (data) {
+            result = data;
+        },
+    });
+    return result;
+}
+
+
+
+function getLands(cad_num)
+{
+    var result = false;
+    jQuery.ajax({
+        url: domain()+'/api/geojson/lands',
+        dataType: "json",
+        type: "get",
+        async: false,
+        data: {
+            cad_num
+        },
+        success: function (data) {
+            result = data;
+        },
+    });
+    return result;
+}
 function getRegions() {
 
     var result = false;
@@ -340,5 +429,5 @@ function getRegionGeoJson(id) {
 
 function domain()
 {
-    return "http://eijara.front.git/"
+    return "http://ijara.front.git"
 }

@@ -47,7 +47,7 @@ class DistrictController extends Controller
 
     public function getCachedDistricts($regioncode)
     {
-        return DB::select('select id, nameuz, regioncode from districts where regioncode = ' . $regioncode);
+        return DB::select('select id, nameuz, regioncode, cad_num from districts where regioncode = ' . $regioncode);
     }
 
 }

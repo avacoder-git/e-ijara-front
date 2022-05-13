@@ -11,6 +11,11 @@
     <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet.snogylop@0.4.0/src/leaflet.snogylop.min.js"></script>
+    <script src="https://unpkg.com/geojson-vt@3.2.0/geojson-vt.js"></script>
+    <script src="{{ asset('assets/js/geojson-vt.js') }}"></script>
+    <script src="{{ asset('assets/js/leaflet-geojson-vt.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+
     <style>
         #map {
             height: 80%;

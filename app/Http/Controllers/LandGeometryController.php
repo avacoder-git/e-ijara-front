@@ -13,13 +13,16 @@ class LandGeometryController extends Controller
 {
 
 
-    public function index(Request $request, District $district)
+    public function index(Request $request)
     {
-        $area_id = $district->cad_num;
-        $query = "select l.id, ST_AsGeoJSON(g.geometry) from lands l  inner join land_geometries g on g.land_id = l.id where l.cad_number like '%$area_id%'";
+        $area_id = $request->cad_num;
+        $query = "select l.id, ST_AsGeoJSON(g.geometry) from lands l  inner join land_geometries g on g.land_id = l.id where l.cad_number like '%$area_id%' and l.parent_id is null";
 //        $query = "select l.id, ST_AsGeoJSON(g.geometry) from lands l  inner join land_geometries g on g.land_id = l.id where l.district_id = $area_id";
-        $lands = DB::connection('ijaradb')->select($query);
-        return LandIndexResource::collection($lands);
+        $lands = cache()->remember("area-$area_id",60*60*24,function () use($query){
+            return DB::connection('ijaradb')->select($query);
+        });
+        $data = LandIndexResource::collection($lands);
+       return $data;
     }
 
 

@@ -69,6 +69,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -83,7 +89,9 @@ __webpack_require__.r(__webpack_exports__);
       zoom: 6,
       center: [41.66655, 66.3235],
       selectedLand: null,
-      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      url: "http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
+      maxZoom: 20,
+      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       attribution: '<a target="_blank" href="http://www.agro.uz"> www.agro.uz &copy; AgroDigital</a>',
       selectedRegion: null,
       selectedDistrict: null,
@@ -99,6 +107,18 @@ __webpack_require__.r(__webpack_exports__);
         tolerance: 3,
         debug: 0 // style: geojsonStyle
 
+      },
+      mapOptions: {
+        style: function style(feature) {
+          return {
+            weight: 4,
+            fill: 'url(/img/land_bg.png)',
+            // opacity: 0.7,
+            // fillColor:'#000',
+            color: '#189987',
+            fillOpacity: 0.5
+          };
+        }
       }
     };
   },
@@ -155,7 +175,14 @@ __webpack_require__.r(__webpack_exports__);
 
         _this3.makeGeoJSON(geojson);
       });
-      this.drawLands(this.selectedDistrict);
+      this.drawLands(this.getCadNum(this.selectedDistrict));
+    },
+    getCadNum: function getCadNum(id) {
+      var data = this.districts;
+
+      for (var i = 0; i < data.length; i++) {
+        if (id === data[i].id) return data[i].cad_num;
+      }
     },
     getRegionGeoJSON: function getRegionGeoJSON($region) {
       var _this4 = this;
@@ -177,39 +204,38 @@ __webpack_require__.r(__webpack_exports__);
       }).addTo(this.$refs.map.mapObject);
       this.$refs.map.mapObject.fitBounds(geoJSON.getBounds());
     },
-    drawLands: function drawLands(district_id) {
-      var _this5 = this;
-
-      axios.get("/api/geojson/lands/".concat(district_id)).then(function (response) {
-        _this5.removeMarkers();
-
-        var data = response.data.data;
-        get(layer);
-        {
-          console.log(layer);
-        }
-
-        var _loop = function _loop(i) {
-          leaflet__WEBPACK_IMPORTED_MODULE_1___default().geoJSON(data[i].geojson, {
-            onEachFeature: function onEachFeature(feature, layer) {
-              layer.myTag = "myGeoJSON", layer.id = data[i].id, layer.on('click', function (e) {
-                featureLayer.bindPopup(feature.properties.name);
-              });
-            }
-          }).addTo(_this5.$refs.map.mapObject);
-        };
-
-        for (var i = 0; i < data.length; i++) {
-          _loop(i);
-        }
-      });
-    },
     removeMarkers: function removeMarkers() {
       var map = this.$refs.map.mapObject;
       map.eachLayer(function (layer) {
         if (layer.myTag && layer.myTag === "myGeoJSON") {
           map.removeLayer(layer);
         }
+      });
+    },
+    drawLands: function drawLands(cad_num) {
+      var _this5 = this;
+
+      axios.get("/api/geojson/lands", {
+        params: {
+          cad_num: cad_num
+        }
+      }).then(function (response) {
+        _this5.removeMarkers();
+
+        _this5.lands = response.data.data;
+      });
+    },
+    drawCadLands: function drawCadLands(prefix) {
+      var _this6 = this;
+
+      axios.get("/api/geojson/lands", {
+        params: {
+          prefix: prefix
+        }
+      }).then(function (response) {
+        _this6.removeMarkers();
+
+        _this6.lands = response.data.data;
       });
     }
   },
@@ -491,12 +517,28 @@ var render = function () {
           { ref: "map", attrs: { zoom: _vm.zoom, center: _vm.center } },
           [
             _c("l-tile-layer", {
-              attrs: { url: _vm.url, attribution: _vm.attribution },
+              attrs: {
+                maxZoom: _vm.maxZoom,
+                subdomains: _vm.subdomains,
+                url: _vm.url,
+                attribution: _vm.attribution,
+              },
             }),
             _vm._v(" "),
             _c("l-control-zoom", { attrs: { position: "bottomright" } }),
+            _vm._v(" "),
+            _vm._l(_vm.lands, function (land) {
+              return _c("l-geo-json", {
+                key: land.id,
+                attrs: {
+                  options: _vm.mapOptions,
+                  data: land.id,
+                  geojson: land.geometry,
+                },
+              })
+            }),
           ],
-          1
+          2
         ),
       ],
       1

@@ -38,8 +38,14 @@
                 ref="map"
                 :zoom="zoom"
                 :center="center">
-                <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+                <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains" :url="url" :attribution="attribution"></l-tile-layer>
                 <l-control-zoom position="bottomright"></l-control-zoom>
+                <l-geo-json v-for="land in lands"
+                            :options="mapOptions"
+                            v-bind:data="land.id"
+                            v-bind:key="land.id"
+                            :geojson="land.geometry"
+                ></l-geo-json>
 
             </l-map>
 
@@ -53,8 +59,7 @@
 
 import 'vue-select/dist/vue-select.css';
 import L from 'leaflet';
-import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson} from 'vue2-leaflet';
-
+import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson, LGridLayer} from 'vue2-leaflet';
 
 export default {
     name: "Map",
@@ -67,7 +72,9 @@ export default {
             zoom: 6,
             center: [41.66655, 66.3235],
             selectedLand: null,
-            url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            url: "http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
             attribution:
                 '<a target="_blank" href="http://www.agro.uz"> www.agro.uz &copy; AgroDigital</a>',
             selectedRegion: null,
@@ -84,7 +91,20 @@ export default {
                 tolerance: 3,
                 debug: 0,
                 // style: geojsonStyle
+            },
+            mapOptions: {
+                style: function style(feature) {
+                    return {
+                        weight: 4,
+                        fill: 'url(/img/land_bg.png)',
+                        // opacity: 0.7,
+                        // fillColor:'#000',
+                        color:'#189987',
+                        fillOpacity: 0.5
+                    };
+                },
             }
+
         };
     },
     components: {
@@ -136,7 +156,15 @@ export default {
                     var geojson = response.data
                     this.makeGeoJSON(geojson)
                 })
-            this.drawLands(this.selectedDistrict)
+            this.drawLands(this.getCadNum(this.selectedDistrict))
+
+        },
+
+        getCadNum(id) {
+            var data = this.districts
+            for (let i = 0; i < data.length; i++)
+                if (id === data[i].id)
+                    return data[i].cad_num
 
         },
 
@@ -162,32 +190,7 @@ export default {
             this.$refs.map.mapObject.fitBounds(geoJSON.getBounds());
         },
 
-        drawLands(district_id) {
-            axios.get(`/api/geojson/lands/${district_id}`)
-                .then(response => {
-                    this.removeMarkers()
-                    var data = response.data.data
 
-                    get(layer)
-                    {
-                        console.log(layer);
-                    }
-
-                    for (let i = 0; i < data.length; i++) {
-                        L.geoJSON(data[i].geojson,
-                            {
-                                onEachFeature: function (feature, layer) {
-                                    layer.myTag = "myGeoJSON",
-                                    layer.id = data[i].id,
-                                        layer.on('click', function (e) {
-                                            featureLayer.bindPopup(feature.properties.name);
-                                        });
-                                }
-                            }).addTo(this.$refs.map.mapObject)
-                    }
-                })
-
-        },
         removeMarkers() {
             var map = this.$refs.map.mapObject
             map.eachLayer(function (layer) {
@@ -198,7 +201,22 @@ export default {
             });
 
         },
+        drawLands(cad_num) {
+            axios.get(`/api/geojson/lands`, {params: {cad_num}})
+                .then(response => {
+                    this.removeMarkers()
+                    this.lands = response.data.data
+                })
 
+        },
+        drawCadLands(prefix) {
+            axios.get(`/api/geojson/lands`, {params: {prefix}})
+                .then(response => {
+                    this.removeMarkers()
+                    this.lands = response.data.data
+                })
+
+        },
 
     },
 

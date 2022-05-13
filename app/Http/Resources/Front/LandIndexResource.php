@@ -26,8 +26,10 @@ class LandIndexResource extends JsonResource
 
         return
         [
-            'id' => $this->id,
-            'geojson' => $arr,
+            'geometry' => json_decode($this->st_asgeojson),
+            "properties" =>[
+                "name" => "Многоугольник 1"
+            ]
         ];
     }
 }
