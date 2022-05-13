@@ -24,19 +24,17 @@ class RegionController extends Controller
 
             $geometry = $item['geometry'];
             $geometry['csr'] = ['type'=> 'name','properties' => ['name'=>'EPSG:4326']];
-            dd($geometry);
             $geometry = json_encode($geometry);
-             dd($geometry);
             $name = $item['properties']['name'];
 
             $geometry =  DB::raw("ST_GeomFromGeoJSON('$geometry')");
-             dd($geometry);
             // dd($name);
             $region->nameuz = $name;
             $region->nameru = $name;
-            $region->regioncode = $item['properties']['kadastr'];
+            $region->cad_num = $item['properties']['cadastr_num'];;
+            $region->regioncode = explode(':',$item['properties']['kadastr'])[0];
             $region->geometry = $geometry;
-//            $region->save();
+            $region->save();
             // dd(Region::truncate());
 
             // $data = DB::statement("INSERT INTO regions (nameuz, geometry) VALUES ('$name',  $geometry)");

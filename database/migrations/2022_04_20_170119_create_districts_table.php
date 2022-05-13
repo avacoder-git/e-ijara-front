@@ -18,6 +18,7 @@ class CreateDistrictsTable extends Migration
             $table->string('nameru');
             $table->string('nameuz');
             $table->integer('regioncode');
+            $table->string('cad_num');
             $table->geometry('geometry');
             $table->timestamps();
         });
