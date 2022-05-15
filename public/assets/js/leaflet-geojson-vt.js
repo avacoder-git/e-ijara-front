@@ -1,3 +1,5 @@
+import geojsonvt from "geojson-vt";
+
 L.GeoJSON.VT = L.GridLayer.extend({
     options: {
         async: false,
@@ -97,10 +99,12 @@ L.GeoJSON.VT = L.GridLayer.extend({
         }
     },
 });
-
-L.geoJson.vt = function (geojson, options) {
+function vt (geojson, options) {
     return new L.GeoJSON.VT(geojson, options);
-};
+}
+
+export default vt
+
 
 String.prototype.iscolorHex = function () {
     var sColor = this.toLowerCase();

@@ -38,7 +38,8 @@
                 ref="map"
                 :zoom="zoom"
                 :center="center">
-                <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains" :url="url" :attribution="attribution"></l-tile-layer>
+                <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains" :url="url"
+                              :attribution="attribution"></l-tile-layer>
                 <l-control-zoom position="bottomright"></l-control-zoom>
                 <l-geo-json v-for="land in lands"
                             :options="mapOptions"
@@ -60,6 +61,8 @@
 import 'vue-select/dist/vue-select.css';
 import L from 'leaflet';
 import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson, LGridLayer} from 'vue2-leaflet';
+import vt from "../../../../public/assets/js/leaflet-geojson-vt"
+
 
 export default {
     name: "Map",
@@ -99,7 +102,7 @@ export default {
                         fill: 'url(/img/land_bg.png)',
                         // opacity: 0.7,
                         // fillColor:'#000',
-                        color:'#189987',
+                        color: '#189987',
                         fillOpacity: 0.5
                     };
                 },
@@ -157,6 +160,7 @@ export default {
                     this.makeGeoJSON(geojson)
                 })
             this.drawLands(this.getCadNum(this.selectedDistrict))
+            this.drawCadLands(this.getCadNum(this.selectedDistrict))
 
         },
 
@@ -205,7 +209,32 @@ export default {
             axios.get(`/api/geojson/lands`, {params: {cad_num}})
                 .then(response => {
                     this.removeMarkers()
-                    this.lands = response.data.data
+                    var lands = response.data
+
+                    var geojsonStyle = {
+                        fillColor: "#0090ff",
+                        color: "#000",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.7,
+                    };
+
+                    var options = {
+                        maxZoom: 20,
+                        tolerance: 3,
+                        debug: 0,
+                        style: geojsonStyle
+                    };
+
+                    var geojson = {
+                        features: lands.data,
+                        type: "FeatureCollection"
+                    }
+
+                    console.log(geojson);
+                    vt(geojson, options).addTo(this.$refs.map.mapObject);
+
+
                 })
 
         },
@@ -213,7 +242,32 @@ export default {
             axios.get(`/api/geojson/lands`, {params: {prefix}})
                 .then(response => {
                     this.removeMarkers()
-                    this.lands = response.data.data
+                    var lands = response.data
+
+                    var geojsonStyle = {
+                        fillColor: "#ff0000",
+                        color: "#000",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.7,
+                    };
+
+                    var options = {
+                        maxZoom: 20,
+                        tolerance: 3,
+                        debug: 0,
+                        style: geojsonStyle
+                    };
+
+                    var geojson = {
+                        features: lands.data,
+                        type: "FeatureCollection"
+                    }
+
+                    if (lands)
+                        vt(geojson, options).addTo(this.$refs.map.mapObject);
+
+
                 })
 
         },
