@@ -262,12 +262,15 @@ function makeLandsGeojson(cad_num)
     var lands = getLands(cad_num)
     var cadLands = getCadLands(cad_num)
 
+    if (cadLands.features)
+        L.geoJson.vt(cadLands, options2).addTo(map);
+
+
     var geojson = {
         features: lands.data,
         type: "FeatureCollection"
     }
     L.geoJson.vt(geojson, options).addTo(map);
-    L.geoJson.vt(cadLands, options2).addTo(map);
 
 }
 
