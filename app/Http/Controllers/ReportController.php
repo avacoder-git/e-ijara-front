@@ -177,4 +177,8 @@ class ReportController extends Controller
         return response()->json($districts);
     }
 
+    public function report(Request $request)
+    {
+        dd($request->all());
+    }
 }

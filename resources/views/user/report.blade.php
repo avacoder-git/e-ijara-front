@@ -4,11 +4,12 @@
     <div class="col-md-12">
         <div class="main-card mb-3 card">
             <div class="card-body"><h5 class="card-title">Хисобот шаклини киритинг</h5>
-                <form>
+                <form method="POST" action="{{ route('user.reportDownload') }}">
+                    @csrf
                     <div class="position-relative form-group">
                         <label for="region" class="">Вилоятни танланг</label>
                         <select name="region" id="region" class="form-control" required>
-                            <option hidden>Вилоятни танланг</option>
+                            <option value="" hidden>Вилоятни танланг</option>
                             @foreach($regions as $region)
                                 <option value="{{ $region['regionid'] }}">{{ $region['nameuz'] }}</option>
                             @endforeach
@@ -17,7 +18,7 @@
                     <div class="position-relative form-group">
                         <label for="district" class="">Туманни танланг</label>
                         <select name="district" id="district" class="form-control" required>
-                            <option hidden>Туманни танланг</option>
+                            <option value="" hidden>Туманни танланг</option>
                         </select>
                     </div>
 
@@ -41,6 +42,7 @@
                             @endforeach
                         </select>
                     </div>
+                    <button class="btn mr-2 mb-2 btn-primary" type="submit">Тахрирлаш</button>
                 </form>
             </div>
         </div>
@@ -68,7 +70,6 @@
                         {
                             if(data){
                                 $('#district').empty();
-                                $('#district').append('<option hidden>Туманни танланг</option>');
                                 $.each(data, function(key, district){
                                     $('select[name="district"]').append('<option value="'+ district.areaid +'">' + district.nameuz + '</option>');
                                 });

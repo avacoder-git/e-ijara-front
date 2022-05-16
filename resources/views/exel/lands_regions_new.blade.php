@@ -167,7 +167,9 @@
             $land_suvli_auksionreturned = \App\Services\StatHelper::GetSuvli(null,null,"15",null);
             $land_suvli_auksionfinished = \App\Services\StatHelper::GetSuvli(null,null,null,"6");
             $land_suvli_auksion_imzolash_kutilmoqda = \App\Services\StatHelper::GetSuvli(null,null,"26",null);
-            $land_hokimyat_imzolandi = \App\Services\StatHelper::GetHokimyatImzolandi()
+            $land_hokimyat_imzolandi = \App\Services\StatHelper::GetHokimyatImzolandi();
+            $land_suvli_kadastrda_ruyhatga_olingan = \App\Services\StatHelper::GetSuvli(null,null,"31",null);
+            $land_suvli_kadastr_ruyhatga_otkazilmoqda = \App\Services\StatHelper::GetSuvli(null,null,"29,30,32",null);
 
 
 
@@ -225,12 +227,12 @@
         <td>{{round($land_counts->auksion_finish_d_area,2)}}</td>
         <td>{{$land_suvli_auksionfinished->d_suvli_count}}</td>
         <td>{{round($land_suvli_auksionfinished->d_suvli_area,2)}}</td>
-        <td>{{$land_counts->auksion_finish_count - $land_counts->auksion_finish_d_count }}</td>
-        <td>{{round($land_counts->auksion_finish_area - $land_counts->auksion_finish_d_area,2) }}</td>
+        <td>{{$land_counts->auksion_finish_y_count }}</td>
+        <td>{{round($land_counts->auksion_finish_y_area,2) }}</td>
         <td>{{ $land_counts->auksion_shartnomaimzolangan_count }}</td>
         <td>{{ round($land_counts->auksion_shartnomaimzolangan_area,2) }}</td>
-        <td>{{$land_counts->auksion_finish_d_count - $land_counts->auksion_shartnomaimzolangan_count }}</td>
-        <td>{{round($land_counts->auksion_finish_d_area - $land_counts->auksion_shartnomaimzolangan_area,2) }}</td>
+        <td>{{$land_counts->auksion_shartnomaimzolangan_kutilmoqda_nobay_d_count }}</td>
+        <td>{{round($land_counts->auksion_shartnomaimzolangan_kutilmoqda_nobay_d_area,2) }}</td>
         <td>{{ $land_counts->auksion_shartnomaimzolangan_kutilmoqda_count }}</td>
         <td>{{ round($land_counts->auksion_shartnomaimzolangan_kutilmoqda_area,2) }}</td>
         <td>{{ $land_counts->auksion_shartnomaimzolangan_kutilmoqda_d_count }}</td>
@@ -239,30 +241,30 @@
         <td>{{round($land_suvli_auksion_imzolash_kutilmoqda->d_suvli_area,2)}}</td>
         <td>{{ $land_counts->auksion_shartnomaimzolangan_kutilmoqda_count - $land_counts->auksion_shartnomaimzolangan_kutilmoqda_d_count }}</td>
         <td>{{ round($land_counts->auksion_shartnomaimzolangan_kutilmoqda_area - $land_counts->auksion_shartnomaimzolangan_kutilmoqda_d_area ,2) }}</td>
-        <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_count}}</td>
-        <td>{{ round($land_hokimyat_imzolandi->hokimlikda_imzolandi_area,2) }}</td>
-        <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_d_count}}</td>
-        <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_d_area,2)}}</td>
+        <td>{{$land_counts->hokimlikda_imzolandi_count}}</td>
+        <td>{{ round($land_counts->hokimlikda_imzolandi_area,2) }}</td>
+        <td>{{$land_counts->hokimlikda_imzolandi_d_count}}</td>
+        <td>{{round($land_counts->hokimlikda_imzolandi_d_area,2)}}</td>
         <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_d_suvli_count}}</td>
         <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_d_suvli_area,2)}}</td>
-        <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_count - $land_hokimyat_imzolandi->hokimlikda_imzolandi_d_count }}</td>
-        <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_area - $land_hokimyat_imzolandi->hokimlikda_imzolandi_d_area,2)}}</td>
-        <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_count}}</td>
-        <td>{{ round($land_hokimyat_imzolandi->hokimlikda_imzolandi_area,2) }}</td>
-        <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_d_count}}</td>
-        <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_d_area,2)}}</td>
-        <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_d_suvli_count}}</td>
-        <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_d_suvli_area,2)}}</td>
-        <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_count - $land_hokimyat_imzolandi->hokimlikda_imzolandi_d_count }}</td>
-        <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_area - $land_hokimyat_imzolandi->hokimlikda_imzolandi_d_area,2)}}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{$land_counts->hokimlikda_imzolandi_y_count }}</td>
+        <td>{{round($land_counts->hokimlikda_imzolandi_y_area,2)}}</td>
+        <td>{{$land_counts->kadastr_ruyhatga_otkazilmoqda_count}}</td>
+        <td>{{round($land_counts->kadastr_ruyhatga_otkazilmoqda_area,2)}}</td>
+        <td>{{$land_counts->kadastr_ruyhatga_otkazilmoqda_d_count}}</td>
+        <td>{{round($land_counts->kadastr_ruyhatga_otkazilmoqda_d_area,2)}}</td>
+        <td>{{$land_suvli_kadastr_ruyhatga_otkazilmoqda->d_suvli_count}}</td>
+        <td>{{round($land_suvli_kadastr_ruyhatga_otkazilmoqda->d_suvli_area,2)}}</td>
+        <td>{{$land_counts->kadastr_ruyhatga_otkazilmoqda_count - $land_counts->kadastr_ruyhatga_otkazilmoqda_d_count }}</td>
+        <td>{{round($land_counts->kadastr_ruyhatga_otkazilmoqda_area - $land_counts->kadastr_ruyhatga_otkazilmoqda_d_area ,2)}}</td>
+        <td>{{$land_counts->kadastr_ruyhatgaolingan_count}}</td>
+        <td>{{round($land_counts->kadastr_ruyhatgaolingan_area,2)}}</td>
+        <td>{{$land_counts->kadastr_ruyhatgaolingan_d_count}}</td>
+        <td>{{round($land_counts->kadastr_ruyhatgaolingan_d_area,2)}}</td>
+        <td>{{$land_suvli_kadastrda_ruyhatga_olingan->d_suvli_count}}</td>
+        <td>{{round($land_suvli_kadastrda_ruyhatga_olingan->d_suvli_area,2)}}</td>
+        <td>{{$land_counts->kadastr_ruyhatgaolingan_count - $land_counts->kadastr_ruyhatgaolingan_d_count }}</td>
+        <td>{{round($land_counts->kadastr_ruyhatgaolingan_area - $land_counts->kadastr_ruyhatgaolingan_d_area ,2)}}</td>
     </tr>
     @foreach($lands as $key=>$item)
         <tr>
@@ -277,7 +279,9 @@
             $land_suvli_auksionreturned = \App\Services\StatHelper::GetSuvli($item->regionid,null,"15",null);
             $land_suvli_auksionfinished = \App\Services\StatHelper::GetSuvli($item->regionid,null,null,"6");
             $land_suvli_auksion_imzolash_kutilmoqda = \App\Services\StatHelper::GetSuvli($item->regionid,null,"26",null);
-            $land_hokimyat_imzolandi = \App\Services\StatHelper::GetHokimyatImzolandi($item->regionid)
+            $land_hokimyat_imzolandi = \App\Services\StatHelper::GetHokimyatImzolandi($item->regionid);
+            $land_suvli_kadastrda_ruyhatga_olingan = \App\Services\StatHelper::GetSuvli($item->regionid,null,"31",null);
+            $land_suvli_kadastr_ruyhatga_otkazilmoqda = \App\Services\StatHelper::GetSuvli($item->regionid,null,"29,30,32",null);
 
 
 
@@ -286,7 +290,7 @@
             <td>{{ $key+1 }}</td>
             <td>{{$item->nameuz}}</td>
             <td>{{\App\Models\PlanedReduced::where('region_id',$item->regionid)->whereNotNull('district_id')->sum('planned')}}</td>
-{{--            <td>{{$item->planned_reduced ? $item->planned_reduced->planned : 0}}</td>--}}
+            {{--            <td>{{$item->planned_reduced ? $item->planned_reduced->planned : 0}}</td>--}}
             <td>{{\App\Models\Land::whereNull('parent_id')->where('is_merged_lot',0)->where('region_id',$item->regionid)->count()}}</td>
             <td>{{round(\App\Models\Land::whereNull('parent_id')->where('is_merged_lot',0)->where('region_id',$item->regionid)->sum('area'),2)}}</td>
             <td>{{$count_inventory->inventory_count}}</td>
@@ -337,12 +341,12 @@
             <td>{{round($land_counts->auksion_finish_d_area,2)}}</td>
             <td>{{$land_suvli_auksionfinished->d_suvli_count}}</td>
             <td>{{round($land_suvli_auksionfinished->d_suvli_area,2)}}</td>
-            <td>{{$land_counts->auksion_finish_count - $land_counts->auksion_finish_d_count }}</td>
-            <td>{{round($land_counts->auksion_finish_area - $land_counts->auksion_finish_d_area,2) }}</td>
+            <td>{{$land_counts->auksion_finish_y_count }}</td>
+            <td>{{round($land_counts->auksion_finish_y_area,2) }}</td>
             <td>{{ $land_counts->auksion_shartnomaimzolangan_count }}</td>
             <td>{{ round($land_counts->auksion_shartnomaimzolangan_area,2) }}</td>
-            <td>{{$land_counts->auksion_finish_d_count - $land_counts->auksion_shartnomaimzolangan_count }}</td>
-            <td>{{round($land_counts->auksion_finish_d_area - $land_counts->auksion_shartnomaimzolangan_area,2) }}</td>
+            <td>{{$land_counts->auksion_shartnomaimzolangan_kutilmoqda_nobay_d_count }}</td>
+            <td>{{round($land_counts->auksion_shartnomaimzolangan_kutilmoqda_nobay_d_area,2) }}</td>
             <td>{{ $land_counts->auksion_shartnomaimzolangan_kutilmoqda_count }}</td>
             <td>{{ round($land_counts->auksion_shartnomaimzolangan_kutilmoqda_area,2) }}</td>
             <td>{{ $land_counts->auksion_shartnomaimzolangan_kutilmoqda_d_count }}</td>
@@ -351,30 +355,30 @@
             <td>{{round($land_suvli_auksion_imzolash_kutilmoqda->d_suvli_area,2)}}</td>
             <td>{{ $land_counts->auksion_shartnomaimzolangan_kutilmoqda_count - $land_counts->auksion_shartnomaimzolangan_kutilmoqda_d_count }}</td>
             <td>{{ round($land_counts->auksion_shartnomaimzolangan_kutilmoqda_area - $land_counts->auksion_shartnomaimzolangan_kutilmoqda_d_area ,2) }}</td>
-            <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_count}}</td>
-            <td>{{ round($land_hokimyat_imzolandi->hokimlikda_imzolandi_area,2) }}</td>
-            <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_d_count}}</td>
-            <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_d_area,2)}}</td>
+            <td>{{$land_counts->hokimlikda_imzolandi_count}}</td>
+            <td>{{ round($land_counts->hokimlikda_imzolandi_area,2) }}</td>
+            <td>{{$land_counts->hokimlikda_imzolandi_d_count}}</td>
+            <td>{{round($land_counts->hokimlikda_imzolandi_d_area,2)}}</td>
             <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_d_suvli_count}}</td>
             <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_d_suvli_area,2)}}</td>
-            <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_count - $land_hokimyat_imzolandi->hokimlikda_imzolandi_d_count }}</td>
-            <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_area - $land_hokimyat_imzolandi->hokimlikda_imzolandi_d_area,2)}}</td>
-            <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_count}}</td>
-            <td>{{ round($land_hokimyat_imzolandi->hokimlikda_imzolandi_area,2) }}</td>
-            <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_d_count}}</td>
-            <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_d_area,2)}}</td>
-            <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_d_suvli_count}}</td>
-            <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_d_suvli_area,2)}}</td>
-            <td>{{$land_hokimyat_imzolandi->hokimlikda_imzolandi_count - $land_hokimyat_imzolandi->hokimlikda_imzolandi_d_count }}</td>
-            <td>{{round($land_hokimyat_imzolandi->hokimlikda_imzolandi_area - $land_hokimyat_imzolandi->hokimlikda_imzolandi_d_area,2)}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{$land_counts->hokimlikda_imzolandi_y_count }}</td>
+            <td>{{round($land_counts->hokimlikda_imzolandi_y_area,2)}}</td>
+            <td>{{$land_counts->kadastr_ruyhatga_otkazilmoqda_count}}</td>
+            <td>{{round($land_counts->kadastr_ruyhatga_otkazilmoqda_area,2)}}</td>
+            <td>{{$land_counts->kadastr_ruyhatga_otkazilmoqda_d_count}}</td>
+            <td>{{round($land_counts->kadastr_ruyhatga_otkazilmoqda_d_area,2)}}</td>
+            <td>{{$land_suvli_kadastr_ruyhatga_otkazilmoqda->d_suvli_count}}</td>
+            <td>{{round($land_suvli_kadastr_ruyhatga_otkazilmoqda->d_suvli_area,2)}}</td>
+            <td>{{$land_counts->kadastr_ruyhatga_otkazilmoqda_count - $land_counts->kadastr_ruyhatga_otkazilmoqda_d_count }}</td>
+            <td>{{round($land_counts->kadastr_ruyhatga_otkazilmoqda_area - $land_counts->kadastr_ruyhatga_otkazilmoqda_d_area ,2)}}</td>
+            <td>{{$land_counts->kadastr_ruyhatgaolingan_count}}</td>
+            <td>{{round($land_counts->kadastr_ruyhatgaolingan_area,2)}}</td>
+            <td>{{$land_counts->kadastr_ruyhatgaolingan_d_count}}</td>
+            <td>{{round($land_counts->kadastr_ruyhatgaolingan_d_area,2)}}</td>
+            <td>{{$land_suvli_kadastrda_ruyhatga_olingan->d_suvli_count}}</td>
+            <td>{{round($land_suvli_kadastrda_ruyhatga_olingan->d_suvli_area,2)}}</td>
+            <td>{{$land_counts->kadastr_ruyhatgaolingan_count - $land_counts->kadastr_ruyhatgaolingan_d_count }}</td>
+            <td>{{round($land_counts->kadastr_ruyhatgaolingan_area - $land_counts->kadastr_ruyhatgaolingan_d_area ,2)}}</td>
         </tr>
     @endforeach
 </table>

@@ -10,31 +10,18 @@ class StatHelper
     {
 
         $query = "select
-                   count(case when (ro.organization_id in (3, 4)) then 1 end)                            as kadastr_count,
-                   sum(case when (ro.organization_id in (3, 4)) then l.area end)                         as kadastr_area,
-                   count(case when (l.person_type = 'J' and ro.organization_id in (3, 4)) then 1 end)    as kadastr_d_count,
-                   sum(case when (l.person_type = 'J' and ro.organization_id in (3, 4)) then l.area end) as kadastr_d_area,
-
-                   count(case when (ro.organization_id = 2) then 1 end)                                  as suv_count,
-                   sum(case when (ro.organization_id = 2) then l.area end)                               as suv_area,
-                   count(case when (l.person_type = 'J' and ro.organization_id = 2) then 1 end)          as suv_d_count,
-                   sum(case when (l.person_type = 'J' and ro.organization_id = 2) then l.area end)       as suv_d_area,
-
-                   count(case when (ro.organization_id = 1) then 1 end)                                  as qishloq_count,
-                   sum(case when (ro.organization_id = 1) then l.area end)                               as qishloq_area,
-                   count(case when (l.person_type = 'J' and ro.organization_id = 1) then 1 end)          as qishloq_d_count,
-                   sum(case when (l.person_type = 'J' and ro.organization_id = 1) then l.area end)       as qishloq_d_area,
-
-
-                   count(case when (ro.organization_id in (1,2,3,4)) then 1 end)                                 as idora_all_count,
-                   sum(case when (ro.organization_id in (1,2,3,4)) then l.area end)                               as idora_all_area,
-                   count(case when (l.person_type = 'J' and ro.organization_id in (1,2,3,4)) then 1 end)          as idora_all_d_count,
-                   sum(case when (l.person_type = 'J' and ro.organization_id in (1,2,3,4)) then l.area end)       as idora_all_d_area
 
 
 
-            from review_orgnizations ro
-                     inner join lands l ON l.id = ro.land_id
+                   count(case when (l.status_id  = 3) then 1 end)                                 as idora_all_count,
+                   sum(case when (l.status_id  = 3) then l.area end)                               as idora_all_area,
+                   count(case when (l.person_type = 'J' and l.status_id  = 3) then 1 end)          as idora_all_d_count,
+                   sum(case when (l.person_type = 'J' and l.status_id  = 3) then l.area end)       as idora_all_d_area
+
+
+
+            from lands l
+
             where l.status_id = 3 and (l.parent_id is not null and l.is_merged_lot = 0 or l.is_merged_lot = 1)";
 
 
@@ -173,11 +160,14 @@ class StatHelper
                sum(case when l.order_statuses_id = 6 then l.area end) as auksion_finish_area,
                count(case when l.order_statuses_id = 6 and l.person_type = 'J' then 1 end) as auksion_finish_d_count,
                sum(case when l.order_statuses_id = 6 and l.person_type = 'J' then l.area end) as auksion_finish_d_area,
+                count(case when l.order_statuses_id = 6 and l.person_type = 'Y' then 1 end) as auksion_finish_y_count,
+               sum(case when l.order_statuses_id = 6 and l.person_type = 'Y' then l.area end) as auksion_finish_y_area,
 
 
 
-                    count(case when l.status_id in (26,27,28,29,30,31,32) and l.person_type = 'J' then 1 end) as auksion_shartnomaimzolangan_count,
-                    sum(case when l.status_id in (26,27,28,29,30,31,32) and l.person_type = 'J' then l.area end) as auksion_shartnomaimzolangan_area,
+
+                    count(case when l.lot_statuses_id in (40,29) and l.person_type = 'J'  then 1 end) as auksion_shartnomaimzolangan_count,
+                    sum(case when l.lot_statuses_id in (40,29) and l.person_type = 'J'  then l.area end) as auksion_shartnomaimzolangan_area,
 
 
                count(case when l.status_id in (26,27) then 1 end) as auksion_shartnomaimzolangan_kutilmoqda_count,
@@ -186,10 +176,22 @@ class StatHelper
                sum(case when l.status_id in (26,27) and l.person_type = 'J' then l.area end) as auksion_shartnomaimzolangan_kutilmoqda_d_area,
 
 
+               count(case when (l.order_statuses_id = 6 and l.lot_statuses_id is null) and l.person_type = 'J' then 1 end) as auksion_shartnomaimzolangan_kutilmoqda_nobay_d_count,
+               sum(case when (l.order_statuses_id = 6 and l.lot_statuses_id is null) and l.person_type = 'J' then l.area end) as auksion_shartnomaimzolangan_kutilmoqda_nobay_d_area,
+
+
                count(case when l.status_id = 15 then 1 end) as auksion_return_count,
                sum(case when l.status_id = 15 then l.area end) as auksion_return_area,
                count(case when l.status_id = 15 and l.person_type = 'J' then 1 end) as auksion_return_d_count,
                sum(case when l.status_id = 15 and l.person_type = 'J' then l.area end) as auksion_return_d_area,
+
+
+                count(case when (l.status_id = 28 or l.lot_statuses_id = 29) then 1 end) as hokimlikda_imzolandi_count,
+                sum(case when (l.status_id = 28 or l.lot_statuses_id = 29) then l.area end) as hokimlikda_imzolandi_area,
+                count(case when (l.status_id = 28 or l.lot_statuses_id = 29) and l.person_type = 'J'  then 1 end) as hokimlikda_imzolandi_d_count,
+                sum(case when (l.status_id = 28 or l.lot_statuses_id = 29)  and l.person_type = 'J' then l.area end) as hokimlikda_imzolandi_d_area,
+                count(case when (l.status_id = 28 or l.lot_statuses_id = 29) and l.person_type = 'Y'  then 1 end) as hokimlikda_imzolandi_y_count,
+                sum(case when (l.status_id = 28 or l.lot_statuses_id = 29)  and l.person_type = 'Y' then l.area end) as hokimlikda_imzolandi_y_area,
 
 
 
@@ -197,6 +199,16 @@ class StatHelper
                sum(case when l.status_id = 26 then l.area end) as shartnoma_imzolandi_area,
                count(case when l.status_id = 27  then 1 end) as shartnoma_imzolanishi_kutulmoqda_count,
                sum(case when l.status_id = 27  then l.area end) as shartnoma_imzolanishi_kutulmoqda_area,
+
+               count(case when l.status_id in (31,33) then 1 end) as kadastr_ruyhatgaolingan_count,
+               sum(case when l.status_id in (31,33) then l.area end) as kadastr_ruyhatgaolingan_area,
+               count(case when l.status_id in (31,33) and l.person_type = 'J' then 1 end) as kadastr_ruyhatgaolingan_d_count,
+               sum(case when l.status_id in (31,33) and l.person_type = 'J' then l.area end) as kadastr_ruyhatgaolingan_d_area,
+
+                count(case when l.status_id in (29,30,32) then 1 end) as kadastr_ruyhatga_otkazilmoqda_count,
+               sum(case when l.status_id  in (29,30,32) then l.area end) as kadastr_ruyhatga_otkazilmoqda_area,
+               count(case when l.status_id  in (29,30,32) and l.person_type = 'J' then 1 end) as kadastr_ruyhatga_otkazilmoqda_d_count,
+               sum(case when l.status_id  in (29,30,32) and l.person_type = 'J' then l.area end) as kadastr_ruyhatga_otkazilmoqda_d_area,
 
 
                  count(case when (l.status_id = 26) then 1 end)                            as viloyat_hokim_shakillantirish_count,
@@ -265,7 +277,7 @@ where lc.land_extra_irragation = '1' and l.status_id not in (25)";
 FROM lands l
 LEFT JOIN land_contours lc ON l.id=lc.land_id
 where
-        lc.land_type = 'arable_area' AND lc.land_extra_irragation = '1'
+         lc.land_extra_irragation = '1'
         and (l.parent_id is not null and l.is_merged_lot = 0) and l.status_id not in (25)
         AND l.person_type = 'J'";
 
@@ -289,19 +301,23 @@ where
     public function GetHokimyatImzolandi($region_id = null, $district_id = null)
     {
         $query = "select
-        count(case when l.status_id >= 28 then 1 end) as hokimlikda_imzolandi_count,
-        sum(case when l.status_id >= 28 then l.area end) as hokimlikda_imzolandi_area,
-        count(case when l.status_id >= 28 and l.person_type = 'J'  then 1 end) as hokimlikda_imzolandi_d_count,
-        sum(case when l.status_id >= 28  and l.person_type = 'J' then l.area end) as hokimlikda_imzolandi_d_area,
+        count(case when (l.status_id = 28 or l.lot_statuses_id = 29) then 1 end) as hokimlikda_imzolandi_count,
+        sum(case when (l.status_id = 28 or l.lot_statuses_id = 29) then l.area end) as hokimlikda_imzolandi_area,
+        count(case when (l.status_id = 28 or l.lot_statuses_id = 29) and l.person_type = 'J'  then 1 end) as hokimlikda_imzolandi_d_count,
+        sum(case when (l.status_id = 28 or l.lot_statuses_id = 29)  and l.person_type = 'J' then l.area end) as hokimlikda_imzolandi_d_area,
+		count(case when (l.status_id = 28 or l.lot_statuses_id = 29) and l.person_type = 'Y'  then 1 end) as hokimlikda_imzolandi_y_count,
+        sum(case when (l.status_id = 28 or l.lot_statuses_id = 29)  and l.person_type = 'Y' then l.area end) as hokimlikda_imzolandi_y_area,
 
-        count(case when l.status_id >= 28  AND l.person_type = 'J' AND lc.land_type = 'arable_area' AND lc.land_extra_irragation = '1' then 1 end) as hokimlikda_imzolandi_d_suvli_count,
-        sum(case when l.status_id  >= 28  and l.person_type = 'J' AND lc.land_type = 'arable_area' AND lc.land_extra_irragation = '1' then l.area end) as hokimlikda_imzolandi_d_suvli_area
+        count(case when (l.status_id = 28 or l.lot_statuses_id = 29)  AND l.person_type = 'J' AND lc.land_extra_irragation = '1' then 1 end) as hokimlikda_imzolandi_d_suvli_count,
+        sum(case when (l.status_id = 28 or l.lot_statuses_id = 29) and l.person_type = 'J' AND  lc.land_extra_irragation = '1' then l.area end) as hokimlikda_imzolandi_d_suvli_area,
 
-        from land_auction_lots lal left join lands l on lal.land_id = l.id  left join land_contours lc on lal.land_id = lc.land_id
+		 count(case when (l.status_id = 28 or l.lot_statuses_id = 29)  AND l.person_type = 'Y' AND  lc.land_extra_irragation = '1' then 1 end) as hokimlikda_imzolandi_y_suvli_count,
+        sum(case when (l.status_id = 28 or l.lot_statuses_id = 29)  and l.person_type = 'Y' AND  lc.land_extra_irragation = '1' then l.area end) as hokimlikda_imzolandi_y_suvli_area
 
-        where (lal.contract_date is not null
-        and  lal.contract_number is not null)
-        and  (l.parent_id is not null and l.is_merged_lot = 0 or l.is_merged_lot = 1)
+
+        from lands l  left join land_contours lc on l.id = lc.land_id
+
+        where  (l.parent_id is not null and l.is_merged_lot = 0 or l.is_merged_lot = 1)
         and l.status_id not in (25)";
 
 

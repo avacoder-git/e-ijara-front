@@ -20,6 +20,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'user.'],
         Route::get('/delete/{id}', [ApplicationController::class, 'delete'])->name('application.delete');
         Route::post('/edit/{id}', [ApplicationController::class, 'edit'])->name('application.edit');
     });
-    // Route::get
+    Route::post('/report/download', [ReportController::class, 'report'])->name('reportDownload');
 });
 Route::get('dashboard/application/map', [ApplicationController::class, 'map'])->name('user.application.map');
