@@ -239,7 +239,7 @@ export default {
 
         },
         drawCadLands(prefix) {
-            axios.get(`/api/geojson/lands`, {params: {prefix}})
+            axios.get(`https://api.agro.uz/gis_bridge/eijara`, {params: {prefix}})
                 .then(response => {
                     this.removeMarkers()
                     var lands = response.data
@@ -259,13 +259,9 @@ export default {
                         style: geojsonStyle
                     };
 
-                    var geojson = {
-                        features: lands.data,
-                        type: "FeatureCollection"
-                    }
 
-                    if (lands)
-                        vt(geojson, options).addTo(this.$refs.map.mapObject);
+                    if (lands.features)
+                        vt(lands, options).addTo(this.$refs.map.mapObject);
 
 
                 })

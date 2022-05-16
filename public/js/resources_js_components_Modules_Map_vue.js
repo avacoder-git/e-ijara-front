@@ -251,7 +251,7 @@ __webpack_require__.r(__webpack_exports__);
     drawCadLands: function drawCadLands(prefix) {
       var _this6 = this;
 
-      axios.get("/api/geojson/lands", {
+      axios.get("https://api.agro.uz/gis_bridge/eijara", {
         params: {
           prefix: prefix
         }
@@ -272,11 +272,7 @@ __webpack_require__.r(__webpack_exports__);
           debug: 0,
           style: geojsonStyle
         };
-        var geojson = {
-          features: lands.data,
-          type: "FeatureCollection"
-        };
-        if (lands) (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_2__["default"])(geojson, options).addTo(_this6.$refs.map.mapObject);
+        if (lands.features) (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_2__["default"])(lands, options).addTo(_this6.$refs.map.mapObject);
       });
     }
   },
