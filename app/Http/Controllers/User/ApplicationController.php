@@ -39,4 +39,17 @@ class ApplicationController extends Controller
         $application->delete();
         return redirect()->back()->with('success', 'Ариза учирилди');
     }
+
+    public function edit($id, Request $request)
+    {
+        $application = Application::query()->find($id);
+        if ($application->user_id === Auth::id()) {
+            $application->period = $request->period;
+            $application->land_purpose_id = $request->land_purpose_id;
+            $application->save();
+        }
+
+        return redirect()->back()->with('success', 'Ариза тахрирланди');
+
+    }
 }

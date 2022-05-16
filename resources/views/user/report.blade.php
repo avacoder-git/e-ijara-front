@@ -6,7 +6,7 @@
             <div class="card-body"><h5 class="card-title">Хисобот шаклини киритинг</h5>
                 <form>
                     <div class="position-relative form-group">
-                        <label for="exampleSelect" class="">Вилоятни танланг</label>
+                        <label for="region" class="">Вилоятни танланг</label>
                         <select name="region" id="region" class="form-control" required>
                             <option hidden>Вилоятни танланг</option>
                             @foreach($regions as $region)
@@ -15,11 +15,32 @@
                         </select>
                     </div>
                     <div class="position-relative form-group">
-                        <label for="exampleSelect" class="">Вилоятни танланг</label>
+                        <label for="district" class="">Туманни танланг</label>
                         <select name="district" id="district" class="form-control" required>
+                            <option hidden>Туманни танланг</option>
                         </select>
                     </div>
-                    <button class="mt-1 btn btn-primary">Юклаб олиш</button>
+
+                    <div class="position-relative form-group">
+                        <label for="step" class="">Босқични танланг</label>
+                        <select name="step" id="step" class="form-control" required>
+                            @foreach($steps as $key => $step)
+                                <option value="{{ $key }}">{{ $step['type'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="position-relative form-group">
+                        <label for="type" class="">Босқич турини танланг</label>
+                        <select name="type_id" id="type" class="form-control" required>
+                            <option>Босқич турини танланг</option>
+                            @foreach ($steps as $key => $value)
+                                @foreach ($value["child"] as $kalit => $value)
+                                    <option value="{{ $kalit }}" class="types d-none" data-id="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            @endforeach
+                        </select>
+                    </div>
                 </form>
             </div>
         </div>
@@ -27,6 +48,14 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
+
+
+            $("#step").change(function(){
+                $('.types').addClass("d-none")
+                $(".types[data-id='" + $(this).val() + "'").removeClass("d-none")
+            })
+
+
             $('#region').on('change', function() {
                 var regionID = $(this).val();
                 if(regionID) {

@@ -5,6 +5,7 @@ use App\Http\Controllers\User\ApplicationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\IndexController;
 use App\Http\Controllers\ReportController;
+
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'user.'], function () {
     Route::get('/profile', [IndexController::class, 'profile'])->name('profile');
     Route::post('/changeProfile', [IndexController::class, 'changeProfile'])->name('changeProfile');
@@ -17,6 +18,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'user.'],
     Route::prefix('application')->group(function() {
         Route::get('/', [IndexController::class, 'application'])->name('application');
         Route::get('/delete/{id}', [ApplicationController::class, 'delete'])->name('application.delete');
+        Route::post('/edit/{id}', [ApplicationController::class, 'edit'])->name('application.edit');
     });
     // Route::get
 });

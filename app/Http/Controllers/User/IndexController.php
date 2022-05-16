@@ -5,21 +5,25 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PurposeStoreRequest;
 use App\Models\Application;
+use App\Models\LandPurposes;
 use App\Models\Regions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Cache;
 class IndexController extends Controller
 {
     public function dashboard()
     {
         $applications = Application::with(['region','district','land_purpose','status'])
             ->where('user_id', Auth::id())
+            ->orderBy('id', 'desc')
             ->get();
 
-        return view('user.main', compact('applications'));
+        $land_purposes =  LandPurposes::query()->pluck('name', 'id');
+
+        return view('user.main', compact('applications', 'land_purposes'));
     }
 
     public function logout()
