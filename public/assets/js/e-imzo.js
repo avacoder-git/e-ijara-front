@@ -280,6 +280,3 @@ var CAPIWS = (typeof EIMZOEXT !== 'undefined') ? EIMZOEXT : {
         };
     }
 };
-
-
-export default CAPIWS
