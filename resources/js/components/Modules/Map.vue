@@ -36,9 +36,10 @@
         <div class="container-fluid mt-4 section-2">
             <l-map
                 ref="map"
+                :options="options"
                 :zoom="zoom"
                 :center="center">
-                <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains" :url="url"
+                <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains"  :url="url"
                               :attribution="attribution"></l-tile-layer>
                 <l-control-zoom position="bottomright"></l-control-zoom>
                 <l-geo-json v-for="land in lands"
@@ -90,9 +91,8 @@ export default {
                 fillOpacity: 0.7,
             },
             options: {
-                maxZoom: 20,
-                tolerance: 3,
-                debug: 0,
+                zoomControl: false,
+
                 // style: geojsonStyle
             },
             mapOptions: {

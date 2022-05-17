@@ -77,6 +77,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -106,9 +107,7 @@ __webpack_require__.r(__webpack_exports__);
         fillOpacity: 0.7
       },
       options: {
-        maxZoom: 20,
-        tolerance: 3,
-        debug: 0 // style: geojsonStyle
+        zoomControl: false // style: geojsonStyle
 
       },
       mapOptions: {
@@ -1712,7 +1711,10 @@ var render = function () {
       [
         _c(
           "l-map",
-          { ref: "map", attrs: { zoom: _vm.zoom, center: _vm.center } },
+          {
+            ref: "map",
+            attrs: { options: _vm.options, zoom: _vm.zoom, center: _vm.center },
+          },
           [
             _c("l-tile-layer", {
               attrs: {

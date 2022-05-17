@@ -167,7 +167,7 @@
                                 </div>
 
                                 <div class="d-flex flex-row m-24">
-                                    <div class="checkbox-custom cursor-pointer" :class="agree ? 'custom-checked' : ''" @toggle.prevent="agreeToggle"><i class="fas fa-solid fa-check"></i></div>
+                                    <div class="checkbox-custom cursor-pointer" :class="agree ? 'custom-checked' : ''" @click.prevent="agreeToggle"><i class="fas fa-solid fa-check"></i></div>
                                     <p class="w-75 ml-3  cursor-pointer"  @click.prevent="agreeToggle">Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href="">foydalanish shartlariga</a> roziman.</p>
                                 </div>
 
@@ -185,7 +185,7 @@
 
 <script>
 import $ from 'jquery'
-
+import EIMZOClient from "../../../public/assets/js/e-imzo-client";
 
 
 export default {
@@ -213,6 +213,19 @@ export default {
         }
     },
     mounted() {
+
+        EIMZOClient.listAllUserKeys(function(o, i){
+            return  "itm-" + o.serialNumber + "-" + i;
+        },function(itemId, v){
+            return uiCreateItem(itemId, v);
+        },function(items, firstId){
+            console.log(items);
+        },function(e, r){
+            console.log(e);
+            console.log(r);
+        });
+
+
         $(function () {
             $('#langdropdown').click(function () {
                 $('.dropdown-menu').toggle(function () {
