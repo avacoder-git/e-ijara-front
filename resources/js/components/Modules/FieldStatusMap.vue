@@ -66,12 +66,12 @@
                     <div class="rectangle">
                         <div class="title">{{ pointedLocation.region }}</div>
                         <div class="rectangle-inner">
-                            <div class="info">Umumiy bo‘sh yerlar soni:</div>
-                            <div class="son">{{ pointedLocation.count }} ta</div>
+                            <div class="info">{{ $t('main.holat.general') }}:</div>
+                            <div class="son">{{ pointedLocation.count }} {{ $t('ta') }}</div>
                         </div>
                         <div class="rectangle-inner rectangle-inner-2">
-                            <div class="info">Bo‘sh yerlarning jami maydoni:</div>
-                            <div class="son">{{ pointedLocation.all_area }} ga</div>
+                            <div class="info">{{ $t('main.holat.free') }}:</div>
+                            <div class="son">{{ pointedLocation.all_area }} {{ $t('ga') }}</div>
                         </div>
                     </div>
                 </div>

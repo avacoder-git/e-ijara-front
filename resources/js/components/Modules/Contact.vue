@@ -1,16 +1,14 @@
 <template>
     <div class="container">
-        <h1>Aloqa</h1>
+        <h1>{{ $t("nav.links.contact") }}</h1>
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <p>
-                        Agar Sizda “Ye-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot
-                        olishni xoxlasangiz, u holda <a href="https://t.me/eijarasupport">T.ME/EIJARASUPPORT</a> telegram guruhiga yozib qoldirishingiz mumkin.
+                    <p v-hmtl="$t('contact.text')">
                     </p>
 
                     <h3>
-                        Murojaat uchun telefon raqamlarimiz
+                        {{ $t("contact.tel") }}
                     </h3>
                     <div class="row">
                         <div class="col-lg-4">
@@ -29,7 +27,7 @@
                         </div>
                     </div>
                     <h3>
-                        Bog‘lanish vaqti
+                        {{ $t("contact.time") }}
                     </h3>
                     <div class="row">
                         <div class="col-lg-4">

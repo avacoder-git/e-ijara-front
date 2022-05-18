@@ -48,7 +48,7 @@ class RegionController extends Controller
             return DB::select('select id, nameuz, regioncode from regions');
         });
 
-        return $regions;
+        return response()->json($regions);
     }
 
     public function show($region)
@@ -72,7 +72,7 @@ class RegionController extends Controller
         ]];
 
 
-        return $data;
+        return response()->json($data);
     }
 
     public function getCachedRegion($region)

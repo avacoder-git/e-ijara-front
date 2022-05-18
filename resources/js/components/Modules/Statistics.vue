@@ -2,7 +2,7 @@
     <div class="container-fluid section-2" id="statistics">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Statistika</h1>
+                <h1>{{ $t('main.statistics.name') }}</h1>
             </div>
         </div>
         <div class="row">
@@ -11,7 +11,7 @@
                 <div class="owl-carousel" id="statistics-owl">
                     <div class="rectangle">
                         <div class="block">
-                            <div class="block-title">Yangi yer maydonlari</div>
+                            <div class="block-title">{{ $t("main.statistics.new") }}</div>
                             <div class="block-numbers">
                                 <div class="son">{{ counts.new_lands.count }}</div>
                                 <div class="splitter"></div>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="rectangle">
                         <div class="block">
-                            <div class="block-title">Ajratilgan yer maydonlari</div>
+                            <div class="block-title">{{ $t("main.statistics.ajratilgan") }}</div>
                             <div class="block-numbers">
                                 <div class="son">{{ counts.ajratilgan_lands.count }}</div>
                                 <div class="splitter"></div>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="rectangle">
                         <div class="block">
-                            <div class="block-title">Tanlovdagi yer maydonlari</div>
+                            <div class="block-title">{{ $t("main.statistics.tanlovdagi") }}</div>
                             <div class="block-numbers">
                                 <div class="son">{{ counts.tanlovdagi_lands.count  }}</div>
                                 <div class="splitter"></div>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="rectangle">
                         <div class="block">
-                            <div class="block-title">Loyihalashdagi yer maydonlari</div>
+                            <div class="block-title">{{ $t("main.statistics.loyihalashda") }}</div>
                             <div class="block-numbers">
                                 <div class="son">{{ counts.loyihalashdagi_lands.count }}</div>
                                 <div class="splitter"></div>

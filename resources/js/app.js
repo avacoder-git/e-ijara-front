@@ -6,12 +6,13 @@ import $ from 'jquery'
 import vSelect from 'vue-select'
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
-import EIMZOVuePlugin from 'vue-eimzo'
+import i18n from './i18n'
 
 require('./bootstrap');
 
 Vue.use(VueRouter)
-Vue.use(EIMZOVuePlugin)
+
+
 
 const app = new Vue({
     el: '#app',
@@ -19,6 +20,8 @@ const app = new Vue({
         'index': Index,
         $
     },
+    i18n,
+
     router
 });
 Vue.component('v-select', vSelect)

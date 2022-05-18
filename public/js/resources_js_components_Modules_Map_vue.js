@@ -135,10 +135,10 @@ __webpack_require__.r(__webpack_exports__);
     getRegions: function getRegions() {
       var _this = this;
 
-      axios.get('api/json/regions').then(function (response) {
-        var _this$selectedRegion, _this$selectedDistric;
+      axios.get('/api/json/regions').then(function (response) {
+        var _response$data, _this$selectedRegion, _this$selectedDistric;
 
-        _this.regions = response.data;
+        _this.regions = (_response$data = response.data) !== null && _response$data !== void 0 ? _response$data : [];
 
         _this.regions.push({
           id: 0,
@@ -160,7 +160,7 @@ __webpack_require__.r(__webpack_exports__);
     getDistricts: function getDistricts(regioncode) {
       var _this2 = this;
 
-      axios.get("api/json/districts/".concat(regioncode)).then(function (response) {
+      axios.get("/api/json/districts/".concat(regioncode)).then(function (response) {
         _this2.districts = response.data;
       });
     },
@@ -172,7 +172,7 @@ __webpack_require__.r(__webpack_exports__);
     setMap: function setMap() {
       var _this3 = this;
 
-      axios.get("api/json/district/".concat(this.selectedDistrict)).then(function (response) {
+      axios.get("/api/json/district/".concat(this.selectedDistrict)).then(function (response) {
         var geojson = response.data;
 
         _this3.makeGeoJSON(geojson);
@@ -190,7 +190,7 @@ __webpack_require__.r(__webpack_exports__);
     getRegionGeoJSON: function getRegionGeoJSON($region) {
       var _this4 = this;
 
-      axios.get("api/json/regions/".concat($region)).then(function (response) {
+      axios.get("/api/json/regions/".concat($region)).then(function (response) {
         var geojson = response.data;
 
         _this4.makeGeoJSON(geojson);
@@ -243,7 +243,6 @@ __webpack_require__.r(__webpack_exports__);
           features: lands.data,
           type: "FeatureCollection"
         };
-        console.log(geojson);
         (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_2__["default"])(geojson, options).addTo(_this5.$refs.map.mapObject);
       });
     },
@@ -257,7 +256,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this6.removeMarkers();
 
-        var lands = response.data;
+        var lands = response.data[0];
         var geojsonStyle = {
           fillColor: "#ff0000",
           color: "#000",
@@ -271,7 +270,7 @@ __webpack_require__.r(__webpack_exports__);
           debug: 0,
           style: geojsonStyle
         };
-        if (lands.features) (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_2__["default"])(lands, options).addTo(_this6.$refs.map.mapObject);
+        if (lands.features !== null) (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_2__["default"])(lands, options).addTo(_this6.$refs.map.mapObject);
       });
     }
   },
@@ -1649,7 +1648,7 @@ var render = function () {
   return _c("div", [
     _c("div", { staticClass: "bg-white" }, [
       _c("div", { staticClass: "container-fluid section-2" }, [
-        _c("h1", [_vm._v("Ochiq xarita")]),
+        _c("h1", [_vm._v(_vm._s(_vm.$t("main.nav.links.map")))]),
         _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
