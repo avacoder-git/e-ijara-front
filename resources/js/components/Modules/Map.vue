@@ -2,7 +2,7 @@
     <div>
         <div class="bg-white">
             <div class="container-fluid section-2">
-                <h1>{{ $t("main.nav.links.map") }}</h1>
+                <h1>{{ $t("nav.links.map") }}</h1>
 
                 <div class="tab-menu">
                     <button class="tab-btn active">Umumiy xarita</button>

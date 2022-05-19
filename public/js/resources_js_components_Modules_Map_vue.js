@@ -1648,7 +1648,7 @@ var render = function () {
   return _c("div", [
     _c("div", { staticClass: "bg-white" }, [
       _c("div", { staticClass: "container-fluid section-2" }, [
-        _c("h1", [_vm._v(_vm._s(_vm.$t("main.nav.links.map")))]),
+        _c("h1", [_vm._v(_vm._s(_vm.$t("nav.links.map")))]),
         _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),

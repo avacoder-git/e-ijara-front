@@ -154,6 +154,12 @@
                                            role="tab" aria-controls="nav-profile" aria-selected="false">
                                             <img src="/image/e-imzo.png" alt="">
                                         </a>
+
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-oneid" role="tabpanel"
+                                         aria-labelledby="nav-home-tab">
                                         <div class="d-flex flex-row m-24">
                                             <div class="checkbox-custom cursor-pointer" :class="agree ? 'custom-checked' : ''" @click.prevent="agreeToggle"><i class="fas fa-solid fa-check"></i></div>
                                             <p class="w-75 ml-3  cursor-pointer"  @click.prevent="agreeToggle" v-html="$t('oferta')"></p>
@@ -162,32 +168,10 @@
                                         <button type="button" class="btn btn-check1" @click="redirect" :class="agree ? '' : 'disabled'" :disabled="!agree">{{ $t("nav.links.login") }}</button>
 
                                     </div>
-                                </nav>
-                                <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-oneid" role="tabpanel"
-                                         aria-labelledby="nav-home-tab">
-                                    </div>
                                     <div class="tab-pane fade" id="nav-imzo" role="tabpanel"
                                          aria-labelledby="nav-profile-tab">
 
-                                        <div class="form-group mb-2">
-                                            <label for="key">Key</label>
-                                            <select name="key" id="key" class="form-control bordered" onchange="cbChanged(this)"></select>
-                                        </div>
-
-                                        <div hidden id="keyId" class="none"></div>
-
-                                        <input type="hidden" name="eri_fullname" id="eri_fullname">
-                                        <input type="hidden" name="eri_inn" id="eri_inn">
-                                        <input type="hidden" name="eri_pinfl" id="eri_pinfl">
-                                        <input type="hidden" name="eri_sn" id="eri_sn">
-                                        <textarea hidden class="none" name="eri_data" id="eri_data">authorization</textarea>
-                                        <textarea hidden class="none" name="eri_hash" id="eri_hash"></textarea>
-
-                                        <div class="text-center">
-                                            <button class="btn btn-primary"  onclick="sign()" type="button">Kirish</button>
-                                            <button class="btn btn-info" onclick="uiLoadKeys()" type="button">Yangilash</button>
-                                        </div>
+                                       <EIMZO></EIMZO>
 
 
                                     </div>
@@ -206,8 +190,7 @@
 
 <script>
 import $ from 'jquery'
-import EIMZOClient from "../../../public/assets/js/e-imzo-client";
-
+import EIMZO from "./Modules/EIMZO";
 
 export default {
     name: "Navbar",
@@ -217,7 +200,7 @@ export default {
         }
     },
 
-    components: {$},
+    components: {EIMZO, $},
 
     methods:{
         agreeToggle(){
@@ -246,7 +229,6 @@ export default {
 
     },
     mounted() {
-
         $(function () {
             $('#langdropdown').click(function () {
                 $('.dropdown-menu').toggle(function () {

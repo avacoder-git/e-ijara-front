@@ -5363,6 +5363,245 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/assets/js/e-imzo-client */ "./public/assets/js/e-imzo-client.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "EIMZO",
+  data: function data() {
+    return {
+      EIMZO_MAJOR: 3,
+      EIMZO_MINOR: 37,
+      errorCAPIWS: 'Ошибка соединения с E-IMZO. Возможно у вас не установлен модуль E-IMZO или Браузер E-IMZO.',
+      errorBrowserWS: 'Браузер не поддерживает технологию WebSocket. Установите последнюю версию браузера.',
+      errorUpdateApp: 'ВНИМАНИЕ !!! Установите новую версию приложения E-IMZO или Браузера E-IMZO.<br /><a href="https://e-imzo.uz/main/downloads/" role="button">Скачать ПО E-IMZO</a>',
+      errorWrongPassword: 'Пароль неверный.',
+      isError: false,
+      errorText: null,
+      keys: [],
+      selectedKey: null,
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  computed: {
+    route: function route() {
+      return window.location.origin + "/eri/auth";
+    }
+  },
+  methods: {
+    AppLoad: function AppLoad() {
+      _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__["default"].API_KEYS = ['localhost', '96D0C1491615C82B9A54D9989779DF825B690748224C2B04F500F370D51827CE2644D8D4A82C18184D73AB8530BB8ED537269603F61DB0D03D2104ABF789970B', '127.0.0.1', 'A7BCFA5D490B351BE0754130DF03A068F855DB4333D43921125B9CF2670EF6A40370C646B90401955E1F7BC9CDBF59CE0B2C5467D820BE189C845D0B79CFC96F', 'null', 'E0A205EC4E7B78BBB56AFF83A733A1BB9FD39D562E67978CC5E7D73B0951DB1954595A20672A63332535E13CC6EC1E1FC8857BB09E0855D7E76E411B6FA16E9D', 'reestr.agro.uz', 'C55F15788BE5DD04DCC42FEEEAB06858F2E05F0CEA950A7AEBE724741B1F164D25E515CC1FC5A30596D784F6C6E205B5D224A682818D3C332EA09C4B57777792'];
+      var Eimzo = this;
+      _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__["default"].checkVersion(function (major, minor) {
+        var newVersion = 3 * 100 + 37;
+        var installedVersion = parseInt(major) * 100 + parseInt(minor);
+
+        if (installedVersion < newVersion) {
+          Eimzo.isError = true;
+          this.$parent.errorText = this.$parent.errorUpdateApp;
+        } else {
+          _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__["default"].installApiKeys(function () {
+            Eimzo.uiLoadKeys();
+          }, function (e, r) {
+            Eimzo.isError = true;
+            if (r) Eimzo.errorText = r;else Eimzo.errorText = Eimzo.errorCAPIWS;
+          });
+        }
+      }, function (e, r) {
+        Eimzo.isError = true;
+        if (r) Eimzo.errorText = r;else Eimzo.errorText = Eimzo.errorCAPIWS;
+      });
+    },
+    uiLoadKeys: function uiLoadKeys() {
+      var dates = {
+        convert: function convert(d) {
+          // Converts the date in d to a date-object. The input can be:
+          //   a date object: returned without modification
+          //  an array      : Interpreted as [year,month,day]. NOTE: month is 0-11.
+          //   a number     : Interpreted as number of milliseconds
+          //                  since 1 Jan 1970 (a timestamp)
+          //   a string     : Any format supported by the javascript engine, like
+          //                  "YYYY/MM/DD", "MM/DD/YYYY", "Jan 31 2009" etc.
+          //  an object     : Interpreted as an object with year, month and date
+          //                  attributes.  **NOTE** month is 0-11.
+          return d.constructor === Date ? d : d.constructor === Array ? new Date(d[0], d[1], d[2]) : d.constructor === Number ? new Date(d) : d.constructor === String ? new Date(d) : _typeof(d) === "object" ? new Date(d.year, d.month, d.date) : NaN;
+        },
+        compare: function compare(a, b) {
+          // Compare two dates (could be of any type supported by the convert
+          // function above) and returns:
+          //  -1 : if a < b
+          //   0 : if a = b
+          //   1 : if a > b
+          // NaN : if a or b is an illegal date
+          // NOTE: The code inside isFinite does an assignment (=).
+          return isFinite(a = this.convert(a).valueOf()) && isFinite(b = this.convert(b).valueOf()) ? (a > b) - (a < b) : NaN;
+        },
+        inRange: function inRange(d, start, end) {
+          // Checks if date in d is between dates in start and end.
+          // Returns a boolean or NaN:
+          //    true  : if d is between start and end (inclusive)
+          //    false : if d is before start or after end
+          //    NaN   : if one or more of the dates is illegal.
+          // NOTE: The code inside isFinite does an assignment (=).
+          return isFinite(d = this.convert(d).valueOf()) && isFinite(start = this.convert(start).valueOf()) && isFinite(end = this.convert(end).valueOf()) ? start <= d && d <= end : NaN;
+        }
+      };
+
+      var uiCreateItem = function uiCreateItem(itmkey, vo) {
+        var now = new Date();
+        vo.expired = dates.compare(now, vo.validTo) > 0;
+        var itm = document.createElement("option");
+        itm.value = itmkey;
+        itm.text = vo.CN;
+
+        if (!vo.expired) {} else {
+          itm.style.color = 'gray';
+          itm.text = itm.text + ' (срок истек)';
+          itm.setAttribute('disabled', "disabled");
+        }
+
+        itm.setAttribute('vo', JSON.stringify(vo));
+        itm.setAttribute('id', itmkey);
+        return itm;
+      };
+
+      var Eimzo = this;
+      _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__["default"].listAllUserKeys(function (o, i) {
+        var itemId = "itm-" + o.serialNumber + "-" + i;
+        return itemId;
+      }, function (itemId, v) {
+        return uiCreateItem(itemId, v);
+      }, function (items, firstId) {
+        Eimzo.isError = false;
+
+        for (var i = 0; i < items.length; i++) {
+          $("#key").append(items[i]);
+        }
+      }, function (e, r) {
+        Eimzo.isError = true;
+        if (r) Eimzo.errorText = r;else console.log(e);
+      });
+    },
+    uiCreateItem: function uiCreateItem(itmkey, vo) {
+      var now = new Date();
+      vo.expired = dates.compare(now, vo.validTo) > 0;
+      var itm = document.createElement("option");
+      itm.value = itmkey;
+      itm.text = vo.CN;
+
+      if (!vo.expired) {} else {
+        itm.style.color = 'gray';
+        itm.text = itm.text + ' (срок истек)';
+        itm.setAttribute('disabled', "disabled");
+      }
+
+      itm.setAttribute('vo', JSON.stringify(vo));
+      itm.setAttribute('id', itmkey);
+      return itm;
+    },
+    sign: function sign() {
+      var itm = $("#key").val();
+
+      if (itm) {
+        var id = document.getElementById(itm);
+        var vo = JSON.parse(id.getAttribute('vo'));
+        var data = document.getElementById('eri_data').value;
+        var keyId = document.getElementById('keyId').innerHTML;
+        var Eimzo = this;
+        console.log(vo);
+        document.getElementById('eri_fullname').value = vo.CN;
+        document.getElementById('eri_inn').value = vo.TIN;
+        document.getElementById('eri_pinfl').value = vo.PINFL;
+        document.getElementById('eri_sn').value = vo.serialNumber;
+        _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__["default"].loadKey(vo, function (id) {
+          document.getElementById('keyId').innerHTML = id;
+          _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__["default"].createPkcs7(id, data, null, function (pkcs7) {
+            document.getElementById('eri_hash').value = pkcs7;
+            document.getElementById('eri_sign').setAttribute('disabled', '');
+            document.getElementById('eri_sign').innerText = "Имзолаш (имзоланди)";
+            document.getElementById('eri_form').submit();
+          }, function (e, r) {
+            Eimzo.isError = true;
+
+            if (r) {
+              if (r.indexOf("BadPaddingException") != -1) {
+                Eimzo.errorText = Eimzo.errorWrongPassword;
+              } else {
+                Eimzo.errorText = r;
+              }
+            } else {
+              document.getElementById('keyId').innerHTML = '';
+              Eimzo.errorText = Eimzo.errorBrowserWS;
+            }
+
+            if (e) Eimzo.errorText = Eimzo.errorCAPIWS;
+          });
+        }, function (e, r) {
+          Eimzo.isError = true;
+
+          if (r) {
+            if (r.indexOf("BadPaddingException") != -1) {
+              Eimzo.errorText = errorWrongPassword;
+            } else {
+              Eimzo.errorText = r;
+            }
+          } else {
+            Eimzo.errorText = errorBrowserWS;
+          }
+
+          if (e) Eimzo.errorText = Eimzo.errorCAPIWS;
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.AppLoad();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Preloader.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Preloader.vue?vue&type=script&lang=js& ***!
@@ -5471,23 +5710,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../public/assets/js/e-imzo-client */ "./public/assets/js/e-imzo-client.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _Modules_EIMZO__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modules/EIMZO */ "./resources/js/components/Modules/EIMZO.vue");
 //
 //
 //
@@ -5688,6 +5911,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   components: {
+    EIMZO: _Modules_EIMZO__WEBPACK_IMPORTED_MODULE_1__["default"],
     $: (jquery__WEBPACK_IMPORTED_MODULE_0___default())
   },
   methods: {
@@ -5753,651 +5977,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _e_imzo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./e-imzo */ "./public/assets/js/e-imzo.js");
-/* harmony import */ var _e_imzo__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_e_imzo__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
-
-
-Date.prototype.yyyymmdd = function () {
-  var yyyy = this.getFullYear().toString();
-  var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
-
-  var dd = this.getDate().toString();
-  return yyyy + (mm[1] ? mm : "0" + mm[0]) + (dd[1] ? dd : "0" + dd[0]); // padding
-};
-
-Date.prototype.ddmmyyyy = function () {
-  var yyyy = this.getFullYear().toString();
-  var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
-
-  var dd = this.getDate().toString();
-  return (dd[1] ? dd : "0" + dd[0]) + "." + (mm[1] ? mm : "0" + mm[0]) + "." + yyyy; // padding
-};
-
-var dates = {
-  convert: function convert(d) {
-    // Converts the date in d to a date-object. The input can be:
-    //   a date object: returned without modification
-    //  an array      : Interpreted as [year,month,day]. NOTE: month is 0-11.
-    //   a number     : Interpreted as number of milliseconds
-    //                  since 1 Jan 1970 (a timestamp)
-    //   a string     : Any format supported by the javascript engine, like
-    //                  "YYYY/MM/DD", "MM/DD/YYYY", "Jan 31 2009" etc.
-    //  an object     : Interpreted as an object with year, month and date
-    //                  attributes.  **NOTE** month is 0-11.
-    return d.constructor === Date ? d : d.constructor === Array ? new Date(d[0], d[1], d[2]) : d.constructor === Number ? new Date(d) : d.constructor === String ? new Date(d) : _typeof(d) === "object" ? new Date(d.year, d.month, d.date) : NaN;
-  },
-  compare: function compare(a, b) {
-    // Compare two dates (could be of any type supported by the convert
-    // function above) and returns:
-    //  -1 : if a < b
-    //   0 : if a = b
-    //   1 : if a > b
-    // NaN : if a or b is an illegal date
-    // NOTE: The code inside isFinite does an assignment (=).
-    return isFinite(a = this.convert(a).valueOf()) && isFinite(b = this.convert(b).valueOf()) ? (a > b) - (a < b) : NaN;
-  },
-  inRange: function inRange(d, start, end) {
-    // Checks if date in d is between dates in start and end.
-    // Returns a boolean or NaN:
-    //    true  : if d is between start and end (inclusive)
-    //    false : if d is before start or after end
-    //    NaN   : if one or more of the dates is illegal.
-    // NOTE: The code inside isFinite does an assignment (=).
-    return isFinite(d = this.convert(d).valueOf()) && isFinite(start = this.convert(start).valueOf()) && isFinite(end = this.convert(end).valueOf()) ? start <= d && d <= end : NaN;
-  }
-};
-
-String.prototype.splitKeep = function (splitter, ahead) {
-  var self = this;
-  var result = [];
-
-  if (splitter != '') {
-    // Substitution of matched string
-    var getSubst = function getSubst(value) {
-      var substChar = value[0] == '0' ? '1' : '0';
-      var subst = '';
-
-      for (var i = 0; i < value.length; i++) {
-        subst += substChar;
-      }
-
-      return subst;
-    };
-
-    ;
-    var matches = []; // Getting mached value and its index
-
-    var replaceName = splitter instanceof RegExp ? "replace" : "replaceAll";
-    var r = self[replaceName](splitter, function (m, i, e) {
-      matches.push({
-        value: m,
-        index: i
-      });
-      return getSubst(m);
-    }); // Finds split substrings
-
-    var lastIndex = 0;
-
-    for (var i = 0; i < matches.length; i++) {
-      var m = matches[i];
-      var nextIndex = ahead == true ? m.index : m.index + m.value.length;
-
-      if (nextIndex != lastIndex) {
-        var part = self.substring(lastIndex, nextIndex);
-        result.push(part);
-        lastIndex = nextIndex;
-      }
-    }
-
-    ;
-
-    if (lastIndex < self.length) {
-      var part = self.substring(lastIndex, self.length);
-      result.push(part);
-    }
-
-    ;
-  } else {
-    result.add(self);
-  }
-
-  ;
-  return result;
-};
-
-var EIMZOClient = {
-  NEW_API: false,
-  API_KEYS: ['localhost', '96D0C1491615C82B9A54D9989779DF825B690748224C2B04F500F370D51827CE2644D8D4A82C18184D73AB8530BB8ED537269603F61DB0D03D2104ABF789970B', '127.0.0.1', 'A7BCFA5D490B351BE0754130DF03A068F855DB4333D43921125B9CF2670EF6A40370C646B90401955E1F7BC9CDBF59CE0B2C5467D820BE189C845D0B79CFC96F'],
-  checkVersion: function checkVersion(success, fail) {
-    _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().version(function (event, data) {
-      if (data.success === true) {
-        if (data.major && data.minor) {
-          var installedVersion = parseInt(data.major) * 100 + parseInt(data.minor);
-          EIMZOClient.NEW_API = installedVersion >= 336;
-          success(data.major, data.minor);
-        } else {
-          fail(null, 'E-IMZO Version is undefined');
-        }
-      } else {
-        fail(null, data.reason);
-      }
-    }, function (e) {
-      fail(e, null);
-    });
-  },
-  installApiKeys: function installApiKeys(success, fail) {
-    _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().apikey(EIMZOClient.API_KEYS, function (event, data) {
-      if (data.success) {
-        success();
-      } else {
-        fail(null, data.reason);
-      }
-    }, function (e) {
-      fail(e, null);
-    });
-  },
-  listAllUserKeys: function listAllUserKeys(itemIdGen, itemUiGen, success, fail) {
-    var items = [];
-    var errors = [];
-
-    if (!EIMZOClient.NEW_API) {
-      fail(null, 'Please install new version of E-IMZO');
-    } else {
-      EIMZOClient._findPfxs2(itemIdGen, itemUiGen, items, errors, function (firstItmId2) {
-        EIMZOClient._findTokens2(itemIdGen, itemUiGen, items, errors, function (firstItmId3) {
-          if (items.length === 0 && errors.length > 0) {
-            fail(errors[0].e, errors[0].r);
-          } else {
-            var firstId = null;
-
-            if (items.length === 1) {
-              if (firstItmId2) {
-                firstId = firstItmId2;
-              } else if (firstItmId3) {
-                firstId = firstItmId3;
-              }
-            }
-
-            success(items, firstId);
-          }
-        });
-      });
-    }
-  },
-  loadKey: function loadKey(itemObject, success, fail, verifyPassword) {
-    if (itemObject) {
-      var vo = itemObject;
-
-      if (vo.type === "pfx") {
-        _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-          plugin: "pfx",
-          name: "load_key",
-          arguments: [vo.disk, vo.path, vo.name, vo.alias]
-        }, function (event, data) {
-          if (data.success) {
-            var id = data.keyId;
-
-            if (verifyPassword) {
-              _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-                name: "verify_password",
-                plugin: "pfx",
-                arguments: [id]
-              }, function (event, data) {
-                if (data.success) {
-                  success(id);
-                } else {
-                  fail(null, data.reason);
-                }
-              }, function (e) {
-                fail(e, null);
-              });
-            } else {
-              success(id);
-            }
-          } else {
-            fail(null, data.reason);
-          }
-        }, function (e) {
-          fail(e, null);
-        });
-      } else if (vo.type === "ftjc") {
-        _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-          plugin: "ftjc",
-          name: "load_key",
-          arguments: [vo.cardUID]
-        }, function (event, data) {
-          if (data.success) {
-            var id = data.keyId;
-
-            if (verifyPassword) {
-              _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-                plugin: "ftjc",
-                name: "verify_pin",
-                arguments: [id, '1']
-              }, function (event, data) {
-                if (data.success) {
-                  success(id);
-                } else {
-                  fail(null, data.reason);
-                }
-              }, function (e) {
-                fail(e, null);
-              });
-            } else {
-              success(id);
-            }
-          } else {
-            fail(null, data.reason);
-          }
-        }, function (e) {
-          fail(e, null);
-        });
-      }
-    }
-  },
-  changeKeyPassword: function changeKeyPassword(itemObject, success, fail) {
-    if (itemObject) {
-      var vo = itemObject;
-
-      if (vo.type === "pfx") {
-        _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-          plugin: "pfx",
-          name: "load_key",
-          arguments: [vo.disk, vo.path, vo.name, vo.alias]
-        }, function (event, data) {
-          if (data.success) {
-            var id = data.keyId;
-            _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-              name: "change_password",
-              plugin: "pfx",
-              arguments: [id]
-            }, function (event, data) {
-              if (data.success) {
-                success();
-              } else {
-                fail(null, data.reason);
-              }
-            }, function (e) {
-              fail(e, null);
-            });
-          } else {
-            fail(null, data.reason);
-          }
-        }, function (e) {
-          fail(e, null);
-        });
-      } else if (vo.type === "ftjc") {
-        _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-          plugin: "ftjc",
-          name: "load_key",
-          arguments: [vo.cardUID]
-        }, function (event, data) {
-          if (data.success) {
-            var id = data.keyId;
-            _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-              name: "change_pin",
-              plugin: "ftjc",
-              arguments: [id, '1']
-            }, function (event, data) {
-              if (data.success) {
-                success();
-              } else {
-                fail(null, data.reason);
-              }
-            }, function (e) {
-              fail(e, null);
-            });
-          } else {
-            fail(null, data.reason);
-          }
-        }, function (e) {
-          fail(e, null);
-        });
-      }
-    }
-  },
-  createPkcs7: function createPkcs7(id, data, timestamper, success, fail) {
-    _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-      plugin: "pkcs7",
-      name: "create_pkcs7",
-      arguments: [Base64.encode(data), id, 'no']
-    }, function (event, data) {
-      if (data.success) {
-        var pkcs7 = data.pkcs7_64;
-
-        if (timestamper) {
-          var sn = data.signer_serial_number;
-          timestamper(data.signature_hex, function (tst) {
-            _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-              plugin: "pkcs7",
-              name: "attach_timestamp_token_pkcs7",
-              arguments: [pkcs7, sn, tst]
-            }, function (event, data) {
-              if (data.success) {
-                var pkcs7tst = data.pkcs7_64;
-                success(pkcs7tst);
-              } else {
-                fail(null, data.reason);
-              }
-            }, function (e) {
-              fail(e, null);
-            });
-          }, fail);
-        } else {
-          success(pkcs7);
-        }
-      } else {
-        fail(null, data.reason);
-      }
-    }, function (e) {
-      fail(e, null);
-    });
-  },
-  _getX500Val: function _getX500Val(s, f) {
-    var res = s.splitKeep(/,[A-Z]+=/g, true);
-
-    for (var i in res) {
-      var n = res[i].search((i > 0 ? "," : "") + f + "=");
-
-      if (n !== -1) {
-        return res[i].slice(n + f.length + 1 + (i > 0 ? 1 : 0));
-      }
-    }
-
-    return "";
-  },
-  _findPfxs2: function _findPfxs2(itemIdGen, itemUiGen, items, errors, callback) {
-    var itmkey0;
-    _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-      plugin: "pfx",
-      name: "list_all_certificates"
-    }, function (event, data) {
-      if (data.success) {
-        for (var rec in data.certificates) {
-          var el = data.certificates[rec];
-          var x500name_ex = el.alias.toUpperCase();
-          x500name_ex = x500name_ex.replace("1.2.860.3.16.1.1=", "INN=");
-          x500name_ex = x500name_ex.replace("1.2.860.3.16.1.2=", "PINFL=");
-          var vo = {
-            disk: el.disk,
-            path: el.path,
-            name: el.name,
-            alias: el.alias,
-            serialNumber: EIMZOClient._getX500Val(x500name_ex, "SERIALNUMBER"),
-            validFrom: new Date(EIMZOClient._getX500Val(x500name_ex, "VALIDFROM").replace(/\./g, "-").replace(" ", "T")),
-            validTo: new Date(EIMZOClient._getX500Val(x500name_ex, "VALIDTO").replace(/\./g, "-").replace(" ", "T")),
-            CN: EIMZOClient._getX500Val(x500name_ex, "CN"),
-            TIN: EIMZOClient._getX500Val(x500name_ex, "INN") ? EIMZOClient._getX500Val(x500name_ex, "INN") : EIMZOClient._getX500Val(x500name_ex, "UID"),
-            UID: EIMZOClient._getX500Val(x500name_ex, "UID"),
-            PINFL: EIMZOClient._getX500Val(x500name_ex, "PINFL"),
-            O: EIMZOClient._getX500Val(x500name_ex, "O"),
-            T: EIMZOClient._getX500Val(x500name_ex, "T"),
-            type: 'pfx'
-          };
-          if (!vo.TIN && !vo.PINFL) continue;
-          var itmkey = itemIdGen(vo, rec);
-
-          if (!itmkey0) {
-            itmkey0 = itmkey;
-          }
-
-          var itm = itemUiGen(itmkey, vo);
-          items.push(itm);
-        }
-      } else {
-        errors.push({
-          r: data.reason
-        });
-      }
-
-      callback(itmkey0);
-    }, function (e) {
-      errors.push({
-        e: e
-      });
-      callback(itmkey0);
-    });
-  },
-  _findTokens2: function _findTokens2(itemIdGen, itemUiGen, items, errors, callback) {
-    var itmkey0;
-    _e_imzo__WEBPACK_IMPORTED_MODULE_0___default().callFunction({
-      plugin: "ftjc",
-      name: "list_all_keys",
-      arguments: ['']
-    }, function (event, data) {
-      if (data.success) {
-        for (var rec in data.tokens) {
-          var el = data.tokens[rec];
-          var x500name_ex = el.info.toUpperCase();
-          x500name_ex = x500name_ex.replace("1.2.860.3.16.1.1=", "INN=");
-          x500name_ex = x500name_ex.replace("1.2.860.3.16.1.2=", "PINFL=");
-          var vo = {
-            cardUID: el.cardUID,
-            statusInfo: el.statusInfo,
-            ownerName: el.ownerName,
-            info: el.info,
-            serialNumber: EIMZOClient._getX500Val(x500name_ex, "SERIALNUMBER"),
-            validFrom: new Date(EIMZOClient._getX500Val(x500name_ex, "VALIDFROM")),
-            validTo: new Date(EIMZOClient._getX500Val(x500name_ex, "VALIDTO")),
-            CN: EIMZOClient._getX500Val(x500name_ex, "CN"),
-            TIN: EIMZOClient._getX500Val(x500name_ex, "INN") ? EIMZOClient._getX500Val(x500name_ex, "INN") : EIMZOClient._getX500Val(x500name_ex, "UID"),
-            UID: EIMZOClient._getX500Val(x500name_ex, "UID"),
-            PINFL: EIMZOClient._getX500Val(x500name_ex, "PINFL"),
-            O: EIMZOClient._getX500Val(x500name_ex, "O"),
-            T: EIMZOClient._getX500Val(x500name_ex, "T"),
-            type: 'ftjc'
-          };
-          if (!vo.TIN && !vo.PINFL) continue;
-          var itmkey = itemIdGen(vo, rec);
-
-          if (!itmkey0) {
-            itmkey0 = itmkey;
-          }
-
-          var itm = itemUiGen(itmkey, vo);
-          items.push(itm);
-        }
-      } else {
-        errors.push({
-          r: data.reason
-        });
-      }
-
-      callback(itmkey0);
-    }, function (e) {
-      errors.push({
-        e: e
-      });
-      callback(itmkey0);
-    });
-  }
-};
-
-/***/ }),
-
-/***/ "./public/assets/js/e-imzo.js":
-/*!************************************!*\
-  !*** ./public/assets/js/e-imzo.js ***!
-  \************************************/
-/***/ (() => {
-
-// (function(global) {
-//     'use strict';
-//     // existing version for noConflict()
-//     var _Base64 = global.Base64;
-//     var version = "2.1.4";
-//     // if node.js, we use Buffer
-//     var buffer;
-//     if (typeof module !== 'undefined' && module.exports) {
-//         buffer = require('buffer').Buffer;
-//     }
-//     // constants
-//     var b64chars
-//         = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-//     var b64tab = function(bin) {
-//         var t = {};
-//         for (var i = 0, l = bin.length; i < l; i++) t[bin.charAt(i)] = i;
-//         return t;
-//     }(b64chars);
-//     var fromCharCode = String.fromCharCode;
-//     // encoder stuff
-//     var cb_utob = function(c) {
-//         if (c.length < 2) {
-//             var cc = c.charCodeAt(0);
-//             return cc < 0x80 ? c
-//                 : cc < 0x800 ? (fromCharCode(0xc0 | (cc >>> 6))
-//                                 + fromCharCode(0x80 | (cc & 0x3f)))
-//                 : (fromCharCode(0xe0 | ((cc >>> 12) & 0x0f))
-//                    + fromCharCode(0x80 | ((cc >>>  6) & 0x3f))
-//                    + fromCharCode(0x80 | ( cc         & 0x3f)));
-//         } else {
-//             var cc = 0x10000
-//                 + (c.charCodeAt(0) - 0xD800) * 0x400
-//                 + (c.charCodeAt(1) - 0xDC00);
-//             return (fromCharCode(0xf0 | ((cc >>> 18) & 0x07))
-//                     + fromCharCode(0x80 | ((cc >>> 12) & 0x3f))
-//                     + fromCharCode(0x80 | ((cc >>>  6) & 0x3f))
-//                     + fromCharCode(0x80 | ( cc         & 0x3f)));
-//         }
-//     };
-//     var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
-//     var utob = function(u) {
-//         return u.replace(re_utob, cb_utob);
-//     };
-//     var cb_encode = function(ccc) {
-//         var padlen = [0, 2, 1][ccc.length % 3],
-//         ord = ccc.charCodeAt(0) << 16
-//             | ((ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8)
-//             | ((ccc.length > 2 ? ccc.charCodeAt(2) : 0)),
-//         chars = [
-//             b64chars.charAt( ord >>> 18),
-//             b64chars.charAt((ord >>> 12) & 63),
-//             padlen >= 2 ? '=' : b64chars.charAt((ord >>> 6) & 63),
-//             padlen >= 1 ? '=' : b64chars.charAt(ord & 63)
-//         ];
-//         return chars.join('');
-//     };
-//     var btoa = global.btoa ? function(b) {
-//         return global.btoa(b);
-//     } : function(b) {
-//         return b.replace(/[\s\S]{1,3}/g, cb_encode);
-//     };
-//     var _encode = buffer
-//         ? function (u) { return (new buffer(u)).toString('base64') }
-//     : function (u) { return btoa(utob(u)) }
-//     ;
-//     var encode = function(u, urisafe) {
-//         return !urisafe
-//             ? _encode(u)
-//             : _encode(u).replace(/[+\/]/g, function(m0) {
-//                 return m0 == '+' ? '-' : '_';
-//             }).replace(/=/g, '');
-//     };
-//     var encodeURI = function(u) { return encode(u, true) };
-//     // decoder stuff
-//     var re_btou = new RegExp([
-//         '[\xC0-\xDF][\x80-\xBF]',
-//         '[\xE0-\xEF][\x80-\xBF]{2}',
-//         '[\xF0-\xF7][\x80-\xBF]{3}'
-//     ].join('|'), 'g');
-//     var cb_btou = function(cccc) {
-//         switch(cccc.length) {
-//         case 4:
-//             var cp = ((0x07 & cccc.charCodeAt(0)) << 18)
-//                 |    ((0x3f & cccc.charCodeAt(1)) << 12)
-//                 |    ((0x3f & cccc.charCodeAt(2)) <<  6)
-//                 |     (0x3f & cccc.charCodeAt(3)),
-//             offset = cp - 0x10000;
-//             return (fromCharCode((offset  >>> 10) + 0xD800)
-//                     + fromCharCode((offset & 0x3FF) + 0xDC00));
-//         case 3:
-//             return fromCharCode(
-//                 ((0x0f & cccc.charCodeAt(0)) << 12)
-//                     | ((0x3f & cccc.charCodeAt(1)) << 6)
-//                     |  (0x3f & cccc.charCodeAt(2))
-//             );
-//         default:
-//             return  fromCharCode(
-//                 ((0x1f & cccc.charCodeAt(0)) << 6)
-//                     |  (0x3f & cccc.charCodeAt(1))
-//             );
-//         }
-//     };
-//     var btou = function(b) {
-//         return b.replace(re_btou, cb_btou);
-//     };
-//     var cb_decode = function(cccc) {
-//         var len = cccc.length,
-//         padlen = len % 4,
-//         n = (len > 0 ? b64tab[cccc.charAt(0)] << 18 : 0)
-//             | (len > 1 ? b64tab[cccc.charAt(1)] << 12 : 0)
-//             | (len > 2 ? b64tab[cccc.charAt(2)] <<  6 : 0)
-//             | (len > 3 ? b64tab[cccc.charAt(3)]       : 0),
-//         chars = [
-//             fromCharCode( n >>> 16),
-//             fromCharCode((n >>>  8) & 0xff),
-//             fromCharCode( n         & 0xff)
-//         ];
-//         chars.length -= [0, 0, 2, 1][padlen];
-//         return chars.join('');
-//     };
-//     var atob = global.atob ? function(a) {
-//         return global.atob(a);
-//     } : function(a){
-//         return a.replace(/[\s\S]{1,4}/g, cb_decode);
-//     };
-//     var _decode = buffer
-//         ? function(a) { return (new buffer(a, 'base64')).toString() }
-//     : function(a) { return btou(atob(a)) };
-//     var decode = function(a){
-//         return _decode(
-//             a.replace(/[-_]/g, function(m0) { return m0 == '-' ? '+' : '/' })
-//                 .replace(/[^A-Za-z0-9\+\/]/g, '')
-//         );
-//     };
-//     var noConflict = function() {
-//         var Base64 = global.Base64;
-//         global.Base64 = _Base64;
-//         return Base64;
-//     };
-//     // export Base64
-//     global.Base64 = {
-//         VERSION: version,
-//         atob: atob,
-//         btoa: btoa,
-//         fromBase64: decode,
-//         toBase64: encode,
-//         utob: utob,
-//         encode: encode,
-//         encodeURI: encodeURI,
-//         btou: btou,
-//         decode: decode,
-//         noConflict: noConflict
-//     };
-//     // if ES5 is available, make Base64.extendString() available
-//     if (typeof Object.defineProperty === 'function') {
-//         var noEnum = function(v){
-//             return {value:v,enumerable:false,writable:true,configurable:true};
-//         };
-//         global.Base64.extendString = function () {
-//             Object.defineProperty(
-//                 String.prototype, 'fromBase64', noEnum(function () {
-//                     return decode(this)
-//                 }));
-//             Object.defineProperty(
-//                 String.prototype, 'toBase64', noEnum(function (urisafe) {
-//                     return encode(this, urisafe)
-//                 }));
-//             Object.defineProperty(
-//                 String.prototype, 'toBase64URI', noEnum(function () {
-//                     return encode(this, true)
-//                 }));
-//         };
-//     }
-//     // that's it!
-// })(this);
 var CAPIWS = typeof EIMZOEXT !== 'undefined' ? EIMZOEXT : {
   URL: (window.location.protocol.toLowerCase() === "https:" ? "wss://127.0.0.1:64443" : "ws://127.0.0.1:64646") + "/service/cryptapi",
   callFunction: function callFunction(funcDef, callback, error) {
@@ -6523,6 +6107,572 @@ var CAPIWS = typeof EIMZOEXT !== 'undefined' ? EIMZOEXT : {
     };
   }
 };
+var Base64 = {
+  // private property
+  _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+  // public method for encoding
+  encode: function encode(input) {
+    var output = "";
+    var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+    var i = 0;
+    input = Base64._utf8_encode(input);
+
+    while (i < input.length) {
+      chr1 = input.charCodeAt(i++);
+      chr2 = input.charCodeAt(i++);
+      chr3 = input.charCodeAt(i++);
+      enc1 = chr1 >> 2;
+      enc2 = (chr1 & 3) << 4 | chr2 >> 4;
+      enc3 = (chr2 & 15) << 2 | chr3 >> 6;
+      enc4 = chr3 & 63;
+
+      if (isNaN(chr2)) {
+        enc3 = enc4 = 64;
+      } else if (isNaN(chr3)) {
+        enc4 = 64;
+      }
+
+      output = output + this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) + this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+    }
+
+    return output;
+  },
+  // public method for decoding
+  decode: function decode(input) {
+    var output = "";
+    var chr1, chr2, chr3;
+    var enc1, enc2, enc3, enc4;
+    var i = 0;
+    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+    while (i < input.length) {
+      enc1 = this._keyStr.indexOf(input.charAt(i++));
+      enc2 = this._keyStr.indexOf(input.charAt(i++));
+      enc3 = this._keyStr.indexOf(input.charAt(i++));
+      enc4 = this._keyStr.indexOf(input.charAt(i++));
+      chr1 = enc1 << 2 | enc2 >> 4;
+      chr2 = (enc2 & 15) << 4 | enc3 >> 2;
+      chr3 = (enc3 & 3) << 6 | enc4;
+      output = output + String.fromCharCode(chr1);
+
+      if (enc3 != 64) {
+        output = output + String.fromCharCode(chr2);
+      }
+
+      if (enc4 != 64) {
+        output = output + String.fromCharCode(chr3);
+      }
+    }
+
+    output = Base64._utf8_decode(output);
+    return output;
+  },
+  // private method for UTF-8 encoding
+  _utf8_encode: function _utf8_encode(string) {
+    string = string.replace(/\r\n/g, "\n");
+    var utftext = "";
+
+    for (var n = 0; n < string.length; n++) {
+      var c = string.charCodeAt(n);
+
+      if (c < 128) {
+        utftext += String.fromCharCode(c);
+      } else if (c > 127 && c < 2048) {
+        utftext += String.fromCharCode(c >> 6 | 192);
+        utftext += String.fromCharCode(c & 63 | 128);
+      } else {
+        utftext += String.fromCharCode(c >> 12 | 224);
+        utftext += String.fromCharCode(c >> 6 & 63 | 128);
+        utftext += String.fromCharCode(c & 63 | 128);
+      }
+    }
+
+    return utftext;
+  },
+  // private method for UTF-8 decoding
+  _utf8_decode: function _utf8_decode(utftext) {
+    var string = "";
+    var i = 0;
+    var c = c1 = c2 = 0;
+
+    while (i < utftext.length) {
+      c = utftext.charCodeAt(i);
+
+      if (c < 128) {
+        string += String.fromCharCode(c);
+        i++;
+      } else if (c > 191 && c < 224) {
+        c2 = utftext.charCodeAt(i + 1);
+        string += String.fromCharCode((c & 31) << 6 | c2 & 63);
+        i += 2;
+      } else {
+        c2 = utftext.charCodeAt(i + 1);
+        c3 = utftext.charCodeAt(i + 2);
+        string += String.fromCharCode((c & 15) << 12 | (c2 & 63) << 6 | c3 & 63);
+        i += 3;
+      }
+    }
+
+    return string;
+  }
+};
+
+Date.prototype.yyyymmdd = function () {
+  var yyyy = this.getFullYear().toString();
+  var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+
+  var dd = this.getDate().toString();
+  return yyyy + (mm[1] ? mm : "0" + mm[0]) + (dd[1] ? dd : "0" + dd[0]); // padding
+};
+
+Date.prototype.ddmmyyyy = function () {
+  var yyyy = this.getFullYear().toString();
+  var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+
+  var dd = this.getDate().toString();
+  return (dd[1] ? dd : "0" + dd[0]) + "." + (mm[1] ? mm : "0" + mm[0]) + "." + yyyy; // padding
+};
+
+var dates = {
+  convert: function convert(d) {
+    // Converts the date in d to a date-object. The input can be:
+    //   a date object: returned without modification
+    //  an array      : Interpreted as [year,month,day]. NOTE: month is 0-11.
+    //   a number     : Interpreted as number of milliseconds
+    //                  since 1 Jan 1970 (a timestamp)
+    //   a string     : Any format supported by the javascript engine, like
+    //                  "YYYY/MM/DD", "MM/DD/YYYY", "Jan 31 2009" etc.
+    //  an object     : Interpreted as an object with year, month and date
+    //                  attributes.  **NOTE** month is 0-11.
+    return d.constructor === Date ? d : d.constructor === Array ? new Date(d[0], d[1], d[2]) : d.constructor === Number ? new Date(d) : d.constructor === String ? new Date(d) : _typeof(d) === "object" ? new Date(d.year, d.month, d.date) : NaN;
+  },
+  compare: function compare(a, b) {
+    // Compare two dates (could be of any type supported by the convert
+    // function above) and returns:
+    //  -1 : if a < b
+    //   0 : if a = b
+    //   1 : if a > b
+    // NaN : if a or b is an illegal date
+    // NOTE: The code inside isFinite does an assignment (=).
+    return isFinite(a = this.convert(a).valueOf()) && isFinite(b = this.convert(b).valueOf()) ? (a > b) - (a < b) : NaN;
+  },
+  inRange: function inRange(d, start, end) {
+    // Checks if date in d is between dates in start and end.
+    // Returns a boolean or NaN:
+    //    true  : if d is between start and end (inclusive)
+    //    false : if d is before start or after end
+    //    NaN   : if one or more of the dates is illegal.
+    // NOTE: The code inside isFinite does an assignment (=).
+    return isFinite(d = this.convert(d).valueOf()) && isFinite(start = this.convert(start).valueOf()) && isFinite(end = this.convert(end).valueOf()) ? start <= d && d <= end : NaN;
+  }
+};
+
+String.prototype.splitKeep = function (splitter, ahead) {
+  var self = this;
+  var result = [];
+
+  if (splitter != '') {
+    // Substitution of matched string
+    var getSubst = function getSubst(value) {
+      var substChar = value[0] == '0' ? '1' : '0';
+      var subst = '';
+
+      for (var i = 0; i < value.length; i++) {
+        subst += substChar;
+      }
+
+      return subst;
+    };
+
+    ;
+    var matches = []; // Getting mached value and its index
+
+    var replaceName = splitter instanceof RegExp ? "replace" : "replaceAll";
+    var r = self[replaceName](splitter, function (m, i, e) {
+      matches.push({
+        value: m,
+        index: i
+      });
+      return getSubst(m);
+    }); // Finds split substrings
+
+    var lastIndex = 0;
+
+    for (var i = 0; i < matches.length; i++) {
+      var m = matches[i];
+      var nextIndex = ahead == true ? m.index : m.index + m.value.length;
+
+      if (nextIndex != lastIndex) {
+        var part = self.substring(lastIndex, nextIndex);
+        result.push(part);
+        lastIndex = nextIndex;
+      }
+    }
+
+    ;
+
+    if (lastIndex < self.length) {
+      var part = self.substring(lastIndex, self.length);
+      result.push(part);
+    }
+
+    ;
+  } else {
+    result.add(self);
+  }
+
+  ;
+  return result;
+};
+
+var EIMZOClient = {
+  NEW_API: true,
+  API_KEYS: ['localhost', '96D0C1491615C82B9A54D9989779DF825B690748224C2B04F500F370D51827CE2644D8D4A82C18184D73AB8530BB8ED537269603F61DB0D03D2104ABF789970B', '127.0.0.1', 'A7BCFA5D490B351BE0754130DF03A068F855DB4333D43921125B9CF2670EF6A40370C646B90401955E1F7BC9CDBF59CE0B2C5467D820BE189C845D0B79CFC96F'],
+  checkVersion: function checkVersion(success, fail) {
+    CAPIWS.version(function (event, data) {
+      if (data.success === true) {
+        if (data.major && data.minor) {
+          var installedVersion = parseInt(data.major) * 100 + parseInt(data.minor);
+          EIMZOClient.NEW_API = installedVersion >= 336;
+          success(data.major, data.minor);
+        } else {
+          fail(null, 'E-IMZO Version is undefined');
+        }
+      } else {
+        fail(null, data.reason);
+      }
+    }, function (e) {
+      fail(e, null);
+    });
+  },
+  installApiKeys: function installApiKeys(success, fail) {
+    CAPIWS.apikey(EIMZOClient.API_KEYS, function (event, data) {
+      if (data.success) {
+        success();
+      } else {
+        fail(null, data.reason);
+      }
+    }, function (e) {
+      fail(e, null);
+    });
+  },
+  listAllUserKeys: function listAllUserKeys(itemIdGen, itemUiGen, success, fail) {
+    var items = [];
+    var errors = [];
+
+    if (!EIMZOClient.NEW_API) {
+      fail(null, 'Please install new version of E-IMZO');
+    } else {
+      EIMZOClient._findPfxs2(itemIdGen, itemUiGen, items, errors, function (firstItmId2) {
+        EIMZOClient._findTokens2(itemIdGen, itemUiGen, items, errors, function (firstItmId3) {
+          if (items.length === 0 && errors.length > 0) {
+            fail(errors[0].e, errors[0].r);
+          } else {
+            var firstId = null;
+
+            if (items.length === 1) {
+              if (firstItmId2) {
+                firstId = firstItmId2;
+              } else if (firstItmId3) {
+                firstId = firstItmId3;
+              }
+            }
+
+            success(items, firstId);
+          }
+        });
+      });
+    }
+  },
+  loadKey: function loadKey(itemObject, success, fail, verifyPassword) {
+    if (itemObject) {
+      var vo = itemObject;
+
+      if (vo.type === "pfx") {
+        CAPIWS.callFunction({
+          plugin: "pfx",
+          name: "load_key",
+          arguments: [vo.disk, vo.path, vo.name, vo.alias]
+        }, function (event, data) {
+          if (data.success) {
+            var id = data.keyId;
+
+            if (verifyPassword) {
+              CAPIWS.callFunction({
+                name: "verify_password",
+                plugin: "pfx",
+                arguments: [id]
+              }, function (event, data) {
+                if (data.success) {
+                  success(id);
+                } else {
+                  fail(null, data.reason);
+                }
+              }, function (e) {
+                fail(e, null);
+              });
+            } else {
+              success(id);
+            }
+          } else {
+            fail(null, data.reason);
+          }
+        }, function (e) {
+          fail(e, null);
+        });
+      } else if (vo.type === "ftjc") {
+        CAPIWS.callFunction({
+          plugin: "ftjc",
+          name: "load_key",
+          arguments: [vo.cardUID]
+        }, function (event, data) {
+          if (data.success) {
+            var id = data.keyId;
+
+            if (verifyPassword) {
+              CAPIWS.callFunction({
+                plugin: "ftjc",
+                name: "verify_pin",
+                arguments: [id, '1']
+              }, function (event, data) {
+                if (data.success) {
+                  success(id);
+                } else {
+                  fail(null, data.reason);
+                }
+              }, function (e) {
+                fail(e, null);
+              });
+            } else {
+              success(id);
+            }
+          } else {
+            fail(null, data.reason);
+          }
+        }, function (e) {
+          fail(e, null);
+        });
+      }
+    }
+  },
+  changeKeyPassword: function changeKeyPassword(itemObject, success, fail) {
+    if (itemObject) {
+      var vo = itemObject;
+
+      if (vo.type === "pfx") {
+        CAPIWS.callFunction({
+          plugin: "pfx",
+          name: "load_key",
+          arguments: [vo.disk, vo.path, vo.name, vo.alias]
+        }, function (event, data) {
+          if (data.success) {
+            var id = data.keyId;
+            CAPIWS.callFunction({
+              name: "change_password",
+              plugin: "pfx",
+              arguments: [id]
+            }, function (event, data) {
+              if (data.success) {
+                success();
+              } else {
+                fail(null, data.reason);
+              }
+            }, function (e) {
+              fail(e, null);
+            });
+          } else {
+            fail(null, data.reason);
+          }
+        }, function (e) {
+          fail(e, null);
+        });
+      } else if (vo.type === "ftjc") {
+        CAPIWS.callFunction({
+          plugin: "ftjc",
+          name: "load_key",
+          arguments: [vo.cardUID]
+        }, function (event, data) {
+          if (data.success) {
+            var id = data.keyId;
+            CAPIWS.callFunction({
+              name: "change_pin",
+              plugin: "ftjc",
+              arguments: [id, '1']
+            }, function (event, data) {
+              if (data.success) {
+                success();
+              } else {
+                fail(null, data.reason);
+              }
+            }, function (e) {
+              fail(e, null);
+            });
+          } else {
+            fail(null, data.reason);
+          }
+        }, function (e) {
+          fail(e, null);
+        });
+      }
+    }
+  },
+  createPkcs7: function createPkcs7(id, data, timestamper, success, fail) {
+    CAPIWS.callFunction({
+      plugin: "pkcs7",
+      name: "create_pkcs7",
+      arguments: [Base64.encode(data), id, 'no']
+    }, function (event, data) {
+      if (data.success) {
+        var pkcs7 = data.pkcs7_64;
+
+        if (timestamper) {
+          var sn = data.signer_serial_number;
+          timestamper(data.signature_hex, function (tst) {
+            CAPIWS.callFunction({
+              plugin: "pkcs7",
+              name: "attach_timestamp_token_pkcs7",
+              arguments: [pkcs7, sn, tst]
+            }, function (event, data) {
+              if (data.success) {
+                var pkcs7tst = data.pkcs7_64;
+                success(pkcs7tst);
+              } else {
+                fail(null, data.reason);
+              }
+            }, function (e) {
+              fail(e, null);
+            });
+          }, fail);
+        } else {
+          success(pkcs7);
+        }
+      } else {
+        fail(null, data.reason);
+      }
+    }, function (e) {
+      fail(e, null);
+    });
+  },
+  _getX500Val: function _getX500Val(s, f) {
+    var res = s.splitKeep(/,[A-Z]+=/g, true);
+
+    for (var i in res) {
+      var n = res[i].search((i > 0 ? "," : "") + f + "=");
+
+      if (n !== -1) {
+        return res[i].slice(n + f.length + 1 + (i > 0 ? 1 : 0));
+      }
+    }
+
+    return "";
+  },
+  _findPfxs2: function _findPfxs2(itemIdGen, itemUiGen, items, errors, callback) {
+    var itmkey0;
+    CAPIWS.callFunction({
+      plugin: "pfx",
+      name: "list_all_certificates"
+    }, function (event, data) {
+      if (data.success) {
+        for (var rec in data.certificates) {
+          var el = data.certificates[rec];
+          var x500name_ex = el.alias.toUpperCase();
+          x500name_ex = x500name_ex.replace("1.2.860.3.16.1.1=", "INN=");
+          x500name_ex = x500name_ex.replace("1.2.860.3.16.1.2=", "PINFL=");
+          var vo = {
+            disk: el.disk,
+            path: el.path,
+            name: el.name,
+            alias: el.alias,
+            serialNumber: EIMZOClient._getX500Val(x500name_ex, "SERIALNUMBER"),
+            validFrom: new Date(EIMZOClient._getX500Val(x500name_ex, "VALIDFROM").replace(/\./g, "-").replace(" ", "T")),
+            validTo: new Date(EIMZOClient._getX500Val(x500name_ex, "VALIDTO").replace(/\./g, "-").replace(" ", "T")),
+            CN: EIMZOClient._getX500Val(x500name_ex, "CN"),
+            TIN: EIMZOClient._getX500Val(x500name_ex, "INN") ? EIMZOClient._getX500Val(x500name_ex, "INN") : EIMZOClient._getX500Val(x500name_ex, "UID"),
+            UID: EIMZOClient._getX500Val(x500name_ex, "UID"),
+            PINFL: EIMZOClient._getX500Val(x500name_ex, "PINFL"),
+            O: EIMZOClient._getX500Val(x500name_ex, "O"),
+            T: EIMZOClient._getX500Val(x500name_ex, "T"),
+            type: 'pfx'
+          };
+          if (!vo.TIN && !vo.PINFL) continue;
+          var itmkey = itemIdGen(vo, rec);
+
+          if (!itmkey0) {
+            itmkey0 = itmkey;
+          }
+
+          var itm = itemUiGen(itmkey, vo);
+          items.push(itm);
+        }
+      } else {
+        errors.push({
+          r: data.reason
+        });
+      }
+
+      callback(itmkey0);
+    }, function (e) {
+      errors.push({
+        e: e
+      });
+      callback(itmkey0);
+    });
+  },
+  _findTokens2: function _findTokens2(itemIdGen, itemUiGen, items, errors, callback) {
+    var itmkey0;
+    CAPIWS.callFunction({
+      plugin: "ftjc",
+      name: "list_all_keys",
+      arguments: ['']
+    }, function (event, data) {
+      if (data.success) {
+        for (var rec in data.tokens) {
+          var el = data.tokens[rec];
+          var x500name_ex = el.info.toUpperCase();
+          x500name_ex = x500name_ex.replace("1.2.860.3.16.1.1=", "INN=");
+          x500name_ex = x500name_ex.replace("1.2.860.3.16.1.2=", "PINFL=");
+          var vo = {
+            cardUID: el.cardUID,
+            statusInfo: el.statusInfo,
+            ownerName: el.ownerName,
+            info: el.info,
+            serialNumber: EIMZOClient._getX500Val(x500name_ex, "SERIALNUMBER"),
+            validFrom: new Date(EIMZOClient._getX500Val(x500name_ex, "VALIDFROM")),
+            validTo: new Date(EIMZOClient._getX500Val(x500name_ex, "VALIDTO")),
+            CN: EIMZOClient._getX500Val(x500name_ex, "CN"),
+            TIN: EIMZOClient._getX500Val(x500name_ex, "INN") ? EIMZOClient._getX500Val(x500name_ex, "INN") : EIMZOClient._getX500Val(x500name_ex, "UID"),
+            UID: EIMZOClient._getX500Val(x500name_ex, "UID"),
+            PINFL: EIMZOClient._getX500Val(x500name_ex, "PINFL"),
+            O: EIMZOClient._getX500Val(x500name_ex, "O"),
+            T: EIMZOClient._getX500Val(x500name_ex, "T"),
+            type: 'ftjc'
+          };
+          if (!vo.TIN && !vo.PINFL) continue;
+          var itmkey = itemIdGen(vo, rec);
+
+          if (!itmkey0) {
+            itmkey0 = itmkey;
+          }
+
+          var itm = itemUiGen(itmkey, vo);
+          items.push(itm);
+        }
+      } else {
+        errors.push({
+          r: data.reason
+        });
+      }
+
+      callback(itmkey0);
+    }, function (e) {
+      errors.push({
+        e: e
+      });
+      callback(itmkey0);
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EIMZOClient);
 
 /***/ }),
 
@@ -11807,6 +11957,30 @@ var ___CSS_LOADER_URL_REPLACEMENT_1___ = _css_loader_dist_runtime_getUrl_js__WEB
 var ___CSS_LOADER_URL_REPLACEMENT_2___ = _css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_images_marker_icon_png__WEBPACK_IMPORTED_MODULE_4__["default"]);
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "/* required styles */\r\n\r\n.leaflet-pane,\r\n.leaflet-tile,\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow,\r\n.leaflet-tile-container,\r\n.leaflet-pane > svg,\r\n.leaflet-pane > canvas,\r\n.leaflet-zoom-box,\r\n.leaflet-image-layer,\r\n.leaflet-layer {\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\ttop: 0;\r\n\t}\r\n.leaflet-container {\r\n\toverflow: hidden;\r\n\t}\r\n.leaflet-tile,\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow {\r\n\t-webkit-user-select: none;\r\n\t   -moz-user-select: none;\r\n\t        -ms-user-select: none;\r\n\t    user-select: none;\r\n\t  -webkit-user-drag: none;\r\n\t}\r\n/* Prevents IE11 from highlighting tiles in blue */\r\n.leaflet-tile::-moz-selection {\r\n\tbackground: transparent;\r\n}\r\n.leaflet-tile::selection {\r\n\tbackground: transparent;\r\n}\r\n/* Safari renders non-retina tile on retina better with this, but Chrome is worse */\r\n.leaflet-safari .leaflet-tile {\r\n\timage-rendering: -webkit-optimize-contrast;\r\n\t}\r\n/* hack that prevents hw layers \"stretching\" when loading new tiles */\r\n.leaflet-safari .leaflet-tile-container {\r\n\twidth: 1600px;\r\n\theight: 1600px;\r\n\t-webkit-transform-origin: 0 0;\r\n\t}\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow {\r\n\tdisplay: block;\r\n\t}\r\n/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */\r\n/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */\r\n.leaflet-container .leaflet-overlay-pane svg {\r\n\tmax-width: none !important;\r\n\tmax-height: none !important;\r\n\t}\r\n.leaflet-container .leaflet-marker-pane img,\r\n.leaflet-container .leaflet-shadow-pane img,\r\n.leaflet-container .leaflet-tile-pane img,\r\n.leaflet-container img.leaflet-image-layer,\r\n.leaflet-container .leaflet-tile {\r\n\tmax-width: none !important;\r\n\tmax-height: none !important;\r\n\twidth: auto;\r\n\tpadding: 0;\r\n\t}\r\n\r\n.leaflet-container.leaflet-touch-zoom {\r\n\ttouch-action: pan-x pan-y;\r\n\t}\r\n.leaflet-container.leaflet-touch-drag {\r\n\t/* Fallback for FF which doesn't support pinch-zoom */\r\n\ttouch-action: none;\r\n\ttouch-action: pinch-zoom;\r\n}\r\n.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {\r\n\ttouch-action: none;\r\n}\r\n.leaflet-container {\r\n\t-webkit-tap-highlight-color: transparent;\r\n}\r\n.leaflet-container a {\r\n\t-webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);\r\n}\r\n.leaflet-tile {\r\n\tfilter: inherit;\r\n\tvisibility: hidden;\r\n\t}\r\n.leaflet-tile-loaded {\r\n\tvisibility: inherit;\r\n\t}\r\n.leaflet-zoom-box {\r\n\twidth: 0;\r\n\theight: 0;\r\n\tbox-sizing: border-box;\r\n\tz-index: 800;\r\n\t}\r\n/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */\r\n.leaflet-overlay-pane svg {\r\n\t-moz-user-select: none;\r\n\t}\r\n\r\n.leaflet-pane         { z-index: 400; }\r\n\r\n.leaflet-tile-pane    { z-index: 200; }\r\n.leaflet-overlay-pane { z-index: 400; }\r\n.leaflet-shadow-pane  { z-index: 500; }\r\n.leaflet-marker-pane  { z-index: 600; }\r\n.leaflet-tooltip-pane   { z-index: 650; }\r\n.leaflet-popup-pane   { z-index: 700; }\r\n\r\n.leaflet-map-pane canvas { z-index: 100; }\r\n.leaflet-map-pane svg    { z-index: 200; }\r\n\r\n.leaflet-vml-shape {\r\n\twidth: 1px;\r\n\theight: 1px;\r\n\t}\r\n.lvml {\r\n\tbehavior: url(#default#VML);\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\t}\r\n\r\n\r\n/* control positioning */\r\n\r\n.leaflet-control {\r\n\tposition: relative;\r\n\tz-index: 800;\r\n\tpointer-events: visiblePainted; /* IE 9-10 doesn't have auto */\r\n\tpointer-events: auto;\r\n\t}\r\n.leaflet-top,\r\n.leaflet-bottom {\r\n\tposition: absolute;\r\n\tz-index: 1000;\r\n\tpointer-events: none;\r\n\t}\r\n.leaflet-top {\r\n\ttop: 0;\r\n\t}\r\n.leaflet-right {\r\n\tright: 0;\r\n\t}\r\n.leaflet-bottom {\r\n\tbottom: 0;\r\n\t}\r\n.leaflet-left {\r\n\tleft: 0;\r\n\t}\r\n.leaflet-control {\r\n\tfloat: left;\r\n\tclear: both;\r\n\t}\r\n.leaflet-right .leaflet-control {\r\n\tfloat: right;\r\n\t}\r\n.leaflet-top .leaflet-control {\r\n\tmargin-top: 10px;\r\n\t}\r\n.leaflet-bottom .leaflet-control {\r\n\tmargin-bottom: 10px;\r\n\t}\r\n.leaflet-left .leaflet-control {\r\n\tmargin-left: 10px;\r\n\t}\r\n.leaflet-right .leaflet-control {\r\n\tmargin-right: 10px;\r\n\t}\r\n\r\n\r\n/* zoom and fade animations */\r\n\r\n.leaflet-fade-anim .leaflet-popup {\r\n\topacity: 0;\r\n\ttransition: opacity 0.2s linear;\r\n\t}\r\n.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {\r\n\topacity: 1;\r\n\t}\r\n.leaflet-zoom-animated {\r\n\ttransform-origin: 0 0;\r\n\t}\r\nsvg.leaflet-zoom-animated {\r\n\twill-change: transform;\r\n}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-animated {\r\n\ttransition:         transform 0.25s cubic-bezier(0,0,0.25,1);\r\n\t}\r\n.leaflet-zoom-anim .leaflet-tile,\r\n.leaflet-pan-anim .leaflet-tile {\r\n\ttransition: none;\r\n\t}\r\n\r\n.leaflet-zoom-anim .leaflet-zoom-hide {\r\n\tvisibility: hidden;\r\n\t}\r\n\r\n\r\n/* cursors */\r\n\r\n.leaflet-interactive {\r\n\tcursor: pointer;\r\n\t}\r\n.leaflet-grab {\r\n\tcursor: -webkit-grab;\r\n\tcursor:         grab;\r\n\t}\r\n.leaflet-crosshair,\r\n.leaflet-crosshair .leaflet-interactive {\r\n\tcursor: crosshair;\r\n\t}\r\n.leaflet-popup-pane,\r\n.leaflet-control {\r\n\tcursor: auto;\r\n\t}\r\n.leaflet-dragging .leaflet-grab,\r\n.leaflet-dragging .leaflet-grab .leaflet-interactive,\r\n.leaflet-dragging .leaflet-marker-draggable {\r\n\tcursor: move;\r\n\tcursor: -webkit-grabbing;\r\n\tcursor:         grabbing;\r\n\t}\r\n\r\n/* marker & overlays interactivity */\r\n.leaflet-marker-icon,\r\n.leaflet-marker-shadow,\r\n.leaflet-image-layer,\r\n.leaflet-pane > svg path,\r\n.leaflet-tile-container {\r\n\tpointer-events: none;\r\n\t}\r\n\r\n.leaflet-marker-icon.leaflet-interactive,\r\n.leaflet-image-layer.leaflet-interactive,\r\n.leaflet-pane > svg path.leaflet-interactive,\r\nsvg.leaflet-image-layer.leaflet-interactive path {\r\n\tpointer-events: visiblePainted; /* IE 9-10 doesn't have auto */\r\n\tpointer-events: auto;\r\n\t}\r\n\r\n/* visual tweaks */\r\n\r\n.leaflet-container {\r\n\tbackground: #ddd;\r\n\toutline-offset: 1px;\r\n\t}\r\n.leaflet-container a {\r\n\tcolor: #0078A8;\r\n\t}\r\n.leaflet-zoom-box {\r\n\tborder: 2px dotted #38f;\r\n\tbackground: rgba(255,255,255,0.5);\r\n\t}\r\n\r\n\r\n/* general typography */\r\n.leaflet-container {\r\n\tfont-family: \"Helvetica Neue\", Arial, Helvetica, sans-serif;\r\n\tfont-size: 12px;\r\n\tfont-size: 0.75rem;\r\n\tline-height: 1.5;\r\n\t}\r\n\r\n\r\n/* general toolbar styles */\r\n\r\n.leaflet-bar {\r\n\tbox-shadow: 0 1px 5px rgba(0,0,0,0.65);\r\n\tborder-radius: 4px;\r\n\t}\r\n.leaflet-bar a {\r\n\tbackground-color: #fff;\r\n\tborder-bottom: 1px solid #ccc;\r\n\twidth: 26px;\r\n\theight: 26px;\r\n\tline-height: 26px;\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n\ttext-decoration: none;\r\n\tcolor: black;\r\n\t}\r\n.leaflet-bar a,\r\n.leaflet-control-layers-toggle {\r\n\tbackground-position: 50% 50%;\r\n\tbackground-repeat: no-repeat;\r\n\tdisplay: block;\r\n\t}\r\n.leaflet-bar a:hover,\r\n.leaflet-bar a:focus {\r\n\tbackground-color: #f4f4f4;\r\n\t}\r\n.leaflet-bar a:first-child {\r\n\tborder-top-left-radius: 4px;\r\n\tborder-top-right-radius: 4px;\r\n\t}\r\n.leaflet-bar a:last-child {\r\n\tborder-bottom-left-radius: 4px;\r\n\tborder-bottom-right-radius: 4px;\r\n\tborder-bottom: none;\r\n\t}\r\n.leaflet-bar a.leaflet-disabled {\r\n\tcursor: default;\r\n\tbackground-color: #f4f4f4;\r\n\tcolor: #bbb;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-bar a {\r\n\twidth: 30px;\r\n\theight: 30px;\r\n\tline-height: 30px;\r\n\t}\r\n.leaflet-touch .leaflet-bar a:first-child {\r\n\tborder-top-left-radius: 2px;\r\n\tborder-top-right-radius: 2px;\r\n\t}\r\n.leaflet-touch .leaflet-bar a:last-child {\r\n\tborder-bottom-left-radius: 2px;\r\n\tborder-bottom-right-radius: 2px;\r\n\t}\r\n\r\n/* zoom control */\r\n\r\n.leaflet-control-zoom-in,\r\n.leaflet-control-zoom-out {\r\n\tfont: bold 18px 'Lucida Console', Monaco, monospace;\r\n\ttext-indent: 1px;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {\r\n\tfont-size: 22px;\r\n\t}\r\n\r\n\r\n/* layers control */\r\n\r\n.leaflet-control-layers {\r\n\tbox-shadow: 0 1px 5px rgba(0,0,0,0.4);\r\n\tbackground: #fff;\r\n\tborder-radius: 5px;\r\n\t}\r\n.leaflet-control-layers-toggle {\r\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n\twidth: 36px;\r\n\theight: 36px;\r\n\t}\r\n.leaflet-retina .leaflet-control-layers-toggle {\r\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\r\n\tbackground-size: 26px 26px;\r\n\t}\r\n.leaflet-touch .leaflet-control-layers-toggle {\r\n\twidth: 44px;\r\n\theight: 44px;\r\n\t}\r\n.leaflet-control-layers .leaflet-control-layers-list,\r\n.leaflet-control-layers-expanded .leaflet-control-layers-toggle {\r\n\tdisplay: none;\r\n\t}\r\n.leaflet-control-layers-expanded .leaflet-control-layers-list {\r\n\tdisplay: block;\r\n\tposition: relative;\r\n\t}\r\n.leaflet-control-layers-expanded {\r\n\tpadding: 6px 10px 6px 6px;\r\n\tcolor: #333;\r\n\tbackground: #fff;\r\n\t}\r\n.leaflet-control-layers-scrollbar {\r\n\toverflow-y: scroll;\r\n\toverflow-x: hidden;\r\n\tpadding-right: 5px;\r\n\t}\r\n.leaflet-control-layers-selector {\r\n\tmargin-top: 2px;\r\n\tposition: relative;\r\n\ttop: 1px;\r\n\t}\r\n.leaflet-control-layers label {\r\n\tdisplay: block;\r\n\tfont-size: 13px;\r\n\tfont-size: 1.08333em;\r\n\t}\r\n.leaflet-control-layers-separator {\r\n\theight: 0;\r\n\tborder-top: 1px solid #ddd;\r\n\tmargin: 5px -10px 5px -6px;\r\n\t}\r\n\r\n/* Default icon URLs */\r\n.leaflet-default-icon-path { /* used only in path-guessing heuristic, see L.Icon.Default */\r\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\r\n\t}\r\n\r\n\r\n/* attribution and scale controls */\r\n\r\n.leaflet-container .leaflet-control-attribution {\r\n\tbackground: #fff;\r\n\tbackground: rgba(255, 255, 255, 0.8);\r\n\tmargin: 0;\r\n\t}\r\n.leaflet-control-attribution,\r\n.leaflet-control-scale-line {\r\n\tpadding: 0 5px;\r\n\tcolor: #333;\r\n\tline-height: 1.4;\r\n\t}\r\n.leaflet-control-attribution a {\r\n\ttext-decoration: none;\r\n\t}\r\n.leaflet-control-attribution a:hover,\r\n.leaflet-control-attribution a:focus {\r\n\ttext-decoration: underline;\r\n\t}\r\n.leaflet-control-attribution svg {\r\n\tdisplay: inline !important;\r\n\t}\r\n.leaflet-left .leaflet-control-scale {\r\n\tmargin-left: 5px;\r\n\t}\r\n.leaflet-bottom .leaflet-control-scale {\r\n\tmargin-bottom: 5px;\r\n\t}\r\n.leaflet-control-scale-line {\r\n\tborder: 2px solid #777;\r\n\tborder-top: none;\r\n\tline-height: 1.1;\r\n\tpadding: 2px 5px 1px;\r\n\twhite-space: nowrap;\r\n\toverflow: hidden;\r\n\tbox-sizing: border-box;\r\n\r\n\tbackground: #fff;\r\n\tbackground: rgba(255, 255, 255, 0.5);\r\n\t}\r\n.leaflet-control-scale-line:not(:first-child) {\r\n\tborder-top: 2px solid #777;\r\n\tborder-bottom: none;\r\n\tmargin-top: -2px;\r\n\t}\r\n.leaflet-control-scale-line:not(:first-child):not(:last-child) {\r\n\tborder-bottom: 2px solid #777;\r\n\t}\r\n\r\n.leaflet-touch .leaflet-control-attribution,\r\n.leaflet-touch .leaflet-control-layers,\r\n.leaflet-touch .leaflet-bar {\r\n\tbox-shadow: none;\r\n\t}\r\n.leaflet-touch .leaflet-control-layers,\r\n.leaflet-touch .leaflet-bar {\r\n\tborder: 2px solid rgba(0,0,0,0.2);\r\n\tbackground-clip: padding-box;\r\n\t}\r\n\r\n\r\n/* popup */\r\n\r\n.leaflet-popup {\r\n\tposition: absolute;\r\n\ttext-align: center;\r\n\tmargin-bottom: 20px;\r\n\t}\r\n.leaflet-popup-content-wrapper {\r\n\tpadding: 1px;\r\n\ttext-align: left;\r\n\tborder-radius: 12px;\r\n\t}\r\n.leaflet-popup-content {\r\n\tmargin: 13px 24px 13px 20px;\r\n\tline-height: 1.3;\r\n\tfont-size: 13px;\r\n\tfont-size: 1.08333em;\r\n\tmin-height: 1px;\r\n\t}\r\n.leaflet-popup-content p {\r\n\tmargin: 17px 0;\r\n\tmargin: 1.3em 0;\r\n\t}\r\n.leaflet-popup-tip-container {\r\n\twidth: 40px;\r\n\theight: 20px;\r\n\tposition: absolute;\r\n\tleft: 50%;\r\n\tmargin-top: -1px;\r\n\tmargin-left: -20px;\r\n\toverflow: hidden;\r\n\tpointer-events: none;\r\n\t}\r\n.leaflet-popup-tip {\r\n\twidth: 17px;\r\n\theight: 17px;\r\n\tpadding: 1px;\r\n\r\n\tmargin: -10px auto 0;\r\n\tpointer-events: auto;\r\n\ttransform: rotate(45deg);\r\n\t}\r\n.leaflet-popup-content-wrapper,\r\n.leaflet-popup-tip {\r\n\tbackground: white;\r\n\tcolor: #333;\r\n\tbox-shadow: 0 3px 14px rgba(0,0,0,0.4);\r\n\t}\r\n.leaflet-container a.leaflet-popup-close-button {\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tright: 0;\r\n\tborder: none;\r\n\ttext-align: center;\r\n\twidth: 24px;\r\n\theight: 24px;\r\n\tfont: 16px/24px Tahoma, Verdana, sans-serif;\r\n\tcolor: #757575;\r\n\ttext-decoration: none;\r\n\tbackground: transparent;\r\n\t}\r\n.leaflet-container a.leaflet-popup-close-button:hover,\r\n.leaflet-container a.leaflet-popup-close-button:focus {\r\n\tcolor: #585858;\r\n\t}\r\n.leaflet-popup-scrolled {\r\n\toverflow: auto;\r\n\tborder-bottom: 1px solid #ddd;\r\n\tborder-top: 1px solid #ddd;\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-popup-content-wrapper {\r\n\t-ms-zoom: 1;\r\n\t}\r\n.leaflet-oldie .leaflet-popup-tip {\r\n\twidth: 24px;\r\n\tmargin: 0 auto;\r\n\r\n\t-ms-filter: \"progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)\";\r\n\tfilter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);\r\n\t}\r\n\r\n.leaflet-oldie .leaflet-control-zoom,\r\n.leaflet-oldie .leaflet-control-layers,\r\n.leaflet-oldie .leaflet-popup-content-wrapper,\r\n.leaflet-oldie .leaflet-popup-tip {\r\n\tborder: 1px solid #999;\r\n\t}\r\n\r\n\r\n/* div icon */\r\n\r\n.leaflet-div-icon {\r\n\tbackground: #fff;\r\n\tborder: 1px solid #666;\r\n\t}\r\n\r\n\r\n/* Tooltip */\r\n/* Base styles for the element that has a tooltip */\r\n.leaflet-tooltip {\r\n\tposition: absolute;\r\n\tpadding: 6px;\r\n\tbackground-color: #fff;\r\n\tborder: 1px solid #fff;\r\n\tborder-radius: 3px;\r\n\tcolor: #222;\r\n\twhite-space: nowrap;\r\n\t-webkit-user-select: none;\r\n\t-moz-user-select: none;\r\n\t-ms-user-select: none;\r\n\tuser-select: none;\r\n\tpointer-events: none;\r\n\tbox-shadow: 0 1px 3px rgba(0,0,0,0.4);\r\n\t}\r\n.leaflet-tooltip.leaflet-interactive {\r\n\tcursor: pointer;\r\n\tpointer-events: auto;\r\n\t}\r\n.leaflet-tooltip-top:before,\r\n.leaflet-tooltip-bottom:before,\r\n.leaflet-tooltip-left:before,\r\n.leaflet-tooltip-right:before {\r\n\tposition: absolute;\r\n\tpointer-events: none;\r\n\tborder: 6px solid transparent;\r\n\tbackground: transparent;\r\n\tcontent: \"\";\r\n\t}\r\n\r\n/* Directions */\r\n\r\n.leaflet-tooltip-bottom {\r\n\tmargin-top: 6px;\r\n}\r\n.leaflet-tooltip-top {\r\n\tmargin-top: -6px;\r\n}\r\n.leaflet-tooltip-bottom:before,\r\n.leaflet-tooltip-top:before {\r\n\tleft: 50%;\r\n\tmargin-left: -6px;\r\n\t}\r\n.leaflet-tooltip-top:before {\r\n\tbottom: 0;\r\n\tmargin-bottom: -12px;\r\n\tborder-top-color: #fff;\r\n\t}\r\n.leaflet-tooltip-bottom:before {\r\n\ttop: 0;\r\n\tmargin-top: -12px;\r\n\tmargin-left: -6px;\r\n\tborder-bottom-color: #fff;\r\n\t}\r\n.leaflet-tooltip-left {\r\n\tmargin-left: -6px;\r\n}\r\n.leaflet-tooltip-right {\r\n\tmargin-left: 6px;\r\n}\r\n.leaflet-tooltip-left:before,\r\n.leaflet-tooltip-right:before {\r\n\ttop: 50%;\r\n\tmargin-top: -6px;\r\n\t}\r\n.leaflet-tooltip-left:before {\r\n\tright: 0;\r\n\tmargin-right: -12px;\r\n\tborder-left-color: #fff;\r\n\t}\r\n.leaflet-tooltip-right:before {\r\n\tleft: 0;\r\n\tmargin-left: -12px;\r\n\tborder-right-color: #fff;\r\n\t}\r\n\r\n/* Printing */\r\n\t\r\n@media print {\r\n\t/* Prevent printers from removing background-images of controls. */\r\n\t.leaflet-control {\r\n\t\t-webkit-print-color-adjust: exact;\r\n\t\tcolor-adjust: exact;\r\n\t\t}\r\n\t}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.btn-check1[data-v-263d058a] {\n    background-color: #08705F;\n    color: white;\n    width: 100%;\n    padding: 12px 0 !important;\n    border-radius: 8px;\n    border: 1px solid #08705F;\n}\n.btn-check1[data-v-263d058a]:hover {\n    background-color: white;\n    color: #08705F;\n}\n.btn-check2[data-v-263d058a] {\n    background-color: white;\n    color: #08705F;\n    width: 100%;\n    padding: 12px 0 !important;\n    border-radius: 8px;\n    border: 1px solid #08705F;\n}\n.btn-check2[data-v-263d058a]:hover {\n    background-color: #08705;\n    color: white;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -54605,6 +54779,36 @@ var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMP
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EIMZO_vue_vue_type_style_index_0_id_263d058a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EIMZO_vue_vue_type_style_index_0_id_263d058a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EIMZO_vue_vue_type_style_index_0_id_263d058a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=style&index=0&id=6dde423b&scoped=true&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=style&index=0&id=6dde423b&scoped=true&lang=css& ***!
@@ -57272,6 +57476,47 @@ component.options.__file = "resources/js/components/Index.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Modules/EIMZO.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/Modules/EIMZO.vue ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _EIMZO_vue_vue_type_template_id_263d058a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EIMZO.vue?vue&type=template&id=263d058a&scoped=true& */ "./resources/js/components/Modules/EIMZO.vue?vue&type=template&id=263d058a&scoped=true&");
+/* harmony import */ var _EIMZO_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EIMZO.vue?vue&type=script&lang=js& */ "./resources/js/components/Modules/EIMZO.vue?vue&type=script&lang=js&");
+/* harmony import */ var _EIMZO_vue_vue_type_style_index_0_id_263d058a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css& */ "./resources/js/components/Modules/EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _EIMZO_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EIMZO_vue_vue_type_template_id_263d058a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _EIMZO_vue_vue_type_template_id_263d058a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "263d058a",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Modules/EIMZO.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Modules/Preloader.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/Modules/Preloader.vue ***!
@@ -57384,6 +57629,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Modules/EIMZO.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/Modules/EIMZO.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EIMZO_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EIMZO.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EIMZO_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Modules/Preloader.vue?vue&type=script&lang=js&":
 /*!********************************************************************************!*\
   !*** ./resources/js/components/Modules/Preloader.vue?vue&type=script&lang=js& ***!
@@ -57413,6 +57674,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Navbar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Modules/EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/Modules/EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css& ***!
+  \************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_EIMZO_vue_vue_type_style_index_0_id_263d058a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=style&index=0&id=263d058a&scoped=true&lang=css&");
+
 
 /***/ }),
 
@@ -57459,6 +57733,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_bb962f12_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_bb962f12_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Index.vue?vue&type=template&id=bb962f12&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Index.vue?vue&type=template&id=bb962f12&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Modules/EIMZO.vue?vue&type=template&id=263d058a&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/Modules/EIMZO.vue?vue&type=template&id=263d058a&scoped=true& ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EIMZO_vue_vue_type_template_id_263d058a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EIMZO_vue_vue_type_template_id_263d058a_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EIMZO_vue_vue_type_template_id_263d058a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EIMZO.vue?vue&type=template&id=263d058a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=template&id=263d058a&scoped=true&");
 
 
 /***/ }),
@@ -57687,6 +57978,152 @@ var render = function () {
       ),
     ],
     1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=template&id=263d058a&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/EIMZO.vue?vue&type=template&id=263d058a&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      attrs: {
+        name: "eri_form",
+        action: _vm.route,
+        id: "eri_form",
+        method: "post",
+      },
+    },
+    [
+      _vm.isError
+        ? _c(
+            "div",
+            {
+              staticClass: "alert alert-danger",
+              attrs: { id: "error", role: "alert" },
+            },
+            [_vm._v("\n        " + _vm._s(_vm.errorText) + "\n    ")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group mb-2" }, [
+        _c("label", { attrs: { for: "key" } }, [_vm._v("Kalitni tanlang")]),
+        _vm._v(" "),
+        _c("select", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selectedKey,
+              expression: "selectedKey",
+            },
+          ],
+          staticClass: "form-control bordered",
+          attrs: { name: "key", id: "key" },
+          on: {
+            change: function ($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function (o) {
+                  return o.selected
+                })
+                .map(function (o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.selectedKey = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            },
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf },
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "none", attrs: { hidden: "", id: "keyId" } }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "eri_fullname", id: "eri_fullname" },
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "eri_inn", id: "eri_inn" },
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: "eri_pinfl", id: "eri_pinfl" },
+      }),
+      _vm._v(" "),
+      _c("input", { attrs: { type: "hidden", name: "eri_sn", id: "eri_sn" } }),
+      _vm._v(" "),
+      _c(
+        "textarea",
+        {
+          staticClass: "none",
+          attrs: { hidden: "", name: "eri_data", id: "eri_data" },
+        },
+        [_vm._v("authorization")]
+      ),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "none",
+        attrs: { hidden: "", name: "eri_hash", id: "eri_hash" },
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-center" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-check1",
+            attrs: { id: "eri_sign", type: "button" },
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                return _vm.sign.apply(null, arguments)
+              },
+            },
+          },
+          [_vm._v("Kirish")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-check2 mt-2",
+            attrs: { type: "button" },
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                return _vm.uiLoadKeys.apply(null, arguments)
+              },
+            },
+          },
+          [_vm._v("Yangilash")]
+        ),
+      ]),
+    ]
   )
 }
 var staticRenderFns = []
@@ -58857,24 +59294,54 @@ var render = function () {
                       _vm._v(_vm._s(_vm.$t("nav.oneid"))),
                     ]),
                     _vm._v(" "),
-                    _c("nav", { staticClass: "m-24" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "nav nav-tabs",
-                          attrs: { id: "login-tab", role: "tablist" },
-                        },
-                        [
-                          _vm._m(7),
-                          _vm._v(" "),
-                          _vm._m(8),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "d-flex flex-row m-24" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "checkbox-custom cursor-pointer",
-                                class: _vm.agree ? "custom-checked" : "",
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-content",
+                        attrs: { id: "nav-tabContent" },
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "tab-pane fade show active",
+                            attrs: {
+                              id: "nav-oneid",
+                              role: "tabpanel",
+                              "aria-labelledby": "nav-home-tab",
+                            },
+                          },
+                          [
+                            _c("div", { staticClass: "d-flex flex-row m-24" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "checkbox-custom cursor-pointer",
+                                  class: _vm.agree ? "custom-checked" : "",
+                                  on: {
+                                    click: function ($event) {
+                                      $event.preventDefault()
+                                      return _vm.agreeToggle.apply(
+                                        null,
+                                        arguments
+                                      )
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fas fa-solid fa-check",
+                                  }),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("p", {
+                                staticClass: "w-75 ml-3  cursor-pointer",
+                                domProps: {
+                                  innerHTML: _vm._s(_vm.$t("oferta")),
+                                },
                                 on: {
                                   click: function ($event) {
                                     $event.preventDefault()
@@ -58884,41 +59351,37 @@ var render = function () {
                                     )
                                   },
                                 },
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-solid fa-check",
-                                }),
-                              ]
-                            ),
+                              }),
+                            ]),
                             _vm._v(" "),
-                            _c("p", {
-                              staticClass: "w-75 ml-3  cursor-pointer",
-                              domProps: { innerHTML: _vm._s(_vm.$t("oferta")) },
-                              on: {
-                                click: function ($event) {
-                                  $event.preventDefault()
-                                  return _vm.agreeToggle.apply(null, arguments)
-                                },
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-check1",
+                                class: _vm.agree ? "" : "disabled",
+                                attrs: { type: "button", disabled: !_vm.agree },
+                                on: { click: _vm.redirect },
                               },
-                            }),
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-check1",
-                              class: _vm.agree ? "" : "disabled",
-                              attrs: { type: "button", disabled: !_vm.agree },
-                              on: { click: _vm.redirect },
+                              [_vm._v(_vm._s(_vm.$t("nav.links.login")))]
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "tab-pane fade",
+                            attrs: {
+                              id: "nav-imzo",
+                              role: "tabpanel",
+                              "aria-labelledby": "nav-profile-tab",
                             },
-                            [_vm._v(_vm._s(_vm.$t("nav.links.login")))]
-                          ),
-                        ]
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(9),
+                          },
+                          [_c("EIMZO")],
+                          1
+                        ),
+                      ]
+                    ),
                   ]),
                 ]),
               ]),
@@ -59085,141 +59548,48 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "nav-link active",
-        attrs: {
-          id: "nav-home-tab",
-          "data-toggle": "tab",
-          href: "#nav-oneid",
-          role: "tab",
-          "aria-controls": "nav-home",
-          "aria-selected": "true",
+    return _c("nav", { staticClass: "m-24" }, [
+      _c(
+        "div",
+        {
+          staticClass: "nav nav-tabs",
+          attrs: { id: "login-tab", role: "tablist" },
         },
-      },
-      [_c("img", { attrs: { src: "/image/oneid.png", alt: "" } })]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "nav-link",
-        attrs: {
-          id: "nav-profile-tab",
-          "data-toggle": "tab",
-          href: "#nav-imzo",
-          role: "tab",
-          "aria-controls": "nav-profile",
-          "aria-selected": "false",
-        },
-      },
-      [_c("img", { attrs: { src: "/image/e-imzo.png", alt: "" } })]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "tab-content", attrs: { id: "nav-tabContent" } },
-      [
-        _c("div", {
-          staticClass: "tab-pane fade show active",
-          attrs: {
-            id: "nav-oneid",
-            role: "tabpanel",
-            "aria-labelledby": "nav-home-tab",
-          },
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "tab-pane fade",
-            attrs: {
-              id: "nav-imzo",
-              role: "tabpanel",
-              "aria-labelledby": "nav-profile-tab",
-            },
-          },
-          [
-            _c("div", { staticClass: "form-group mb-2" }, [
-              _c("label", { attrs: { for: "key" } }, [_vm._v("Key")]),
-              _vm._v(" "),
-              _c("select", {
-                staticClass: "form-control bordered",
-                attrs: { name: "key", id: "key", onchange: "cbChanged(this)" },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", {
-              staticClass: "none",
-              attrs: { hidden: "", id: "keyId" },
-            }),
-            _vm._v(" "),
-            _c("input", {
+        [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link active",
               attrs: {
-                type: "hidden",
-                name: "eri_fullname",
-                id: "eri_fullname",
+                id: "nav-home-tab",
+                "data-toggle": "tab",
+                href: "#nav-oneid",
+                role: "tab",
+                "aria-controls": "nav-home",
+                "aria-selected": "true",
               },
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "hidden", name: "eri_inn", id: "eri_inn" },
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "hidden", name: "eri_pinfl", id: "eri_pinfl" },
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "hidden", name: "eri_sn", id: "eri_sn" },
-            }),
-            _vm._v(" "),
-            _c(
-              "textarea",
-              {
-                staticClass: "none",
-                attrs: { hidden: "", name: "eri_data", id: "eri_data" },
+            },
+            [_c("img", { attrs: { src: "/image/oneid.png", alt: "" } })]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "nav-link",
+              attrs: {
+                id: "nav-profile-tab",
+                "data-toggle": "tab",
+                href: "#nav-imzo",
+                role: "tab",
+                "aria-controls": "nav-profile",
+                "aria-selected": "false",
               },
-              [_vm._v("authorization")]
-            ),
-            _vm._v(" "),
-            _c("textarea", {
-              staticClass: "none",
-              attrs: { hidden: "", name: "eri_hash", id: "eri_hash" },
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-center" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { onclick: "sign()", type: "button" },
-                },
-                [_vm._v("Kirish")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-info",
-                  attrs: { onclick: "uiLoadKeys()", type: "button" },
-                },
-                [_vm._v("Yangilash")]
-              ),
-            ]),
-          ]
-        ),
-      ]
-    )
+            },
+            [_c("img", { attrs: { src: "/image/e-imzo.png", alt: "" } })]
+          ),
+        ]
+      ),
+    ])
   },
 ]
 render._withStripped = true
@@ -76222,7 +76592,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\OpenServer\\\\doma
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.\\n\\n","levels":{"name":"Tizim bosqichlari","first":{"counter":"1-bosqich","name":"\\"O\'zDavyerloyiha\\" DILI","text":"Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi."},"second":{"counter":"2-bosqich","name":"VAKOLATLI ORGANLAR","text":"“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi."},"third":{"counter":"3-bosqich","name":"“E-AUKSION” ESP","text":"Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi."},"fourth":{"counter":"4-bosqich","name":"TUMAN HOKIMIYATI","text":"Ijara shartnomasi ikkinchi tomonlama imzolanadi."},"fifth":{"counter":"5-bosqich","name":"DAVLAT KADASTRLARI PALATASI","text":"Yerning kadastr hujjatlari rasmiylashtiradi."},"sicth":{"counter":"6-bosqich","name":"G‘OLIB","text":"“E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi."}},"lands":{"name":"Земельные участки","first":{"name":"Bo\'sh yerlar"},"second":{"name":"Loyihalashda"},"third":{"name":"Tanlovda"}},"statistics":{"name":"Статистика","new":"Новые земельные участки","ajratilgan":"Выделенные земельные участки","tanlovdagi":"Земельные участки в конкурсе","loyihalashdagi":"Земельные участки в дизайне"},"holat":{"name":"Hududlar bo\'yicha yerlarning holati","karta":"Xaritada ko\'rish","table":"Jadvalda ko\'rish","general":"Umumiy yerlar soni","free":"Bo\'sh yerlarning jami maydoni","region":"Xudud","new":"Yangi yerlar soni","tanlovdagi":"Tanlovdagi yerlar soni"},"offer":{"name":"Siz taklif kiritmochimisiz?","text":"Bo\'sh turgan yer uchastkasi to\'g\'risidagi ma\'lumotlarni ochiq elektron tanlovga qo\'yish masalasini belgilangan tartibda ko\'rib chiqish uchun."},"useful":{"title":"Foydali havolalar","content":["O\'zbekiston Respublikasi Qishloq xo\'jaligi vazirligi","Qishloq xo`jaligida bilim va innovasiyalar markazi","“E-AUKSION” elektron savdo platformasi","2020-2030 yillarda O\'zbekiston Respublikasi qishloq xo\'jaligini rivojlantirish strategiyasi"]}},"docs":{"title":"Meyoriy xujjatlar","content":[{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\\nPF-6243-SON FARMONI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni"},{"name":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\\nPQ-20-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori"},{"title":"O‘ZBEKISTON RESPUBLIKASI VAZIRLAR MAHKAMASINING 2021 YIL 24 noyabrdagi\\n709-SONLI QARORI","content":"O‘zbekiston Respublikasi Vazirlar Mahkamasining 2021 yil 24 noyabrdagi “Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish tartibiga doir normativ-huquqiy hujjatlarni tasdiqlash to‘g‘risida”gi 709-sonli Qarori","file":["Dehqon xo\'jaliklariga yer uchastkasini ijaraga berish NAMUNAVIY SHARTNOMASI","Yuridik shaxslarga yer uchastkasini uzoq muddatli ijaraga berish"]},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 IYULDAGI 5197-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 iyuldagi “Elektron onlayn-auksionni o‘tkazish tartibini soddalashtirish, uning shaffofligini oshirish hamda ishtirokchilar huquqlarining ishonchli himoyasini kafolatlash chora-tadbirlari to‘g‘risida” 5197-son Qarori"}]},"contact":{"text":"Agar Sizda “Ye-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot olishni xoxlasangiz, u holda <a href=\\"https://t.me/eijarasupport\\">T.ME/EIJARASUPPORT</a> telegram guruhiga yozib qoldirishingiz mumkin.","tel":"Murojaat uchun telefon raqamlarimiz","time":"Bog‘lanish vaqti"},"offer":"Taklif kiritish","according":"holatiga ko\'ra","ga":"Ga","ta":"Ta","check":"Tekshirish","appnum":"Ariza raqami","seeAll":"Hammasini ko\'rish","nav":{"links":{"about":"Tizim haqida","map":"Ochiq xarita","docs":"Meyoriy xujjatlar","manuals":"Qo\'llanmalar","faq":"Ko\'p beriladigan savollar","contact":"Aloqa","login":"Tizimga kirish","check":"Taklifni tekshirish"},"oneid":"Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."},"oferta":"Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href=\'\'>foydalanish shartlariga</a> roziman.","footer":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.","menu":{"title":"Меню","content":["О системе","Открытая карта","Нормативные документы","Справочник","Часто задаваемые вопросы"]}},"allrights":"© 2022 все права защищены."}');
+module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.\\n\\n","levels":{"name":"Этапы системы","first":{"counter":"1-этап","name":"\\"O\'zDavyerloyiha\\" DILI","text":"Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi."},"second":{"counter":"2-этап","name":"ОРГАНЫ ВЛАСТИ","text":"“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi."},"third":{"counter":"3-этап","name":"“E-AUKSION” ESP","text":"Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi."},"fourth":{"counter":"4-этап","name":"TUMAN HOKIMIYATI","text":"Ijara shartnomasi ikkinchi tomonlama imzolanadi."},"fifth":{"counter":"5-этап","name":"DAVLAT KADASTRLARI PALATASI","text":"Yerning kadastr hujjatlari rasmiylashtiradi."},"sixth":{"counter":"6-этап","name":"G‘OLIB","text":"“E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi."}},"lands":{"name":"Земельные участки","first":{"name":"Bo\'sh yerlar"},"second":{"name":"Loyihalashda"},"third":{"name":"Tanlovda"}},"statistics":{"name":"Статистика","new":"Новые земельные участки","ajratilgan":"Выделенные земельные участки","tanlovdagi":"Земельные участки в конкурсе","loyihalashdagi":"Земельные участки в дизайне"},"holat":{"name":"Hududlar bo\'yicha yerlarning holati","karta":"Xaritada ko\'rish","table":"Jadvalda ko\'rish","general":"Umumiy yerlar soni","free":"Bo\'sh yerlarning jami maydoni","region":"Xudud","new":"Yangi yerlar soni","tanlovdagi":"Tanlovdagi yerlar soni"},"offer":{"name":"Siz taklif kiritmochimisiz?","text":"Bo\'sh turgan yer uchastkasi to\'g\'risidagi ma\'lumotlarni ochiq elektron tanlovga qo\'yish masalasini belgilangan tartibda ko\'rib chiqish uchun."},"useful":{"title":"Foydali havolalar","content":["O\'zbekiston Respublikasi Qishloq xo\'jaligi vazirligi","Qishloq xo`jaligida bilim va innovasiyalar markazi","“E-AUKSION” elektron savdo platformasi","2020-2030 yillarda O\'zbekiston Respublikasi qishloq xo\'jaligini rivojlantirish strategiyasi"]}},"docs":{"title":"Meyoriy xujjatlar","content":[{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\\nPF-6243-SON FARMONI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni"},{"name":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\\nPQ-20-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori"},{"title":"O‘ZBEKISTON RESPUBLIKASI VAZIRLAR MAHKAMASINING 2021 YIL 24 noyabrdagi\\n709-SONLI QARORI","content":"O‘zbekiston Respublikasi Vazirlar Mahkamasining 2021 yil 24 noyabrdagi “Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish tartibiga doir normativ-huquqiy hujjatlarni tasdiqlash to‘g‘risida”gi 709-sonli Qarori","file":["Dehqon xo\'jaliklariga yer uchastkasini ijaraga berish NAMUNAVIY SHARTNOMASI","Yuridik shaxslarga yer uchastkasini uzoq muddatli ijaraga berish"]},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 IYULDAGI 5197-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 iyuldagi “Elektron onlayn-auksionni o‘tkazish tartibini soddalashtirish, uning shaffofligini oshirish hamda ishtirokchilar huquqlarining ishonchli himoyasini kafolatlash chora-tadbirlari to‘g‘risida” 5197-son Qarori"}]},"contact":{"text":"Agar Sizda “Ye-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot olishni xoxlasangiz, u holda <a href=\\"https://t.me/eijarasupport\\">T.ME/EIJARASUPPORT</a> telegram guruhiga yozib qoldirishingiz mumkin.","tel":"Murojaat uchun telefon raqamlarimiz","time":"Bog‘lanish vaqti"},"offer":"Taklif kiritish","according":"holatiga ko\'ra","ga":"Ga","ta":"Ta","check":"Tekshirish","appnum":"Ariza raqami","seeAll":"Hammasini ko\'rish","nav":{"links":{"about":"Tizim haqida","map":"Ochiq xarita","docs":"Meyoriy xujjatlar","manuals":"Qo\'llanmalar","faq":"Ko\'p beriladigan savollar","contact":"Aloqa","login":"Tizimga kirish","check":"Taklifni tekshirish"},"oneid":"Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."},"oferta":"Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href=\'\'>foydalanish shartlariga</a> roziman.","footer":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.","menu":{"title":"Меню","content":["О системе","Открытая карта","Нормативные документы","Справочник","Часто задаваемые вопросы"]}},"allrights":"© 2022 все права защищены."}');
 
 /***/ }),
 

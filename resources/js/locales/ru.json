@@ -2,34 +2,34 @@
     "main": {
         "text": "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.\n\n",
         "levels": {
-            "name": "Tizim bosqichlari",
+            "name": "Этапы системы",
             "first": {
-                "counter": "1-bosqich",
+                "counter": "1-этап",
                 "name": "\"O'zDavyerloyiha\" DILI",
                 "text": "Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi."
             },
             "second": {
-                "counter": "2-bosqich",
-                "name": "VAKOLATLI ORGANLAR",
+                "counter": "2-этап",
+                "name": "ОРГАНЫ ВЛАСТИ",
                 "text": "“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi."
             },
             "third": {
-                "counter": "3-bosqich",
+                "counter": "3-этап",
                 "name": "“E-AUKSION” ESP",
                 "text": "Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi."
             },
             "fourth": {
-                "counter": "4-bosqich",
+                "counter": "4-этап",
                 "name": "TUMAN HOKIMIYATI",
                 "text": "Ijara shartnomasi ikkinchi tomonlama imzolanadi."
             },
             "fifth": {
-                "counter": "5-bosqich",
+                "counter": "5-этап",
                 "name": "DAVLAT KADASTRLARI PALATASI",
                 "text": "Yerning kadastr hujjatlari rasmiylashtiradi."
             },
-            "sicth": {
-                "counter": "6-bosqich",
+            "sixth": {
+                "counter": "6-этап",
                 "name": "G‘OLIB",
                 "text": "“E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi."
             }

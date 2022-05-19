@@ -142,7 +142,7 @@ var wsError = function (e) {
     }
 };
 
-sign = function () {
+var sign = function () {
     var itm = document.eri_form.key.value;
     if (itm) {
         var id = document.getElementById(itm);
