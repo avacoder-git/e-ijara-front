@@ -4,11 +4,11 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Hudud</th>
-                <th>Yangi yerlar soni</th>
-                <th>Yangi yer maydonlari (ga)</th>
-                <th>Tanlovdagi yerlar soni</th>
-                <th>Tanlovdagi yerlar maydoni (ga)</th>
+                <th>{{ $t("main.holat.region") }}</th>
+                <th>{{ $t("main.holat.new") }}</th>
+                <th>{{ $t("main.statistics.new") }} ({{ $t("ga") }})</th>
+                <th>{{ $t("main.holat.tanlovdagi") }}</th>
+                <th>{{ $t("main.statistics.tanlovdagi") }} ({{ $t("ga") }})</th>
             </tr>
             </thead>
             <tbody>

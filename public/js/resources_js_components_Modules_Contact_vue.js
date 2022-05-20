@@ -59,8 +59,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Contact"
 });
@@ -151,76 +149,97 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", [_vm._v(_vm._s(_vm.$t("nav.links.contact")))]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("p", {
+            directives: [
+              {
+                name: "hmtl",
+                rawName: "v-hmtl",
+                value: _vm.$t("contact.text"),
+                expression: "$t('contact.text')",
+              },
+            ],
+          }),
+          _vm._v(" "),
+          _c("h3", [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.$t("contact.tel")) +
+                "\n                "
+            ),
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("h3", [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.$t("contact.time")) +
+                "\n                "
+            ),
+          ]),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Aloqa")]),
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-4" }, [
+        _c("p", [_vm._v("- (+99871) 206-71-40")]),
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("p", [
-              _vm._v(
-                "\n                    Agar Sizda “Ye-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot\n                    olishni xoxlasangiz, u holda "
-              ),
-              _c("a", { attrs: { href: "https://t.me/eijarasupport" } }, [
-                _vm._v("T.ME/EIJARASUPPORT"),
-              ]),
-              _vm._v(
-                " telegram guruhiga yozib qoldirishingiz mumkin.\n                "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("h3", [
-              _vm._v(
-                "\n                    Murojaat uchun telefon raqamlarimiz\n                "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-4" }, [
-                _c("p", [_vm._v("- (+99871) 206-71-40")]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-4" }, [
-                _c("p", [_vm._v("- (+99871) 206-71-43")]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-4" }, [
-                _c("p", [_vm._v("- (+99871) 206-71-43")]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-4" }, [
-                _c("p", [_vm._v("- (+99871) 206-71-51")]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("h3", [
-              _vm._v(
-                "\n                    Bog‘lanish vaqti\n                "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-4" }, [
-                _c("p", [_vm._v("- Dushanba – Juma")]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-4" }, [
-                _c("p", [_vm._v("- soat 9:00 dan 18:00 gacha.")]),
-              ]),
-            ]),
-          ]),
-        ]),
+      _c("div", { staticClass: "col-lg-4" }, [
+        _c("p", [_vm._v("- (+99871) 206-71-43")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-4" }, [
+        _c("p", [_vm._v("- (+99871) 206-71-43")]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-4" }, [
+        _c("p", [_vm._v("- (+99871) 206-71-51")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-4" }, [
+        _c("p", [_vm._v("- Dushanba – Juma")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-4" }, [
+        _c("p", [_vm._v("- soat 9:00 dan 18:00 gacha.")]),
       ]),
     ])
   },

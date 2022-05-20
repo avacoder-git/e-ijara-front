@@ -3,21 +3,21 @@
         <div class="row">
             <div class="col-12">
                 <div class="map">
-                    <h1>Hududlar bo’yicha yerlarning holati</h1>
+                    <h1>{{ $t('main.holat.name') }}</h1>
 
                     <div class="list">
                         <ul class="nav nav-tabs" id="mapList" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link active" id="map-tab" data-toggle="tab" href="#map" role="tab"
-                                   aria-controls="home" aria-selected="true">Bo'sh yerlar</a>
+                                   aria-controls="home" aria-selected="true">{{ $t('main.holat.karta') }}</a>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="map-table-tab" data-toggle="tab" href="#map-table"
                                    role="tab"
-                                   aria-controls="profile" aria-selected="false">Loyihalashda</a>
+                                   aria-controls="profile" aria-selected="false">{{ $t('main.holat.table') }}</a>
                             </li>
                             <li class="date-list">
-                                <div class="date" >{{ moment  }} holatiga ko’ra</div>
+                                <div class="date" >{{ moment  }} {{ $t("according") }}</div>
                             </li>
                         </ul>
                         <div class="tab-content" id="mapListContent">

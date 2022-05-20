@@ -31,6 +31,6 @@ class EriController extends Controller
         }
 
         // redirect user on successfully authorization
-        return redirect('/');
+        return redirect('/dashboard');
     }
 }

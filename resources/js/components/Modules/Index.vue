@@ -8,10 +8,7 @@
 
             <div class="video-text">
                 <p class="text-center text-white">
-                    Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash,
-                    ko‘rib
-                    chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan
-                    avtomatlashtirilgan axborot tizimi.
+                    {{ $t('main.text') }}
                 </p>
             </div>
 
@@ -22,69 +19,69 @@
         <div class="container-fluid section">
             <div class="row">
                 <div class="col-lg-10">
-                    <h1>Tizim bosqichlari</h1>
+                    <h1>{{ $t("main.levels.name") }}</h1>
                 </div>
                 <div class="col-lg-12">
                     <div class="owl-carousel" id="etap">
                         <div class="rectangle">
                             <div class="icon"><img src="image/uzdyl.svg" alt=""></div>
-                            <div class="bosqich">1-bosqich</div>
+                            <div class="bosqich">{{ $t("main.levels.first.counter") }}</div>
                             <div class="rectangle-title">
-                                “O‘zdavyerloyiha” DILI
+                                {{ $t("main.levels.second.name") }}
                             </div>
                             <div class="rectangle-body">
-                                Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi.
+                                {{ $t("main.levels.first.text") }}
                             </div>
                         </div>
                         <div class="rectangle">
                             <div class="icon"><img src="image/agree.svg" alt=""></div>
-                            <div class="bosqich">2-bosqich</div>
+                            <div class="bosqich">{{ $t("main.levels.second.counter") }}</div>
                             <div class="rectangle-title">
-                                Vakolatli organlar
+                                {{ $t("main.levels.second.name") }}
                             </div>
                             <div class="rectangle-body">
-                                “Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi.
+                                {{ $t("main.levels.second.text") }}
                             </div>
                         </div>
                         <div class="rectangle">
                             <div class="icon"><img src="image/auksion.svg" alt=""></div>
-                            <div class="bosqich">3-bosqich</div>
+                            <div class="bosqich">{{ $t("main.levels.third.counter") }}</div>
                             <div class="rectangle-title">
-                                “E-AUKSION” ESP
+                                {{ $t("main.levels.third.name") }}
                             </div>
                             <div class="rectangle-body">
-                                Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara
-                                shartnomasi bir tomonlama imzolanadi.
+                                {{ $t("main.levels.third.text") }}
+
                             </div>
                         </div>
                         <div class="rectangle">
                             <div class="icon"><img src="image/auksion.svg" alt=""></div>
-                            <div class="bosqich">4-bosqich</div>
+                            <div class="bosqich">{{ $t("main.levels.fourth.counter") }}</div>
                             <div class="rectangle-title">
-                                TUMAN HOKIMIYATI
+                                {{ $t("main.levels.fourth.name") }}
                             </div>
                             <div class="rectangle-body">
-                                Ijara shartnomasi ikkinchi tomonlama imzolanadi.
+                                {{ $t("main.levels.fourth.text") }}
                             </div>
                         </div>
                         <div class="rectangle">
                             <div class="icon"><img src="image/kadastr.svg" alt=""></div>
-                            <div class="bosqich">5-bosqich</div>
+                            <div class="bosqich">{{ $t("main.levels.fifth.counter") }}</div>
                             <div class="rectangle-title">
-                                Davlat kadastr palatasi
+                                {{ $t("main.levels.fifth.name") }}
                             </div>
                             <div class="rectangle-body">
-                                Yerning kadastr hujjatlari rasmiylashtiradi.
+                                {{ $t("main.levels.fifth.text") }}
                             </div>
                         </div>
                         <div class="rectangle">
                             <div class="icon"><img src="image/list.svg" alt=""></div>
-                            <div class="bosqich">6-bosqich</div>
+                            <div class="bosqich">{{ $t("main.levels.sixth.counter") }}</div>
                             <div class="rectangle-title">
-                                G'olib
+                                {{ $t("main.levels.sixth.name") }}
                             </div>
                             <div class="rectangle-body">
-                                “E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi.
+                                {{ $t("main.levels.sixth.text") }}
                             </div>
                         </div>
                     </div>
@@ -101,11 +98,9 @@
                     <div class="offer">
                         <div class="row">
                             <div class="col-6">
-                                <h1>Siz taklif kiritmochimisiz?</h1>
-                                <p>Bo'sh turgan yer uchastkasi to'g'risidagi ma'lumotlarni ochiq elektron tanlovga
-                                    qo'yish
-                                    masalasini belgilangan tartibda ko'rib chiqish uchun.</p>
-                                <a href="" class="check-offer">Taklif kiritish</a>
+                                <h1>{{  $t("main.offer.name") }}</h1>
+                                <p>{{  $t("main.offer.text") }}</p>
+                                <a href="" class="check-offer">{{  $t("offer") }}</a>
                             </div>
                         </div>
                     </div>
@@ -115,7 +110,7 @@
         <div class="container-fluid section-2">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Foydali havolalar</h1>
+                    <h1>{{  $t("main.useful.title") }}</h1>
                 </div>
             </div>
             <div class="row">
@@ -124,25 +119,25 @@
                         <div class="rectangle">
                             <img src="image/gerb.png" alt="">
                             <div>
-                                O'zbekiston Respublikasi Qishloq xo'jaligi vazirligi
+                                {{  $t("main.useful.content[0]") }}
                             </div>
                         </div>
                         <div class="rectangle">
                             <img src="image/agro-innovation.png" alt="">
                             <div>
-                                Qishloq xo`jaligida bilim va innovasiyalar markazi
+                                {{  $t("main.useful.content[1]") }}
                             </div>
                         </div>
                         <div class="rectangle">
                             <img src="image/e-auksion.png" alt="">
                             <div>
-                                “E-AUKSION” elektron savdo platformasi
+                                {{  $t("main.useful.content[2]") }}
                             </div>
                         </div>
                         <div class="rectangle">
                             <img src="image/strategy.png" alt="">
                             <div>
-                                2020-2030 yillarda O'zbekiston Respublikasi qishloq xo'jaligini rivojlantirish strategiyasi
+                                {{  $t("main.useful.content[3]") }}
                             </div>
                         </div>
                     </div>

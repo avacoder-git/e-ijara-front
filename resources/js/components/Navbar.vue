@@ -75,21 +75,21 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><router-link to="/about" class="nav-link nav-link-mini" href="#">Tizim xaqida</router-link></li>
-                    <li class="nav-item"><router-link to="/map" class="nav-link nav-link-mini" href="#">Ochiq xarita</router-link></li>
-                    <li class="nav-item"><router-link to="/documents" class="nav-link nav-link-mini" href="#">Meyoriy xujjatlar</router-link></li>
-                    <li class="nav-item"><router-link to="/manuals" class="nav-link nav-link-mini" href="#">Qo’llanmalar</router-link></li>
-                    <li class="nav-item"><router-link to="/faq" class="nav-link nav-link-mini" href="#">Ko’p beriladigan savollar</router-link></li>
-                    <li class="nav-item"><router-link to="/contact" class="nav-link nav-link-mini" href="#">Aloqa</router-link></li>
+                    <li class="nav-item"><router-link :to="{ name: 'about'}" class="nav-link nav-link-mini" href="#">{{ $t('nav.links.about') }}</router-link></li>
+                    <li class="nav-item"><router-link :to="{name: 'map' }" class="nav-link nav-link-mini" href="#">{{ $t('nav.links.map') }}</router-link></li>
+                    <li class="nav-item"><router-link :to="{name: 'docs' }" class="nav-link nav-link-mini" href="#">{{ $t('nav.links.docs') }}</router-link></li>
+                    <li class="nav-item"><router-link :to="{name: 'manuals' }" class="nav-link nav-link-mini" href="#">{{ $t('nav.links.manuals') }}</router-link></li>
+                    <li class="nav-item"><router-link :to="{name: 'faq' }" class="nav-link nav-link-mini" href="#">{{ $t('nav.links.faq') }}</router-link></li>
+                    <li class="nav-item"><router-link :to="{name: 'contact' }" class="nav-link nav-link-mini" href="#">{{ $t('nav.links.contact') }}</router-link></li>
                     <li class="nav-item dropdown lang-lg">
-                        <a class="nav-link dropdown-toggle" href="#" id="langlgdropdown" role="button"
+                        <a class="nav-link dropdown-toggle text-uppercase" href="#" id="langlgdropdown" role="button"
                            data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            UZ
+                            {{ this.$i18n.locale }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">UZ</a>
-                            <a class="dropdown-item" href="#">RU</a>
+                            <a class="dropdown-item cursor-pointer" @click.prevent="setLocale('uz')">UZ</a>
+                            <a class="dropdown-item cursor-pointer" @click.prevent="setLocale('ru')">RU</a>
                         </div>
                     </li>
                     <li class="nav-item "><a class="nav-link check-offer" data-toggle="modal"
@@ -107,7 +107,7 @@
             <div class="modal-dialog  modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header border-0">
-                        <h5 class="modal-title">Taklif holatini tekshirish</h5>
+                        <h5 class="modal-title">{{ $t('nav.links.check') }}</h5>
 
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -115,12 +115,12 @@
                         </button>
                     </div>
                     <div class="modal-body border-0">
-                        <label for="application_id">Ariza raqami</label>
+                        <label for="application_id">{{ $t("appnum") }}</label>
                         <input id="application_id" type="text" placeholder="0000000"
                                class="form-control border-0 bg-light shadow-none">
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-check1">Tekshirish</button>
+                        <button class="btn btn-check1">{{ $t("check") }}</button>
                     </div>
                 </div>
             </div>
@@ -137,41 +137,46 @@
                     </button>
                     <div class="row">
                         <div class="col-lg-6 d-sm-none p-0 overflow-hidden">
-                            <img src="image/bg.jpg" class="w-100 h-100" alt="">
+                            <img src="/image/bg.jpg" class="w-100 h-100" alt="">
                         </div>
                         <div class="col-lg-6 p-lg-0">
                             <div class="login-content">
-                                <h3>Tizimga kirish</h3>
-                                <p class="description">Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga
-                                    oshiriladi.</p>
+                                <h3>{{ $t("nav.links.login") }}</h3>
+                                <p class="description">{{ $t("nav.oneid") }}</p>
 
                                 <nav class="m-24">
                                     <div class="nav nav-tabs" id="login-tab" role="tablist">
                                         <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-oneid"
                                            role="tab" aria-controls="nav-home" aria-selected="true">
-                                            <img src="image/oneid.png" alt="">
+                                            <img src="/image/oneid.png" alt="">
                                         </a>
                                         <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-imzo"
                                            role="tab" aria-controls="nav-profile" aria-selected="false">
-                                            <img src="image/e-imzo.png" alt="">
+                                            <img src="/image/e-imzo.png" alt="">
                                         </a>
+
                                     </div>
                                 </nav>
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-oneid" role="tabpanel"
                                          aria-labelledby="nav-home-tab">
+                                        <div class="d-flex flex-row m-24">
+                                            <div class="checkbox-custom cursor-pointer" :class="agree ? 'custom-checked' : ''" @click.prevent="agreeToggle"><i class="fas fa-solid fa-check"></i></div>
+                                            <p class="w-75 ml-3  cursor-pointer"  @click.prevent="agreeToggle" v-html="$t('oferta')"></p>
+                                        </div>
+
+                                        <button type="button" class="btn btn-check1" @click="redirect" :class="agree ? '' : 'disabled'" :disabled="!agree">{{ $t("nav.links.login") }}</button>
+
                                     </div>
                                     <div class="tab-pane fade" id="nav-imzo" role="tabpanel"
-                                         aria-labelledby="nav-profile-tab">...
+                                         aria-labelledby="nav-profile-tab">
+
+                                       <EIMZO></EIMZO>
+
+
                                     </div>
                                 </div>
 
-                                <div class="d-flex flex-row m-24">
-                                    <div class="checkbox-custom cursor-pointer" :class="agree ? 'custom-checked' : ''" @toggle.prevent="agreeToggle"><i class="fas fa-solid fa-check"></i></div>
-                                    <p class="w-75 ml-3  cursor-pointer"  @click.prevent="agreeToggle">Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href="">foydalanish shartlariga</a> roziman.</p>
-                                </div>
-
-                                <button type="button" class="btn btn-check1" @click="redirect" :class="agree ? '' : 'disabled'" :disabled="!agree">Tizimga kirish</button>
 
                             </div>
                         </div>
@@ -185,8 +190,7 @@
 
 <script>
 import $ from 'jquery'
-
-
+import EIMZO from "./Modules/EIMZO";
 
 export default {
     name: "Navbar",
@@ -196,7 +200,7 @@ export default {
         }
     },
 
-    components: {$},
+    components: {EIMZO, $},
 
     methods:{
         agreeToggle(){
@@ -210,7 +214,19 @@ export default {
             var redirect_uri = "http://ijara.front.git"
             window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" +
                 redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
+        },
+
+        setLocale(locale)
+        {
+            this.$i18n.locale = locale
+            this.$router.push({
+                params: { lang : locale }
+            })
+            window.location.reload();
+
         }
+
+
     },
     mounted() {
         $(function () {

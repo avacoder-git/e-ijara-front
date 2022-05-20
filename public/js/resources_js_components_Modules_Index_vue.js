@@ -422,11 +422,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -23101,7 +23096,7 @@ var render = function () {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "map" }, [
-          _c("h1", [_vm._v("Hududlar bo’yicha yerlarning holati")]),
+          _c("h1", [_vm._v(_vm._s(_vm.$t("main.holat.name")))]),
           _vm._v(" "),
           _c("div", { staticClass: "list" }, [
             _c(
@@ -23111,13 +23106,55 @@ var render = function () {
                 attrs: { id: "mapList", role: "tablist" },
               },
               [
-                _vm._m(0),
+                _c(
+                  "li",
+                  { staticClass: "nav-item", attrs: { role: "presentation" } },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link active",
+                        attrs: {
+                          id: "map-tab",
+                          "data-toggle": "tab",
+                          href: "#map",
+                          role: "tab",
+                          "aria-controls": "home",
+                          "aria-selected": "true",
+                        },
+                      },
+                      [_vm._v(_vm._s(_vm.$t("main.holat.karta")))]
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
-                _vm._m(1),
+                _c(
+                  "li",
+                  { staticClass: "nav-item", attrs: { role: "presentation" } },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link",
+                        attrs: {
+                          id: "map-table-tab",
+                          "data-toggle": "tab",
+                          href: "#map-table",
+                          role: "tab",
+                          "aria-controls": "profile",
+                          "aria-selected": "false",
+                        },
+                      },
+                      [_vm._v(_vm._s(_vm.$t("main.holat.table")))]
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("li", { staticClass: "date-list" }, [
                   _c("div", { staticClass: "date" }, [
-                    _vm._v(_vm._s(_vm.moment) + " holatiga ko’ra"),
+                    _vm._v(
+                      _vm._s(_vm.moment) + " " + _vm._s(_vm.$t("according"))
+                    ),
                   ]),
                 ]),
               ]
@@ -23139,60 +23176,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      { staticClass: "nav-item", attrs: { role: "presentation" } },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link active",
-            attrs: {
-              id: "map-tab",
-              "data-toggle": "tab",
-              href: "#map",
-              role: "tab",
-              "aria-controls": "home",
-              "aria-selected": "true",
-            },
-          },
-          [_vm._v("Bo'sh yerlar")]
-        ),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      { staticClass: "nav-item", attrs: { role: "presentation" } },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: {
-              id: "map-table-tab",
-              "data-toggle": "tab",
-              href: "#map-table",
-              role: "tab",
-              "aria-controls": "profile",
-              "aria-selected": "false",
-            },
-          },
-          [_vm._v("Loyihalashda")]
-        ),
-      ]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -23481,21 +23465,29 @@ var render = function () {
               _vm._v(" "),
               _c("div", { staticClass: "rectangle-inner" }, [
                 _c("div", { staticClass: "info" }, [
-                  _vm._v("Umumiy bo‘sh yerlar soni:"),
+                  _vm._v(_vm._s(_vm.$t("main.holat.general")) + ":"),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "son" }, [
-                  _vm._v(_vm._s(_vm.pointedLocation.count) + " ta"),
+                  _vm._v(
+                    _vm._s(_vm.pointedLocation.count) +
+                      " " +
+                      _vm._s(_vm.$t("ta"))
+                  ),
                 ]),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "rectangle-inner rectangle-inner-2" }, [
                 _c("div", { staticClass: "info" }, [
-                  _vm._v("Bo‘sh yerlarning jami maydoni:"),
+                  _vm._v(_vm._s(_vm.$t("main.holat.free")) + ":"),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "son" }, [
-                  _vm._v(_vm._s(_vm.pointedLocation.all_area) + " ga"),
+                  _vm._v(
+                    _vm._s(_vm.pointedLocation.all_area) +
+                      " " +
+                      _vm._s(_vm.$t("ga"))
+                  ),
                 ]),
               ]),
             ]),
@@ -23540,7 +23532,33 @@ var render = function () {
     },
     [
       _c("table", { staticClass: "table" }, [
-        _vm._m(0),
+        _c("thead", [
+          _c("tr", [
+            _c("th", [_vm._v(_vm._s(_vm.$t("main.holat.region")))]),
+            _vm._v(" "),
+            _c("th", [_vm._v(_vm._s(_vm.$t("main.holat.new")))]),
+            _vm._v(" "),
+            _c("th", [
+              _vm._v(
+                _vm._s(_vm.$t("main.statistics.new")) +
+                  " (" +
+                  _vm._s(_vm.$t("ga")) +
+                  ")"
+              ),
+            ]),
+            _vm._v(" "),
+            _c("th", [_vm._v(_vm._s(_vm.$t("main.holat.tanlovdagi")))]),
+            _vm._v(" "),
+            _c("th", [
+              _vm._v(
+                _vm._s(_vm.$t("main.statistics.tanlovdagi")) +
+                  " (" +
+                  _vm._s(_vm.$t("ga")) +
+                  ")"
+              ),
+            ]),
+          ]),
+        ]),
         _vm._v(" "),
         _c(
           "tbody",
@@ -23565,26 +23583,7 @@ var render = function () {
     ]
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Hudud")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Yangi yerlar soni")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Yangi yer maydonlari (ga)")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Tanlovdagi yerlar soni")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Tanlovdagi yerlar maydoni (ga)")]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -23624,10 +23623,172 @@ var render = function () {
           ]
         ),
         _vm._v(" "),
-        _vm._m(0),
+        _c("div", { staticClass: "video-text" }, [
+          _c("p", { staticClass: "text-center text-white" }, [
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.$t("main.text")) +
+                "\n            "
+            ),
+          ]),
+        ]),
       ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "container-fluid section" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-10" }, [
+            _c("h1", [_vm._v(_vm._s(_vm.$t("main.levels.name")))]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c("div", { staticClass: "owl-carousel", attrs: { id: "etap" } }, [
+              _c("div", { staticClass: "rectangle" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "bosqich" }, [
+                  _vm._v(_vm._s(_vm.$t("main.levels.first.counter"))),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-title" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.second.name")) +
+                      "\n                        "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-body" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.first.text")) +
+                      "\n                        "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "rectangle" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "bosqich" }, [
+                  _vm._v(_vm._s(_vm.$t("main.levels.second.counter"))),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-title" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.second.name")) +
+                      "\n                        "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-body" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.second.text")) +
+                      "\n                        "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "rectangle" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "bosqich" }, [
+                  _vm._v(_vm._s(_vm.$t("main.levels.third.counter"))),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-title" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.third.name")) +
+                      "\n                        "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-body" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.third.text")) +
+                      "\n\n                        "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "rectangle" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", { staticClass: "bosqich" }, [
+                  _vm._v(_vm._s(_vm.$t("main.levels.fourth.counter"))),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-title" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.fourth.name")) +
+                      "\n                        "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-body" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.fourth.text")) +
+                      "\n                        "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "rectangle" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("div", { staticClass: "bosqich" }, [
+                  _vm._v(_vm._s(_vm.$t("main.levels.fifth.counter"))),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-title" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.fifth.name")) +
+                      "\n                        "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-body" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.fifth.text")) +
+                      "\n                        "
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "rectangle" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("div", { staticClass: "bosqich" }, [
+                  _vm._v(_vm._s(_vm.$t("main.levels.sixth.counter"))),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-title" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.sixth.name")) +
+                      "\n                        "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle-body" }, [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.$t("main.levels.sixth.text")) +
+                      "\n                        "
+                  ),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
       _vm._v(" "),
       _c("Lands"),
       _vm._v(" "),
@@ -23637,9 +23798,93 @@ var render = function () {
       _vm._v(" "),
       _c("FieldStatus"),
       _vm._v(" "),
-      _vm._m(2),
+      _c("div", { staticClass: "container-fluid d-sm-none section-2" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c("div", { staticClass: "offer" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-6" }, [
+                  _c("h1", [_vm._v(_vm._s(_vm.$t("main.offer.name")))]),
+                  _vm._v(" "),
+                  _c("p", [_vm._v(_vm._s(_vm.$t("main.offer.text")))]),
+                  _vm._v(" "),
+                  _c("a", { staticClass: "check-offer", attrs: { href: "" } }, [
+                    _vm._v(_vm._s(_vm.$t("offer"))),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
       _vm._v(" "),
-      _vm._m(3),
+      _c("div", { staticClass: "container-fluid section-2" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c("h1", [_vm._v(_vm._s(_vm.$t("main.useful.title")))]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c(
+              "div",
+              { staticClass: "owl-carousel", attrs: { id: "quick-links" } },
+              [
+                _c("div", { staticClass: "rectangle" }, [
+                  _c("img", { attrs: { src: "image/gerb.png", alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.$t("main.useful.content[0]")) +
+                        "\n                        "
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle" }, [
+                  _c("img", {
+                    attrs: { src: "image/agro-innovation.png", alt: "" },
+                  }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.$t("main.useful.content[1]")) +
+                        "\n                        "
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle" }, [
+                  _c("img", { attrs: { src: "image/e-auksion.png", alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.$t("main.useful.content[2]")) +
+                        "\n                        "
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "rectangle" }, [
+                  _c("img", { attrs: { src: "image/strategy.png", alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.$t("main.useful.content[3]")) +
+                        "\n                        "
+                    ),
+                  ]),
+                ]),
+              ]
+            ),
+          ]),
+        ]),
+      ]),
     ],
     1
   )
@@ -23649,240 +23894,48 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "video-text" }, [
-      _c("p", { staticClass: "text-center text-white" }, [
-        _vm._v(
-          "\n                Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash,\n                ko‘rib\n                chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan\n                avtomatlashtirilgan axborot tizimi.\n            "
-        ),
-      ]),
+    return _c("div", { staticClass: "icon" }, [
+      _c("img", { attrs: { src: "image/uzdyl.svg", alt: "" } }),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid section" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-10" }, [
-          _c("h1", [_vm._v("Tizim bosqichlari")]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("div", { staticClass: "owl-carousel", attrs: { id: "etap" } }, [
-            _c("div", { staticClass: "rectangle" }, [
-              _c("div", { staticClass: "icon" }, [
-                _c("img", { attrs: { src: "image/uzdyl.svg", alt: "" } }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "bosqich" }, [_vm._v("1-bosqich")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-title" }, [
-                _vm._v(
-                  "\n                            “O‘zdavyerloyiha” DILI\n                        "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-body" }, [
-                _vm._v(
-                  "\n                            Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi.\n                        "
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "rectangle" }, [
-              _c("div", { staticClass: "icon" }, [
-                _c("img", { attrs: { src: "image/agree.svg", alt: "" } }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "bosqich" }, [_vm._v("2-bosqich")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-title" }, [
-                _vm._v(
-                  "\n                            Vakolatli organlar\n                        "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-body" }, [
-                _vm._v(
-                  "\n                            “Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi.\n                        "
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "rectangle" }, [
-              _c("div", { staticClass: "icon" }, [
-                _c("img", { attrs: { src: "image/auksion.svg", alt: "" } }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "bosqich" }, [_vm._v("3-bosqich")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-title" }, [
-                _vm._v(
-                  "\n                            “E-AUKSION” ESP\n                        "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-body" }, [
-                _vm._v(
-                  "\n                            Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara\n                            shartnomasi bir tomonlama imzolanadi.\n                        "
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "rectangle" }, [
-              _c("div", { staticClass: "icon" }, [
-                _c("img", { attrs: { src: "image/auksion.svg", alt: "" } }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "bosqich" }, [_vm._v("4-bosqich")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-title" }, [
-                _vm._v(
-                  "\n                            TUMAN HOKIMIYATI\n                        "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-body" }, [
-                _vm._v(
-                  "\n                            Ijara shartnomasi ikkinchi tomonlama imzolanadi.\n                        "
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "rectangle" }, [
-              _c("div", { staticClass: "icon" }, [
-                _c("img", { attrs: { src: "image/kadastr.svg", alt: "" } }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "bosqich" }, [_vm._v("5-bosqich")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-title" }, [
-                _vm._v(
-                  "\n                            Davlat kadastr palatasi\n                        "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-body" }, [
-                _vm._v(
-                  "\n                            Yerning kadastr hujjatlari rasmiylashtiradi.\n                        "
-                ),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "rectangle" }, [
-              _c("div", { staticClass: "icon" }, [
-                _c("img", { attrs: { src: "image/list.svg", alt: "" } }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "bosqich" }, [_vm._v("6-bosqich")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-title" }, [
-                _vm._v(
-                  "\n                            G'olib\n                        "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle-body" }, [
-                _vm._v(
-                  "\n                            “E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi.\n                        "
-                ),
-              ]),
-            ]),
-          ]),
-        ]),
-      ]),
+    return _c("div", { staticClass: "icon" }, [
+      _c("img", { attrs: { src: "image/agree.svg", alt: "" } }),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid d-sm-none section-2" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("div", { staticClass: "offer" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-6" }, [
-                _c("h1", [_vm._v("Siz taklif kiritmochimisiz?")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "Bo'sh turgan yer uchastkasi to'g'risidagi ma'lumotlarni ochiq elektron tanlovga\n                                qo'yish\n                                masalasini belgilangan tartibda ko'rib chiqish uchun."
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "check-offer", attrs: { href: "" } }, [
-                  _vm._v("Taklif kiritish"),
-                ]),
-              ]),
-            ]),
-          ]),
-        ]),
-      ]),
+    return _c("div", { staticClass: "icon" }, [
+      _c("img", { attrs: { src: "image/auksion.svg", alt: "" } }),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid section-2" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("h1", [_vm._v("Foydali havolalar")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
-          _c(
-            "div",
-            { staticClass: "owl-carousel", attrs: { id: "quick-links" } },
-            [
-              _c("div", { staticClass: "rectangle" }, [
-                _c("img", { attrs: { src: "image/gerb.png", alt: "" } }),
-                _vm._v(" "),
-                _c("div", [
-                  _vm._v(
-                    "\n                            O'zbekiston Respublikasi Qishloq xo'jaligi vazirligi\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _c("img", {
-                  attrs: { src: "image/agro-innovation.png", alt: "" },
-                }),
-                _vm._v(" "),
-                _c("div", [
-                  _vm._v(
-                    "\n                            Qishloq xo`jaligida bilim va innovasiyalar markazi\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _c("img", { attrs: { src: "image/e-auksion.png", alt: "" } }),
-                _vm._v(" "),
-                _c("div", [
-                  _vm._v(
-                    "\n                            “E-AUKSION” elektron savdo platformasi\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _c("img", { attrs: { src: "image/strategy.png", alt: "" } }),
-                _vm._v(" "),
-                _c("div", [
-                  _vm._v(
-                    "\n                            2020-2030 yillarda O'zbekiston Respublikasi qishloq xo'jaligini rivojlantirish strategiyasi\n                        "
-                  ),
-                ]),
-              ]),
-            ]
-          ),
-        ]),
-      ]),
+    return _c("div", { staticClass: "icon" }, [
+      _c("img", { attrs: { src: "image/auksion.svg", alt: "" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("img", { attrs: { src: "image/kadastr.svg", alt: "" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("img", { attrs: { src: "image/list.svg", alt: "" } }),
     ])
   },
 ]
@@ -23909,7 +23962,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid section-2" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("h1", [_vm._v(_vm._s(_vm.$t("main.lands.name")))]),
+      ]),
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c(
@@ -23923,19 +23980,79 @@ var render = function () {
               attrs: { id: "myTab", role: "tablist" },
             },
             [
-              _vm._m(1),
+              _c(
+                "li",
+                { staticClass: "nav-item", attrs: { role: "presentation" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link active",
+                      attrs: {
+                        id: "home-tab",
+                        "data-toggle": "tab",
+                        href: "#home",
+                        role: "tab",
+                        "aria-controls": "home",
+                        "aria-selected": "true",
+                      },
+                    },
+                    [_vm._v(_vm._s(_vm.$t("main.lands.first.name")))]
+                  ),
+                ]
+              ),
               _vm._v(" "),
-              _vm._m(2),
+              _c(
+                "li",
+                { staticClass: "nav-item", attrs: { role: "presentation" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: {
+                        id: "profile-tab",
+                        "data-toggle": "tab",
+                        href: "#profile",
+                        role: "tab",
+                        "aria-controls": "profile",
+                        "aria-selected": "false",
+                      },
+                    },
+                    [_vm._v(_vm._s(_vm.$t("main.lands.second.name")))]
+                  ),
+                ]
+              ),
               _vm._v(" "),
-              _vm._m(3),
+              _c(
+                "li",
+                { staticClass: "nav-item", attrs: { role: "presentation" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: {
+                        id: "contact-tab",
+                        "data-toggle": "tab",
+                        href: "#contact",
+                        role: "tab",
+                        "aria-controls": "contact",
+                        "aria-selected": "false",
+                      },
+                    },
+                    [_vm._v(_vm._s(_vm.$t("main.lands.third.name")))]
+                  ),
+                ]
+              ),
               _vm._v(" "),
               _c("li", { staticClass: "date-list d-sm-none" }, [
                 _c(
                   "div",
                   { staticClass: "date" },
                   [
-                    _c("router-link", { attrs: { to: "/all" } }, [
-                      _vm._v("Hammasini ko'rish "),
+                    _c("router-link", { attrs: { to: { name: "all" } } }, [
+                      _vm._v(_vm._s(_vm.$t("seeAll"))),
                       _c("img", {
                         staticStyle: {
                           transform: "rotate(180deg)",
@@ -24027,7 +24144,7 @@ var render = function () {
                                   _vm._v(_vm._s(item.area) + " Ga"),
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(4, true),
+                                _vm._m(0, true),
                               ]),
                             ]
                           ),
@@ -24108,7 +24225,7 @@ var render = function () {
                                   _vm._v(_vm._s(item.area) + " Ga"),
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(5, true),
+                                _vm._m(1, true),
                               ]),
                             ]
                           ),
@@ -24189,7 +24306,7 @@ var render = function () {
                                   _vm._v(_vm._s(item.area) + " Ga"),
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(6, true),
+                                _vm._m(2, true),
                               ]),
                             ]
                           ),
@@ -24205,8 +24322,11 @@ var render = function () {
           _vm._v(" "),
           _c(
             "router-link",
-            { staticClass: "barchasi d-lg-none", attrs: { to: "/all" } },
-            [_vm._v("Hammasini ko'rish")]
+            {
+              staticClass: "barchasi d-lg-none",
+              attrs: { to: { name: "all" } },
+            },
+            [_vm._v(_vm._s(_vm.$t("seeAll")))]
           ),
         ],
         1
@@ -24215,94 +24335,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("h1", [_vm._v("Yer maydonlari")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      { staticClass: "nav-item", attrs: { role: "presentation" } },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link active",
-            attrs: {
-              id: "home-tab",
-              "data-toggle": "tab",
-              href: "#home",
-              role: "tab",
-              "aria-controls": "home",
-              "aria-selected": "true",
-            },
-          },
-          [_vm._v("Bo'sh yerlar")]
-        ),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      { staticClass: "nav-item", attrs: { role: "presentation" } },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: {
-              id: "profile-tab",
-              "data-toggle": "tab",
-              href: "#profile",
-              role: "tab",
-              "aria-controls": "profile",
-              "aria-selected": "false",
-            },
-          },
-          [_vm._v("Loyihalashda")]
-        ),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      { staticClass: "nav-item", attrs: { role: "presentation" } },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: {
-              id: "contact-tab",
-              "data-toggle": "tab",
-              href: "#contact",
-              role: "tab",
-              "aria-controls": "contact",
-              "aria-selected": "false",
-            },
-          },
-          [_vm._v("Tanlovda")]
-        ),
-      ]
-    )
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -24354,7 +24386,11 @@ var render = function () {
     "div",
     { staticClass: "container-fluid section-2", attrs: { id: "statistics" } },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("h1", [_vm._v(_vm._s(_vm.$t("main.statistics.name")))]),
+        ]),
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12" }, [
@@ -24365,7 +24401,7 @@ var render = function () {
               _c("div", { staticClass: "rectangle" }, [
                 _c("div", { staticClass: "block" }, [
                   _c("div", { staticClass: "block-title" }, [
-                    _vm._v("Yangi yer maydonlari"),
+                    _vm._v(_vm._s(_vm.$t("main.statistics.new"))),
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "block-numbers" }, [
@@ -24381,13 +24417,13 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(1),
+                _vm._m(0),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "rectangle" }, [
                 _c("div", { staticClass: "block" }, [
                   _c("div", { staticClass: "block-title" }, [
-                    _vm._v("Ajratilgan yer maydonlari"),
+                    _vm._v(_vm._s(_vm.$t("main.statistics.ajratilgan"))),
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "block-numbers" }, [
@@ -24403,13 +24439,13 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(2),
+                _vm._m(1),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "rectangle" }, [
                 _c("div", { staticClass: "block" }, [
                   _c("div", { staticClass: "block-title" }, [
-                    _vm._v("Tanlovdagi yer maydonlari"),
+                    _vm._v(_vm._s(_vm.$t("main.statistics.tanlovdagi"))),
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "block-numbers" }, [
@@ -24425,13 +24461,13 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm._m(2),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "rectangle" }, [
                 _c("div", { staticClass: "block" }, [
                   _c("div", { staticClass: "block-title" }, [
-                    _vm._v("Loyihalashdagi yer maydonlari"),
+                    _vm._v(_vm._s(_vm.$t("main.statistics.loyihalashda"))),
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "block-numbers" }, [
@@ -24449,7 +24485,7 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(4),
+                _vm._m(3),
               ]),
             ]
           ),
@@ -24459,16 +24495,6 @@ var render = function () {
   )
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("h1", [_vm._v("Statistika")]),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

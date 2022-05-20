@@ -113,25 +113,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Docs"
 });
@@ -222,169 +203,123 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("\n        Meyoriy xujjatlar\n    ")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c(
-            "a",
-            {
-              staticClass: "card",
-              attrs: { href: "https://lex.uz/docs/5450176", target: "_blank" },
-            },
-            [
-              _c("div", { staticClass: "row align-items-center" }, [
-                _c("div", { staticClass: "col-10 col-lg-11" }, [
-                  _vm._v(
-                    "O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\n                        PF-6243-SON FARMONI\n                    "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2 col-lg-1" }, [
-                  _c("a", { attrs: { href: "" } }, [
-                    _c("i", {
-                      staticClass: "fa fa-arrow-right",
-                      attrs: { "aria-hidden": "true" },
-                    }),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("p", [
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", [
+      _vm._v("\n        " + _vm._s(_vm.$t("docs.title")) + "\n\n    "),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c(
+          "a",
+          {
+            staticClass: "card",
+            attrs: { href: "https://lex.uz/docs/5450176", target: "_blank" },
+          },
+          [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col-10 col-lg-11" }, [
                 _vm._v(
-                  "\n                    O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va\n                    shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor\n                    aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni "
-                ),
-              ]),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "card",
-              attrs: { href: "https://lex.uz/docs/5739727", target: "_blank" },
-            },
-            [
-              _c("div", { staticClass: "row align-items-center" }, [
-                _c("div", { staticClass: "col-10 col-lg-11" }, [
-                  _vm._v(
-                    "O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\n                        PQ-20-SON QARORI\n                    "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2 col-lg-1" }, [
-                  _c("a", { attrs: { href: "" } }, [
-                    _c("i", {
-                      staticClass: "fa fa-arrow-right",
-                      attrs: { "aria-hidden": "true" },
-                    }),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n                    O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va\n                    uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon\n                    xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori "
-                ),
-              ]),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "card",
-              attrs: { href: "https://lex.uz/docs/5739815", target: "_blank" },
-            },
-            [
-              _c("div", { staticClass: "row align-items-center" }, [
-                _c("div", { staticClass: "col-10 col-lg-11" }, [
-                  _vm._v(
-                    "O‘ZBEKISTON RESPUBLIKASI VAZIRLAR MAHKAMASINING 2021 YIL 24\n                        noyabrdagi\n                        709-SONLI QARORI\n                    "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2 col-lg-1" }, [
-                  _c("a", { attrs: { href: "" } }, [
-                    _c("i", {
-                      staticClass: "fa fa-arrow-right",
-                      attrs: { "aria-hidden": "true" },
-                    }),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v(
-                  "\n                    O‘zbekiston Respublikasi Vazirlar Mahkamasining 2021 yil 24 noyabrdagi “Qishloq xo‘jaligiga\n                    mo‘ljallangan yer uchastkalarini ijaraga berish tartibiga doir normativ-huquqiy hujjatlarni\n                    tasdiqlash to‘g‘risida”gi 709-sonli Qarori\n                "
+                  _vm._s(_vm.$t("docs.content[0].title")) +
+                    "\n                    "
                 ),
               ]),
               _vm._v(" "),
-              _c(
-                "span",
-                { staticClass: "d-flex", staticStyle: { gap: "24px" } },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "file",
-                      attrs: {
-                        href: "/docs/Вилоят_ҳокимининг_қарори_лойиҳаси.docx",
-                        target: "_blank",
-                      },
-                    },
-                    [
-                      _c("img", {
-                        attrs: { src: "/image/Document.svg", alt: "" },
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mx-5" }, [
-                        _c("h3", [
-                          _vm._v("VILOYAT HOKIMINING QARORI LOYIHASI"),
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [_vm._v("187KB   -   DOC file")]),
-                      ]),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "file",
-                      attrs: {
-                        href: "/docs/Деҳқон_хўжаликларига_ер_участкасини_ижарага_бериш_НАМУНАВИЙ_ШАРТНОМАСИ.docx",
-                        target: "_blank",
-                      },
-                    },
-                    [
-                      _c("img", {
-                        attrs: { src: "/image/Document.svg", alt: "" },
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mx-5" }, [
-                        _c("h3", [
-                          _vm._v(
-                            "Dehqon xo'jaliklariga yer uchastkasini ijaraga berish NAMUNAVIY SHARTNOMASI"
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [_vm._v("187KB   -   DOC file")]),
-                      ]),
-                    ]
-                  ),
-                ]
+              _vm._m(0),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.$t("docs.content[0].content")) +
+                  "\n\n                "
               ),
+            ]),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "card",
+            attrs: { href: "https://lex.uz/docs/5739727", target: "_blank" },
+          },
+          [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col-10 col-lg-11" }, [
+                _vm._v(
+                  _vm._s(_vm.$t("docs.content[1].title")) +
+                    "\n                    "
+                ),
+              ]),
               _vm._v(" "),
-              _c("span", { staticClass: "d-flex" }, [
+              _vm._m(1),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.$t("docs.content[1].content")) +
+                  "\n\n                "
+              ),
+            ]),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "card",
+            attrs: { href: "https://lex.uz/docs/5739815", target: "_blank" },
+          },
+          [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col-10 col-lg-11" }, [
+                _vm._v(
+                  _vm._s(_vm.$t("docs.content[2].title")) +
+                    "\n                    "
+                ),
+              ]),
+              _vm._v(" "),
+              _vm._m(2),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.$t("docs.content[2].content")) +
+                  "\n\n                "
+              ),
+            ]),
+            _vm._v(" "),
+            _c(
+              "span",
+              { staticClass: "d-lg-flex", staticStyle: { gap: "24px" } },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "file",
+                    attrs: {
+                      href: "/docs/Деҳқон_хўжаликларига_ер_участкасини_ижарага_бериш_НАМУНАВИЙ_ШАРТНОМАСИ.docx",
+                      target: "_blank",
+                    },
+                  },
+                  [
+                    _c("img", {
+                      attrs: { src: "/image/Document.svg", alt: "" },
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mx-5" }, [
+                      _c("h3", [
+                        _vm._v(_vm._s(_vm.$t("docs.content[2].file[0]"))),
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("187KB   -   DOC file")]),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
                 _c(
                   "a",
                   {
@@ -401,51 +336,99 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("div", { staticClass: "mx-5" }, [
                       _c("h3", [
-                        _vm._v(
-                          "Yuridik shaxslarga yer uchastkasini uzoq muddatli ijaraga berish"
-                        ),
+                        _vm._v(_vm._s(_vm.$t("docs.content[2].file[1]"))),
                       ]),
                       _vm._v(" "),
                       _c("p", [_vm._v("187KB   -   DOC file")]),
                     ]),
                   ]
                 ),
-              ]),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "card",
-              attrs: { href: "https://lex.uz/docs/5525718", target: "_blank" },
-            },
-            [
-              _c("div", { staticClass: "row align-items-center" }, [
-                _c("div", { staticClass: "col-10 col-lg-11" }, [
-                  _vm._v(
-                    "O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 IYULDAGI\n                        5197-SON QARORI\n                    "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2 col-lg-1" }, [
-                  _c("a", { attrs: { href: "" } }, [
-                    _c("i", {
-                      staticClass: "fa fa-arrow-right",
-                      attrs: { "aria-hidden": "true" },
-                    }),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("p", [
+              ]
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "card",
+            attrs: { href: "https://lex.uz/docs/5525718", target: "_blank" },
+          },
+          [
+            _c("div", { staticClass: "row align-items-center" }, [
+              _c("div", { staticClass: "col-10 col-lg-11" }, [
                 _vm._v(
-                  "\n                    O‘zbekiston Respublikasi Prezidentining 2021 yil 24 iyuldagi “Elektron onlayn-auksionni\n                    o‘tkazish tartibini soddalashtirish, uning shaffofligini oshirish hamda ishtirokchilar\n                    huquqlarining ishonchli himoyasini kafolatlash chora-tadbirlari to‘g‘risida” 5197-son Qarori\n                "
+                  _vm._s(_vm.$t("docs.content[3].title")) +
+                    "\n                    "
                 ),
               ]),
-            ]
-          ),
-        ]),
+              _vm._v(" "),
+              _vm._m(3),
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.$t("docs.content[3].content")) +
+                  "\n                "
+              ),
+            ]),
+          ]
+        ),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2 col-lg-1" }, [
+      _c("a", { attrs: { href: "" } }, [
+        _c("i", {
+          staticClass: "fa fa-arrow-right",
+          attrs: { "aria-hidden": "true" },
+        }),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2 col-lg-1" }, [
+      _c("a", { attrs: { href: "" } }, [
+        _c("i", {
+          staticClass: "fa fa-arrow-right",
+          attrs: { "aria-hidden": "true" },
+        }),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2 col-lg-1" }, [
+      _c("a", { attrs: { href: "" } }, [
+        _c("i", {
+          staticClass: "fa fa-arrow-right",
+          attrs: { "aria-hidden": "true" },
+        }),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2 col-lg-1" }, [
+      _c("a", { attrs: { href: "" } }, [
+        _c("i", {
+          staticClass: "fa fa-arrow-right",
+          attrs: { "aria-hidden": "true" },
+        }),
       ]),
     ])
   },

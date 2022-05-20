@@ -2,7 +2,7 @@
     <div>
         <div class="bg-white">
             <div class="container-fluid section-2">
-                <h1>Ochiq xarita</h1>
+                <h1>{{ $t("nav.links.map") }}</h1>
 
                 <div class="tab-menu">
                     <button class="tab-btn active">Umumiy xarita</button>
@@ -36,9 +36,10 @@
         <div class="container-fluid mt-4 section-2">
             <l-map
                 ref="map"
+                :options="options"
                 :zoom="zoom"
                 :center="center">
-                <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains" :url="url"
+                <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains"  :url="url"
                               :attribution="attribution"></l-tile-layer>
                 <l-control-zoom position="bottomright"></l-control-zoom>
                 <l-geo-json v-for="land in lands"
@@ -90,9 +91,8 @@ export default {
                 fillOpacity: 0.7,
             },
             options: {
-                maxZoom: 20,
-                tolerance: 3,
-                debug: 0,
+                zoomControl: false,
+
                 // style: geojsonStyle
             },
             mapOptions: {
@@ -119,9 +119,9 @@ export default {
     },
     methods: {
         getRegions() {
-            axios.get('api/json/regions')
+            axios.get('/api/json/regions')
                 .then(response => {
-                    this.regions = response.data
+                    this.regions = response.data ?? []
                     this.regions.push({
                         id: 0,
                         nameuz: "Xudud",
@@ -141,7 +141,7 @@ export default {
 
 
         getDistricts(regioncode) {
-            axios.get(`api/json/districts/${regioncode}`)
+            axios.get(`/api/json/districts/${regioncode}`)
                 .then(response => {
                     this.districts = response.data
 
@@ -154,7 +154,7 @@ export default {
 
         },
         setMap() {
-            axios.get(`api/json/district/${this.selectedDistrict}`)
+            axios.get(`/api/json/district/${this.selectedDistrict}`)
                 .then(response => {
                     var geojson = response.data
                     this.makeGeoJSON(geojson)
@@ -173,7 +173,7 @@ export default {
         },
 
         getRegionGeoJSON($region) {
-            axios.get(`api/json/regions/${$region}`)
+            axios.get(`/api/json/regions/${$region}`)
                 .then(response => {
                     var geojson = response.data
                     this.makeGeoJSON(geojson)
@@ -231,7 +231,6 @@ export default {
                         type: "FeatureCollection"
                     }
 
-                    console.log(geojson);
                     vt(geojson, options).addTo(this.$refs.map.mapObject);
 
 
@@ -242,7 +241,7 @@ export default {
             axios.get(`https://api.agro.uz/gis_bridge/eijara`, {params: {prefix}})
                 .then(response => {
                     this.removeMarkers()
-                    var lands = response.data
+                    var lands = response.data[0]
 
                     var geojsonStyle = {
                         fillColor: "#ff0000",
@@ -260,7 +259,7 @@ export default {
                     };
 
 
-                    if (lands.features)
+                    if (lands.features !== null)
                         vt(lands, options).addTo(this.$refs.map.mapObject);
 
 

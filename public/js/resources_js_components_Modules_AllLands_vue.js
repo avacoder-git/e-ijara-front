@@ -373,11 +373,88 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "container-fluid section-2" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("h1", [_vm._v(_vm._s(_vm.$t("main.lands.name")))]),
+        ]),
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12 ", attrs: { id: "fields" } }, [
-          _vm._m(1),
+          _c(
+            "ul",
+            {
+              staticClass: "nav nav-tabs",
+              attrs: { id: "myTab", role: "tablist" },
+            },
+            [
+              _c(
+                "li",
+                { staticClass: "nav-item", attrs: { role: "presentation" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link active",
+                      attrs: {
+                        id: "home-tab",
+                        "data-toggle": "tab",
+                        href: "#home",
+                        role: "tab",
+                        "aria-controls": "home",
+                        "aria-selected": "true",
+                      },
+                    },
+                    [_vm._v(_vm._s(_vm.$t("main.lands.first.name")))]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item", attrs: { role: "presentation" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: {
+                        id: "profile-tab",
+                        "data-toggle": "tab",
+                        href: "#profile",
+                        role: "tab",
+                        "aria-controls": "profile",
+                        "aria-selected": "false",
+                      },
+                    },
+                    [_vm._v(_vm._s(_vm.$t("main.lands.second.name")))]
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item", attrs: { role: "presentation" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: {
+                        id: "contact-tab",
+                        "data-toggle": "tab",
+                        href: "#contact",
+                        role: "tab",
+                        "aria-controls": "contact",
+                        "aria-selected": "false",
+                      },
+                    },
+                    [_vm._v(_vm._s(_vm.$t("main.lands.third.name")))]
+                  ),
+                ]
+              ),
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -475,7 +552,7 @@ var render = function () {
                                           [_vm._v(_vm._s(item.area) + " Ga")]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(2, true),
+                                        _vm._m(0, true),
                                       ]
                                     ),
                                   ]
@@ -624,7 +701,7 @@ var render = function () {
                                           [_vm._v(_vm._s(item.area) + " Ga")]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(3, true),
+                                        _vm._m(1, true),
                                       ]
                                     ),
                                   ]
@@ -776,7 +853,7 @@ var render = function () {
                                           [_vm._v(_vm._s(item.area) + " Ga")]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(4, true),
+                                        _vm._m(2, true),
                                       ]
                                     ),
                                   ]
@@ -843,80 +920,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("h1", [_vm._v("Yer maydonlari")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "ul",
-      { staticClass: "nav nav-tabs", attrs: { id: "myTab", role: "tablist" } },
-      [
-        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link active",
-              attrs: {
-                id: "home-tab",
-                "data-toggle": "tab",
-                href: "#home",
-                role: "tab",
-                "aria-controls": "home",
-                "aria-selected": "true",
-              },
-            },
-            [_vm._v("Bo'sh yerlar")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                id: "profile-tab",
-                "data-toggle": "tab",
-                href: "#profile",
-                role: "tab",
-                "aria-controls": "profile",
-                "aria-selected": "false",
-              },
-            },
-            [_vm._v("Loyihalashda")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                id: "contact-tab",
-                "data-toggle": "tab",
-                href: "#contact",
-                role: "tab",
-                "aria-controls": "contact",
-                "aria-selected": "false",
-              },
-            },
-            [_vm._v("Tanlovda")]
-          ),
-        ]),
-      ]
-    )
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
