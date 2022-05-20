@@ -79,8 +79,11 @@
 
                                 <div class="form-group">
                                     <label for="regions">Ер участкасини ижарага олиш мақсади </label>
-                                    <select name="purpose" id="purpose_id" class="form-control">
-                                        <option value="">Tanlang</option>
+                                    <select name="purpose" id="purpose_id" class="form-control" required>
+                                        <option value="">ижарага олиш мақсадини белгиланг</option>
+                                        @foreach($land_purposes as $key => $item)
+                                            <option value="{{ $key }}">{{ $item }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="text-danger" id="error_purpose_id"></div>
