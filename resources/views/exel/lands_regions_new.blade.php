@@ -290,7 +290,6 @@
             <td>{{ $key+1 }}</td>
             <td>{{$item->nameuz}}</td>
             <td>{{\App\Models\PlanedReduced::where('region_id',$item->regionid)->whereNotNull('district_id')->sum('planned')}}</td>
-            {{--            <td>{{$item->planned_reduced ? $item->planned_reduced->planned : 0}}</td>--}}
             <td>{{\App\Models\Land::whereNull('parent_id')->where('is_merged_lot',0)->where('region_id',$item->regionid)->count()}}</td>
             <td>{{round(\App\Models\Land::whereNull('parent_id')->where('is_merged_lot',0)->where('region_id',$item->regionid)->sum('area'),2)}}</td>
             <td>{{$count_inventory->inventory_count}}</td>

@@ -25,6 +25,7 @@
                     <div class="position-relative form-group">
                         <label for="step" class="">Босқични танланг</label>
                         <select name="step" id="step" class="form-control" required>
+                            <option value="">Босқични танланг</option>
                             @foreach($steps as $key => $step)
                                 <option value="{{ $key }}">{{ $step['type'] }}</option>
                             @endforeach
@@ -34,7 +35,7 @@
                     <div class="position-relative form-group">
                         <label for="type" class="">Босқич турини танланг</label>
                         <select name="type_id" id="type" class="form-control" required>
-                            <option>Босқич турини танланг</option>
+                            <option value="">Босқич турини танланг</option>
                             @foreach ($steps as $key => $value)
                                 @foreach ($value["child"] as $kalit => $value)
                                     <option value="{{ $kalit }}" class="types d-none" data-id="{{ $key }}">{{ $value }}</option>
@@ -42,7 +43,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <button class="btn mr-2 mb-2 btn-primary" type="submit">Тахрирлаш</button>
+                    <button class="btn mr-2 mb-2 btn-primary" type="submit">Юклаб олиш</button>
                 </form>
             </div>
         </div>
