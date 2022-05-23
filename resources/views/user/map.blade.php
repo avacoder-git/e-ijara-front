@@ -37,30 +37,39 @@
             border-radius: 50rem;       /* roundness of the scroll thumb */
         }
 
+        .loader{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 10000;
+        }
+
+        .opacity{
+            opacity: 0;
+        }
+
     </style>
 
 @endsection
 @section('content')
 
+    <div id="loader" class="loader d-none"></div>
+    <div id="loader2">
+    </div>
+
     <div class="row justify-content-center">
-        <div class="dropdown d-inline-block">
-            <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"
-                    class="mb-2 mr-2 dropdown-toggle btn btn-primary" id="regionName">Viloyatni tanlang
-            </button>
-            <div tabindex="-1" role="menu" aria-hidden="true" id="regions" class="dropdown-menu" x-placement="bottom-start"
-                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 33px, 0px);">
-                <button type="button" tabindex="0" class="dropdown-item">Tanlang</button>
-            </div>
+        <div class="col-3 my-3">
+            <select name="" id="regions" class="form-control">
+                <option value="">Tanlang</option>
+            </select>
         </div>
-        <div class="dropdown d-inline-block">
-            <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" id="districtName"
-                    class="mb-2 mr-2 dropdown-toggle btn btn-success">Tumanni tanlang
-            </button>
-            <div tabindex="-1" role="menu" aria-hidden="true" id="districts" class="dropdown-menu"
-                 x-placement="bottom-start"
-                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 33px, 0px);">
-                <button type="button" tabindex="0" class="dropdown-item">Tanlang</button>
-            </div>
+        <div class="col-3 my-3">
+            <select name="" id="districts" class="form-control">
+                <option value="">Tanlang</option>
+            </select>
         </div>
 
     </div>
