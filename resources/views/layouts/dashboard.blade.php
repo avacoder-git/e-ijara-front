@@ -79,6 +79,9 @@
 
                                 <div class="form-group">
                                     <label for="regions">Ер участкасини ижарага олиш мақсади </label>
+                                    @php
+                                        $land_purposes =  \App\Models\LandPurposes::query()->where('person_type', '=', Auth::user()->user_type)->pluck('name', 'id');
+                                    @endphp
                                     <select name="purpose" id="purpose_id" class="form-control" required>
                                         <option value="">ижарага олиш мақсадини белгиланг</option>
                                         @foreach($land_purposes as $key => $item)

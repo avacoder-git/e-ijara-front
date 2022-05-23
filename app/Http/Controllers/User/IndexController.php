@@ -20,10 +20,7 @@ class IndexController extends Controller
             ->where('user_id', Auth::id())
             ->orderBy('id', 'desc')
             ->get();
-
-        $land_purposes =  LandPurposes::query()->where('person_type', '=', Auth::user()->user_type)->pluck('name', 'id');
-
-        return view('user.main', compact('applications', 'land_purposes'));
+        return view('user.main', compact('applications'));
     }
 
     public function logout()
