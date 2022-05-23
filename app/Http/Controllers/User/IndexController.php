@@ -35,14 +35,6 @@ class IndexController extends Controller
         return view('user.profile', compact('user'));
     }
 
-    public function changeProfile(Request $request)
-    {
-        $user = Auth::user();
-        $user->phone = $request->phone;
-        $user->email = $request->email;
-        $user->save();
-        return redirect()->back()->with('success', 'Фойдаланувчи малумотлари тахрирланди');
-    }
 
     public function application()
     {

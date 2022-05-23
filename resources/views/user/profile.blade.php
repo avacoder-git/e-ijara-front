@@ -64,44 +64,11 @@
                         <div class="col-md-4">
                                 <div class="position-relative form-group">
                                         <label for="exampleZip" class="">Фуқаро</label>
-                                        <input id="exampleZip" type="text" value="{{ $user->user_type == 'Y' ? 'Юридик' : 'Жисмоний' }} шахс" 
+                                        <input id="exampleZip" type="text" value="{{ $user->user_type == 'Y' ? 'Юридик' : 'Жисмоний' }} шахс"
                                                 class="form-control" disabled>
                                 </div>
                         </div>
                 </div>
-                <button class="btn mr-2 mb-2 btn-primary" data-toggle="modal" data-target="#exampleModalLong">Тахрирлаш</button>
-
         </div>
 </div>
-
 @endsection
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Малумотларни тахрирлаш</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <form action="{{ route('user.changeProfile') }}" method='POST'>
-                @csrf
-                <div class="modal-body">
-                        <div class="position-relative form-group">
-                                <label for="exampleState" class="">Телефон рақами</label>
-                                <input id="exampleState" type="text" value="{{ $user->phone }}" name='phone' class="form-control">
-                        </div>
-
-                        <div class="position-relative form-group">
-                                <label for="exampleState" class="">Электрон почта манзили</label>
-                                <input id="exampleState" type="email" value="{{ $user->email }}" name='email' class="form-control">
-                        </div> 
-                </div>
-                <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ёпиш</button>
-                        <button type="submit" class="btn btn-primary">Сақлаш</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>

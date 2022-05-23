@@ -8,7 +8,6 @@ use App\Http\Controllers\ReportController;
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'user.'], function () {
     Route::get('/profile', [IndexController::class, 'profile'])->name('profile');
-    Route::post('/changeProfile', [IndexController::class, 'changeProfile'])->name('changeProfile');
     Route::get('/user', [IndexController::class, 'user'])->name('user');
     Route::get('/', [IndexController::class, 'dashboard'])->name('main');
     Route::get('/logout', [IndexController::class, 'logout'])->name('logout');
