@@ -1,79 +1,102 @@
 {
     "main": {
-        "text": "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.\n\n",
+        "text": "Автоматизированная информационная система, предназначенная для сбора, рассмотрения и согласования материалов по аренде земельных участков сельскохозяйственного назначения с уполномоченными органами и организациями",
         "levels": {
             "name": "Этапы системы",
-            "first": {
-                "counter": "1-этап",
-                "name": "\"O'zDavyerloyiha\" DILI",
-                "text": "Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi."
-            },
-            "second": {
-                "counter": "2-этап",
-                "name": "ОРГАНЫ ВЛАСТИ",
-                "text": "“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi."
-            },
-            "third": {
-                "counter": "3-этап",
-                "name": "“E-AUKSION” ESP",
-                "text": "Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi."
-            },
-            "fourth": {
-                "counter": "4-этап",
-                "name": "TUMAN HOKIMIYATI",
-                "text": "Ijara shartnomasi ikkinchi tomonlama imzolanadi."
-            },
-            "fifth": {
-                "counter": "5-этап",
-                "name": "DAVLAT KADASTRLARI PALATASI",
-                "text": "Yerning kadastr hujjatlari rasmiylashtiradi."
-            },
-            "sixth": {
-                "counter": "6-этап",
-                "name": "G‘OLIB",
-                "text": "“E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi."
-            }
+            "etap": "этап",
+            "сontent": [
+                {
+                    "icon": "image/auksion.svg",
+                    "name": "Предложение",
+                    "text": "Поступает предложение от физических и юридических лиц"
+                },
+                {
+                    "icon": "image/uzdyl.svg",
+                    "name": "ГНПИ “ЎЗДАВЕРЛОЙИХА” ",
+                    "text": "Предложение рассмотривается и направляется в районный хокимият"
+                },
+                {
+                    "icon": "image/auksion.svg",
+                    "name": "РАЁННЫЙ МУНИЦИПАЛИТЕТ",
+                    "text": "Предложение рассмотривается и направляется в Государственную кадастровую палату    "
+                },
+                {
+                    "icon": "image/kadastr.svg",
+                    "name": "ГОСУДАРСТВЕННАЯ КАДАСТРОВАЯ ПАЛАТА",
+                    "text": "Оформляется кадастровый документ на земельный участок на имя районного муниципалитета"
+                },
+                {
+                    "icon": "image/uzdyl.svg",
+                    "name": "ГНПИ ЎЗДАВЕРЛОЙИХА” ",
+                    "text": "Разработывается Проект земельного участка"
+                },
+                {
+                    "icon": "image/agree.svg",
+                    "name": "УПОЛНОМОЧЕННЫЕ ОРГАНЫ",
+                    "text": "\"Проект земельного участка\" согласовывается с соответствующими организациями и ведомствами"
+                },
+                {
+                    "icon": "image/auksion.svg",
+                    "name": "ЭТП “Е-AUKSION”",
+                    "text": "Земельный участок выставляется на конкурс, с победителем подписывается договор аренды в одностороннем порядке "
+                },
+                {
+                    "icon": "image/auksion.svg",
+                    "name": "РАЁННЫЙ МУНИЦИПАЛИТЕТ",
+                    "text": "Договор аренты подписывается второй стороной"
+                },
+                {
+                    "icon": "image/kadastr.svg",
+                    "name": "ГОСУДАРСТВЕННАЯ КАДАСТРОВАЯ ПАЛАТА",
+                    "text": "Оформляются документы кадастра земли"
+                },
+                {
+                    "icon": "image/list.svg",
+                    "name": "ПОБЕДИТЕЛЬ",
+                    "text": "Все документы появляются в личном кабинете ЭТП \"Е-AUKSION \""
+                }
+            ]
         },
         "lands": {
             "name": "Земельные участки",
             "first": {
-                "name": "Bo'sh yerlar"
+                "name": "Новые"
             },
             "second": {
-                "name": "Loyihalashda"
+                "name": "Выставленные"
             },
             "third": {
-                "name": "Tanlovda"
+                "name": "Выставленные"
             }
         },
         "statistics": {
             "name": "Статистика",
             "new": "Новые земельные участки",
-            "ajratilgan": "Выделенные земельные участки",
-            "tanlovdagi": "Земельные участки в конкурсе",
-            "loyihalashdagi": "Земельные участки в дизайне"
+            "ajratilgan": "Выданные земельные участки",
+            "tanlovdagi": "Выставленные земельные участки",
+            "loyihalashdagi": "Проектируемые земельные участки"
         },
         "holat": {
-            "name": "Hududlar bo'yicha yerlarning holati",
-            "karta": "Xaritada ko'rish",
-            "table": "Jadvalda ko'rish",
-            "general": "Umumiy yerlar soni",
-            "free": "Bo'sh yerlarning jami maydoni",
-            "region": "Xudud",
-            "new": "Yangi yerlar soni",
-            "tanlovdagi": "Tanlovdagi yerlar soni"
+            "name": "Статусы земель в разрезе регионов",
+            "karta": "Карта",
+            "table": "Таблица",
+            "general": "Общее количество земель",
+            "free": "Общая площадь свободных земель",
+            "region": "Регион",
+            "new": "Количество новые земельные участки",
+            "tanlovdagi": "Количество проектируемые земельные участки"
         },
         "offer": {
-            "name": "Siz taklif kiritmochimisiz?",
-            "text": "Bo'sh turgan yer uchastkasi to'g'risidagi ma'lumotlarni ochiq elektron tanlovga qo'yish masalasini belgilangan tartibda ko'rib chiqish uchun."
+            "name": "Желаете внести предложение?",
+            "text": "на рассмотрение в установленном порядке вопроса о выставлении на открытый электронный конкурс сведений о свободном земельном участке"
         },
         "useful": {
-            "title": "Foydali havolalar",
+            "title": "Полезные ссылки",
             "content": [
-                "O'zbekiston Respublikasi Qishloq xo'jaligi vazirligi",
-                "Qishloq xo`jaligida bilim va innovasiyalar markazi",
-                "“E-AUKSION” elektron savdo platformasi",
-                "2020-2030 yillarda O'zbekiston Respublikasi qishloq xo'jaligini rivojlantirish strategiyasi"
+                "Министерство сельского хозяйства Республики Узбекистан",
+                "Национальный центр знаний и инноваций в сельском хозяйстве",
+                "“E-AUKSION” электронная торговая платформа",
+                "Стратегия развития сельского хозяйства на 2020-2030 гг"
             ]
         }
     },
@@ -85,7 +108,7 @@
                 "content": "O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni"
             },
             {
-                "name": "O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\nPQ-20-SON QARORI",
+                "title": "O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\nPQ-20-SON QARORI",
                 "content": "O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori"
             },
             {
@@ -102,18 +125,20 @@
             }
         ]
     },
-    "contact":
-    {
-        "text": "Agar Sizda “Ye-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot olishni xoxlasangiz, u holda <a href=\"https://t.me/eijarasupport\">T.ME/EIJARASUPPORT</a> telegram guruhiga yozib qoldirishingiz mumkin.",
-        "tel": "Murojaat uchun telefon raqamlarimiz",
-        "time": "Bog‘lanish vaqti"
+    "contact": {
+        "text": "Если у вас есть какие-либо вопросы об информационной системе E-IJARA или вам нужна дополнительная информация, свяжитесь с <a  target='_blank' href=\"https://t.me/eijarasupport\"> T.ME/EIJARASUPPORT</a>. Вы можете написать в> группу телеграмм .",
+        "tel": "Нашы контакты",
+        "time": "Время контакта",
+        "monday": "Понедельник",
+        "friday": "Пятница",
+        "ot" : "Часы работы с 9:00 до 18:00."
     },
-    "offer": "Taklif kiritish",
+    "offer": "Внести предложение",
     "according": "holatiga ko'ra",
     "ga": "Ga",
     "ta": "Ta",
-    "check": "Tekshirish",
-    "appnum": "Ariza raqami",
+    "check": "Проверка",
+    "appnum": "Номер заявление",
     "seeAll": "Hammasini ko'rish",
     "nav": {
         "links": {
@@ -124,14 +149,13 @@
             "faq": "Часто задаваемые вопросы",
             "contact": "Контакты",
             "login": "Вход в системе",
-            "check": "Проверка заявление"
+            "check": "Предложение"
         },
-        "oneid": "Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."
-
+        "oneid": "Вход в систему осуществляется через Единую систему идентификации OneID или ЭЦП"
     },
-    "oferta": "Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href=''>foydalanish shartlariga</a> roziman.",
+    "oferta": "Я согласен с передачей моих персональных данных и <a href=''>условиями использования</a>  системы.",
     "footer": {
-        "text": "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.",
+        "text": " Автоматизированная информационная система, предназначенная для сбора, рассмотрения и согласования материалов по аренде земельных участков сельскохозяйственного назначения с уполномоченными органами и организациями.",
         "menu": {
             "title": "Меню",
             "content": [

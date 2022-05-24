@@ -72,12 +72,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -142,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.regions.push({
           id: 0,
-          nameuz: "Xudud",
+          nameuz: _this.$t("main.holat.region"),
           regioncode: 0
         });
 
@@ -177,7 +171,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this3.makeGeoJSON(geojson);
       });
-      this.drawLands(this.getCadNum(this.selectedDistrict));
+      this.drawLands(this.selectedDistrict);
       this.drawCadLands(this.getCadNum(this.selectedDistrict));
     },
     getCadNum: function getCadNum(id) {
@@ -215,14 +209,10 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    drawLands: function drawLands(cad_num) {
+    drawLands: function drawLands(id) {
       var _this5 = this;
 
-      axios.get("/api/geojson/lands", {
-        params: {
-          cad_num: cad_num
-        }
-      }).then(function (response) {
+      axios.get("/api/geojson/lands/".concat(id)).then(function (response) {
         _this5.removeMarkers();
 
         var lands = response.data;
@@ -1725,19 +1715,8 @@ var render = function () {
             }),
             _vm._v(" "),
             _c("l-control-zoom", { attrs: { position: "bottomright" } }),
-            _vm._v(" "),
-            _vm._l(_vm.lands, function (land) {
-              return _c("l-geo-json", {
-                key: land.id,
-                attrs: {
-                  options: _vm.mapOptions,
-                  data: land.id,
-                  geojson: land.geometry,
-                },
-              })
-            }),
           ],
-          2
+          1
         ),
       ],
       1

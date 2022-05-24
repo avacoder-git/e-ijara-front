@@ -23,13 +23,13 @@
                     </h3>
                     <div class="row">
                         <div class="col-lg-4">
-                            <p>- Dushanba – Juma</p>
+                            <p>- {{ $t('contact.monday') }} – {{ $t('contact.friday') }}</p>
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-lg-4">
-                            <p>- soat 9:00 dan 18:00 gacha.</p>
+                            <p>{{ $t('contact.ot') }}</p>
                         </div>
                     </div>
                 </div>

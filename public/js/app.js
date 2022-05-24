@@ -5901,13 +5901,142 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Navbar",
   data: function data() {
     return {
-      agree: false
+      agree: false,
+      lang: true
     };
   },
   components: {
@@ -5925,14 +6054,17 @@ __webpack_require__.r(__webpack_exports__);
       var redirect_uri = "http://ijara.front.git";
       window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" + redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
     },
+    openLang: function openLang() {
+      this.lang = false;
+    },
     setLocale: function setLocale(locale) {
+      this.lang = !this.lang;
       this.$i18n.locale = locale;
       this.$router.push({
         params: {
           lang: locale
         }
       });
-      window.location.reload();
     }
   },
   mounted: function mounted() {
@@ -59087,7 +59219,13 @@ var render = function () {
                       staticClass: "nav-link nav-link-mini",
                       attrs: { to: { name: "about" }, href: "#" },
                     },
-                    [_vm._v(_vm._s(_vm.$t("nav.links.about")))]
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.$t("nav.links.about")) +
+                          "\n                    "
+                      ),
+                    ]
                   ),
                 ],
                 1
@@ -59103,7 +59241,12 @@ var render = function () {
                       staticClass: "nav-link nav-link-mini",
                       attrs: { to: { name: "map" }, href: "#" },
                     },
-                    [_vm._v(_vm._s(_vm.$t("nav.links.map")))]
+                    [
+                      _vm._v(
+                        _vm._s(_vm.$t("nav.links.map")) +
+                          "\n                    "
+                      ),
+                    ]
                   ),
                 ],
                 1
@@ -59119,7 +59262,13 @@ var render = function () {
                       staticClass: "nav-link nav-link-mini",
                       attrs: { to: { name: "docs" }, href: "#" },
                     },
-                    [_vm._v(_vm._s(_vm.$t("nav.links.docs")))]
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.$t("nav.links.docs")) +
+                          "\n                    "
+                      ),
+                    ]
                   ),
                 ],
                 1
@@ -59135,7 +59284,13 @@ var render = function () {
                       staticClass: "nav-link nav-link-mini",
                       attrs: { to: { name: "manuals" }, href: "#" },
                     },
-                    [_vm._v(_vm._s(_vm.$t("nav.links.manuals")))]
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.$t("nav.links.manuals")) +
+                          "\n                    "
+                      ),
+                    ]
                   ),
                 ],
                 1
@@ -59151,7 +59306,12 @@ var render = function () {
                       staticClass: "nav-link nav-link-mini",
                       attrs: { to: { name: "faq" }, href: "#" },
                     },
-                    [_vm._v(_vm._s(_vm.$t("nav.links.faq")))]
+                    [
+                      _vm._v(
+                        _vm._s(_vm.$t("nav.links.faq")) +
+                          "\n                    "
+                      ),
+                    ]
                   ),
                 ],
                 1
@@ -59167,7 +59327,13 @@ var render = function () {
                       staticClass: "nav-link nav-link-mini",
                       attrs: { to: { name: "contact" }, href: "#" },
                     },
-                    [_vm._v(_vm._s(_vm.$t("nav.links.contact")))]
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.$t("nav.links.contact")) +
+                          "\n                    "
+                      ),
+                    ]
                   ),
                 ],
                 1
@@ -59180,16 +59346,19 @@ var render = function () {
                     staticClass: "nav-link dropdown-toggle text-uppercase",
                     attrs: {
                       href: "#",
-                      id: "langlgdropdown",
-                      role: "button",
-                      "data-toggle": "dropdown",
                       "aria-haspopup": "true",
                       "aria-expanded": "false",
+                    },
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.openLang.apply(null, arguments)
+                      },
                     },
                   },
                   [
                     _vm._v(
-                      "\n                        " +
+                      "\n\n                        " +
                         _vm._s(this.$i18n.locale) +
                         "\n                    "
                     ),
@@ -59200,7 +59369,7 @@ var render = function () {
                   "div",
                   {
                     staticClass: "dropdown-menu",
-                    attrs: { "aria-labelledby": "navbarDropdown" },
+                    style: _vm.lang ? "display: none" : "display: block",
                   },
                   [
                     _c(
@@ -59209,7 +59378,6 @@ var render = function () {
                         staticClass: "dropdown-item cursor-pointer",
                         on: {
                           click: function ($event) {
-                            $event.preventDefault()
                             return _vm.setLocale("uz")
                           },
                         },
@@ -59223,7 +59391,6 @@ var render = function () {
                         staticClass: "dropdown-item cursor-pointer",
                         on: {
                           click: function ($event) {
-                            $event.preventDefault()
                             return _vm.setLocale("ru")
                           },
                         },
@@ -59234,9 +59401,35 @@ var render = function () {
                 ),
               ]),
               _vm._v(" "),
-              _vm._m(2),
+              _c("li", { staticClass: "nav-item " }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link check-offer",
+                    attrs: {
+                      "data-toggle": "modal",
+                      "data-target": "#check-application",
+                      href: "#",
+                    },
+                  },
+                  [_vm._v(_vm._s(_vm.$t("nav.links.check")))]
+                ),
+              ]),
               _vm._v(" "),
-              _vm._m(3),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link login",
+                    staticStyle: { cursor: "pointer" },
+                    attrs: {
+                      "data-toggle": "modal",
+                      "data-target": "#login-modal",
+                    },
+                  },
+                  [_vm._v(_vm._s(_vm.$t("nav.links.login")))]
+                ),
+              ]),
             ]),
           ]
         ),
@@ -59270,7 +59463,7 @@ var render = function () {
                   _vm._v(_vm._s(_vm.$t("nav.links.check"))),
                 ]),
                 _vm._v(" "),
-                _vm._m(4),
+                _vm._m(2),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body border-0" }, [
@@ -59320,10 +59513,10 @@ var render = function () {
           },
           [
             _c("div", { staticClass: "modal-content overflow-hidden" }, [
-              _vm._m(5),
+              _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
-                _vm._m(6),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-lg-6 p-lg-0" }, [
                   _c("div", { staticClass: "login-content" }, [
@@ -59333,7 +59526,7 @@ var render = function () {
                       _vm._v(_vm._s(_vm.$t("nav.oneid"))),
                     ]),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(5),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -59401,7 +59594,13 @@ var render = function () {
                                 attrs: { type: "button", disabled: !_vm.agree },
                                 on: { click: _vm.redirect },
                               },
-                              [_vm._v(_vm._s(_vm.$t("nav.links.login")))]
+                              [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(_vm.$t("nav.links.login")) +
+                                    "\n                                    "
+                                ),
+                              ]
                             ),
                           ]
                         ),
@@ -59498,41 +59697,6 @@ var staticRenderFns = [
         ),
       ]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item " }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-link check-offer",
-          attrs: {
-            "data-toggle": "modal",
-            "data-target": "#check-application",
-            href: "#",
-          },
-        },
-        [_vm._v("Taklifni tekshirish")]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-link login",
-          staticStyle: { cursor: "pointer" },
-          attrs: { "data-toggle": "modal", "data-target": "#login-modal" },
-        },
-        [_vm._v("Tizimga kirish")]
-      ),
-    ])
   },
   function () {
     var _vm = this
@@ -76631,7 +76795,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\OpenServer\\\\doma
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.\\n\\n","levels":{"name":"Этапы системы","first":{"counter":"1-этап","name":"\\"O\'zDavyerloyiha\\" DILI","text":"Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi."},"second":{"counter":"2-этап","name":"ОРГАНЫ ВЛАСТИ","text":"“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi."},"third":{"counter":"3-этап","name":"“E-AUKSION” ESP","text":"Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi."},"fourth":{"counter":"4-этап","name":"TUMAN HOKIMIYATI","text":"Ijara shartnomasi ikkinchi tomonlama imzolanadi."},"fifth":{"counter":"5-этап","name":"DAVLAT KADASTRLARI PALATASI","text":"Yerning kadastr hujjatlari rasmiylashtiradi."},"sixth":{"counter":"6-этап","name":"G‘OLIB","text":"“E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi."}},"lands":{"name":"Земельные участки","first":{"name":"Bo\'sh yerlar"},"second":{"name":"Loyihalashda"},"third":{"name":"Tanlovda"}},"statistics":{"name":"Статистика","new":"Новые земельные участки","ajratilgan":"Выделенные земельные участки","tanlovdagi":"Земельные участки в конкурсе","loyihalashdagi":"Земельные участки в дизайне"},"holat":{"name":"Hududlar bo\'yicha yerlarning holati","karta":"Xaritada ko\'rish","table":"Jadvalda ko\'rish","general":"Umumiy yerlar soni","free":"Bo\'sh yerlarning jami maydoni","region":"Xudud","new":"Yangi yerlar soni","tanlovdagi":"Tanlovdagi yerlar soni"},"offer":{"name":"Siz taklif kiritmochimisiz?","text":"Bo\'sh turgan yer uchastkasi to\'g\'risidagi ma\'lumotlarni ochiq elektron tanlovga qo\'yish masalasini belgilangan tartibda ko\'rib chiqish uchun."},"useful":{"title":"Foydali havolalar","content":["O\'zbekiston Respublikasi Qishloq xo\'jaligi vazirligi","Qishloq xo`jaligida bilim va innovasiyalar markazi","“E-AUKSION” elektron savdo platformasi","2020-2030 yillarda O\'zbekiston Respublikasi qishloq xo\'jaligini rivojlantirish strategiyasi"]}},"docs":{"title":"Meyoriy xujjatlar","content":[{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\\nPF-6243-SON FARMONI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni"},{"name":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\\nPQ-20-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori"},{"title":"O‘ZBEKISTON RESPUBLIKASI VAZIRLAR MAHKAMASINING 2021 YIL 24 noyabrdagi\\n709-SONLI QARORI","content":"O‘zbekiston Respublikasi Vazirlar Mahkamasining 2021 yil 24 noyabrdagi “Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish tartibiga doir normativ-huquqiy hujjatlarni tasdiqlash to‘g‘risida”gi 709-sonli Qarori","file":["Dehqon xo\'jaliklariga yer uchastkasini ijaraga berish NAMUNAVIY SHARTNOMASI","Yuridik shaxslarga yer uchastkasini uzoq muddatli ijaraga berish"]},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 IYULDAGI 5197-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 iyuldagi “Elektron onlayn-auksionni o‘tkazish tartibini soddalashtirish, uning shaffofligini oshirish hamda ishtirokchilar huquqlarining ishonchli himoyasini kafolatlash chora-tadbirlari to‘g‘risida” 5197-son Qarori"}]},"contact":{"text":"Agar Sizda “Ye-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot olishni xoxlasangiz, u holda <a href=\\"https://t.me/eijarasupport\\">T.ME/EIJARASUPPORT</a> telegram guruhiga yozib qoldirishingiz mumkin.","tel":"Murojaat uchun telefon raqamlarimiz","time":"Bog‘lanish vaqti"},"offer":"Taklif kiritish","according":"holatiga ko\'ra","ga":"Ga","ta":"Ta","check":"Tekshirish","appnum":"Ariza raqami","seeAll":"Hammasini ko\'rish","nav":{"links":{"about":"О системе","map":"Карта","docs":"Нормативные документы","manuals":"Инструкции","faq":"Часто задаваемые вопросы","contact":"Контакты","login":"Вход в системе","check":"Проверка заявление"},"oneid":"Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."},"oferta":"Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href=\'\'>foydalanish shartlariga</a> roziman.","footer":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.","menu":{"title":"Меню","content":["О системе","Карта","Нормативные документы","Инструкции","Часто задаваемые вопросы"]}},"allrights":"© 2022 все права защищены."}');
+module.exports = JSON.parse('{"main":{"text":"Автоматизированная информационная система, предназначенная для сбора, рассмотрения и согласования материалов по аренде земельных участков сельскохозяйственного назначения с уполномоченными органами и организациями","levels":{"name":"Этапы системы","etap":"этап","сontent":[{"icon":"image/auksion.svg","name":"Предложение","text":"Поступает предложение от физических и юридических лиц"},{"icon":"image/uzdyl.svg","name":"ГНПИ “ЎЗДАВЕРЛОЙИХА” ","text":"Предложение рассмотривается и направляется в районный хокимият"},{"icon":"image/auksion.svg","name":"РАЁННЫЙ МУНИЦИПАЛИТЕТ","text":"Предложение рассмотривается и направляется в Государственную кадастровую палату    "},{"icon":"image/kadastr.svg","name":"ГОСУДАРСТВЕННАЯ КАДАСТРОВАЯ ПАЛАТА","text":"Оформляется кадастровый документ на земельный участок на имя районного муниципалитета"},{"icon":"image/uzdyl.svg","name":"ГНПИ ЎЗДАВЕРЛОЙИХА” ","text":"Разработывается Проект земельного участка"},{"icon":"image/agree.svg","name":"УПОЛНОМОЧЕННЫЕ ОРГАНЫ","text":"\\"Проект земельного участка\\" согласовывается с соответствующими организациями и ведомствами"},{"icon":"image/auksion.svg","name":"ЭТП “Е-AUKSION”","text":"Земельный участок выставляется на конкурс, с победителем подписывается договор аренды в одностороннем порядке "},{"icon":"image/auksion.svg","name":"РАЁННЫЙ МУНИЦИПАЛИТЕТ","text":"Договор аренты подписывается второй стороной"},{"icon":"image/kadastr.svg","name":"ГОСУДАРСТВЕННАЯ КАДАСТРОВАЯ ПАЛАТА","text":"Оформляются документы кадастра земли"},{"icon":"image/list.svg","name":"ПОБЕДИТЕЛЬ","text":"Все документы появляются в личном кабинете ЭТП \\"Е-AUKSION \\""}]},"lands":{"name":"Земельные участки","first":{"name":"Новые"},"second":{"name":"Выставленные"},"third":{"name":"Выставленные"}},"statistics":{"name":"Статистика","new":"Новые земельные участки","ajratilgan":"Выданные земельные участки","tanlovdagi":"Выставленные земельные участки","loyihalashdagi":"Проектируемые земельные участки"},"holat":{"name":"Статусы земель в разрезе регионов","karta":"Карта","table":"Таблица","general":"Общее количество земель","free":"Общая площадь свободных земель","region":"Регион","new":"Количество новые земельные участки","tanlovdagi":"Количество проектируемые земельные участки"},"offer":{"name":"Желаете внести предложение?","text":"на рассмотрение в установленном порядке вопроса о выставлении на открытый электронный конкурс сведений о свободном земельном участке"},"useful":{"title":"Полезные ссылки","content":["Министерство сельского хозяйства Республики Узбекистан","Национальный центр знаний и инноваций в сельском хозяйстве","“E-AUKSION” электронная торговая платформа","Стратегия развития сельского хозяйства на 2020-2030 гг"]}},"docs":{"title":"Meyoriy xujjatlar","content":[{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\\nPF-6243-SON FARMONI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni"},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\\nPQ-20-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori"},{"title":"O‘ZBEKISTON RESPUBLIKASI VAZIRLAR MAHKAMASINING 2021 YIL 24 noyabrdagi\\n709-SONLI QARORI","content":"O‘zbekiston Respublikasi Vazirlar Mahkamasining 2021 yil 24 noyabrdagi “Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish tartibiga doir normativ-huquqiy hujjatlarni tasdiqlash to‘g‘risida”gi 709-sonli Qarori","file":["Dehqon xo\'jaliklariga yer uchastkasini ijaraga berish NAMUNAVIY SHARTNOMASI","Yuridik shaxslarga yer uchastkasini uzoq muddatli ijaraga berish"]},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 IYULDAGI 5197-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 iyuldagi “Elektron onlayn-auksionni o‘tkazish tartibini soddalashtirish, uning shaffofligini oshirish hamda ishtirokchilar huquqlarining ishonchli himoyasini kafolatlash chora-tadbirlari to‘g‘risida” 5197-son Qarori"}]},"contact":{"text":"Если у вас есть какие-либо вопросы об информационной системе E-IJARA или вам нужна дополнительная информация, свяжитесь с <a  target=\'_blank\' href=\\"https://t.me/eijarasupport\\"> T.ME/EIJARASUPPORT</a>. Вы можете написать в> группу телеграмм .","tel":"Нашы контакты","time":"Время контакта","monday":"Понедельник","friday":"Пятница","ot":"Часы работы с 9:00 до 18:00."},"offer":"Внести предложение","according":"holatiga ko\'ra","ga":"Ga","ta":"Ta","check":"Проверка","appnum":"Номер заявление","seeAll":"Hammasini ko\'rish","nav":{"links":{"about":"О системе","map":"Карта","docs":"Нормативные документы","manuals":"Инструкции","faq":"Часто задаваемые вопросы","contact":"Контакты","login":"Вход в системе","check":"Предложение"},"oneid":"Вход в систему осуществляется через Единую систему идентификации OneID или ЭЦП"},"oferta":"Я согласен с передачей моих персональных данных и <a href=\'\'>условиями использования</a>  системы.","footer":{"text":" Автоматизированная информационная система, предназначенная для сбора, рассмотрения и согласования материалов по аренде земельных участков сельскохозяйственного назначения с уполномоченными органами и организациями.","menu":{"title":"Меню","content":["О системе","Карта","Нормативные документы","Инструкции","Часто задаваемые вопросы"]}},"allrights":"© 2022 все права защищены."}');
 
 /***/ }),
 
@@ -76642,7 +76806,7 @@ module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallan
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.\\n\\n","levels":{"name":"Tizim bosqichlari","first":{"counter":"1-bosqich","name":"\\"O\'zDavyerloyiha\\" DILI","text":"Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi."},"second":{"counter":"2-bosqich","name":"VAKOLATLI ORGANLAR","text":"“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi."},"third":{"counter":"3-bosqich","name":"“E-AUKSION” ESP","text":"Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi."},"fourth":{"counter":"4-bosqich","name":"TUMAN HOKIMIYATI","text":"Ijara shartnomasi ikkinchi tomonlama imzolanadi."},"fifth":{"counter":"5-bosqich","name":"DAVLAT KADASTRLARI PALATASI","text":"Yerning kadastr hujjatlari rasmiylashtiradi."},"sicth":{"counter":"6-bosqich","name":"G‘OLIB","text":"“E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi."}},"lands":{"name":"Yer maydonlari","first":{"name":"Bo\'sh yerlar"},"second":{"name":"Loyihalashda"},"third":{"name":"Tanlovda"}},"statistics":{"name":"Statistika","new":"Yangi yer maydonlari","ajratilgan":"Ajratilgan yer maydonlari","tanlovdagi":"Tanlovdagi yer maydonlari","loyihalashdagi":"Loyihalashdagi yer maydonlari"},"holat":{"name":"Hududlar bo\'yicha yerlarning holati","karta":"Xaritada ko\'rish","table":"Jadvalda ko\'rish","general":"Umumiy yerlar soni","free":"Bo\'sh yerlarning jami maydoni","region":"Xudud","new":"Yangi yerlar soni","tanlovdagi":"Tanlovdagi yerlar soni"},"offer":{"name":"Siz taklif kiritmochimisiz?","text":"Bo\'sh turgan yer uchastkasi to\'g\'risidagi ma\'lumotlarni ochiq elektron tanlovga qo\'yish masalasini belgilangan tartibda ko\'rib chiqish uchun."},"useful":{"title":"Foydali havolalar","content":["O\'zbekiston Respublikasi Qishloq xo\'jaligi vazirligi","Qishloq xo`jaligida bilim va innovasiyalar markazi","“E-AUKSION” elektron savdo platformasi","2020-2030 yillarda O\'zbekiston Respublikasi qishloq xo\'jaligini rivojlantirish strategiyasi"]}},"docs":{"title":"Meyoriy xujjatlar","content":[{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\\nPF-6243-SON FARMONI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni"},{"name":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\\nPQ-20-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori"},{"title":"O‘ZBEKISTON RESPUBLIKASI VAZIRLAR MAHKAMASINING 2021 YIL 24 noyabrdagi\\n709-SONLI QARORI","content":"O‘zbekiston Respublikasi Vazirlar Mahkamasining 2021 yil 24 noyabrdagi “Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish tartibiga doir normativ-huquqiy hujjatlarni tasdiqlash to‘g‘risida”gi 709-sonli Qarori","file":["Dehqon xo\'jaliklariga yer uchastkasini ijaraga berish NAMUNAVIY SHARTNOMASI","Yuridik shaxslarga yer uchastkasini uzoq muddatli ijaraga berish"]},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 IYULDAGI 5197-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 iyuldagi “Elektron onlayn-auksionni o‘tkazish tartibini soddalashtirish, uning shaffofligini oshirish hamda ishtirokchilar huquqlarining ishonchli himoyasini kafolatlash chora-tadbirlari to‘g‘risida” 5197-son Qarori"}]},"contact":{"text":"Agar Sizda “Ye-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot olishni xoxlasangiz, u holda <a href=\\"https://t.me/eijarasupport\\">T.ME/EIJARASUPPORT</a> telegram guruhiga yozib qoldirishingiz mumkin.","tel":"Murojaat uchun telefon raqamlarimiz","time":"Bog‘lanish vaqti"},"offer":"Taklif kiritish","according":"holatiga ko\'ra","ga":"Ga","ta":"Ta","check":"Tekshirish","appnum":"Ariza raqami","seeAll":"Hammasini ko\'rish","nav":{"links":{"about":"Tizim haqida","map":"Ochiq xarita","docs":"Meyoriy xujjatlar","manuals":"Qo\'llanmalar","faq":"Ko\'p beriladigan savollar","contact":"Aloqa","login":"Tizimga kirish","check":"Taklifni tekshirish"},"oneid":"Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."},"oferta":"Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href=\'\'>foydalanish shartlariga</a> roziman.","footer":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.","menu":{"title":"Menyu","content":["Tizim xaqida","Ochiq xarita","Meyoriy xujjatlar","Qo’llanmalar","Ko’p beriladigan savollar"]}},"allrights":"© 2022 Barcha huquqlar himoyalangan."}');
+module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.\\n\\n","levels":{"name":"Tizim bosqichlari","etap":"bosqich","сontent":[{"icon":"image/auksion.svg","name":"TAKLIF","text":"Jismoniy va yuridik shaxslar tomonidan taklif kelib tushadi"},{"icon":"image/uzdyl.svg","name":"“UZDAVYERLOYIHA” DILI ","text":"Taklif o‘rganib chiqiladi va tuman hokimiyatiga yuboriladi"},{"icon":"image/auksion.svg","name":"TUMAN HOKIMIYATI","text":"Taklif o‘rganib chiqiladi va Davlat kadastrlari palatasiga buyurtma beriladi"},{"icon":"image/kadastr.svg","name":"DAVLAT KADASTRLARI PALATASI","text":"Yer uchastkasining kadastr hujjatlarini tuman hokimligi nomiga rasmiylashtiradi"},{"icon":"image/uzdyl.svg","name":"“UZDAVYERLOYIHA” DILI ","text":"Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi"},{"icon":"image/agree.svg","name":"VAKOLATLI ORGANLAR","text":"“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi"},{"icon":"image/auksion.svg","name":"“Е-AUKSION” ESP","text":"Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi"},{"icon":"image/auksion.svg","name":"TUMAN HOKIMIYATI","text":"Ijara shartnomasi ikkinchi tomonlama imzolanadi"},{"icon":"image/kadastr.svg","name":"DAVLAT KADASTRLARI PALATASI","text":"Yerning kadastr xujjatlari rasmiylashtirladi"},{"icon":"image/list.svg","name":"G\'OLIB","text":"“Ye-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi"}]},"lands":{"name":"Yer maydonlari","first":{"name":"Bo\'sh yerlar"},"second":{"name":"Loyihalashda"},"third":{"name":"Tanlovda"}},"statistics":{"name":"Statistika","new":"Yangi yer maydonlari","ajratilgan":"Ajratilgan yer maydonlari","tanlovdagi":"Tanlovdagi yer maydonlari","loyihalashdagi":"Loyihalashdagi yer maydonlari"},"holat":{"name":"Hududlar bo\'yicha yerlarning holati","karta":"Xaritada ko\'rish","table":"Jadvalda ko\'rish","general":"Umumiy yerlar soni","free":"Bo\'sh yerlarning jami maydoni","region":"Xudud","new":"Yangi yerlar soni","tanlovdagi":"Tanlovdagi yerlar soni"},"offer":{"name":"Siz taklif kiritmochimisiz?","text":"Bo\'sh turgan yer uchastkasi to\'g\'risidagi ma\'lumotlarni ochiq elektron tanlovga qo\'yish masalasini belgilangan tartibda ko\'rib chiqish uchun."},"useful":{"title":"Foydali havolalar","content":["O\'zbekiston Respublikasi Qishloq xo\'jaligi vazirligi","Qishloq xo`jaligida bilim va innovasiyalar markazi","“E-AUKSION” elektron savdo platformasi","2020-2030 yillarda O\'zbekiston Respublikasi qishloq xo\'jaligini rivojlantirish strategiyasi"]}},"docs":{"title":"Meyoriy xujjatlar","content":[{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\\nPF-6243-SON FARMONI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni"},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\\nPQ-20-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori"},{"title":"O‘ZBEKISTON RESPUBLIKASI VAZIRLAR MAHKAMASINING 2021 YIL 24 noyabrdagi\\n709-SONLI QARORI","content":"O‘zbekiston Respublikasi Vazirlar Mahkamasining 2021 yil 24 noyabrdagi “Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish tartibiga doir normativ-huquqiy hujjatlarni tasdiqlash to‘g‘risida”gi 709-sonli Qarori","file":["Dehqon xo\'jaliklariga yer uchastkasini ijaraga berish NAMUNAVIY SHARTNOMASI","Yuridik shaxslarga yer uchastkasini uzoq muddatli ijaraga berish"]},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 IYULDAGI 5197-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 iyuldagi “Elektron onlayn-auksionni o‘tkazish tartibini soddalashtirish, uning shaffofligini oshirish hamda ishtirokchilar huquqlarining ishonchli himoyasini kafolatlash chora-tadbirlari to‘g‘risida” 5197-son Qarori"}]},"contact":{"text":"Agar Sizda “E-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot olishni xoxlasangiz, u holda <a target=\'_blank\' href=\\"https://t.me/eijarasupport\\">T.ME/EIJARASUPPORT</a> telegram guruhiga yozib qoldirishingiz mumkin.","tel":"Murojaat uchun telefon raqamlarimiz","time":"Bog‘lanish vaqti","monday":"Dushanba","friday":"Juma","ot":"Soat 9:00 Dan 18:00 Gacha"},"offer":"Taklif kiritish","according":"holatiga ko\'ra","ga":"Ga","ta":"Ta","check":"Tekshirish","appnum":"Ariza raqami","seeAll":"Hammasini ko\'rish","nav":{"links":{"about":"Tizim haqida","map":"Ochiq xarita","docs":"Meyoriy xujjatlar","manuals":"Qo\'llanmalar","faq":"Ko\'p beriladigan savollar","contact":"Aloqa","login":"Tizimga kirish","check":"Taklifni tekshirish"},"oneid":"Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."},"oferta":"Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href=\'\'>foydalanish shartlariga</a> roziman.","footer":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.","menu":{"title":"Menyu","content":["Tizim xaqida","Ochiq xarita","Meyoriy xujjatlar","Qo’llanmalar","Ko’p beriladigan savollar"]}},"allrights":"© 2022 Barcha huquqlar himoyalangan."}');
 
 /***/ })
 

@@ -42,12 +42,6 @@
                 <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains"  :url="url"
                               :attribution="attribution"></l-tile-layer>
                 <l-control-zoom position="bottomright"></l-control-zoom>
-                <l-geo-json v-for="land in lands"
-                            :options="mapOptions"
-                            v-bind:data="land.id"
-                            v-bind:key="land.id"
-                            :geojson="land.geometry"
-                ></l-geo-json>
 
             </l-map>
 
@@ -124,7 +118,7 @@ export default {
                     this.regions = response.data ?? []
                     this.regions.push({
                         id: 0,
-                        nameuz: "Xudud",
+                        nameuz: this.$t("main.holat.region"),
                         regioncode: 0
 
                     })
@@ -159,7 +153,7 @@ export default {
                     var geojson = response.data
                     this.makeGeoJSON(geojson)
                 })
-            this.drawLands(this.getCadNum(this.selectedDistrict))
+            this.drawLands(this.selectedDistrict)
             this.drawCadLands(this.getCadNum(this.selectedDistrict))
 
         },
@@ -205,8 +199,8 @@ export default {
             });
 
         },
-        drawLands(cad_num) {
-            axios.get(`/api/geojson/lands`, {params: {cad_num}})
+        drawLands(id) {
+            axios.get(`/api/geojson/lands/${id}`)
                 .then(response => {
                     this.removeMarkers()
                     var lands = response.data
@@ -257,8 +251,6 @@ export default {
                         debug: 0,
                         style: geojsonStyle
                     };
-
-
                     if (lands.features !== null)
                         vt(lands, options).addTo(this.$refs.map.mapObject);
 

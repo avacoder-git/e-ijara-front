@@ -422,6 +422,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -23626,9 +23639,9 @@ var render = function () {
         _c("div", { staticClass: "video-text" }, [
           _c("p", { staticClass: "text-center text-white" }, [
             _vm._v(
-              "\n                " +
+              "\n                    " +
                 _vm._s(_vm.$t("main.text")) +
-                "\n            "
+                "\n                "
             ),
           ]),
         ]),
@@ -23641,151 +23654,42 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-lg-12" }, [
-            _c("div", { staticClass: "owl-carousel", attrs: { id: "etap" } }, [
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.first.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.second.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.first.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.second.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.second.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.second.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.third.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.third.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.third.text")) +
-                      "\n\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(3),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.fourth.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.fourth.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.fourth.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(4),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.fifth.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.fifth.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.fifth.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(5),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.sixth.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.sixth.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.sixth.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-            ]),
+            _c(
+              "div",
+              { staticClass: "owl-carousel", attrs: { id: "etap" } },
+              _vm._l(_vm.$t("main.levels.сontent"), function (level, index) {
+                return _c("div", { staticClass: "rectangle" }, [
+                  _c("div", { staticClass: "icon" }, [
+                    _c("img", { attrs: { src: level.icon, alt: "" } }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "bosqich" }, [
+                    _vm._v(
+                      _vm._s(index + 1) +
+                        "-" +
+                        _vm._s(_vm.$t("main.levels.etap"))
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "rectangle-title" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(level.name) +
+                        "\n                            "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "rectangle-body" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(level.text) +
+                        "\n                            "
+                    ),
+                  ]),
+                ])
+              }),
+              0
+            ),
           ]),
         ]),
       ]),
@@ -23836,9 +23740,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                            " +
+                      "\n                                " +
                         _vm._s(_vm.$t("main.useful.content[0]")) +
-                        "\n                        "
+                        "\n                            "
                     ),
                   ]),
                 ]),
@@ -23850,9 +23754,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                            " +
+                      "\n                                " +
                         _vm._s(_vm.$t("main.useful.content[1]")) +
-                        "\n                        "
+                        "\n                            "
                     ),
                   ]),
                 ]),
@@ -23862,9 +23766,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                            " +
+                      "\n                                " +
                         _vm._s(_vm.$t("main.useful.content[2]")) +
-                        "\n                        "
+                        "\n                            "
                     ),
                   ]),
                 ]),
@@ -23874,9 +23778,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                            " +
+                      "\n                                " +
                         _vm._s(_vm.$t("main.useful.content[3]")) +
-                        "\n                        "
+                        "\n                            "
                     ),
                   ]),
                 ]),
@@ -23889,56 +23793,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/uzdyl.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/agree.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/auksion.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/auksion.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/kadastr.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/list.svg", alt: "" } }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

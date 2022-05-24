@@ -167,9 +167,24 @@ var render = function () {
             ),
           ]),
           _vm._v(" "),
-          _vm._m(1),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-4" }, [
+              _c("p", [
+                _vm._v(
+                  "- " +
+                    _vm._s(_vm.$t("contact.monday")) +
+                    " – " +
+                    _vm._s(_vm.$t("contact.friday"))
+                ),
+              ]),
+            ]),
+          ]),
           _vm._v(" "),
-          _vm._m(2),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-lg-4" }, [
+              _c("p", [_vm._v(_vm._s(_vm.$t("contact.ot")))]),
+            ]),
+          ]),
         ]),
       ]),
     ]),
@@ -191,26 +206,6 @@ var staticRenderFns = [
         _vm._v(
           "\n                        (+99871) 206-71-49\n                    "
         ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("p", [_vm._v("- Dushanba – Juma")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("p", [_vm._v("- soat 9:00 dan 18:00 gacha.")]),
       ]),
     ])
   },
