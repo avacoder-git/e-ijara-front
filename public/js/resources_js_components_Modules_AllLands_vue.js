@@ -374,7 +374,7 @@ var render = function () {
   return _c("div", [
     _c("div", { staticClass: "container-fluid section-2" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "col-lg-12 mt-4" }, [
           _c("h1", [_vm._v(_vm._s(_vm.$t("main.lands.name")))]),
         ]),
       ]),

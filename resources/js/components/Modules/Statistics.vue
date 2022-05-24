@@ -50,7 +50,7 @@
                     </div>
                     <div class="rectangle">
                         <div class="block">
-                            <div class="block-title">{{ $t("main.statistics.loyihalashda") }}</div>
+                            <div class="block-title">{{ $t("main.statistics.loyihalashdagi") }}</div>
                             <div class="block-numbers">
                                 <div class="son">{{ counts.loyihalashdagi_lands.count }}</div>
                                 <div class="splitter"></div>

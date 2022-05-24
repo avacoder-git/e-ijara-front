@@ -2,7 +2,7 @@
     <div>
         <div class="container-fluid section-2">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 mt-4">
                     <h1>{{ $t("main.lands.name")  }}</h1>
                 </div>
             </div>

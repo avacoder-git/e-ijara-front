@@ -117,14 +117,14 @@
     "seeAll": "Hammasini ko'rish",
     "nav": {
         "links": {
-            "about": "Tizim haqida",
-            "map": "Ochiq xarita",
-            "docs": "Meyoriy xujjatlar",
-            "manuals": "Qo'llanmalar",
-            "faq": "Ko'p beriladigan savollar",
-            "contact": "Aloqa",
-            "login": "Tizimga kirish",
-            "check": "Taklifni tekshirish"
+            "about": "О системе",
+            "map": "Карта",
+            "docs": "Нормативные документы",
+            "manuals": "Инструкции",
+            "faq": "Часто задаваемые вопросы",
+            "contact": "Контакты",
+            "login": "Вход в системе",
+            "check": "Проверка заявление"
         },
         "oneid": "Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."
 
@@ -136,9 +136,9 @@
             "title": "Меню",
             "content": [
                 "О системе",
-                "Открытая карта",
+                "Карта",
                 "Нормативные документы",
-                "Справочник",
+                "Инструкции",
                 "Часто задаваемые вопросы"
             ]
         }

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <p v-hmtl="$t('contact.text')">
+                    <p v-html="$t('contact.text')">
                     </p>
 
                     <h3>
@@ -12,18 +12,10 @@
                     </h3>
                     <div class="row">
                         <div class="col-lg-4">
-                            <p>- (+99871) 206-71-40</p>
+                            (+99871) 206-71-42
                         </div>
                         <div class="col-lg-4">
-                            <p>- (+99871) 206-71-43</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <p>- (+99871) 206-71-43</p>
-                        </div>
-                        <div class="col-lg-4">
-                            <p>- (+99871) 206-71-51</p>
+                            (+99871) 206-71-49
                         </div>
                     </div>
                     <h3>

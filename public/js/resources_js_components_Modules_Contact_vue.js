@@ -51,14 +51,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Contact"
 });
@@ -155,16 +147,7 @@ var render = function () {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "card" }, [
-          _c("p", {
-            directives: [
-              {
-                name: "hmtl",
-                rawName: "v-hmtl",
-                value: _vm.$t("contact.text"),
-                expression: "$t('contact.text')",
-              },
-            ],
-          }),
+          _c("p", { domProps: { innerHTML: _vm._s(_vm.$t("contact.text")) } }),
           _vm._v(" "),
           _c("h3", [
             _vm._v(
@@ -176,8 +159,6 @@ var render = function () {
           _vm._v(" "),
           _vm._m(0),
           _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
           _c("h3", [
             _vm._v(
               "\n                    " +
@@ -186,9 +167,9 @@ var render = function () {
             ),
           ]),
           _vm._v(" "),
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
-          _vm._m(3),
+          _vm._m(2),
         ]),
       ]),
     ]),
@@ -201,25 +182,15 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-4" }, [
-        _c("p", [_vm._v("- (+99871) 206-71-40")]),
+        _vm._v(
+          "\n                        (+99871) 206-71-42\n                    "
+        ),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-4" }, [
-        _c("p", [_vm._v("- (+99871) 206-71-43")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("p", [_vm._v("- (+99871) 206-71-43")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-4" }, [
-        _c("p", [_vm._v("- (+99871) 206-71-51")]),
+        _vm._v(
+          "\n                        (+99871) 206-71-49\n                    "
+        ),
       ]),
     ])
   },

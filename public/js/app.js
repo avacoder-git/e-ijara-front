@@ -6882,6 +6882,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: routes,
   baseURL: "www.uz",
   // api的base_url
+  scrollBehavior: function scrollBehavior() {
+    return {
+      x: 0,
+      y: 0
+    };
+  },
   linkActiveClass: "active"
 });
 router.beforeEach(function (to, from, next) {
@@ -57833,19 +57839,28 @@ var render = function () {
                   [
                     _c(
                       "router-link",
-                      { staticClass: "footer-link", attrs: { to: "" } },
+                      {
+                        staticClass: "footer-link",
+                        attrs: { to: { name: "about" } },
+                      },
                       [_vm._v(_vm._s(_vm.$t("footer.menu.content[0]")))]
                     ),
                     _vm._v(" "),
                     _c(
                       "router-link",
-                      { staticClass: "footer-link", attrs: { to: "" } },
+                      {
+                        staticClass: "footer-link",
+                        attrs: { to: { name: "map" } },
+                      },
                       [_vm._v(_vm._s(_vm.$t("footer.menu.content[1]")))]
                     ),
                     _vm._v(" "),
                     _c(
                       "router-link",
-                      { staticClass: "footer-link", attrs: { to: "" } },
+                      {
+                        staticClass: "footer-link",
+                        attrs: { to: { name: "docs" } },
+                      },
                       [_vm._v(_vm._s(_vm.$t("footer.menu.content[2]")))]
                     ),
                   ],
@@ -57858,13 +57873,19 @@ var render = function () {
                   [
                     _c(
                       "router-link",
-                      { staticClass: "footer-link", attrs: { to: "" } },
+                      {
+                        staticClass: "footer-link",
+                        attrs: { to: { name: "manuals" } },
+                      },
                       [_vm._v(_vm._s(_vm.$t("footer.menu.content[3]")))]
                     ),
                     _vm._v(" "),
                     _c(
                       "router-link",
-                      { staticClass: "footer-link", attrs: { to: "" } },
+                      {
+                        staticClass: "footer-link",
+                        attrs: { to: { name: "faq" } },
+                      },
                       [_vm._v(_vm._s(_vm.$t("footer.menu.content[4]")))]
                     ),
                   ],
@@ -57897,7 +57918,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "footer-link", attrs: { href: "" } }, [
       _vm._v("Tel: "),
-      _c("b", [_vm._v(" +998 99 631 42 21")]),
+      _c("b", [
+        _c(
+          "a",
+          {
+            staticStyle: { "text-decoration": "none" },
+            attrs: { href: "tel: +998996314221" },
+          },
+          [_vm._v("+998 99 631 42 21")]
+        ),
+      ]),
     ])
   },
   function () {
@@ -57905,8 +57935,17 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "footer-link", attrs: { href: "" } }, [
-      _vm._v("Email: "),
-      _c("b", [_vm._v(" e-ijaraInfo@gmail.uz")]),
+      _vm._v("Telegram: "),
+      _c("b", [
+        _c(
+          "a",
+          {
+            staticStyle: { "text-decoration": "none" },
+            attrs: { href: "http://T.ME/EIJARASUPPORT", target: "_blank" },
+          },
+          [_vm._v("http://T.ME/EIJARASUPPORT")]
+        ),
+      ]),
     ])
   },
   function () {
@@ -76592,7 +76631,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\OpenServer\\\\doma
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.\\n\\n","levels":{"name":"Этапы системы","first":{"counter":"1-этап","name":"\\"O\'zDavyerloyiha\\" DILI","text":"Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi."},"second":{"counter":"2-этап","name":"ОРГАНЫ ВЛАСТИ","text":"“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi."},"third":{"counter":"3-этап","name":"“E-AUKSION” ESP","text":"Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi."},"fourth":{"counter":"4-этап","name":"TUMAN HOKIMIYATI","text":"Ijara shartnomasi ikkinchi tomonlama imzolanadi."},"fifth":{"counter":"5-этап","name":"DAVLAT KADASTRLARI PALATASI","text":"Yerning kadastr hujjatlari rasmiylashtiradi."},"sixth":{"counter":"6-этап","name":"G‘OLIB","text":"“E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi."}},"lands":{"name":"Земельные участки","first":{"name":"Bo\'sh yerlar"},"second":{"name":"Loyihalashda"},"third":{"name":"Tanlovda"}},"statistics":{"name":"Статистика","new":"Новые земельные участки","ajratilgan":"Выделенные земельные участки","tanlovdagi":"Земельные участки в конкурсе","loyihalashdagi":"Земельные участки в дизайне"},"holat":{"name":"Hududlar bo\'yicha yerlarning holati","karta":"Xaritada ko\'rish","table":"Jadvalda ko\'rish","general":"Umumiy yerlar soni","free":"Bo\'sh yerlarning jami maydoni","region":"Xudud","new":"Yangi yerlar soni","tanlovdagi":"Tanlovdagi yerlar soni"},"offer":{"name":"Siz taklif kiritmochimisiz?","text":"Bo\'sh turgan yer uchastkasi to\'g\'risidagi ma\'lumotlarni ochiq elektron tanlovga qo\'yish masalasini belgilangan tartibda ko\'rib chiqish uchun."},"useful":{"title":"Foydali havolalar","content":["O\'zbekiston Respublikasi Qishloq xo\'jaligi vazirligi","Qishloq xo`jaligida bilim va innovasiyalar markazi","“E-AUKSION” elektron savdo platformasi","2020-2030 yillarda O\'zbekiston Respublikasi qishloq xo\'jaligini rivojlantirish strategiyasi"]}},"docs":{"title":"Meyoriy xujjatlar","content":[{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\\nPF-6243-SON FARMONI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni"},{"name":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\\nPQ-20-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori"},{"title":"O‘ZBEKISTON RESPUBLIKASI VAZIRLAR MAHKAMASINING 2021 YIL 24 noyabrdagi\\n709-SONLI QARORI","content":"O‘zbekiston Respublikasi Vazirlar Mahkamasining 2021 yil 24 noyabrdagi “Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish tartibiga doir normativ-huquqiy hujjatlarni tasdiqlash to‘g‘risida”gi 709-sonli Qarori","file":["Dehqon xo\'jaliklariga yer uchastkasini ijaraga berish NAMUNAVIY SHARTNOMASI","Yuridik shaxslarga yer uchastkasini uzoq muddatli ijaraga berish"]},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 IYULDAGI 5197-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 iyuldagi “Elektron onlayn-auksionni o‘tkazish tartibini soddalashtirish, uning shaffofligini oshirish hamda ishtirokchilar huquqlarining ishonchli himoyasini kafolatlash chora-tadbirlari to‘g‘risida” 5197-son Qarori"}]},"contact":{"text":"Agar Sizda “Ye-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot olishni xoxlasangiz, u holda <a href=\\"https://t.me/eijarasupport\\">T.ME/EIJARASUPPORT</a> telegram guruhiga yozib qoldirishingiz mumkin.","tel":"Murojaat uchun telefon raqamlarimiz","time":"Bog‘lanish vaqti"},"offer":"Taklif kiritish","according":"holatiga ko\'ra","ga":"Ga","ta":"Ta","check":"Tekshirish","appnum":"Ariza raqami","seeAll":"Hammasini ko\'rish","nav":{"links":{"about":"Tizim haqida","map":"Ochiq xarita","docs":"Meyoriy xujjatlar","manuals":"Qo\'llanmalar","faq":"Ko\'p beriladigan savollar","contact":"Aloqa","login":"Tizimga kirish","check":"Taklifni tekshirish"},"oneid":"Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."},"oferta":"Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href=\'\'>foydalanish shartlariga</a> roziman.","footer":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.","menu":{"title":"Меню","content":["О системе","Открытая карта","Нормативные документы","Справочник","Часто задаваемые вопросы"]}},"allrights":"© 2022 все права защищены."}');
+module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.\\n\\n","levels":{"name":"Этапы системы","first":{"counter":"1-этап","name":"\\"O\'zDavyerloyiha\\" DILI","text":"Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi."},"second":{"counter":"2-этап","name":"ОРГАНЫ ВЛАСТИ","text":"“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi."},"third":{"counter":"3-этап","name":"“E-AUKSION” ESP","text":"Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi."},"fourth":{"counter":"4-этап","name":"TUMAN HOKIMIYATI","text":"Ijara shartnomasi ikkinchi tomonlama imzolanadi."},"fifth":{"counter":"5-этап","name":"DAVLAT KADASTRLARI PALATASI","text":"Yerning kadastr hujjatlari rasmiylashtiradi."},"sixth":{"counter":"6-этап","name":"G‘OLIB","text":"“E-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi."}},"lands":{"name":"Земельные участки","first":{"name":"Bo\'sh yerlar"},"second":{"name":"Loyihalashda"},"third":{"name":"Tanlovda"}},"statistics":{"name":"Статистика","new":"Новые земельные участки","ajratilgan":"Выделенные земельные участки","tanlovdagi":"Земельные участки в конкурсе","loyihalashdagi":"Земельные участки в дизайне"},"holat":{"name":"Hududlar bo\'yicha yerlarning holati","karta":"Xaritada ko\'rish","table":"Jadvalda ko\'rish","general":"Umumiy yerlar soni","free":"Bo\'sh yerlarning jami maydoni","region":"Xudud","new":"Yangi yerlar soni","tanlovdagi":"Tanlovdagi yerlar soni"},"offer":{"name":"Siz taklif kiritmochimisiz?","text":"Bo\'sh turgan yer uchastkasi to\'g\'risidagi ma\'lumotlarni ochiq elektron tanlovga qo\'yish masalasini belgilangan tartibda ko\'rib chiqish uchun."},"useful":{"title":"Foydali havolalar","content":["O\'zbekiston Respublikasi Qishloq xo\'jaligi vazirligi","Qishloq xo`jaligida bilim va innovasiyalar markazi","“E-AUKSION” elektron savdo platformasi","2020-2030 yillarda O\'zbekiston Respublikasi qishloq xo\'jaligini rivojlantirish strategiyasi"]}},"docs":{"title":"Meyoriy xujjatlar","content":[{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 8 IYUNDAGI\\nPF-6243-SON FARMONI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 8 IYUNDAGI «Yer munosabatlarida tenglik va shaffoflikni taʼminlash, yerga bo‘lgan huquqlarni ishonchli himoya qilish va ularni bozor aktiviga aylantirish chora-tadbirlari to‘g‘risida»gi PF-6243-son Farmoni"},{"name":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 NOYABRDAGI\\nPQ-20-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 noyabrdagi “Meva-sabzavotchilik va uzumchilikda oilaviy tadbirkorlikni rivojlantirish, qishloq xo‘jaligi ishlab chiqarishida dehqon xo‘jaliklarining ulushini oshirish chora-tadbirlari to‘g‘risida”gi PQ-20-son qarori"},{"title":"O‘ZBEKISTON RESPUBLIKASI VAZIRLAR MAHKAMASINING 2021 YIL 24 noyabrdagi\\n709-SONLI QARORI","content":"O‘zbekiston Respublikasi Vazirlar Mahkamasining 2021 yil 24 noyabrdagi “Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish tartibiga doir normativ-huquqiy hujjatlarni tasdiqlash to‘g‘risida”gi 709-sonli Qarori","file":["Dehqon xo\'jaliklariga yer uchastkasini ijaraga berish NAMUNAVIY SHARTNOMASI","Yuridik shaxslarga yer uchastkasini uzoq muddatli ijaraga berish"]},{"title":"O‘ZBEKISTON RESPUBLIKASI PREZIDENTINING 2021 YIL 24 IYULDAGI 5197-SON QARORI","content":"O‘zbekiston Respublikasi Prezidentining 2021 yil 24 iyuldagi “Elektron onlayn-auksionni o‘tkazish tartibini soddalashtirish, uning shaffofligini oshirish hamda ishtirokchilar huquqlarining ishonchli himoyasini kafolatlash chora-tadbirlari to‘g‘risida” 5197-son Qarori"}]},"contact":{"text":"Agar Sizda “Ye-IJARA” axborot tizimi bilan bog‘liq savollar bo‘lsa yoki qo‘shimcha maʼlumot olishni xoxlasangiz, u holda <a href=\\"https://t.me/eijarasupport\\">T.ME/EIJARASUPPORT</a> telegram guruhiga yozib qoldirishingiz mumkin.","tel":"Murojaat uchun telefon raqamlarimiz","time":"Bog‘lanish vaqti"},"offer":"Taklif kiritish","according":"holatiga ko\'ra","ga":"Ga","ta":"Ta","check":"Tekshirish","appnum":"Ariza raqami","seeAll":"Hammasini ko\'rish","nav":{"links":{"about":"О системе","map":"Карта","docs":"Нормативные документы","manuals":"Инструкции","faq":"Часто задаваемые вопросы","contact":"Контакты","login":"Вход в системе","check":"Проверка заявление"},"oneid":"Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."},"oferta":"Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href=\'\'>foydalanish shartlariga</a> roziman.","footer":{"text":"Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.","menu":{"title":"Меню","content":["О системе","Карта","Нормативные документы","Инструкции","Часто задаваемые вопросы"]}},"allrights":"© 2022 все права защищены."}');
 
 /***/ }),
 

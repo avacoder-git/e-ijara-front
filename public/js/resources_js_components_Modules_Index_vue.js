@@ -24467,7 +24467,7 @@ var render = function () {
               _c("div", { staticClass: "rectangle" }, [
                 _c("div", { staticClass: "block" }, [
                   _c("div", { staticClass: "block-title" }, [
-                    _vm._v(_vm._s(_vm.$t("main.statistics.loyihalashda"))),
+                    _vm._v(_vm._s(_vm.$t("main.statistics.loyihalashdagi"))),
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "block-numbers" }, [
