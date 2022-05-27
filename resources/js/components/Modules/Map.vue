@@ -200,7 +200,7 @@ export default {
 
         },
         drawLands(id) {
-            axios.get(`/api/geojson/lands/${id}`)
+            axios.get(`/api/geojson/lands/${id}`, {params: {not_null : 0}})
                 .then(response => {
                     this.removeMarkers()
                     var lands = response.data

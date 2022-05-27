@@ -69,6 +69,7 @@ map.on('pm:create', function (e) {
     if (checkIfInDistrict(geojson)) {
         var text = "Umumiy maydoni: " + seeArea + " ga <br>"
         var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Davom etish</button>"
+        // var add = "<button class='btn btn-success'>Yana tanlash</button>"
         var popup = L.popup()
             .setLatLng(latlong)
             .setContent('<p>Yerni tanladingniz<br />' + text + btn)
@@ -89,10 +90,30 @@ map.on('pm:create', function (e) {
 function checkIfInDistrict(geojson) {
     var poly1 = turf.polygon([geojson]);
 
-    var poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0]]);
+    var intersection
+    var inDistrict = false
 
-    var intersection = turf.intersect(poly1, poly2);
-    return intersection != null
+    if(districtJSON.features[0].geometry.type === "Polygon")
+    {
+        poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0]]);
+
+        intersection = turf.intersect(poly1, poly2);
+
+        if ( intersection && poly1.geometry.coordinates.length === intersection.geometry.coordinates.length)
+            inDistrict = true
+
+    }else if (districtJSON.features[0].geometry.type === "MultiPolygon")
+    {
+        for (let i = 0; i < districtJSON.features.length; i++)
+        {
+            poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0][i]]);
+            intersection = turf.intersect(poly1, poly2);
+            if (intersection && poly1.geometry.coordinates.length === intersection.geometry.coordinates.length)
+                inDistrict = true
+        }
+    }
+
+    return inDistrict
 }
 
 
@@ -181,7 +202,6 @@ function makeGeoJSON(geojson) {
         }).addTo(map)
     map.fitBounds(geoJSON.getBounds());
     districtJSON = geojson
-
 }
 
 
@@ -197,8 +217,7 @@ function removeMarkers() {
 }
 
 function removeMarkers2() {
-    if (geojson1 && geojson2)
-    {
+    if (geojson1 && geojson2) {
         layerGroup.removeLayer(geojson1);
         layerGroup.removeLayer(geojson2);
     }
@@ -286,14 +305,14 @@ var geojson2 = null
 
 function makeLandsGeojson(id) {
 
-        removeMarkers2()
+    removeMarkers2()
     var lands = getLands(id)
     var cad_num = lands.cad_num
-    var cadLands = getCadLands(cad_num)[0]
+    // var cadLands = getCadLands(cad_num)[0]
 
 
-    if (cadLands.features)
-        geojson1 = L.geoJson.vt(cadLands, options2).addTo(map);
+    // if (cadLands.features)
+    //     geojson1 = L.geoJson.vt(cadLands, options2).addTo(map);
 
 
     var geojson = {
@@ -304,8 +323,7 @@ function makeLandsGeojson(id) {
 
     geojson2 = L.geoJson.vt(geojson, options).addTo(map);
 
-    if (geojson1 && geojson2)
-    {
+    if (geojson1 && geojson2) {
         layerGroup.addLayer(geojson1);
         layerGroup.addLayer(geojson2);
     }
@@ -344,6 +362,9 @@ function getLands(id) {
         url: domain() + '/api/geojson/lands/' + id,
         dataType: "json",
         type: "get",
+        data: {
+            not_null: 1
+        },
         async: false,
         success: function (data) {
             result = data;

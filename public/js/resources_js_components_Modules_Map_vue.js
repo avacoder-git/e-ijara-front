@@ -212,7 +212,11 @@ __webpack_require__.r(__webpack_exports__);
     drawLands: function drawLands(id) {
       var _this5 = this;
 
-      axios.get("/api/geojson/lands/".concat(id)).then(function (response) {
+      axios.get("/api/geojson/lands/".concat(id), {
+        params: {
+          not_null: 0
+        }
+      }).then(function (response) {
         _this5.removeMarkers();
 
         var lands = response.data;
