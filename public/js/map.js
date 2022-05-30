@@ -69,12 +69,13 @@ map.on('pm:create', function (e) {
     if (checkIfInDistrict(geojson)) {
         var text = "Umumiy maydoni: " + seeArea + " ga <br>"
         var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Davom etish</button>"
-        // var add = "<button class='btn btn-success'>Yana tanlash</button>"
         var popup = L.popup()
             .setLatLng(latlong)
             .setContent('<p>Yerni tanladingniz<br />' + text + btn)
             .openOn(map);
-
+        e.layer.on("click", function (q){
+            popup.openOn(map)
+        })
         $("#geojson").text(JSON.stringify(dataJSON))
         $("#area").val(seeArea)
 
@@ -99,7 +100,10 @@ function checkIfInDistrict(geojson) {
 
         intersection = turf.intersect(poly1, poly2);
 
-        if ( intersection && poly1.geometry.coordinates.length === intersection.geometry.coordinates.length)
+        console.log(turf.area(intersection));
+        console.log(turf.area(poly1));
+
+        if ( intersection && parseInt(turf.area(intersection)) === parseInt(turf.area(poly1)))
             inDistrict = true
 
     }else if (districtJSON.features[0].geometry.type === "MultiPolygon")
@@ -108,7 +112,7 @@ function checkIfInDistrict(geojson) {
         {
             poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0][i]]);
             intersection = turf.intersect(poly1, poly2);
-            if (intersection && poly1.geometry.coordinates.length === intersection.geometry.coordinates.length)
+            if (intersection && parseInt(turf.area(intersection)) === parseInt(turf.area(poly1)))
                 inDistrict = true
         }
     }
