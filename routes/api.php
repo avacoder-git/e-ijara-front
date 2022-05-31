@@ -49,6 +49,13 @@ Route::prefix('geojson')->group(function () {
     Route::get('/lands/{district}', [\App\Http\Controllers\LandGeometryController::class , 'index']);
 
 });
+
+
+Route::get('/front/lands', [\App\Http\Controllers\Api\LandController::class,'front']);
+
+
+
+
 Route::apiResource('lands', \App\Http\Controllers\Api\LandController::class);
 Route::apiResource('land_offers', \App\Http\Controllers\Api\LandOffersController::class);
 //Route::post('/json/regions', [RegionController::class,'store']);

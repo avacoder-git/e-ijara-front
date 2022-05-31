@@ -69,6 +69,25 @@ class LandController extends Controller
             return new LandResource($land);
     }
 
+
+    public function front(Request $request)
+    {
+        $status = $request->status_id;
+        $query = "";
+
+        switch ($status)
+        {
+            case 1: $query = "select id, regnum, name  from lands";
+        }
+
+
+
+
+    }
+
+
+
+
     public function GetCount()
     {
         $land = Land::
