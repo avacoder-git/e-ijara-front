@@ -116,13 +116,11 @@
 </template>
 
 <script>
-import $ from "jquery";
 
 
 export default {
     name: "Video",
 
-    components: {$},
 
     mounted() {
         $(function () {
