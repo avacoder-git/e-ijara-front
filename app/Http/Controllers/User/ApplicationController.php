@@ -16,16 +16,22 @@ class ApplicationController extends Controller
 
     public function getRegion(Request $request)
     {
-        $regions =  Regions::with('districts')->get();
+        $regions = Regions::with('districts')->get();
         return view('user.region', compact('regions'));
     }
 
     public function map()
     {
 
-        $regions =  Regions::with('districts')->get();
+        $regions = Regions::with('districts')->get();
 
-        $land_purposes = LandPurposes::all();
+        $land_purposes = LandPurposes::query();
+
+
+        if(auth()->check())
+            $land_purposes = $land_purposes
+                ->where('person_type', '=', auth()->user()->user_type);
+        $land_purposes = $land_purposes->get();
 
         return view('user.map', compact('regions', 'land_purposes'));
     }

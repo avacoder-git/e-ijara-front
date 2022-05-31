@@ -65,19 +65,31 @@ map.on('pm:create', function (e) {
     seeArea = Math.round(seeArea / 10000)
 
     var dataJSON = e.layer.toGeoJSON()
+    console.log();
 
     if (checkIfInDistrict(geojson)) {
-        var text = "Umumiy maydoni: " + seeArea + " ga <br>"
-        var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Davom etish</button>"
-        var popup = L.popup()
-            .setLatLng(latlong)
-            .setContent('<p>Yerni tanladingniz<br />' + text + btn)
-            .openOn(map);
-        e.layer.on("click", function (q){
-            popup.openOn(map)
-        })
-        $("#geojson").text(JSON.stringify(dataJSON))
-        $("#area").val(seeArea)
+
+        if (checkIfOutOfCad(geojson))
+        {
+            var text = "Umumiy maydoni: " + seeArea + " ga <br>"
+            var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Davom etish</button>"
+            var popup = L.popup()
+                .setLatLng(latlong)
+                .setContent('<p>Yerni tanladingniz<br />' + text + btn)
+                .openOn(map);
+            e.layer.on("click", function (q) {
+                popup.openOn(map)
+            })
+            $("#geojson").text(JSON.stringify(dataJSON))
+            $("#area").val(seeArea)
+
+        }else {
+
+            map.removeLayer(e.layer);
+
+            alert('Chizilgan yerni olish taqiqlanadi!')
+        }
+
 
     } else {
         map.removeLayer(e.layer);
@@ -87,6 +99,7 @@ map.on('pm:create', function (e) {
 
 })
 
+var cadGeojson = null
 
 function checkIfInDistrict(geojson) {
     var poly1 = turf.polygon([geojson]);
@@ -94,22 +107,18 @@ function checkIfInDistrict(geojson) {
     var intersection
     var inDistrict = false
 
-    if(districtJSON.features[0].geometry.type === "Polygon")
-    {
+    if (districtJSON.features[0].geometry.type === "Polygon") {
         poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0]]);
+
 
         intersection = turf.intersect(poly1, poly2);
 
-        console.log(turf.area(intersection));
-        console.log(turf.area(poly1));
-
-        if ( intersection && parseInt(turf.area(intersection)) === parseInt(turf.area(poly1)))
+        if (intersection && parseInt(turf.area(intersection)) === parseInt(turf.area(poly1)))
             inDistrict = true
 
-    }else if (districtJSON.features[0].geometry.type === "MultiPolygon")
-    {
-        for (let i = 0; i < districtJSON.features.length; i++)
-        {
+
+    } else if (districtJSON.features[0].geometry.type === "MultiPolygon") {
+        for (let i = 0; i < districtJSON.features.length; i++) {
             poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0][i]]);
             intersection = turf.intersect(poly1, poly2);
             if (intersection && parseInt(turf.area(intersection)) === parseInt(turf.area(poly1)))
@@ -118,6 +127,47 @@ function checkIfInDistrict(geojson) {
     }
 
     return inDistrict
+}
+
+
+function checkIfOutOfCad(geojson) {
+    var poly1 = turf.polygon([geojson]);
+
+    var poly2
+    var poly3
+    var intersection
+    var outCad = true
+
+
+    for (let i = 0; i < cadGeojson.features.length; i++)
+    {
+
+        poly2 = cadGeojson.features[0]
+        if (poly2.geometry.type === "Polygon") {
+            poly3 = turf.polygon([poly2.geometry.coordinates[0]]);
+            intersection = turf.intersect(poly1, poly3);
+            console.log(intersection);
+
+            if (intersection && turf.area(intersection))
+                outCad = false
+
+        } else if (poly2.geometry.type === "MultiPolygon") {
+            for (let k = 0; k < poly2.geometry.coordinates[0].length; k++) {
+                poly3 = turf.polygon([poly2.geometry.coordinates[0][k]]);
+                intersection = turf.intersect(poly1, poly3);
+                if (intersection)
+                    console.log(intersection);
+
+                if (intersection && turf.area(intersection))
+                    outCad = false
+            }
+        }
+    }
+
+
+
+
+    return outCad
 }
 
 
@@ -177,8 +227,8 @@ makeRegionList()
 
 $('#regions').change(function () {
 
-    $('#regionName').text($(this).text())
-    $('#region_name').val($(this).text())
+    $('#regionName').text($(this).children(':selected').text())
+    $('#region_name').val($(this).children(':selected').text())
 
     makeDistrictList($(this).val())
     var geojson = getRegion($(this).val())
@@ -242,8 +292,8 @@ function makeDistrictList(regionId) {
     $('#districts').change(function () {
         $("#loader2").html('<div class="loader"></div>');
 
-        $('#districtName').text($(this).text())
-        $('#district_name').val($(this).text())
+        $('#districtName').text($(this).children(':selected').text())
+        $('#district_name').val($(this).children(':selected').text())
         $('#district_id').val($(this).val())
         var geojson = getDistrict($(this).val())
         makeGeoJSON(geojson)
@@ -257,7 +307,7 @@ function makeDistrictList(regionId) {
 
 
 function makeRegionList() {
-    var text = ""
+    var text = '<option value="">Tanlang</option>'
     data = getRegions()
 
     for (let i = 0; i < data.length; i++) {
@@ -312,11 +362,11 @@ function makeLandsGeojson(id) {
     removeMarkers2()
     var lands = getLands(id)
     var cad_num = lands.cad_num
-    // var cadLands = getCadLands(cad_num)[0]
+    var cadLands = getCadLands(cad_num)[0]
+    cadGeojson = cadLands
 
-
-    // if (cadLands.features)
-    //     geojson1 = L.geoJson.vt(cadLands, options2).addTo(map);
+    if (cadLands.features)
+        geojson1 = L.geoJson.vt(cadLands, options2).addTo(map);
 
 
     var geojson = {
@@ -400,20 +450,6 @@ function getRegions() {
     });
 
     return result;
-}
-
-makePurposeList()
-
-function makePurposeList() {
-    var data = getPurposes()
-    var text = ""
-
-    for (let i = 0; i < data.length; i++) {
-        text += '<option value="' + data[i].id + '" class="text-uppercase">' + data[i].name + '</option> '
-    }
-
-
-    $("#purpose_id").html(text)
 }
 
 
