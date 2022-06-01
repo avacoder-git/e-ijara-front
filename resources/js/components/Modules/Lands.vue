@@ -35,11 +35,11 @@
                                     <div class="rectangle-img"><img
                                         :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
                                     <div class="d-flex justify-content-between">
-                                        <div class="rectangle-lot">{{ item.created_at }}</div>
+                                        <div class="rectangle-lot">{{ item.updated_at }}</div>
                                         <div class="rectangle-lot">{{ item.regnum }}</div>
                                     </div>
                                     <div class="rectangle-name mb-auto">
-                                        {{ item.region }} , {{ item.district }}
+                                        {{ item.address }}
                                     </div>
 
                                     <div class="rectangle-footer">
@@ -59,11 +59,11 @@
                                     <div class="rectangle-img"><img
                                         :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
                                     <div class="d-flex justify-content-between">
-                                        <div class="rectangle-lot">{{ item.created_at }}</div>
+                                        <div class="rectangle-lot">{{ item.updated_at }}</div>
                                         <div class="rectangle-lot">{{ item.regnum }}</div>
                                     </div>
                                     <div class="rectangle-name mb-auto">
-                                        {{ item.region }} , {{ item.district }}
+                                        {{ item.address }}
                                     </div>
 
                                     <div class="rectangle-footer">
@@ -83,11 +83,11 @@
                                     <div class="rectangle-img"><img
                                         :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
                                     <div class="d-flex justify-content-between">
-                                        <div class="rectangle-lot">{{ item.created_at }}</div>
+                                        <div class="rectangle-lot">{{ item.updated_at }}</div>
                                         <div class="rectangle-lot">{{ item.regnum }}</div>
                                     </div>
                                     <div class="rectangle-name mb-auto">
-                                        {{ item.region }} , {{ item.district }}
+                                        {{ item.address }}
                                     </div>
 
                                     <div class="rectangle-footer">
@@ -170,17 +170,17 @@ export default {
 
     methods: {
         getData() {
-            axios.get('/api/lands',{params: {status_id:2}})
+            axios.get('/api/front/lands',{params: {status_id:2}})
                 .then(response => {
                     this.data = response.data.data
 
                 })
-            axios.get('/api/lands',{params: {status_id:3}})
+            axios.get('/api/front/lands',{params: {status_id:3}})
                 .then(response => {
                     this.data2 = response.data.data
 
                 })
-            axios.get('/api/lands',{params: {status_id:3}})
+            axios.get('/api/front/lands',{params: {status_id:3}})
                 .then(response => {
                     this.data3 = response.data.data
 

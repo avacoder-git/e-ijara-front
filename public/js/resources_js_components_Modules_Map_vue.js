@@ -266,7 +266,8 @@ __webpack_require__.r(__webpack_exports__);
         };
         if (lands.features !== null) (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_2__["default"])(lands, options).addTo(_this6.$refs.map.mapObject);
       });
-    }
+    },
+    drawLandFromParam: function drawLandFromParam($land) {}
   },
   mounted: function mounted() {
     this.getRegions();

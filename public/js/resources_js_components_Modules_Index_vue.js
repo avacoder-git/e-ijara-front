@@ -655,21 +655,21 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData() {
       var _this = this;
 
-      axios.get('/api/lands', {
+      axios.get('/api/front/lands', {
         params: {
           status_id: 2
         }
       }).then(function (response) {
         _this.data = response.data.data;
       });
-      axios.get('/api/lands', {
+      axios.get('/api/front/lands', {
         params: {
           status_id: 3
         }
       }).then(function (response) {
         _this.data2 = response.data.data;
       });
-      axios.get('/api/lands', {
+      axios.get('/api/front/lands', {
         params: {
           status_id: 3
         }
@@ -23965,7 +23965,7 @@ var render = function () {
                                 },
                                 [
                                   _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.created_at)),
+                                    _vm._v(_vm._s(item.updated_at)),
                                   ]),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "rectangle-lot" }, [
@@ -23980,9 +23980,7 @@ var render = function () {
                                 [
                                   _vm._v(
                                     "\n                                    " +
-                                      _vm._s(item.region) +
-                                      " , " +
-                                      _vm._s(item.district) +
+                                      _vm._s(item.address) +
                                       "\n                                "
                                   ),
                                 ]
@@ -24046,7 +24044,7 @@ var render = function () {
                                 },
                                 [
                                   _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.created_at)),
+                                    _vm._v(_vm._s(item.updated_at)),
                                   ]),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "rectangle-lot" }, [
@@ -24061,9 +24059,7 @@ var render = function () {
                                 [
                                   _vm._v(
                                     "\n                                    " +
-                                      _vm._s(item.region) +
-                                      " , " +
-                                      _vm._s(item.district) +
+                                      _vm._s(item.address) +
                                       "\n                                "
                                   ),
                                 ]
@@ -24127,7 +24123,7 @@ var render = function () {
                                 },
                                 [
                                   _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.created_at)),
+                                    _vm._v(_vm._s(item.updated_at)),
                                   ]),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "rectangle-lot" }, [
@@ -24142,9 +24138,7 @@ var render = function () {
                                 [
                                   _vm._v(
                                     "\n                                    " +
-                                      _vm._s(item.region) +
-                                      " , " +
-                                      _vm._s(item.district) +
+                                      _vm._s(item.address) +
                                       "\n                                "
                                   ),
                                 ]

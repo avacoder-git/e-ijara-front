@@ -258,6 +258,10 @@ export default {
                 })
 
         },
+        drawLandFromParam($land)
+        {
+
+        }
 
     },
 
@@ -265,7 +269,6 @@ export default {
     mounted() {
         this.getRegions()
         const map = this.$refs.map.mapObject;
-
     }
 
 

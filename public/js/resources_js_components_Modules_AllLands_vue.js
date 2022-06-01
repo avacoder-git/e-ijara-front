@@ -183,8 +183,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      window.scrollTo(0, 0);
       this.isLoading = true;
-      axios.get('/api/lands', {
+      axios.get('/api/front/lands', {
         params: {
           status_id: 2,
           page: page
@@ -194,7 +195,7 @@ __webpack_require__.r(__webpack_exports__);
       })["finally"](function () {
         _this.isLoading = false;
       });
-      axios.get('/api/lands', {
+      axios.get('/api/front/lands', {
         params: {
           status_id: 3
         }
@@ -203,7 +204,7 @@ __webpack_require__.r(__webpack_exports__);
       })["finally"](function () {
         _this.isLoading = false;
       });
-      axios.get('/api/lands', {
+      axios.get('/api/front/lands', {
         params: {
           status_id: 3
         }
@@ -517,7 +518,7 @@ var render = function () {
                                         _c(
                                           "div",
                                           { staticClass: "rectangle-lot" },
-                                          [_vm._v(_vm._s(item.created_at))]
+                                          [_vm._v(_vm._s(item.updated_at))]
                                         ),
                                         _vm._v(" "),
                                         _c(
@@ -534,9 +535,7 @@ var render = function () {
                                       [
                                         _vm._v(
                                           "\n                                            " +
-                                            _vm._s(item.region) +
-                                            " , " +
-                                            _vm._s(item.district) +
+                                            _vm._s(item.address) +
                                             "\n                                        "
                                         ),
                                       ]
@@ -666,7 +665,7 @@ var render = function () {
                                         _c(
                                           "div",
                                           { staticClass: "rectangle-lot" },
-                                          [_vm._v(_vm._s(item.created_at))]
+                                          [_vm._v(_vm._s(item.updated_at))]
                                         ),
                                         _vm._v(" "),
                                         _c(
@@ -683,9 +682,7 @@ var render = function () {
                                       [
                                         _vm._v(
                                           "\n                                            " +
-                                            _vm._s(item.region) +
-                                            " , " +
-                                            _vm._s(item.district) +
+                                            _vm._s(item.address) +
                                             "\n                                        "
                                         ),
                                       ]
@@ -818,7 +815,7 @@ var render = function () {
                                         _c(
                                           "div",
                                           { staticClass: "rectangle-lot" },
-                                          [_vm._v(_vm._s(item.created_at))]
+                                          [_vm._v(_vm._s(item.updated_at))]
                                         ),
                                         _vm._v(" "),
                                         _c(
@@ -835,9 +832,7 @@ var render = function () {
                                       [
                                         _vm._v(
                                           "\n                                            " +
-                                            _vm._s(item.region) +
-                                            " , " +
-                                            _vm._s(item.district) +
+                                            _vm._s(item.address) +
                                             "\n                                        "
                                         ),
                                       ]

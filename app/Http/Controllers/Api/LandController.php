@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Front\LandCollection;
+use App\Http\Resources\LandCollectionResource;
 use App\Http\Resources\LandResource;
 use App\Models\Regions;
 use App\Models\Land;
@@ -74,14 +76,21 @@ class LandController extends Controller
     {
         $status = $request->status_id;
         $query = "";
-
+        $lands = Land::select( 'regnum', 'address', 'area', 'id', 'updated_at');
         switch ($status)
         {
-            case 1: $query = "select id, regnum, name  from lands";
+            case 1: $lands = $lands->whereIn('status_id', [2,3]);
+            case 2: $lands = $lands->whereIn('status_id', [2,3]);
+            case 3: $lands = $lands->whereIn('status_id', [2,3]);
         }
 
 
 
+        $lands = $lands->orderBy("updated_at",'desc')->paginate(16);
+
+
+
+        return new LandCollection($lands);
 
     }
 

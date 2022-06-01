@@ -47,6 +47,7 @@ Route::prefix('geojson')->group(function () {
     Route::get('/GetAllCount',[\App\Http\Controllers\Api\LandController::class,'GetAllCount'])->name('land.GetAllCount');
     Route::get('/GetAllCountByStatus',[\App\Http\Controllers\Api\LandController::class,'GetAllCountByStatus'])->name('land.GetAllCount');
     Route::get('/lands/{district}', [\App\Http\Controllers\LandGeometryController::class , 'index']);
+    Route::get('/land/{land}', [\App\Http\Controllers\LandGeometryController::class , 'show']);
 
 });
 
