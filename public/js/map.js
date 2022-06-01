@@ -29,7 +29,7 @@ const googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
 })
 
-googleHybrid.addTo(map)
+googleStreets.addTo(map)
 
 function isLoading(statement) {
 
@@ -332,9 +332,53 @@ var options = {
     debug: 0,
     style: geojsonStyle,
     onEachFeature: function (feature, layer) {
-        layer.myTag = "myGeoJSON2"
+        console.log(layer)
+        console.log(34324)
+
+
+        layer.on('click', function (e){
+            console.log(32432)
+        })
+
     }
 };
+
+var states = [{
+    "type": "Feature",
+    "properties": {"party": "Republican"},
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [-104.05, 48.99],
+            [-97.22,  48.98],
+            [-96.58,  45.94],
+            [-104.03, 45.94],
+            [-104.05, 48.99]
+        ]]
+    }
+}, {
+    "type": "Feature",
+    "properties": {"party": "Democrat"},
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [-109.05, 41.00],
+            [-102.06, 40.99],
+            [-102.03, 36.99],
+            [-109.04, 36.99],
+            [-109.05, 41.00]
+        ]]
+    }
+}];
+
+L.geoJSON(states, {
+    style: function(feature) {
+        switch (feature.properties.party) {
+            case 'Republican': return {color: "#ff0000"};
+            case 'Democrat':   return {color: "#0000ff"};
+        }
+    }
+}).addTo(map);
 
 var geojsonStyle2 = {
     fillColor: "#ff0000",
@@ -366,7 +410,7 @@ function makeLandsGeojson(id) {
     cadGeojson = cadLands
 
     if (cadLands.features)
-        geojson1 = L.geoJson.vt(cadLands, options2).addTo(map);
+        geojson1 = L.geoJson(cadLands,options).addTo(map);
 
 
     var geojson = {
@@ -375,12 +419,13 @@ function makeLandsGeojson(id) {
     }
 
 
-    geojson2 = L.geoJson.vt(geojson, options).addTo(map);
+    // geojson2 = L.geoJson.vt(geojson, options).addTo(map);
+    geojson2 = L.geoJson.vt(geojson,options).addTo(map);
 
-    if (geojson1 && geojson2) {
-        layerGroup.addLayer(geojson1);
-        layerGroup.addLayer(geojson2);
-    }
+    // if (geojson1 && geojson2) {
+    //     layerGroup.addLayer(geojson1);
+    //     layerGroup.addLayer(geojson2);
+    // }
 
 
 }

@@ -57,6 +57,7 @@ import 'vue-select/dist/vue-select.css';
 import L from 'leaflet';
 import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson, LGridLayer} from 'vue2-leaflet';
 import vt from "../../../../public/assets/js/leaflet-geojson-vt"
+import turf from "@turf/turf"
 
 
 export default {
@@ -185,6 +186,7 @@ export default {
 
                     }
                 }).addTo(this.$refs.map.mapObject)
+
             this.$refs.map.mapObject.fitBounds(geoJSON.getBounds());
         },
 
@@ -260,6 +262,41 @@ export default {
         },
         drawLandFromParam($land)
         {
+            axios.get(`/api/geojson/land/${$land}`,)
+                .then(response => {
+                    response
+                    this.removeMarkers()
+                    var lands = response.data
+                    var geojsonStyle = {
+                        fillColor: "#0088ff",
+                        color: "#000",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.7,
+                    };
+
+                    var options = {
+                        maxZoom: 20,
+                        tolerance: 3,
+                        debug: 0,
+                        style: geojsonStyle
+                    };
+
+                    var geojson = {
+                        geometry: lands.data[0].geometry,
+                        type: "Feature",
+                        properties: {
+                            name: $land
+
+                        }
+                    }
+                    console.log(geojson);
+
+                    geojson = vt(geojson, options).addTo(this.$refs.map.mapObject);
+5
+                    this.$refs.map.mapObject.fitBounds(geojson.getBounds());
+
+                })
 
         }
 
@@ -268,6 +305,10 @@ export default {
 
     mounted() {
         this.getRegions()
+        if(this.$route.query.land)
+        {
+            this.drawLandFromParam(this.$route.query.land)
+        }
         const map = this.$refs.map.mapObject;
     }
 
