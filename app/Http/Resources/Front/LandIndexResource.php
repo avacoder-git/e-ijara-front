@@ -9,27 +9,24 @@ class LandIndexResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
-        $arr['type'] = "FeatureCollection";
-        $arr['features'] = [[
-            'type' => "Feature",
-            "id" => 0,
-            "geometry" => json_decode($this->st_asgeojson),
-            "properties" =>[
-                "name" => "Многоугольник 1"
-            ]
-        ]];
+
 
         return
-        [
-            'geometry' => json_decode($this->st_asgeojson),
-            "properties" =>[
-                "name" => "Многоугольник 1"
-            ]
-        ];
+            [
+                'geometry' => json_decode($this->st_asgeojson),
+                "properties" => [
+                    "name" => "Многоугольник 1",
+                    "id" => $this->id,
+                    "area" => $this->area,
+                ],
+
+                'type' => "Feature",
+
+            ];
     }
 }

@@ -22,7 +22,10 @@ class LandCollectionResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'data' => LandIndexResource::collection($this->resource),
+            'data' => [
+                'features' => LandIndexResource::collection($this->resource),
+                "type"=> "FeatureCollection",
+            ],
             'cad_num' => $this->cad_num
         ];
     }

@@ -20,7 +20,7 @@ class LandGeometryController extends Controller
         $area_id = $district->cad_num;
         $where = $request->not_null ? " l.status_id not in (25)  and l.parent_id is not null and l.is_merged_lot = 0 or l.is_merged_lot = 1":" l.parent_id is null";
 
-        $query = "select l.id, ST_AsGeoJSON(g.geometry) from lands l  inner join land_geometries g on g.land_id = l.id where l.cad_number like '%$area_id%' and $where";
+        $query = "select l.id, l.area, ST_AsGeoJSON(g.geometry) from lands l  inner join land_geometries g on g.land_id = l.id where l.cad_number like '%$area_id%' and $where";
         $lands = cache()->remember("area-$area_id",60*60*24,function () use($query){
             return DB::connection('ijaradb')->select($query);
         });

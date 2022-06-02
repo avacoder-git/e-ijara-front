@@ -178,9 +178,9 @@ $('#submit').click(function () {
     var geojson = $("#geojson").text()
     var amount = $("#amount").val()
     var land_purpose_id = $("#purpose_id").val()
-    var formData = {region_id, district_id, geojson, period: amount, land_purpose_id}
+    var formData = {region_id, district_id, geojson, period: amount, land_purpose_id, selectedLands}
 
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + "/api/application", // Url of backend (can be python, php, etc..)
@@ -215,7 +215,7 @@ $('#submit').click(function () {
 
         }
     });
-    isLoading(false)
+
 
 
 })
@@ -332,16 +332,69 @@ var options = {
     debug: 0,
     style: geojsonStyle,
     onEachFeature: function (feature, layer) {
-        console.log(layer)
-        console.log(34324)
 
-
+        layer.on('mouseover', function (e){
+            layer.setStyle( {
+                color: '#2262CC'
+            });
+        })
+        layer.on("mouseout", function (e) {
+            // Start by reverting the style back
+            if (!selectedLands.includes(feature.properties.id))
+            {
+                layer.setStyle(geojsonStyle);
+            }
+        });
         layer.on('click', function (e){
-            console.log(32432)
+            var text = "Umumiy maydoni: " + feature.properties.area + " ga <br>"
+            var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Tasdiqlash</button>"
+            var add = "<button class='btn btn-success btn-select' data-id='" + feature.properties.id + "'>Yana tanlash</button>"
+            var remove = "<button class='btn btn-danger btn-remove' data-id='" + feature.properties.id + "'>Bekor qilish</button>"
+            var btn2 = selectedLands.includes(feature.properties.id) ? remove : add
+            layer.setStyle({
+                fillColor: "#11ff00",
+            });
+
+            var popup = L.popup()
+                .setLatLng(e.latlng)
+                .setContent('<p>Yerni tanladingniz<br />' + text + btn + btn2)
+                .openOn(map);
+
+            $('.btn-select').click(function (){
+                map.closePopup();
+                layer.setStyle({
+                    fillColor: "#11ff00",
+                });
+                if (!selectedLands.includes(feature.properties.id))
+                {
+                    selectedLands.push(feature.properties.id)
+                    selectedLandAreas += parseInt(feature.properties.area)
+                    $("#area").val(selectedLandAreas)
+                    console.log(selectedLands);
+                }
+            })
+            $('.btn-remove').click(function (){
+                map.closePopup();
+                layer.setStyle(geojsonStyle);
+                var index
+                if (selectedLands.includes(feature.properties.id))
+                {
+                    index = selectedLands.indexOf(feature.properties.id)
+                    selectedLands.splice(index)
+                    console.log(selectedLands);
+                    selectedLandAreas -= parseInt(feature.properties.area)
+                    $("#area").val(selectedLandAreas)
+
+                }
+            })
         })
 
     }
 };
+var selectedLands = []
+var selectedLandAreas = 0
+
+
 
 var states = [{
     "type": "Feature",
@@ -410,17 +463,11 @@ function makeLandsGeojson(id) {
     cadGeojson = cadLands
 
     if (cadLands.features)
-        geojson1 = L.geoJson(cadLands,options).addTo(map);
+        geojson1 = L.geoJson.vt(cadLands,options2).addTo(map);
 
 
-    var geojson = {
-        features: lands.data,
-        type: "FeatureCollection"
-    }
 
-
-    // geojson2 = L.geoJson.vt(geojson, options).addTo(map);
-    geojson2 = L.geoJson.vt(geojson,options).addTo(map);
+    geojson2 = L.geoJson(lands.data,options).addTo(map);
 
     // if (geojson1 && geojson2) {
     //     layerGroup.addLayer(geojson1);
@@ -433,7 +480,7 @@ function makeLandsGeojson(id) {
 
 function getCadLands(prefix) {
     var result = false;
-    isLoading(true)
+
 
     jQuery.ajax({
         url: "https://api.agro.uz/gis_bridge/eijara",
@@ -445,7 +492,7 @@ function getCadLands(prefix) {
         },
         success: function (data) {
             result = data;
-            isLoading(false)
+
         },
     });
 
@@ -455,7 +502,7 @@ function getCadLands(prefix) {
 
 function getLands(id) {
     var result = false;
-    isLoading(true)
+
 
     jQuery.ajax({
         url: domain() + '/api/geojson/lands/' + id,
@@ -467,7 +514,7 @@ function getLands(id) {
         async: false,
         success: function (data) {
             result = data;
-            isLoading(false)
+
         },
 
     });
@@ -479,7 +526,7 @@ function getLands(id) {
 function getRegions() {
 
     var result = false;
-    isLoading(true)
+
 
 
     jQuery.ajax({
@@ -490,7 +537,7 @@ function getRegions() {
         data: {},
         success: function (data) {
             result = data;
-            isLoading(false)
+
         },
     });
 
@@ -501,7 +548,7 @@ function getRegions() {
 function getPurposes() {
 
     var result = false;
-    isLoading(true)
+
 
     jQuery.ajax({
         url: domain() + '/api/directory/land_purposes',
@@ -514,7 +561,7 @@ function getPurposes() {
         },
     });
 
-    isLoading(false)
+
 
 
     return result;
@@ -524,7 +571,7 @@ function getPurposes() {
 function getRegion(id) {
 
     var result = false;
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + '/api/json/regions/' + id,
@@ -536,7 +583,7 @@ function getRegion(id) {
         },
     });
 
-    isLoading(false)
+
 
     return result;
 }
@@ -544,7 +591,7 @@ function getRegion(id) {
 function getDistricts(id) {
 
     var result = false;
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + '/api/json/districts/' + id,
@@ -555,7 +602,7 @@ function getDistricts(id) {
             result = data;
         },
     });
-    isLoading(false)
+
 
     return result;
 }
@@ -563,7 +610,7 @@ function getDistricts(id) {
 function getDistrict(id) {
 
     var result = false;
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + '/api/json/district/' + id,
@@ -574,7 +621,7 @@ function getDistrict(id) {
             result = data;
         },
     });
-    isLoading(false)
+
 
     return result;
 }
@@ -583,7 +630,7 @@ function getDistrict(id) {
 function getRegionGeoJson(id) {
 
     var result = false;
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + '/api/json/regions/' + id,
@@ -594,7 +641,7 @@ function getRegionGeoJson(id) {
             result = data;
         },
     });
-    isLoading(false)
+
 
     return result;
 }
