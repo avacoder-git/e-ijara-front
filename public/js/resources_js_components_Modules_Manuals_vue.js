@@ -57,6 +57,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Manuals"
 });
@@ -154,89 +157,97 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("\n        Qo’llanmalar\n    ")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c(
-              "a",
-              {
-                staticClass: "file",
-                attrs: { href: "/pdf/E-IJARA_АТ_manual.pdf", target: "_blank" },
-              },
-              [
-                _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mx-5" }, [
-                  _c("h3", [
-                    _vm._v(
-                      "ID.EGOV.UZ TIZIMIDA AKKAUNTNI ERI BILAN TASDIQLASH BO‘YICHA YO‘RIQNOMA"
-                    ),
+    return _c("div", { staticClass: "bg-gray-100 pt-1 pb-5" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", [_vm._v("\n            Qo’llanmalar\n        ")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "file",
+                  attrs: {
+                    href: "/pdf/E-IJARA_АТ_manual.pdf",
+                    target: "_blank",
+                  },
+                },
+                [
+                  _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mx-5" }, [
+                    _c("h3", [
+                      _vm._v(
+                        "ID.EGOV.UZ TIZIMIDA AKKAUNTNI ERI BILAN TASDIQLASH BO‘YICHA YO‘RIQNOMA"
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("187KB - DOC file")]),
                   ]),
                   _vm._v(" "),
-                  _c("p", [_vm._v("187KB   -   DOC file")]),
-                ]),
-                _vm._v(" "),
-                _c("i", {
-                  staticClass: "fa fa-arrow-right",
-                  attrs: { "aria-hidden": "true" },
-                }),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "file",
-                attrs: { href: "/pdf/ID_EGOV_UZ_manual.pdf", target: "_blank" },
-              },
-              [
-                _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mx-5" }, [
-                  _c("h3", [
-                    _vm._v(
-                      "“E-IJARA” AXBOROT TIZIMI FOYDALANUVCHI QO‘LLANMASI"
-                    ),
+                  _c("i", {
+                    staticClass: "fa fa-arrow-right",
+                    attrs: { "aria-hidden": "true" },
+                  }),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "file",
+                  attrs: {
+                    href: "/pdf/ID_EGOV_UZ_manual.pdf",
+                    target: "_blank",
+                  },
+                },
+                [
+                  _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mx-5" }, [
+                    _c("h3", [
+                      _vm._v(
+                        "“E-IJARA” AXBOROT TIZIMI FOYDALANUVCHI QO‘LLANMASI"
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("187KB - DOC file")]),
                   ]),
                   _vm._v(" "),
-                  _c("p", [_vm._v("187KB   -   DOC file")]),
-                ]),
-                _vm._v(" "),
-                _c("i", {
-                  staticClass: "fa fa-arrow-right",
-                  attrs: { "aria-hidden": "true" },
-                }),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "file",
-                attrs: { href: "/pdf/OneID_manual.pdf", target: "_blank" },
-              },
-              [
-                _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
-                _vm._v(" "),
-                _c("div", { staticClass: "mx-5" }, [
-                  _c("h3", [
-                    _vm._v(
-                      "ONE ID YAGONA IDENTIFIKATSIYA TIZIMIDA RO‘YXATDAN O‘TISH"
-                    ),
+                  _c("i", {
+                    staticClass: "fa fa-arrow-right",
+                    attrs: { "aria-hidden": "true" },
+                  }),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "file",
+                  attrs: { href: "/pdf/OneID_manual.pdf", target: "_blank" },
+                },
+                [
+                  _c("img", { attrs: { src: "/image/Document.svg", alt: "" } }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mx-5" }, [
+                    _c("h3", [
+                      _vm._v(
+                        "ONE ID YAGONA IDENTIFIKATSIYA TIZIMIDA RO‘YXATDAN O‘TISH"
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("187KB - DOC file")]),
                   ]),
                   _vm._v(" "),
-                  _c("p", [_vm._v("187KB   -   DOC file")]),
-                ]),
-                _vm._v(" "),
-                _c("i", {
-                  staticClass: "fa fa-arrow-right",
-                  attrs: { "aria-hidden": "true" },
-                }),
-              ]
-            ),
+                  _c("i", {
+                    staticClass: "fa fa-arrow-right",
+                    attrs: { "aria-hidden": "true" },
+                  }),
+                ]
+              ),
+            ]),
           ]),
         ]),
       ]),

@@ -44,12 +44,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FAQ",
   data: function data() {
@@ -150,82 +144,56 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("h1", [_vm._v("\n        Ko’p beriladigan savollar\n    ")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("div", { staticClass: "card card-body" }, [
-          _c(
-            "button",
-            {
-              staticClass: "question",
-              attrs: { type: "button", "data-id": "1" },
-              on: {
-                click: function ($event) {
-                  return _vm.animate(1)
-                },
-              },
-            },
-            [
-              _c("span", [_vm._v("Ro‘yxatdan qanday o‘tiladi?")]),
-              _vm._v(" "),
-              _c("span", { staticClass: "icon" }),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "answer",
-              class: _vm.selected === 1 ? "answer-active" : "",
-            },
-            [
-              _c("div", {}, [
-                _vm._v(
-                  "\n                        Some placeholder content for the collapse component. This panel is hidden by default but\n                        revealed when the user activates the relevant trigger.\n                    "
-                ),
-              ]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card card-body" }, [
-          _c("p", [
-            _c(
-              "button",
-              {
-                staticClass: "question",
-                attrs: { type: "button", "data-id": "1" },
-                on: {
-                  click: function ($event) {
-                    return _vm.animate(2)
-                  },
-                },
-              },
-              [
-                _c("span", [_vm._v("Ro‘yxatdan qanday o‘tiladi?")]),
-                _vm._v(" "),
-                _c("span", { staticClass: "icon" }),
+  return _c("div", { staticClass: "bg-gray-100 pt-1 pb-5" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("h1", [
+        _vm._v(
+          "\n            " + _vm._s(_vm.$t("nav.links.faq")) + "\n        "
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-lg-12" },
+          [
+            _vm._l(_vm.$t("faq"), function (faq, index) {
+              return [
+                _c("div", { staticClass: "card card-body" }, [
+                  _c("p", { staticClass: "m-0" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "question",
+                        attrs: { type: "button", "data-id": "1" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.animate(index + 1)
+                          },
+                        },
+                      },
+                      [
+                        _c("span", [_vm._v(_vm._s(faq.question))]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "icon" }),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "answer",
+                      class: _vm.selected === index + 1 ? "answer-active" : "",
+                    },
+                    [_c("div", { domProps: { innerHTML: _vm._s(faq.answer) } })]
+                  ),
+                ]),
               ]
-            ),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "answer",
-              class: _vm.selected === 2 ? "answer-active" : "",
-            },
-            [
-              _c("div", {}, [
-                _vm._v(
-                  "\n                        Some placeholder content for the collapse component. This panel is hidden by default but\n                        revealed when the user activates the relevant trigger.\n                    "
-                ),
-              ]),
-            ]
-          ),
-        ]),
+            }),
+          ],
+          2
+        ),
       ]),
     ]),
   ])

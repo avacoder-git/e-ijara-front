@@ -51,6 +51,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Contact"
 });
@@ -141,48 +144,52 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("h1", [_vm._v(_vm._s(_vm.$t("nav.links.contact")))]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("p", { domProps: { innerHTML: _vm._s(_vm.$t("contact.text")) } }),
-          _vm._v(" "),
-          _c("h3", [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.$t("contact.tel")) +
-                "\n                "
-            ),
-          ]),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("h3", [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.$t("contact.time")) +
-                "\n                "
-            ),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c("p", [
-                _vm._v(
-                  "- " +
-                    _vm._s(_vm.$t("contact.monday")) +
-                    " – " +
-                    _vm._s(_vm.$t("contact.friday"))
-                ),
+  return _c("div", { staticClass: "bg-gray-100 pt-1 pb-5" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("h1", [_vm._v(_vm._s(_vm.$t("nav.links.contact")))]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("p", {
+              domProps: { innerHTML: _vm._s(_vm.$t("contact.text")) },
+            }),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.$t("contact.tel")) +
+                  "\n                    "
+              ),
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c("h3", [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.$t("contact.time")) +
+                  "\n                    "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-lg-4" }, [
+                _c("p", [
+                  _vm._v(
+                    "- " +
+                      _vm._s(_vm.$t("contact.monday")) +
+                      " – " +
+                      _vm._s(_vm.$t("contact.friday"))
+                  ),
+                ]),
               ]),
             ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-4" }, [
-              _c("p", [_vm._v(_vm._s(_vm.$t("contact.ot")))]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-lg-4" }, [
+                _c("p", [_vm._v(_vm._s(_vm.$t("contact.ot")))]),
+              ]),
             ]),
           ]),
         ]),
@@ -198,13 +205,13 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-4" }, [
         _vm._v(
-          "\n                        (+99871) 206-71-42\n                    "
+          "\n                            (+99871) 206-71-42\n                        "
         ),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-4" }, [
         _vm._v(
-          "\n                        (+99871) 206-71-49\n                    "
+          "\n                            (+99871) 206-71-49\n                        "
         ),
       ]),
     ])
