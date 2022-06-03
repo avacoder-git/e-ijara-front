@@ -215,7 +215,8 @@
                         </div>
                     </li>
                     <li class="nav-item "><a class="nav-link check-offer" data-toggle="modal"
-                                             data-target="#check-application" href="#">{{ $t('nav.links.check') }}</a></li>
+                                             data-target="#check-application" href="#">{{ $t('nav.links.check') }}</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link login" data-toggle="modal" style="cursor: pointer"
                                             data-target="#login-modal">{{ $t('nav.links.login') }}</a></li>
 
@@ -378,7 +379,7 @@ export default {
 
                     $('.dropdown-menu').animate(function () {
                         $('.dropdown-menu').css('bottom', '0')
-                    }, 1000)
+                    }, 500)
 
                 })
             })
@@ -393,6 +394,9 @@ export default {
                 $('.toggle-line1').toggleClass('line1')
                 $('.toggle-line2').toggleClass('line2')
                 $('.toggle-line3').toggleClass('line3')
+
+                $('.dropdown-menu').css('display', 'none')
+
 
             })
         })

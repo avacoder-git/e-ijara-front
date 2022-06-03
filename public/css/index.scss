@@ -101,6 +101,14 @@ $green: #08705F;
 .not-gradient {
     background-color: white !important;
     background-image: none !important;
+    .toggle-line{
+        border-color: black!important;
+    }
+
+    #langdropdown{
+        color: black!important;
+
+    }
 
     .active {
         color: $green !important;
@@ -133,6 +141,7 @@ $green: #08705F;
 
         }
     }
+
 }
 
 .gradient {
@@ -442,6 +451,11 @@ $green: #08705F;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
+        span:nth-child(1)
+        {
+            width: 90%;
+        }
 
         .icon{
             background-image: url("../image/plus-circle.svg");

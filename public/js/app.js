@@ -6029,6 +6029,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6080,7 +6081,7 @@ __webpack_require__.r(__webpack_exports__);
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-menu').toggle(function () {
           jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-menu').animate(function () {
             jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-menu').css('bottom', '0');
-          }, 1000);
+          }, 500);
         });
       });
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('.navbar-toggler').click(function () {
@@ -6094,6 +6095,7 @@ __webpack_require__.r(__webpack_exports__);
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('.toggle-line1').toggleClass('line1');
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('.toggle-line2').toggleClass('line2');
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('.toggle-line3').toggleClass('line3');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('.dropdown-menu').css('display', 'none');
       });
     });
   }

@@ -2,6 +2,12 @@
   background-color: white !important;
   background-image: none !important;
 }
+.not-gradient .toggle-line {
+  border-color: black !important;
+}
+.not-gradient #langdropdown {
+  color: black !important;
+}
 .not-gradient .active {
   color: #08705F !important;
 }
@@ -326,6 +332,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.container .question span:nth-child(1) {
+  width: 90%;
 }
 .container .question .icon {
   background-image: url("../image/plus-circle.svg");
