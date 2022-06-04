@@ -585,62 +585,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Lands",
   data: function data() {
@@ -661,20 +605,6 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this.data = response.data.data;
-      });
-      axios.get('/api/front/lands', {
-        params: {
-          status_id: 3
-        }
-      }).then(function (response) {
-        _this.data2 = response.data.data;
-      });
-      axios.get('/api/front/lands', {
-        params: {
-          status_id: 3
-        }
-      }).then(function (response) {
-        _this.data3 = response.data.data;
       });
     }
   },
@@ -23852,50 +23782,6 @@ var render = function () {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item", attrs: { role: "presentation" } },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: {
-                        id: "profile-tab",
-                        "data-toggle": "tab",
-                        href: "#profile",
-                        role: "tab",
-                        "aria-controls": "profile",
-                        "aria-selected": "false",
-                      },
-                    },
-                    [_vm._v(_vm._s(_vm.$t("main.lands.second.name")))]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item", attrs: { role: "presentation" } },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: {
-                        id: "contact-tab",
-                        "data-toggle": "tab",
-                        href: "#contact",
-                        role: "tab",
-                        "aria-controls": "contact",
-                        "aria-selected": "false",
-                      },
-                    },
-                    [_vm._v(_vm._s(_vm.$t("main.lands.third.name")))]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
               _c("li", { staticClass: "date-list d-sm-none" }, [
                 _c(
                   "div",
@@ -24003,164 +23889,6 @@ var render = function () {
                   ),
                 ]
               ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade",
-                  attrs: {
-                    id: "profile",
-                    role: "tabpanel",
-                    "aria-labelledby": "profile-tab",
-                  },
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "owl-carousel owl-custom" },
-                    [
-                      _vm._l(_vm.data2, function (item) {
-                        return [
-                          _c(
-                            "div",
-                            { staticClass: "rectangle position-relative" },
-                            [
-                              _c("div", { staticClass: "rectangle-img" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src: _vm.bg_photo[
-                                      Math.floor(
-                                        Math.random() * _vm.bg_photo.length
-                                      )
-                                    ],
-                                    alt: "",
-                                  },
-                                }),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "d-flex justify-content-between",
-                                },
-                                [
-                                  _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.updated_at)),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.regnum)),
-                                  ]),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "rectangle-name mb-auto" },
-                                [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(item.address) +
-                                      "\n                                "
-                                  ),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "rectangle-footer" }, [
-                                _c("div", { staticClass: "rectangle-ga" }, [
-                                  _vm._v(_vm._s(item.area) + " Ga"),
-                                ]),
-                                _vm._v(" "),
-                                _vm._m(1, true),
-                              ]),
-                            ]
-                          ),
-                        ]
-                      }),
-                    ],
-                    2
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade",
-                  attrs: {
-                    id: "contact",
-                    role: "tabpanel",
-                    "aria-labelledby": "contact-tab",
-                  },
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "owl-carousel owl-custom" },
-                    [
-                      _vm._l(_vm.data3, function (item) {
-                        return [
-                          _c(
-                            "div",
-                            { staticClass: "rectangle position-relative" },
-                            [
-                              _c("div", { staticClass: "rectangle-img" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src: _vm.bg_photo[
-                                      Math.floor(
-                                        Math.random() * _vm.bg_photo.length
-                                      )
-                                    ],
-                                    alt: "",
-                                  },
-                                }),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "d-flex justify-content-between",
-                                },
-                                [
-                                  _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.updated_at)),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.regnum)),
-                                  ]),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "rectangle-name mb-auto" },
-                                [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(item.address) +
-                                      "\n                                "
-                                  ),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "rectangle-footer" }, [
-                                _c("div", { staticClass: "rectangle-ga" }, [
-                                  _vm._v(_vm._s(item.area) + " Ga"),
-                                ]),
-                                _vm._v(" "),
-                                _vm._m(2, true),
-                              ]),
-                            ]
-                          ),
-                        ]
-                      }),
-                    ],
-                    2
-                  ),
-                ]
-              ),
             ]
           ),
           _vm._v(" "),
@@ -24179,22 +23907,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "rectangle-save" }, [
-      _c("img", { attrs: { src: "/image/Bookmark.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "rectangle-save" }, [
-      _c("img", { attrs: { src: "/image/Bookmark.svg", alt: "" } }),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

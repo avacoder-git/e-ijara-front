@@ -13,14 +13,6 @@
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                                aria-controls="home" aria-selected="true">{{ $t("main.lands.first.name") }}</a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                               aria-controls="profile" aria-selected="false">{{ $t("main.lands.second.name") }}</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                               aria-controls="contact" aria-selected="false">{{ $t("main.lands.third.name") }}</a>
-                        </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" v-if="data" id="home" role="tabpanel"
@@ -57,86 +49,6 @@
                                            @click.prevent="getData(item.label)">
                                             {{
                                                 index === 0 ? "<" : index + 1 === data.meta.links.length ? ">" : item.label
-                                            }}</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="tab-pane fade" id="profile" v-if="data2" role="tabpanel"
-                             aria-labelledby="profile-tab">
-                            <div class="loading" v-if="isLoading"></div>
-
-                            <div class="row">
-                                <template v-for="item in data2.data">
-                                    <div class="col-lg-3">
-                                        <div class="rectangle position-relative">
-                                            <div class="rectangle-img"><img
-                                                :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="rectangle-lot">{{ item.updated_at }}</div>
-                                                <div class="rectangle-lot">{{ item.regnum }}</div>
-                                            </div>
-                                            <div class="rectangle-name mb-auto">
-                                                {{ item.address }}
-                                            </div>
-
-                                            <div class="rectangle-footer">
-                                                <div class="rectangle-ga">{{ item.area }} Ga</div>
-                                                <button class="rectangle-save">
-                                                    <img src="/image/Bookmark.svg" alt="">
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </template>
-                            </div>
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item" v-for="(item, index) in data2.meta.links">
-                                        <a class="page-link" :class="item.active? 'active' : ''"
-                                           @click.prevent="getData(item.label)">
-                                            {{
-                                                index === 0 ? "<" : index + 1 === data2.meta.links.length ? ">" : item.label
-                                            }}</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="tab-pane fade" v-if="data3" id="contact" role="tabpanel"
-                             aria-labelledby="contact-tab">
-                            <div class="loading" v-if="isLoading"></div>
-
-                            <div class="row">
-                                <template v-for="item in data3.data">
-                                    <div class="col-lg-3">
-                                        <div class="rectangle position-relative">
-                                            <div class="rectangle-img"><img
-                                                :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="rectangle-lot">{{ item.updated_at }}</div>
-                                                <div class="rectangle-lot">{{ item.regnum }}</div>
-                                            </div>
-                                            <div class="rectangle-name mb-auto">
-                                                {{ item.address }}
-                                            </div>
-
-                                            <div class="rectangle-footer">
-                                                <div class="rectangle-ga">{{ item.area }} Ga</div>
-                                                <button class="rectangle-save">
-                                                    <img src="/image/Bookmark.svg" alt="">
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </template>
-                            </div>
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item" v-for="(item, index) in data3.meta.links">
-                                        <a class="page-link" :class="item.active? 'active' : ''"
-                                           @click.prevent="getData(item.label)">
-                                            {{
-                                                index === 0 ? "<" : index + 1 === data3.meta.links.length ? ">" : item.label
                                             }}</a>
                                     </li>
                                 </ul>
@@ -228,21 +140,6 @@ export default {
                 .finally(() => {
                     this.isLoading = false;
                 });
-            axios.get('/api/front/lands', {params: {status_id: 3}})
-                .then(response => {
-                    this.data2 = response.data
-
-                }).finally(() => {
-                this.isLoading = false;
-            });
-            axios.get('/api/front/lands', {params: {status_id: 3}})
-                .then(response => {
-                    this.data3 = response.data
-
-                }).finally(() => {
-                this.isLoading = false;
-            });
-
         },
 
     },

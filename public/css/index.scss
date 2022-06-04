@@ -388,6 +388,7 @@ $green: #08705F;
 
         .active {
             color: $green;
+            background-color: transparent;
             border-bottom: 3px solid $green;
         }
     }
