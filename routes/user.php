@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\IndexController;
 use App\Http\Controllers\ReportController;
 
-Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'user.'], function () {
+Route::group(['prefix' => 'dashboard', 'as' => 'user.'], function () {
     Route::get('/profile', [IndexController::class, 'profile'])->name('profile');
     Route::get('/user', [IndexController::class, 'user'])->name('user');
     Route::get('/', [IndexController::class, 'dashboard'])->name('main');
