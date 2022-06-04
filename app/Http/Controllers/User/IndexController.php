@@ -16,7 +16,10 @@ class IndexController extends Controller
 {
     public function dashboard()
     {
-        $applications = [];
+        $applications = Application::with(['region','district','land_purpose','status'])
+            ->where('user_id', Auth::id())
+            ->orderBy('id', 'desc')
+            ->get();
         $land_purposes = LandPurposes::all();
         return view('user.main', compact('applications','land_purposes'));
     }
@@ -41,7 +44,7 @@ class IndexController extends Controller
 
     public function region($title)
     {
-        $region = [];
+        $region = Regions::query()->select('id', 'regionid', 'nameuz')->where('nameuz', 'iLIKE', '%' . $title . '%')->first();
         return response()->json($region);
     }
 
