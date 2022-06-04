@@ -340,7 +340,7 @@ export default {
             var client_id = "at_agrosanoat_markazi"
             var client_secret = process.env.MIX_CLIENT_SECRET
             var scope = "at_agrosanoat_markazi"
-            var redirect_uri = "http://ijara.front.git"
+            var redirect_uri = "https://consultingcrm.uz"
             window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" +
                 redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
         },
