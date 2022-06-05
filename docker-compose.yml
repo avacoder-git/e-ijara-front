@@ -22,7 +22,7 @@ services:
             - db
         container_name: eijara_app
     db:
-        image: postgres
+        image: kartoza/postgis:9.6-2.4
         restart: always
         volumes:
             - ./tmp/db:/var/lib/postgresql/data
@@ -33,4 +33,3 @@ services:
         ports:
             - 5432:5432
         container_name: eijara_db
-
