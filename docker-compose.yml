@@ -25,10 +25,11 @@ services:
         image: postgres
         restart: always
         volumes:
-            - ./tmp/db:/var/lib/mysql
+            - ./tmp/db:/var/lib/postgresql/data
         environment:
-            MYSQL_DATABASE: lardocker
-            MYSQL_ROOT_PASSWORD: root
+            POSTGRES_DB: lardocker
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
         ports:
             - 5432:5432
         container_name: eijara_db
