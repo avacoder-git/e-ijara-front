@@ -6052,7 +6052,7 @@ __webpack_require__.r(__webpack_exports__);
       var client_id = "at_agrosanoat_markazi";
       var client_secret = "nCeV5BFAcruvPxW9sK721qdR";
       var scope = "at_agrosanoat_markazi";
-      var redirect_uri = "http://162.0.233.118:8081/";
+      var redirect_uri = "http://127.0.0.1:8081";
       window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" + redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
     },
     openLang: function openLang() {

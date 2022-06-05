@@ -26,7 +26,7 @@ class EriService
             'phone' => null,
             'address' => null,
             'user_type' => 'L',
-            'email' => $data['eri_sn'] . "@mail.mail",
+            'email' => $data['eri_sn'].sha1(time()) . "@mail.mail",
             'name' => $data['eri_sn'],
             'password' => Hash::make(uniqid()),
             'auth_type' => 'eri'

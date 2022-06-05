@@ -20,7 +20,7 @@ class EriController extends Controller
 
         } catch (\Throwable $th) {
 
-            dd($th->getLine());
+            dd($th->getMessage());
             $errorMessage = "Киришда хатолик юз берди, илтимос кейинроқ уруниб кўринг.";
             if(in_array($th->getCode(), [401])) {
                 $errorMessage = $th->getMessage();
