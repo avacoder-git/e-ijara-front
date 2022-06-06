@@ -17,7 +17,7 @@ class ReportController extends Controller
             'type' => 'Давлат кадастрлари палатасидан киритилган бўш ер участкалари',
             'child' => [
                 1 => 'Жами',
-                2 => 'шундан сувли'
+                2 => 'Сувли'
             ],
         ],
         2 => [
@@ -186,7 +186,8 @@ class ReportController extends Controller
         $ids = [];
         $type = $request->type_id;
         $district = $request->district;
-        $name = '-' . $this->steps[$request->step]["child"][$request->type_id] . '-' . $this->steps[$request->step]["type"];
+        $name = Districts::query()->where('areaid', $district)->first()->nameuz;
+        $name .=  '-' . $this->steps[$request->step]["child"][$request->type_id] . '-' . $this->steps[$request->step]["type"];
         $getLandCountByRegion = ReportHelper::getLandCountByRegion($district);
         $getSuvli = ReportHelper::getSuvli($district);
         $getOrganizationStatByRegion = ReportHelper::getOrganizationStatByRegion($district);
@@ -433,18 +434,8 @@ class ReportController extends Controller
                 //'Ер тури' => isset($land->contour->land_extra_irragation)? $land_extra_irragation[$land->contour->land_extra_irragation] : '',
                 'Ер жойлашган Вилоят' => $land->region->nameuz,
                 'Ер жойлашган туман' => $land->district->nameuz,
-                //'Ер жойлашган МФЙ' => isset($land->mfy->nameuz) ? $land->mfy->nameuz : '',
                 'Ер майдони' => $land->area,
                 'Ижара муддати' => $land->period,
-                //'Контур рақами' => isset($land->contour->contour_number)?$land->contour->contour_number:null,
-                //'Аукцион танлов баённомаси' => isset($land->protocol->first()->id)? 'http://cabinet.e-ijara.uz/land/' . $land->id .'/file/download/' .
-                //    $land->protocol->first()->id : '',
-                //'Электрон қарор лойиҳаси' => isset($land->loyiha->first()->id)? 'http://cabinet.e-ijara.uz/land/' . $land->id .'/file/download/' .
-                //    $land->loyiha->first()->id : '',
-                //'Шартнома' => isset($land->contract->first()->id)? 'http://cabinet.e-ijara.uz/land/' . $land->id .'/file/download/' .
-                //    $land->contract->first()->id : '',
-                //'Кадастр кучирма' =>  isset($land->kadastr_kochirma->first()->id)? 'http://cabinet.e-ijara.uz/land/' . $land->id .'/file/download/' .
-                //    $land->kadastr_kochirma->first()->id : '',
             ];
         });
     }
