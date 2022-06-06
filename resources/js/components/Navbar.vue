@@ -217,9 +217,20 @@
                     <li class="nav-item "><a class="nav-link check-offer" data-toggle="modal"
                                              data-target="#check-application" href="#">{{ $t('nav.links.check') }}</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link login" data-toggle="modal" style="cursor: pointer"
-                                            data-target="#login-modal">{{ $t('nav.links.login') }}</a></li>
 
+                    <template v-if="authcheck">
+                        <li class="nav-item"><a href="/dashboard" class="nav-link login">{{
+                                $t('nav.links.cabinet')
+                            }}</a></li>
+                    </template>
+                    <template v-if="!authcheck">
+
+                        <li class="nav-item" v-if="!authcheck"><a class="nav-link login" data-toggle="modal"
+                                                                  style="cursor: pointer"
+                                                                  data-target="#login-modal">{{
+                                $t('nav.links.login')
+                            }}</a></li>
+                    </template>
                 </ul>
             </div>
         </nav>
@@ -326,7 +337,8 @@ export default {
     data() {
         return {
             agree: false,
-            lang: true
+            lang: true,
+            authcheck: false
         }
     },
 
@@ -340,7 +352,7 @@ export default {
             var client_id = "at_agrosanoat_markazi"
             var client_secret = process.env.MIX_CLIENT_SECRET
             var scope = "at_agrosanoat_markazi"
-            var redirect_uri = "http://avacoder.uz:8081"
+            var redirect_uri = "http://ijara.front.git"
             window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" +
                 redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
         },
@@ -364,6 +376,9 @@ export default {
 
     },
     mounted() {
+        this.authcheck = localStorage.getItem('authcheck')
+
+
         $(function () {
             $('#langdropdown').click(function () {
                 $('.dropdown-menu').toggle(function () {

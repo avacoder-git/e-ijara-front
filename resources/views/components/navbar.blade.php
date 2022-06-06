@@ -1,6 +1,6 @@
 <div class="app-header header-shadow">
     <div class="app-header__logo">
-        <div class="logo-src">E-IJARA</div>
+        <a href="/uz"  class="logo-src h3 text-decoration-none text-dark">E-IJARA</a>
         <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -39,8 +39,8 @@
                                 {{  auth()->check()? auth()->user()->fullname:''    }}
                             </div>
                         </div>
-                        <div class="widget-content-right header-user-info ml-3">
-                                    <a href={{ route('user.logout') }} class="btn-shadow p-1 btn btn-primary btn-sm">
+                        <div class="widget-content-right header-user-info ml-3" id="logout">
+                                    <a href="{{ route('user.logout') }}" class="btn-shadow p-1 btn btn-primary btn-sm">
                                             Чиқиш
                                     </a>
                         </div>

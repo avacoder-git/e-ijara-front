@@ -113,7 +113,7 @@
                             <div class="col-6">
                                 <h1>{{  $t("main.offer.name") }}</h1>
                                 <p>{{  $t("main.offer.text") }}</p>
-                                <a href="" class="check-offer">{{  $t("offer") }}</a>
+                                <a href="/dashboard" class="check-offer">{{  $t("offer") }}</a>
                             </div>
                         </div>
                     </div>

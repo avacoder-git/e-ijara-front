@@ -19,6 +19,9 @@
 
     <!-- Scripts -->
     <link href="{{ asset('assets/main.css') }}" rel="stylesheet">
+    <meta name="auth-check" content="{{ (auth()->check()) ? 'true' : 'false' }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
     @yield('style')
 </head>
@@ -53,6 +56,17 @@
         crossorigin="anonymous"></script>
 
 @yield('javascript')
+
+<script>
+    var authcheck = $('meta[name="auth-check"]').attr('content');
+    localStorage.setItem('authcheck', authcheck);
+
+    $('#logout').click(function (){
+        localStorage.clear()
+    })
+
+</script>
+
 
 </body>
 
