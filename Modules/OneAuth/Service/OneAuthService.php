@@ -21,7 +21,7 @@ class OneAuthService
             'client_id' => config('oneauth.one_id.CLIENT_ID'),
             'client_secret' => config('oneauth.one_id.CLIENT_SECRET'),
             'code' => $code,
-            'redirect_uri' => env('APP_URL').'/oneauth/auth'
+            'redirect_uri' => env('APP_URL').'oneauth/auth'
         ]);
 
 

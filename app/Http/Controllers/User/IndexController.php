@@ -20,7 +20,8 @@ class IndexController extends Controller
             ->where('user_id', Auth::id())
             ->orderBy('id', 'desc')
             ->get();
-        return view('user.main', compact('applications'));
+        $land_purposes = LandPurposes::all();
+        return view('user.main', compact('applications','land_purposes'));
     }
 
     public function logout()

@@ -13,5 +13,5 @@
 
 Route::prefix('oneauth')->group(function() {
     Route::get('/index', 'OneAuthController@index')->name('oneauth.index');
-    Route::get('/auth', 'OneAuthController@auth');
+    Route::get('/auth', [\Modules\OneAuth\Http\Controllers\OneAuthController::class, 'auth']);
 });

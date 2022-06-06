@@ -1,61 +1,63 @@
 <template>
-    <div class="container">
-        <h1>
-            {{ $t("docs.title") }}
+    <div class="bg-gray-100 pt-1 pb-5">
 
-        </h1>
-        <div class="row">
+        <div class="container">
+            <h1>
+                {{ $t("docs.title") }}
 
-            <div class="col-lg-12">
-                <a href="https://lex.uz/docs/5450176" target="_blank" class="card">
-                    <div class="row align-items-center">
-                        <div class="col-10 col-lg-11">{{ $t("docs.content[0].title") }}
+            </h1>
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <a href="https://lex.uz/docs/5450176" target="_blank" class="card">
+                        <div class="row align-items-center">
+                            <div class="col-10 col-lg-11">{{ $t("docs.content[0].title") }}
+                            </div>
+
+                            <div class="col-2 col-lg-1">
+                                <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+
                         </div>
 
-                        <div class="col-2 col-lg-1">
-                            <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        <p>
+                            {{ $t("docs.content[0].content") }}
+
+                        </p>
+                    </a>
+                    <a class="card" href="https://lex.uz/docs/5739727" target="_blank">
+                        <div class="row align-items-center">
+                            <div class="col-10 col-lg-11">{{ $t("docs.content[1].title") }}
+                            </div>
+
+                            <div class="col-2 col-lg-1">
+                                <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+
                         </div>
 
-                    </div>
+                        <p>
+                            {{ $t("docs.content[1].content") }}
 
-                    <p>
-                        {{ $t("docs.content[0].content") }}
+                        </p>
+                    </a>
+                    <a href="https://lex.uz/docs/5739815" target="_blank" class="card">
+                        <div class="row align-items-center">
+                            <div class="col-10 col-lg-11">{{ $t("docs.content[2].title") }}
+                            </div>
 
-                    </p>
-                </a>
-                <a class="card" href="https://lex.uz/docs/5739727" target="_blank">
-                    <div class="row align-items-center">
-                        <div class="col-10 col-lg-11">{{ $t("docs.content[1].title") }}
+                            <div class="col-2 col-lg-1">
+                                <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+
                         </div>
 
-                        <div class="col-2 col-lg-1">
-                            <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
+                        <p>
+                            {{ $t("docs.content[2].content") }}
 
-                    </div>
+                        </p>
 
-                    <p>
-                        {{ $t("docs.content[1].content") }}
-
-                    </p>
-                </a>
-                <a href="https://lex.uz/docs/5739815" target="_blank" class="card">
-                    <div class="row align-items-center">
-                        <div class="col-10 col-lg-11">{{ $t("docs.content[2].title") }}
-                        </div>
-
-                        <div class="col-2 col-lg-1">
-                            <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
-
-                    </div>
-
-                    <p>
-                        {{ $t("docs.content[2].content") }}
-
-                    </p>
-
-                    <span class="d-lg-flex" style="gap: 24px">
+                        <span class="d-lg-flex" style="gap: 24px">
 
                           <a href="/docs/Деҳқон_хўжаликларига_ер_участкасини_ижарага_бериш_НАМУНАВИЙ_ШАРТНОМАСИ.docx"
                              target="_blank" class="file">
@@ -79,22 +81,23 @@
                     </a>
                     </span>
 
-                </a>
-                <a href="https://lex.uz/docs/5525718" target="_blank" class="card">
-                    <div class="row align-items-center">
-                        <div class="col-10 col-lg-11">{{ $t("docs.content[3].title") }}
+                    </a>
+                    <a href="https://lex.uz/docs/5525718" target="_blank" class="card">
+                        <div class="row align-items-center">
+                            <div class="col-10 col-lg-11">{{ $t("docs.content[3].title") }}
+                            </div>
+
+                            <div class="col-2 col-lg-1">
+                                <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </div>
+
                         </div>
 
-                        <div class="col-2 col-lg-1">
-                            <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
-
-                    </div>
-
-                    <p>
-                        {{ $t("docs.content[3].content") }}
-                    </p>
-                </a>
+                        <p>
+                            {{ $t("docs.content[3].content") }}
+                        </p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

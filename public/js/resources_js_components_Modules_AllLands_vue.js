@@ -77,94 +77,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AllLands",
   data: function data() {
@@ -183,32 +95,15 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      window.scrollTo(0, 0);
       this.isLoading = true;
-      axios.get('/api/lands', {
+      axios.get('/api/front/lands', {
         params: {
           status_id: 2,
           page: page
         }
       }).then(function (response) {
         _this.data = response.data;
-      })["finally"](function () {
-        _this.isLoading = false;
-      });
-      axios.get('/api/lands', {
-        params: {
-          status_id: 3
-        }
-      }).then(function (response) {
-        _this.data2 = response.data;
-      })["finally"](function () {
-        _this.isLoading = false;
-      });
-      axios.get('/api/lands', {
-        params: {
-          status_id: 3
-        }
-      }).then(function (response) {
-        _this.data3 = response.data;
       })["finally"](function () {
         _this.isLoading = false;
       });
@@ -371,10 +266,10 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "bg-gray-100 pt-1 pb-5" }, [
     _c("div", { staticClass: "container-fluid section-2" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "col-lg-12 mt-4" }, [
           _c("h1", [_vm._v(_vm._s(_vm.$t("main.lands.name")))]),
         ]),
       ]),
@@ -406,50 +301,6 @@ var render = function () {
                       },
                     },
                     [_vm._v(_vm._s(_vm.$t("main.lands.first.name")))]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item", attrs: { role: "presentation" } },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: {
-                        id: "profile-tab",
-                        "data-toggle": "tab",
-                        href: "#profile",
-                        role: "tab",
-                        "aria-controls": "profile",
-                        "aria-selected": "false",
-                      },
-                    },
-                    [_vm._v(_vm._s(_vm.$t("main.lands.second.name")))]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item", attrs: { role: "presentation" } },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: {
-                        id: "contact-tab",
-                        "data-toggle": "tab",
-                        href: "#contact",
-                        role: "tab",
-                        "aria-controls": "contact",
-                        "aria-selected": "false",
-                      },
-                    },
-                    [_vm._v(_vm._s(_vm.$t("main.lands.third.name")))]
                   ),
                 ]
               ),
@@ -517,7 +368,7 @@ var render = function () {
                                         _c(
                                           "div",
                                           { staticClass: "rectangle-lot" },
-                                          [_vm._v(_vm._s(item.created_at))]
+                                          [_vm._v(_vm._s(item.updated_at))]
                                         ),
                                         _vm._v(" "),
                                         _c(
@@ -534,9 +385,7 @@ var render = function () {
                                       [
                                         _vm._v(
                                           "\n                                            " +
-                                            _vm._s(item.region) +
-                                            " , " +
-                                            _vm._s(item.district) +
+                                            _vm._s(item.address) +
                                             "\n                                        "
                                         ),
                                       ]
@@ -608,310 +457,6 @@ var render = function () {
                     ]
                   )
                 : _vm._e(),
-              _vm._v(" "),
-              _vm.data2
-                ? _c(
-                    "div",
-                    {
-                      staticClass: "tab-pane fade",
-                      attrs: {
-                        id: "profile",
-                        role: "tabpanel",
-                        "aria-labelledby": "profile-tab",
-                      },
-                    },
-                    [
-                      _vm.isLoading
-                        ? _c("div", { staticClass: "loading" })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "row" },
-                        [
-                          _vm._l(_vm.data2.data, function (item) {
-                            return [
-                              _c("div", { staticClass: "col-lg-3" }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "rectangle position-relative",
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "rectangle-img" },
-                                      [
-                                        _c("img", {
-                                          attrs: {
-                                            src: _vm.bg_photo[
-                                              Math.floor(
-                                                Math.random() *
-                                                  _vm.bg_photo.length
-                                              )
-                                            ],
-                                            alt: "",
-                                          },
-                                        }),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "d-flex justify-content-between",
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "rectangle-lot" },
-                                          [_vm._v(_vm._s(item.created_at))]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "rectangle-lot" },
-                                          [_vm._v(_vm._s(item.regnum))]
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "rectangle-name mb-auto" },
-                                      [
-                                        _vm._v(
-                                          "\n                                            " +
-                                            _vm._s(item.region) +
-                                            " , " +
-                                            _vm._s(item.district) +
-                                            "\n                                        "
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "rectangle-footer" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "rectangle-ga" },
-                                          [_vm._v(_vm._s(item.area) + " Ga")]
-                                        ),
-                                        _vm._v(" "),
-                                        _vm._m(1, true),
-                                      ]
-                                    ),
-                                  ]
-                                ),
-                              ]),
-                            ]
-                          }),
-                        ],
-                        2
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "nav",
-                        { attrs: { "aria-label": "Page navigation example" } },
-                        [
-                          _c(
-                            "ul",
-                            { staticClass: "pagination" },
-                            _vm._l(
-                              _vm.data2.meta.links,
-                              function (item, index) {
-                                return _c("li", { staticClass: "page-item" }, [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "page-link",
-                                      class: item.active ? "active" : "",
-                                      on: {
-                                        click: function ($event) {
-                                          $event.preventDefault()
-                                          return _vm.getData(item.label)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(
-                                            index === 0
-                                              ? "<"
-                                              : index + 1 ===
-                                                _vm.data2.meta.links.length
-                                              ? ">"
-                                              : item.label
-                                          )
-                                      ),
-                                    ]
-                                  ),
-                                ])
-                              }
-                            ),
-                            0
-                          ),
-                        ]
-                      ),
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.data3
-                ? _c(
-                    "div",
-                    {
-                      staticClass: "tab-pane fade",
-                      attrs: {
-                        id: "contact",
-                        role: "tabpanel",
-                        "aria-labelledby": "contact-tab",
-                      },
-                    },
-                    [
-                      _vm.isLoading
-                        ? _c("div", { staticClass: "loading" })
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "row" },
-                        [
-                          _vm._l(_vm.data3.data, function (item) {
-                            return [
-                              _c("div", { staticClass: "col-lg-3" }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "rectangle position-relative",
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "rectangle-img" },
-                                      [
-                                        _c("img", {
-                                          attrs: {
-                                            src: _vm.bg_photo[
-                                              Math.floor(
-                                                Math.random() *
-                                                  _vm.bg_photo.length
-                                              )
-                                            ],
-                                            alt: "",
-                                          },
-                                        }),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "d-flex justify-content-between",
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "rectangle-lot" },
-                                          [_vm._v(_vm._s(item.created_at))]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "rectangle-lot" },
-                                          [_vm._v(_vm._s(item.regnum))]
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "rectangle-name mb-auto" },
-                                      [
-                                        _vm._v(
-                                          "\n                                            " +
-                                            _vm._s(item.region) +
-                                            " , " +
-                                            _vm._s(item.district) +
-                                            "\n                                        "
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "rectangle-footer" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "rectangle-ga" },
-                                          [_vm._v(_vm._s(item.area) + " Ga")]
-                                        ),
-                                        _vm._v(" "),
-                                        _vm._m(2, true),
-                                      ]
-                                    ),
-                                  ]
-                                ),
-                              ]),
-                            ]
-                          }),
-                        ],
-                        2
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "nav",
-                        { attrs: { "aria-label": "Page navigation example" } },
-                        [
-                          _c(
-                            "ul",
-                            { staticClass: "pagination" },
-                            _vm._l(
-                              _vm.data3.meta.links,
-                              function (item, index) {
-                                return _c("li", { staticClass: "page-item" }, [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "page-link",
-                                      class: item.active ? "active" : "",
-                                      on: {
-                                        click: function ($event) {
-                                          $event.preventDefault()
-                                          return _vm.getData(item.label)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(
-                                            index === 0
-                                              ? "<"
-                                              : index + 1 ===
-                                                _vm.data3.meta.links.length
-                                              ? ">"
-                                              : item.label
-                                          )
-                                      ),
-                                    ]
-                                  ),
-                                ])
-                              }
-                            ),
-                            0
-                          ),
-                        ]
-                      ),
-                    ]
-                  )
-                : _vm._e(),
             ]
           ),
         ]),
@@ -920,22 +465,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "rectangle-save" }, [
-      _c("img", { attrs: { src: "/image/Bookmark.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "rectangle-save" }, [
-      _c("img", { attrs: { src: "/image/Bookmark.svg", alt: "" } }),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

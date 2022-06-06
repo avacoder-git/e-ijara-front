@@ -12,14 +12,6 @@
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                            aria-controls="home" aria-selected="true">{{ $t("main.lands.first.name") }}</a>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                           aria-controls="profile" aria-selected="false">{{ $t("main.lands.second.name") }}</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                           aria-controls="contact" aria-selected="false">{{ $t("main.lands.third.name") }}</a>
-                    </li>
                     <li class="date-list d-sm-none">
                         <div class="date"><router-link :to="{name: 'all'}">{{ $t("seeAll") }}<img src="image/left.svg"
                                                                             style="transform: rotate(180deg); margin-left: 16px"
@@ -35,59 +27,11 @@
                                     <div class="rectangle-img"><img
                                         :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
                                     <div class="d-flex justify-content-between">
-                                        <div class="rectangle-lot">{{ item.created_at }}</div>
+                                        <div class="rectangle-lot">{{ item.updated_at }}</div>
                                         <div class="rectangle-lot">{{ item.regnum }}</div>
                                     </div>
                                     <div class="rectangle-name mb-auto">
-                                        {{ item.region }} , {{ item.district }}
-                                    </div>
-
-                                    <div class="rectangle-footer">
-                                        <div class="rectangle-ga">{{ item.area }} Ga</div>
-                                        <button class="rectangle-save">
-                                            <img src="/image/Bookmark.svg" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="owl-carousel owl-custom" >
-                            <template v-for="item in data2">
-                                <div class="rectangle position-relative">
-                                    <div class="rectangle-img"><img
-                                        :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="rectangle-lot">{{ item.created_at }}</div>
-                                        <div class="rectangle-lot">{{ item.regnum }}</div>
-                                    </div>
-                                    <div class="rectangle-name mb-auto">
-                                        {{ item.region }} , {{ item.district }}
-                                    </div>
-
-                                    <div class="rectangle-footer">
-                                        <div class="rectangle-ga">{{ item.area }} Ga</div>
-                                        <button class="rectangle-save">
-                                            <img src="/image/Bookmark.svg" alt="">
-                                        </button>
-                                    </div>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                        <div class="owl-carousel owl-custom">
-                            <template v-for="item in data3">
-                                <div class="rectangle position-relative">
-                                    <div class="rectangle-img"><img
-                                        :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="rectangle-lot">{{ item.created_at }}</div>
-                                        <div class="rectangle-lot">{{ item.regnum }}</div>
-                                    </div>
-                                    <div class="rectangle-name mb-auto">
-                                        {{ item.region }} , {{ item.district }}
+                                        {{ item.address }}
                                     </div>
 
                                     <div class="rectangle-footer">
@@ -170,22 +114,11 @@ export default {
 
     methods: {
         getData() {
-            axios.get('/api/lands',{params: {status_id:2}})
+            axios.get('/api/front/lands',{params: {status_id:2}})
                 .then(response => {
                     this.data = response.data.data
 
                 })
-            axios.get('/api/lands',{params: {status_id:3}})
-                .then(response => {
-                    this.data2 = response.data.data
-
-                })
-            axios.get('/api/lands',{params: {status_id:3}})
-                .then(response => {
-                    this.data3 = response.data.data
-
-                })
-
         }
     },
 

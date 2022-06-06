@@ -66,7 +66,9 @@ const router = new VueRouter({
     mode: 'history',
     routes,
     baseURL: "www.uz", // api的base_url
-
+    scrollBehavior() {
+        return { x: 0, y: 0 };
+    },
     linkActiveClass: "active",
 })
 

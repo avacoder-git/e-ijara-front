@@ -29,7 +29,7 @@ const googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
 })
 
-googleHybrid.addTo(map)
+googleStreets.addTo(map)
 
 function isLoading(statement) {
 
@@ -65,17 +65,31 @@ map.on('pm:create', function (e) {
     seeArea = Math.round(seeArea / 10000)
 
     var dataJSON = e.layer.toGeoJSON()
+    console.log();
 
     if (checkIfInDistrict(geojson)) {
-        var text = "Umumiy maydoni: " + seeArea + " ga <br>"
-        var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Davom etish</button>"
-        var popup = L.popup()
-            .setLatLng(latlong)
-            .setContent('<p>Yerni tanladingniz<br />' + text + btn)
-            .openOn(map);
 
-        $("#geojson").text(JSON.stringify(dataJSON))
-        $("#area").val(seeArea)
+        if (checkIfOutOfCad(geojson))
+        {
+            var text = "Umumiy maydoni: " + seeArea + " ga <br>"
+            var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Davom etish</button>"
+            var popup = L.popup()
+                .setLatLng(latlong)
+                .setContent('<p>Yerni tanladingniz<br />' + text + btn)
+                .openOn(map);
+            e.layer.on("click", function (q) {
+                popup.openOn(map)
+            })
+            $("#geojson").text(JSON.stringify(dataJSON))
+            $("#area").val(seeArea)
+
+        }else {
+
+            map.removeLayer(e.layer);
+
+            alert('Chizilgan yerni olish taqiqlanadi!')
+        }
+
 
     } else {
         map.removeLayer(e.layer);
@@ -85,14 +99,75 @@ map.on('pm:create', function (e) {
 
 })
 
+var cadGeojson = null
 
 function checkIfInDistrict(geojson) {
     var poly1 = turf.polygon([geojson]);
 
-    var poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0]]);
+    var intersection
+    var inDistrict = false
 
-    var intersection = turf.intersect(poly1, poly2);
-    return intersection != null
+    if (districtJSON.features[0].geometry.type === "Polygon") {
+        poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0]]);
+
+
+        intersection = turf.intersect(poly1, poly2);
+
+        if (intersection && parseInt(turf.area(intersection)) === parseInt(turf.area(poly1)))
+            inDistrict = true
+
+
+    } else if (districtJSON.features[0].geometry.type === "MultiPolygon") {
+        for (let i = 0; i < districtJSON.features.length; i++) {
+            poly2 = turf.polygon([districtJSON.features[0].geometry.coordinates[0][i]]);
+            intersection = turf.intersect(poly1, poly2);
+            if (intersection && parseInt(turf.area(intersection)) === parseInt(turf.area(poly1)))
+                inDistrict = true
+        }
+    }
+
+    return inDistrict
+}
+
+
+function checkIfOutOfCad(geojson) {
+    var poly1 = turf.polygon([geojson]);
+
+    var poly2
+    var poly3
+    var intersection
+    var outCad = true
+
+
+    for (let i = 0; i < cadGeojson.features.length; i++)
+    {
+
+        poly2 = cadGeojson.features[0]
+        if (poly2.geometry.type === "Polygon") {
+            poly3 = turf.polygon([poly2.geometry.coordinates[0]]);
+            intersection = turf.intersect(poly1, poly3);
+            console.log(intersection);
+
+            if (intersection && turf.area(intersection))
+                outCad = false
+
+        } else if (poly2.geometry.type === "MultiPolygon") {
+            for (let k = 0; k < poly2.geometry.coordinates[0].length; k++) {
+                poly3 = turf.polygon([poly2.geometry.coordinates[0][k]]);
+                intersection = turf.intersect(poly1, poly3);
+                if (intersection)
+                    console.log(intersection);
+
+                if (intersection && turf.area(intersection))
+                    outCad = false
+            }
+        }
+    }
+
+
+
+
+    return outCad
 }
 
 
@@ -103,9 +178,9 @@ $('#submit').click(function () {
     var geojson = $("#geojson").text()
     var amount = $("#amount").val()
     var land_purpose_id = $("#purpose_id").val()
-    var formData = {region_id, district_id, geojson, period: amount, land_purpose_id}
+    var formData = {region_id, district_id, geojson, period: amount, land_purpose_id, selectedLands}
 
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + "/api/application", // Url of backend (can be python, php, etc..)
@@ -140,7 +215,7 @@ $('#submit').click(function () {
 
         }
     });
-    isLoading(false)
+
 
 
 })
@@ -152,8 +227,8 @@ makeRegionList()
 
 $('#regions').change(function () {
 
-    $('#regionName').text($(this).text())
-    $('#region_name').val($(this).text())
+    $('#regionName').text($(this).children(':selected').text())
+    $('#region_name').val($(this).children(':selected').text())
 
     makeDistrictList($(this).val())
     var geojson = getRegion($(this).val())
@@ -181,7 +256,6 @@ function makeGeoJSON(geojson) {
         }).addTo(map)
     map.fitBounds(geoJSON.getBounds());
     districtJSON = geojson
-
 }
 
 
@@ -197,8 +271,7 @@ function removeMarkers() {
 }
 
 function removeMarkers2() {
-    if (geojson1 && geojson2)
-    {
+    if (geojson1 && geojson2) {
         layerGroup.removeLayer(geojson1);
         layerGroup.removeLayer(geojson2);
     }
@@ -219,8 +292,8 @@ function makeDistrictList(regionId) {
     $('#districts').change(function () {
         $("#loader2").html('<div class="loader"></div>');
 
-        $('#districtName').text($(this).text())
-        $('#district_name').val($(this).text())
+        $('#districtName').text($(this).children(':selected').text())
+        $('#district_name').val($(this).children(':selected').text())
         $('#district_id').val($(this).val())
         var geojson = getDistrict($(this).val())
         makeGeoJSON(geojson)
@@ -234,7 +307,7 @@ function makeDistrictList(regionId) {
 
 
 function makeRegionList() {
-    var text = ""
+    var text = '<option value="">Tanlang</option>'
     data = getRegions()
 
     for (let i = 0; i < data.length; i++) {
@@ -259,9 +332,106 @@ var options = {
     debug: 0,
     style: geojsonStyle,
     onEachFeature: function (feature, layer) {
-        layer.myTag = "myGeoJSON2"
+
+        layer.on('mouseover', function (e){
+            layer.setStyle( {
+                color: '#2262CC'
+            });
+        })
+        layer.on("mouseout", function (e) {
+            // Start by reverting the style back
+            if (!selectedLands.includes(feature.properties.id))
+            {
+                layer.setStyle(geojsonStyle);
+            }
+        });
+        layer.on('click', function (e){
+            var text = "Umumiy maydoni: " + feature.properties.area + " ga <br>"
+            var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Tasdiqlash</button>"
+            var add = "<button class='btn btn-success btn-select' data-id='" + feature.properties.id + "'>Yana tanlash</button>"
+            var remove = "<button class='btn btn-danger btn-remove' data-id='" + feature.properties.id + "'>Bekor qilish</button>"
+            var btn2 = selectedLands.includes(feature.properties.id) ? remove : add
+            layer.setStyle({
+                fillColor: "#11ff00",
+            });
+
+            var popup = L.popup()
+                .setLatLng(e.latlng)
+                .setContent('<p>Yerni tanladingniz<br />' + text + btn + btn2)
+                .openOn(map);
+
+            $('.btn-select').click(function (){
+                map.closePopup();
+                layer.setStyle({
+                    fillColor: "#11ff00",
+                });
+                if (!selectedLands.includes(feature.properties.id))
+                {
+                    selectedLands.push(feature.properties.id)
+                    selectedLandAreas += parseInt(feature.properties.area)
+                    $("#area").val(selectedLandAreas)
+                    console.log(selectedLands);
+                }
+            })
+            $('.btn-remove').click(function (){
+                map.closePopup();
+                layer.setStyle(geojsonStyle);
+                var index
+                if (selectedLands.includes(feature.properties.id))
+                {
+                    index = selectedLands.indexOf(feature.properties.id)
+                    selectedLands.splice(index)
+                    console.log(selectedLands);
+                    selectedLandAreas -= parseInt(feature.properties.area)
+                    $("#area").val(selectedLandAreas)
+
+                }
+            })
+        })
+
     }
 };
+var selectedLands = []
+var selectedLandAreas = 0
+
+
+
+var states = [{
+    "type": "Feature",
+    "properties": {"party": "Republican"},
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [-104.05, 48.99],
+            [-97.22,  48.98],
+            [-96.58,  45.94],
+            [-104.03, 45.94],
+            [-104.05, 48.99]
+        ]]
+    }
+}, {
+    "type": "Feature",
+    "properties": {"party": "Democrat"},
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [-109.05, 41.00],
+            [-102.06, 40.99],
+            [-102.03, 36.99],
+            [-109.04, 36.99],
+            [-109.05, 41.00]
+        ]]
+    }
+}];
+
+L.geoJSON(states, {
+    style: function(feature) {
+        switch (feature.properties.party) {
+            case 'Republican': return {color: "#ff0000"};
+            case 'Democrat':   return {color: "#0000ff"};
+        }
+    }
+}).addTo(map);
 
 var geojsonStyle2 = {
     fillColor: "#ff0000",
@@ -286,29 +456,23 @@ var geojson2 = null
 
 function makeLandsGeojson(id) {
 
-        removeMarkers2()
+    removeMarkers2()
     var lands = getLands(id)
     var cad_num = lands.cad_num
     var cadLands = getCadLands(cad_num)[0]
-
+    cadGeojson = cadLands
 
     if (cadLands.features)
-        geojson1 = L.geoJson.vt(cadLands, options2).addTo(map);
+        geojson1 = L.geoJson.vt(cadLands,options2).addTo(map);
 
 
-    var geojson = {
-        features: lands.data,
-        type: "FeatureCollection"
-    }
 
+    geojson2 = L.geoJson(lands.data,options).addTo(map);
 
-    geojson2 = L.geoJson.vt(geojson, options).addTo(map);
-
-    if (geojson1 && geojson2)
-    {
-        layerGroup.addLayer(geojson1);
-        layerGroup.addLayer(geojson2);
-    }
+    // if (geojson1 && geojson2) {
+    //     layerGroup.addLayer(geojson1);
+    //     layerGroup.addLayer(geojson2);
+    // }
 
 
 }
@@ -316,7 +480,7 @@ function makeLandsGeojson(id) {
 
 function getCadLands(prefix) {
     var result = false;
-    isLoading(true)
+
 
     jQuery.ajax({
         url: "https://api.agro.uz/gis_bridge/eijara",
@@ -328,7 +492,7 @@ function getCadLands(prefix) {
         },
         success: function (data) {
             result = data;
-            isLoading(false)
+
         },
     });
 
@@ -338,16 +502,19 @@ function getCadLands(prefix) {
 
 function getLands(id) {
     var result = false;
-    isLoading(true)
+
 
     jQuery.ajax({
         url: domain() + '/api/geojson/lands/' + id,
         dataType: "json",
         type: "get",
+        data: {
+            not_null: 1
+        },
         async: false,
         success: function (data) {
             result = data;
-            isLoading(false)
+
         },
 
     });
@@ -359,7 +526,7 @@ function getLands(id) {
 function getRegions() {
 
     var result = false;
-    isLoading(true)
+
 
 
     jQuery.ajax({
@@ -370,32 +537,18 @@ function getRegions() {
         data: {},
         success: function (data) {
             result = data;
-            isLoading(false)
+
         },
     });
 
     return result;
 }
 
-makePurposeList()
-
-function makePurposeList() {
-    var data = getPurposes()
-    var text = ""
-
-    for (let i = 0; i < data.length; i++) {
-        text += '<option value="' + data[i].id + '" class="text-uppercase">' + data[i].name + '</option> '
-    }
-
-
-    $("#purpose_id").html(text)
-}
-
 
 function getPurposes() {
 
     var result = false;
-    isLoading(true)
+
 
     jQuery.ajax({
         url: domain() + '/api/directory/land_purposes',
@@ -408,7 +561,7 @@ function getPurposes() {
         },
     });
 
-    isLoading(false)
+
 
 
     return result;
@@ -418,7 +571,7 @@ function getPurposes() {
 function getRegion(id) {
 
     var result = false;
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + '/api/json/regions/' + id,
@@ -430,7 +583,7 @@ function getRegion(id) {
         },
     });
 
-    isLoading(false)
+
 
     return result;
 }
@@ -438,7 +591,7 @@ function getRegion(id) {
 function getDistricts(id) {
 
     var result = false;
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + '/api/json/districts/' + id,
@@ -449,7 +602,7 @@ function getDistricts(id) {
             result = data;
         },
     });
-    isLoading(false)
+
 
     return result;
 }
@@ -457,7 +610,7 @@ function getDistricts(id) {
 function getDistrict(id) {
 
     var result = false;
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + '/api/json/district/' + id,
@@ -468,7 +621,7 @@ function getDistrict(id) {
             result = data;
         },
     });
-    isLoading(false)
+
 
     return result;
 }
@@ -477,7 +630,7 @@ function getDistrict(id) {
 function getRegionGeoJson(id) {
 
     var result = false;
-    isLoading(true)
+
 
     $.ajax({
         url: domain() + '/api/json/regions/' + id,
@@ -488,7 +641,7 @@ function getRegionGeoJson(id) {
             result = data;
         },
     });
-    isLoading(false)
+
 
     return result;
 }

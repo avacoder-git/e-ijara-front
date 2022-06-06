@@ -17,20 +17,20 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <router-link to="" class="footer-link">{{ $t("footer.menu.content[0]") }}</router-link>
-                                    <router-link to="" class="footer-link">{{ $t("footer.menu.content[1]") }}</router-link>
-                                    <router-link to="" class="footer-link">{{ $t("footer.menu.content[2]") }}</router-link>
+                                    <router-link :to="{ name: 'about' }" class="footer-link">{{ $t("footer.menu.content[0]") }}</router-link>
+                                    <router-link :to="{ name: 'map' }" class="footer-link">{{ $t("footer.menu.content[1]") }}</router-link>
+                                    <router-link :to="{ name: 'docs' }" class="footer-link">{{ $t("footer.menu.content[2]") }}</router-link>
                                 </div>
                                 <div class="col-6">
-                                    <router-link to="" class="footer-link">{{ $t("footer.menu.content[3]") }}</router-link>
-                                    <router-link to="" class="footer-link">{{ $t("footer.menu.content[4]") }}</router-link>
+                                    <router-link :to="{ name: 'manuals' }" class="footer-link">{{ $t("footer.menu.content[3]") }}</router-link>
+                                    <router-link :to="{ name: 'faq' }" class="footer-link">{{ $t("footer.menu.content[4]") }}</router-link>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="footer-header">{{ $t("nav.links.contact") }}</div>
-                            <a href="" class="footer-link">Tel: <b> +998 99 631 42 21</b></a>
-                            <a href="" class="footer-link">Email: <b> e-ijaraInfo@gmail.uz</b></a>
+                            <a href="" class="footer-link">Tel: <b> <a style="text-decoration: none" href="tel: +998996314221">+998 99 631 42 21</a> </b></a>
+                            <a href="" class="footer-link">Telegram: <b> <a style="text-decoration: none"  href="http://T.ME/EIJARASUPPORT" target="_blank">http://T.ME/EIJARASUPPORT</a> </b></a>
                         </div>
 
                     </div>

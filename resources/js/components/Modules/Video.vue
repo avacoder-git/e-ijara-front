@@ -7,7 +7,7 @@
 
                         <div id="videoCarousel" class="carousel slide" data-ride="carousel">
 
-                            <div class="carousel-inner">
+                            <div class="carousel-inner"  role="listbox">
                                 <div class="carousel-item active">
                                     <img src="image/video-thumbnail1.jpg" class="carousel-img" alt="Video">
                                     <div class="video-content">
@@ -75,26 +75,27 @@
                                 </div>
 
                             </div>
+                            <div class="carousel-nav">
+                                <a class="carousel-control-prev" href="#videoCarousel" role="button"
+                                   data-slide="prev">
+                                    <img src="image/left.svg" alt="">
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <ol class="carousel-indicators">
+                                    <li data-target="#videoCarousel" data-slide-to="0"
+                                        class="active"></li>
+                                    <li data-target="#videoCarousel" data-slide-to="1"></li>
+                                </ol>
+                                <a class="carousel-control-next" href="#videoCarousel" role="button"
+                                   data-slide="next">
+                                    <img src="image/left.svg" alt="">
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+
                         </div>
 
 
-                        <div class="carousel-nav">
-                            <a class="carousel-control-prev" href="#videoCarousel" role="button"
-                               data-slide="prev">
-                                <img src="image/left.svg" alt="">
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <ol class="carousel-indicators">
-                                <li data-target="#videoCarousel" data-slide-to="0"
-                                    class="active"></li>
-                                <li data-target="#videoCarousel" data-slide-to="1"></li>
-                            </ol>
-                            <a class="carousel-control-next" href="#videoCarousel" role="button"
-                               data-slide="next">
-                                <img src="image/left.svg" alt="">
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -116,13 +117,11 @@
 </template>
 
 <script>
-import $ from "jquery";
 
 
 export default {
     name: "Video",
 
-    components: {$},
 
     mounted() {
         $(function () {

@@ -422,6 +422,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -572,62 +585,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Lands",
   data: function data() {
@@ -642,26 +599,12 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData() {
       var _this = this;
 
-      axios.get('/api/lands', {
+      axios.get('/api/front/lands', {
         params: {
           status_id: 2
         }
       }).then(function (response) {
         _this.data = response.data.data;
-      });
-      axios.get('/api/lands', {
-        params: {
-          status_id: 3
-        }
-      }).then(function (response) {
-        _this.data2 = response.data.data;
-      });
-      axios.get('/api/lands', {
-        params: {
-          status_id: 3
-        }
-      }).then(function (response) {
-        _this.data3 = response.data.data;
       });
     }
   },
@@ -837,8 +780,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -956,25 +897,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Video",
-  components: {
-    $: (jquery__WEBPACK_IMPORTED_MODULE_0___default())
-  },
   mounted: function mounted() {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#video').on('hidden.bs.modal', function () {
-        var media = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".video-1").get(0);
+    $(function () {
+      $('#video').on('hidden.bs.modal', function () {
+        var media = $(".video-1").get(0);
         media.pause();
         media.currentTime = 0;
-        media = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".video-2").get(0);
+        media = $(".video-2").get(0);
         media.pause();
         media.currentTime = 0;
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".video-mp4").addClass('d-none');
+        $(".video-mp4").addClass('d-none');
       });
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('.play-btn').click(function () {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(".video-" + jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('video')).removeClass('d-none');
+      $('.play-btn').click(function () {
+        $(".video-" + $(this).data('video')).removeClass('d-none');
       });
     });
   }
@@ -23626,9 +23564,9 @@ var render = function () {
         _c("div", { staticClass: "video-text" }, [
           _c("p", { staticClass: "text-center text-white" }, [
             _vm._v(
-              "\n                " +
+              "\n                    " +
                 _vm._s(_vm.$t("main.text")) +
-                "\n            "
+                "\n                "
             ),
           ]),
         ]),
@@ -23641,151 +23579,42 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-lg-12" }, [
-            _c("div", { staticClass: "owl-carousel", attrs: { id: "etap" } }, [
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.first.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.second.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.first.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.second.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.second.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.second.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.third.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.third.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.third.text")) +
-                      "\n\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(3),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.fourth.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.fourth.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.fourth.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(4),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.fifth.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.fifth.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.fifth.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "rectangle" }, [
-                _vm._m(5),
-                _vm._v(" "),
-                _c("div", { staticClass: "bosqich" }, [
-                  _vm._v(_vm._s(_vm.$t("main.levels.sixth.counter"))),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-title" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.sixth.name")) +
-                      "\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "rectangle-body" }, [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.$t("main.levels.sixth.text")) +
-                      "\n                        "
-                  ),
-                ]),
-              ]),
-            ]),
+            _c(
+              "div",
+              { staticClass: "owl-carousel", attrs: { id: "etap" } },
+              _vm._l(_vm.$t("main.levels.сontent"), function (level, index) {
+                return _c("div", { staticClass: "rectangle" }, [
+                  _c("div", { staticClass: "icon" }, [
+                    _c("img", { attrs: { src: level.icon, alt: "" } }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "bosqich" }, [
+                    _vm._v(
+                      _vm._s(index + 1) +
+                        "-" +
+                        _vm._s(_vm.$t("main.levels.etap"))
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "rectangle-title" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(level.name) +
+                        "\n                            "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "rectangle-body" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(level.text) +
+                        "\n                            "
+                    ),
+                  ]),
+                ])
+              }),
+              0
+            ),
           ]),
         ]),
       ]),
@@ -23836,9 +23665,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                            " +
+                      "\n                                " +
                         _vm._s(_vm.$t("main.useful.content[0]")) +
-                        "\n                        "
+                        "\n                            "
                     ),
                   ]),
                 ]),
@@ -23850,9 +23679,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                            " +
+                      "\n                                " +
                         _vm._s(_vm.$t("main.useful.content[1]")) +
-                        "\n                        "
+                        "\n                            "
                     ),
                   ]),
                 ]),
@@ -23862,9 +23691,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                            " +
+                      "\n                                " +
                         _vm._s(_vm.$t("main.useful.content[2]")) +
-                        "\n                        "
+                        "\n                            "
                     ),
                   ]),
                 ]),
@@ -23874,9 +23703,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                            " +
+                      "\n                                " +
                         _vm._s(_vm.$t("main.useful.content[3]")) +
-                        "\n                        "
+                        "\n                            "
                     ),
                   ]),
                 ]),
@@ -23889,56 +23718,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/uzdyl.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/agree.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/auksion.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/auksion.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/kadastr.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "icon" }, [
-      _c("img", { attrs: { src: "image/list.svg", alt: "" } }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -23998,50 +23778,6 @@ var render = function () {
                       },
                     },
                     [_vm._v(_vm._s(_vm.$t("main.lands.first.name")))]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item", attrs: { role: "presentation" } },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: {
-                        id: "profile-tab",
-                        "data-toggle": "tab",
-                        href: "#profile",
-                        role: "tab",
-                        "aria-controls": "profile",
-                        "aria-selected": "false",
-                      },
-                    },
-                    [_vm._v(_vm._s(_vm.$t("main.lands.second.name")))]
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item", attrs: { role: "presentation" } },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: {
-                        id: "contact-tab",
-                        "data-toggle": "tab",
-                        href: "#contact",
-                        role: "tab",
-                        "aria-controls": "contact",
-                        "aria-selected": "false",
-                      },
-                    },
-                    [_vm._v(_vm._s(_vm.$t("main.lands.third.name")))]
                   ),
                 ]
               ),
@@ -24116,7 +23852,7 @@ var render = function () {
                                 },
                                 [
                                   _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.created_at)),
+                                    _vm._v(_vm._s(item.updated_at)),
                                   ]),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "rectangle-lot" }, [
@@ -24131,9 +23867,7 @@ var render = function () {
                                 [
                                   _vm._v(
                                     "\n                                    " +
-                                      _vm._s(item.region) +
-                                      " , " +
-                                      _vm._s(item.district) +
+                                      _vm._s(item.address) +
                                       "\n                                "
                                   ),
                                 ]
@@ -24145,168 +23879,6 @@ var render = function () {
                                 ]),
                                 _vm._v(" "),
                                 _vm._m(0, true),
-                              ]),
-                            ]
-                          ),
-                        ]
-                      }),
-                    ],
-                    2
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade",
-                  attrs: {
-                    id: "profile",
-                    role: "tabpanel",
-                    "aria-labelledby": "profile-tab",
-                  },
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "owl-carousel owl-custom" },
-                    [
-                      _vm._l(_vm.data2, function (item) {
-                        return [
-                          _c(
-                            "div",
-                            { staticClass: "rectangle position-relative" },
-                            [
-                              _c("div", { staticClass: "rectangle-img" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src: _vm.bg_photo[
-                                      Math.floor(
-                                        Math.random() * _vm.bg_photo.length
-                                      )
-                                    ],
-                                    alt: "",
-                                  },
-                                }),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "d-flex justify-content-between",
-                                },
-                                [
-                                  _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.created_at)),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.regnum)),
-                                  ]),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "rectangle-name mb-auto" },
-                                [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(item.region) +
-                                      " , " +
-                                      _vm._s(item.district) +
-                                      "\n                                "
-                                  ),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "rectangle-footer" }, [
-                                _c("div", { staticClass: "rectangle-ga" }, [
-                                  _vm._v(_vm._s(item.area) + " Ga"),
-                                ]),
-                                _vm._v(" "),
-                                _vm._m(1, true),
-                              ]),
-                            ]
-                          ),
-                        ]
-                      }),
-                    ],
-                    2
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade",
-                  attrs: {
-                    id: "contact",
-                    role: "tabpanel",
-                    "aria-labelledby": "contact-tab",
-                  },
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "owl-carousel owl-custom" },
-                    [
-                      _vm._l(_vm.data3, function (item) {
-                        return [
-                          _c(
-                            "div",
-                            { staticClass: "rectangle position-relative" },
-                            [
-                              _c("div", { staticClass: "rectangle-img" }, [
-                                _c("img", {
-                                  attrs: {
-                                    src: _vm.bg_photo[
-                                      Math.floor(
-                                        Math.random() * _vm.bg_photo.length
-                                      )
-                                    ],
-                                    alt: "",
-                                  },
-                                }),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "d-flex justify-content-between",
-                                },
-                                [
-                                  _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.created_at)),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.regnum)),
-                                  ]),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "rectangle-name mb-auto" },
-                                [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(item.region) +
-                                      " , " +
-                                      _vm._s(item.district) +
-                                      "\n                                "
-                                  ),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "rectangle-footer" }, [
-                                _c("div", { staticClass: "rectangle-ga" }, [
-                                  _vm._v(_vm._s(item.area) + " Ga"),
-                                ]),
-                                _vm._v(" "),
-                                _vm._m(2, true),
                               ]),
                             ]
                           ),
@@ -24335,22 +23907,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "rectangle-save" }, [
-      _c("img", { attrs: { src: "/image/Bookmark.svg", alt: "" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "rectangle-save" }, [
-      _c("img", { attrs: { src: "/image/Bookmark.svg", alt: "" } }),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -24467,7 +24023,7 @@ var render = function () {
               _c("div", { staticClass: "rectangle" }, [
                 _c("div", { staticClass: "block" }, [
                   _c("div", { staticClass: "block-title" }, [
-                    _vm._v(_vm._s(_vm.$t("main.statistics.loyihalashda"))),
+                    _vm._v(_vm._s(_vm.$t("main.statistics.loyihalashdagi"))),
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "block-numbers" }, [
@@ -24569,204 +24125,229 @@ var staticRenderFns = [
                   attrs: { id: "videoCarousel", "data-ride": "carousel" },
                 },
                 [
-                  _c("div", { staticClass: "carousel-inner" }, [
-                    _c("div", { staticClass: "carousel-item active" }, [
-                      _c("img", {
-                        staticClass: "carousel-img",
-                        attrs: {
-                          src: "image/video-thumbnail1.jpg",
-                          alt: "Video",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "video-content" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-lg-5  col-12" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "play-btn d-lg-none",
-                                attrs: {
-                                  type: "button",
-                                  "data-video": "1",
-                                  "data-toggle": "modal",
-                                  "data-target": "#video",
+                  _c(
+                    "div",
+                    {
+                      staticClass: "carousel-inner",
+                      attrs: { role: "listbox" },
+                    },
+                    [
+                      _c("div", { staticClass: "carousel-item active" }, [
+                        _c("img", {
+                          staticClass: "carousel-img",
+                          attrs: {
+                            src: "image/video-thumbnail1.jpg",
+                            alt: "Video",
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "video-content" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-lg-5  col-12" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "play-btn d-lg-none",
+                                  attrs: {
+                                    type: "button",
+                                    "data-video": "1",
+                                    "data-toggle": "modal",
+                                    "data-target": "#video",
+                                  },
                                 },
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: "play-img",
-                                  attrs: { src: "image/play_btn.svg", alt: "" },
-                                }),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "w-100" }, [
-                              _c("div", { staticClass: "text-1" }, [
-                                _vm._v(
-                                  "\n                                                    Tizim haqida videorolik\n                                                "
-                                ),
-                              ]),
+                                [
+                                  _c("img", {
+                                    staticClass: "play-img",
+                                    attrs: {
+                                      src: "image/play_btn.svg",
+                                      alt: "",
+                                    },
+                                  }),
+                                ]
+                              ),
                               _vm._v(" "),
-                              _c("div", { staticClass: "text-2" }, [
-                                _vm._v(
-                                  "\n                                                    Bo'sh turgan er uchastkasi to'g'risidagi ma'lumotlarni ochiq\n                                                    elektron\n                                                    tanlovga\n                                                    qo'yish masalasini belgilangan tartibda ko'rib chiqish borasida.\n                                                "
-                                ),
+                              _c("div", { staticClass: "w-100" }, [
+                                _c("div", { staticClass: "text-1" }, [
+                                  _vm._v(
+                                    "\n                                                    Tizim haqida videorolik\n                                                "
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "text-2" }, [
+                                  _vm._v(
+                                    "\n                                                    Bo'sh turgan er uchastkasi to'g'risidagi ma'lumotlarni ochiq\n                                                    elektron\n                                                    tanlovga\n                                                    qo'yish masalasini belgilangan tartibda ko'rib chiqish borasida.\n                                                "
+                                  ),
+                                ]),
                               ]),
                             ]),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-6" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "play-btn",
-                                attrs: {
-                                  type: "button",
-                                  "data-video": "1",
-                                  "data-toggle": "modal",
-                                  "data-target": "#video",
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-lg-6" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "play-btn",
+                                  attrs: {
+                                    type: "button",
+                                    "data-video": "1",
+                                    "data-toggle": "modal",
+                                    "data-target": "#video",
+                                  },
                                 },
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: "play-img",
-                                  attrs: { src: "image/play_btn.svg", alt: "" },
-                                }),
-                              ]
-                            ),
+                                [
+                                  _c("img", {
+                                    staticClass: "play-img",
+                                    attrs: {
+                                      src: "image/play_btn.svg",
+                                      alt: "",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]),
                           ]),
                         ]),
                       ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "carousel-item" }, [
+                        _c("img", {
+                          staticClass: "carousel-img",
+                          attrs: {
+                            src: "image/video-thumbnail1.jpg",
+                            alt: "Video",
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "video-content" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-lg-5" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "play-btn d-lg-none",
+                                  attrs: {
+                                    type: "button",
+                                    "data-video": "2",
+                                    "data-toggle": "modal",
+                                    "data-target": "#video",
+                                  },
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: "play-img",
+                                    attrs: {
+                                      src: "image/play_btn.svg",
+                                      alt: "",
+                                    },
+                                  }),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "w-100" }, [
+                                _c("div", { staticClass: "text-1" }, [
+                                  _vm._v(
+                                    "\n                                                    Tizim haqida videorolik\n                                                "
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "text-2" }, [
+                                  _vm._v(
+                                    "\n                                                    Bo'sh turgan er uchastkasi to'g'risidagi ma'lumotlarni ochiq\n                                                    elektron\n                                                    tanlovga\n                                                    qo'yish masalasini belgilangan tartibda ko'rib chiqish borasida.\n                                                "
+                                  ),
+                                ]),
+                              ]),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-lg-6 d-sm-none" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "play-btn",
+                                  attrs: {
+                                    type: "button",
+                                    "data-video": "2",
+                                    "data-toggle": "modal",
+                                    "data-target": "#video",
+                                  },
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: "play-img",
+                                    attrs: {
+                                      src: "image/play_btn.svg",
+                                      alt: "",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]),
+                          ]),
+                        ]),
+                      ]),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "carousel-nav" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "carousel-control-prev",
+                        attrs: {
+                          href: "#videoCarousel",
+                          role: "button",
+                          "data-slide": "prev",
+                        },
+                      },
+                      [
+                        _c("img", {
+                          attrs: { src: "image/left.svg", alt: "" },
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "sr-only" }, [
+                          _vm._v("Previous"),
+                        ]),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("ol", { staticClass: "carousel-indicators" }, [
+                      _c("li", {
+                        staticClass: "active",
+                        attrs: {
+                          "data-target": "#videoCarousel",
+                          "data-slide-to": "0",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("li", {
+                        attrs: {
+                          "data-target": "#videoCarousel",
+                          "data-slide-to": "1",
+                        },
+                      }),
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "carousel-item" }, [
-                      _c("img", {
-                        staticClass: "carousel-img",
+                    _c(
+                      "a",
+                      {
+                        staticClass: "carousel-control-next",
                         attrs: {
-                          src: "image/video-thumbnail1.jpg",
-                          alt: "Video",
+                          href: "#videoCarousel",
+                          role: "button",
+                          "data-slide": "next",
                         },
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "video-content" }, [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-lg-5" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "play-btn d-lg-none",
-                                attrs: {
-                                  type: "button",
-                                  "data-video": "2",
-                                  "data-toggle": "modal",
-                                  "data-target": "#video",
-                                },
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: "play-img",
-                                  attrs: { src: "image/play_btn.svg", alt: "" },
-                                }),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "w-100" }, [
-                              _c("div", { staticClass: "text-1" }, [
-                                _vm._v(
-                                  "\n                                                    Tizim haqida videorolik\n                                                "
-                                ),
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "text-2" }, [
-                                _vm._v(
-                                  "\n                                                    Bo'sh turgan er uchastkasi to'g'risidagi ma'lumotlarni ochiq\n                                                    elektron\n                                                    tanlovga\n                                                    qo'yish masalasini belgilangan tartibda ko'rib chiqish borasida.\n                                                "
-                                ),
-                              ]),
-                            ]),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-lg-6 d-sm-none" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "play-btn",
-                                attrs: {
-                                  type: "button",
-                                  "data-video": "2",
-                                  "data-toggle": "modal",
-                                  "data-target": "#video",
-                                },
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: "play-img",
-                                  attrs: { src: "image/play_btn.svg", alt: "" },
-                                }),
-                              ]
-                            ),
-                          ]),
+                      },
+                      [
+                        _c("img", {
+                          attrs: { src: "image/left.svg", alt: "" },
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "sr-only" }, [
+                          _vm._v("Next"),
                         ]),
-                      ]),
-                    ]),
+                      ]
+                    ),
                   ]),
                 ]
               ),
-              _vm._v(" "),
-              _c("div", { staticClass: "carousel-nav" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "carousel-control-prev",
-                    attrs: {
-                      href: "#videoCarousel",
-                      role: "button",
-                      "data-slide": "prev",
-                    },
-                  },
-                  [
-                    _c("img", { attrs: { src: "image/left.svg", alt: "" } }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "sr-only" }, [
-                      _vm._v("Previous"),
-                    ]),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("ol", { staticClass: "carousel-indicators" }, [
-                  _c("li", {
-                    staticClass: "active",
-                    attrs: {
-                      "data-target": "#videoCarousel",
-                      "data-slide-to": "0",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("li", {
-                    attrs: {
-                      "data-target": "#videoCarousel",
-                      "data-slide-to": "1",
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "carousel-control-next",
-                    attrs: {
-                      href: "#videoCarousel",
-                      role: "button",
-                      "data-slide": "next",
-                    },
-                  },
-                  [
-                    _c("img", { attrs: { src: "image/left.svg", alt: "" } }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "sr-only" }, [_vm._v("Next")]),
-                  ]
-                ),
-              ]),
             ]),
           ]),
         ]),

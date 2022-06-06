@@ -76,7 +76,7 @@
                         <label for="exampleSelect" class="">Ижара мақсади</label>
                         <select name="land_purpose_id" id="exampleSelect" class="form-control">
                             @foreach ($land_purposes as $id => $purpose)
-                                <option @if($id == $application->land_purpose_id) selected @endif value="{{ $id }}">{{ $purpose }}</option>
+                                <option @if($id == $application->land_purpose_id) selected @endif value="{{ $id }}">{{ $purpose->name }}</option>
                             @endforeach
                         </select>
                     </div>
