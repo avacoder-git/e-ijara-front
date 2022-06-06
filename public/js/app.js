@@ -5318,6 +5318,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Footer"
 });
@@ -6052,7 +6081,7 @@ __webpack_require__.r(__webpack_exports__);
       var client_id = "at_agrosanoat_markazi";
       var client_secret = "nCeV5BFAcruvPxW9sK721qdR";
       var scope = "at_agrosanoat_markazi";
-      var redirect_uri = "http://162.0.233.118:8081:8081";
+      var redirect_uri = "http://avacoder.uz:8081";
       window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" + redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
     },
     openLang: function openLang() {
@@ -58042,7 +58071,124 @@ var render = function () {
       ]),
     ]),
     _vm._v(" "),
-    _vm._m(2),
+    _c("div", { staticClass: "footer" }, [
+      _c("div", { staticClass: "container-fluid section-2" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "d-lg-flex flex-row justify-content-between align-items-center",
+          },
+          [
+            _c(
+              "div",
+              [
+                _c(
+                  "SCRIPT",
+                  {
+                    attrs: { language: "javascript", type: "text/javascript" },
+                  },
+                  [
+                    _vm._v(
+                      '\n                    <!--\n                    top_js="1.0";top_r="id=46496&r="+escape(document.referrer)+"&pg="+escape(window.location.href);document.cookie="smart_top=1; path=/"; top_r+="&c="+(document.cookie?"Y":"N")\n                    //-->\n                '
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "SCRIPT",
+                  {
+                    attrs: {
+                      language: "javascript1.1",
+                      type: "text/javascript",
+                    },
+                  },
+                  [
+                    _vm._v(
+                      '\n                        <!--\n                        top_js="1.1";top_r+="&j="+(navigator.javaEnabled()?"Y":"N")\n                        //-->\n                    '
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "SCRIPT",
+                  {
+                    attrs: {
+                      language: "javascript1.2",
+                      type: "text/javascript",
+                    },
+                  },
+                  [
+                    _vm._v(
+                      '\n                        <!--\n                        top_js="1.2";top_r+="&wh="+screen.width+\'x\'+screen.height+"&px="+\n                            (((navigator.appName.substring(0,3)=="Mic"))?screen.colorDepth:screen.pixelDepth)\n                        //-->\n                    '
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "SCRIPT",
+                  {
+                    attrs: {
+                      language: "javascript1.3",
+                      type: "text/javascript",
+                    },
+                  },
+                  [
+                    _vm._v(
+                      '\n                        <!--\n                        top_js="1.3";\n                        //-->\n                    '
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "SCRIPT",
+                  {
+                    attrs: { language: "JavaScript", type: "text/javascript" },
+                  },
+                  [
+                    _vm._v(
+                      '\n                        <!--\n                        top_rat="&col=D0D0CF&t=ffffff&p=24211D";top_r+="&js="+top_js+"";document.write(\'<a href="http://www.uz/ru/res/visitor/index?id=46496" target=_top><img src="http://cnt0.www.uz/counter/collect?\'+top_r+top_rat+\'" width=88 height=31 border=0 alt="Топ рейтинг www.uz"></a>\')//-->\n                    '
+                    ),
+                  ]
+                ),
+                _c(
+                  "NOSCRIPT",
+                  [
+                    _c(
+                      "A",
+                      {
+                        attrs: {
+                          href: "http://www.uz/ru/res/visitor/index?id=46496",
+                          target: "_top",
+                        },
+                      },
+                      [
+                        _c("IMG", {
+                          attrs: {
+                            height: "31",
+                            src: "http://cnt0.www.uz/counter/collect?id=46496&pg=http%3A//uzinfocom.uz&&col=D0D0CF&t=ffffff&p=24211D",
+                            width: "88",
+                            border: "0",
+                            alt: "Топ рейтинг www.uz",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3),
+          ]
+        ),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -58086,28 +58232,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "footer" }, [
-      _c("div", { staticClass: "container-fluid section-2" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "d-lg-flex flex-row justify-content-between align-items-center",
-          },
-          [
-            _c("a", { staticClass: "mt-sm-3", attrs: { href: "" } }, [
-              _vm._v("© 2022 "),
-              _c("b", [_vm._v("Barcha huquqlar himoyalangan.")]),
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "mt-sm-3", attrs: { href: "" } }, [
-              _c("img", {
-                attrs: { src: "/image/digital-center.svg", alt: "" },
-              }),
-            ]),
-          ]
-        ),
-      ]),
+    return _c("a", { staticClass: "mt-sm-3", attrs: { href: "" } }, [
+      _vm._v("© 2022 "),
+      _c("b", [_vm._v("Barcha huquqlar himoyalangan.")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "mt-sm-3", attrs: { href: "" } }, [
+      _c("img", { attrs: { src: "/image/digital-center.svg", alt: "" } }),
     ])
   },
 ]
