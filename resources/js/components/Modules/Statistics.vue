@@ -13,8 +13,6 @@
                         <div class="block">
                             <div class="block-title">{{ $t("main.statistics.new") }}</div>
                             <div class="block-numbers">
-                                <div class="son">{{ counts.new_lands.count }}</div>
-                                <div class="splitter"></div>
                                 <div class="ga">{{ counts.new_lands.area }} Ga</div>
                             </div>
                         </div>
@@ -26,8 +24,6 @@
                         <div class="block">
                             <div class="block-title">{{ $t("main.statistics.ajratilgan") }}</div>
                             <div class="block-numbers">
-                                <div class="son">{{ counts.ajratilgan_lands.count }}</div>
-                                <div class="splitter"></div>
                                 <div class="ga">{{ counts.ajratilgan_lands.area }} Ga</div>
                             </div>
                         </div>

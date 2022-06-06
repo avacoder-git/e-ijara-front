@@ -10,6 +10,7 @@ use App\Models\Regions;
 use App\Models\Land;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class LandController extends Controller
@@ -140,16 +141,28 @@ class LandController extends Controller
 
     public function GetAllCountByStatus()
     {
-        $lands = Land::query();
-        $ajratilgan = 1;
-        $new = 1;
-        $tanlov = 1;
-        $loyiha = 1;
 
-        $new_lands = ['count' => $lands->where('status_id', $new)->count(), 'area' => round($lands->where('status_id', $new)->sum('area'), 1)];
-        $ajratilgan_lands = ['count' => $lands->where('status_id', $ajratilgan)->count(), 'area' => round($lands->where('status_id', $ajratilgan)->sum('area'), 1)];
-        $tanlovdagi_lands = ['count' => $lands->where('status_id', $tanlov)->count(), 'area' => round($lands->where('status_id', $tanlov)->sum('area'), 1)];
-        $loyihalashdagi_lands = ['count' => $lands->where('status_id', $loyiha)->count(), 'area' => round($lands->where('status_id', $loyiha)->sum('area'), 1)];
+        $new_lands = [
+            'area' => number_format(round(
+                Land::whereNull('parent_id')->where('is_merged_lot', 0)->sum('area') -
+                Land::query()->whereNotNull('parent_id')
+                    ->where('status_id', '!=', 25)->sum('area') )),
+        ];
+        $ajratilgan_lands = [
+            'area' => number_format(round(Land::whereNull('parent_id')->where('is_merged_lot', 0)->sum('area'))),
+        ];
+        $tanlovdagi_lands = [
+            'count' => number_format(round(Land::query()->whereNotNull('parent_id')
+                ->whereIn('status_id', [8, 17])->count() )),
+            'area' => number_format(round(Land::query()->whereNotNull('parent_id')
+                ->whereIn('status_id', [8, 17])->sum('area'))),
+        ];
+        $loyihalashdagi_lands = [
+            'count' => number_format(round(Land::query()->whereNotNull('parent_id')
+                ->whereIn('status_id', [2, 3, 4, 5, 6, 7, 11, 12, 13, 15])->count() )),
+            'area' => number_format(round(Land::query()->whereNotNull('parent_id')
+                ->whereIn('status_id', [2, 3, 4, 5, 6, 7, 11, 12, 13, 15])->sum('area'))),
+        ];
 
         $data = compact('new_lands', 'ajratilgan_lands', 'tanlovdagi_lands', 'loyihalashdagi_lands');
         return response()->json($data);
