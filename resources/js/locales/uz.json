@@ -71,7 +71,7 @@
         },
         "statistics": {
             "name": "Statistika",
-            "new": "Yangi yer maydonlari",
+            "new": "Ajiratilgan yer maydonlari",
             "ajratilgan": "Ajratilgan yer maydonlari",
             "tanlovdagi": "Tanlovdagi yer maydonlari",
             "loyihalashdagi": "Loyihalashdagi yer maydonlari"
@@ -80,10 +80,10 @@
             "name": "Hududlar bo'yicha yerlarning holati",
             "karta": "Xaritada ko'rish",
             "table": "Jadvalda ko'rish",
-            "general": "Umumiy yerlar soni",
-            "free": "Bo'sh yerlarning jami maydoni",
+            "general": "Ajiratilgan yerlar soni",
+            "free": "Ajiratilgan yerlarning jami maydoni",
             "region": "Xudud",
-            "new": "Yangi yerlar soni",
+            "new": "Ajiratilgan yerlar soni",
             "tanlovdagi": "Tanlovdagi yerlar soni"
         },
         "offer": {

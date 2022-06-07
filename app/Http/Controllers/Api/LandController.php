@@ -129,12 +129,16 @@ class LandController extends Controller
     {
         $region = Regions::query()->select('nameuz', 'regionid')->where('regionid', $region)->first();
         abort_if(!$region, 404, 'Not Found');
-        $lands = Land::query()->select('count', 'sum(area)')->where('region_id', $region->regionid);
+        $lands = Land::query()
+            ->select('count', 'sum(area)')
+            ->where('region_id', $region->regionid);
 
         return response()->json([
-            'count' => $lands->count(),
             'region' => $region->nameuz,
-            'all_area' => round($lands->sum('area'), 2),
+            'count_ajiratilgan' => $lands->count(),
+            'all_area_ajiratilgan' => round($lands->sum('area'), 2),
+            'count_tanlovda' => $lands->count(),
+            'all_area_tanlovda' => round($lands->sum('area'), 2),
         ]);
     }
 
@@ -143,6 +147,7 @@ class LandController extends Controller
     {
 
         $new_lands = [
+            'count' => number_format(round(Land::whereNull('parent_id')->where('is_merged_lot', 0)->count())),
             'area' => number_format(round(
                 Land::whereNull('parent_id')->where('is_merged_lot', 0)->sum('area') -
                 Land::query()->whereNotNull('parent_id')
@@ -156,9 +161,9 @@ class LandController extends Controller
         ];
         $tanlovdagi_lands = [
             'count' => number_format(round(Land::query()->whereNotNull('parent_id')
-                ->whereIn('status_id', [8, 17])->count() )),
+                ->whereIn('status_id', [14,16,17])->count() )),
             'area' => number_format(round(Land::query()->whereNotNull('parent_id')
-                ->whereIn('status_id', [8, 17])->sum('area'))),
+                ->whereIn('status_id', [14,16,17])->sum('area'))),
         ];
         $loyihalashdagi_lands = [
             'count' => number_format(round(Land::query()->whereNotNull('parent_id')
@@ -174,7 +179,10 @@ class LandController extends Controller
 
     public function GetAllCount()
     {
-        $regions = Regions::select('nameuz')->withCount('new_lands', 'lands_auction')->withSum('new_lands', 'area')->withSum('lands_auction', 'area')->get();
+        $regions = Regions::select('nameuz')
+            ->withCount('new_lands', 'lands_auction')
+            ->withSum('new_lands', 'area')
+            ->withSum('lands_auction', 'area')->get();
 
         return response()->json($regions);
     }

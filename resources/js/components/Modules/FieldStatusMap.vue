@@ -67,11 +67,19 @@
                         <div class="title">{{ pointedLocation.region }}</div>
                         <div class="rectangle-inner">
                             <div class="info">{{ $t('main.holat.general') }}:</div>
-                            <div class="son">{{ pointedLocation.count }} {{ $t('ta') }}</div>
+                            <div class="son">{{ pointedLocation.count_ajiratilgan }} {{ $t('ta') }}</div>
                         </div>
                         <div class="rectangle-inner rectangle-inner-2">
                             <div class="info">{{ $t('main.holat.free') }}:</div>
-                            <div class="son">{{ pointedLocation.all_area }} {{ $t('ga') }}</div>
+                            <div class="son">{{ pointedLocation.all_area_ajiratilgan }} {{ $t('ga') }}</div>
+                        </div>
+                        <div class="rectangle-inner">
+                            <div class="info">{{ $t('main.holat.general') }}:</div>
+                            <div class="son">{{ pointedLocation.count_tanlovda }} {{ $t('ta') }}</div>
+                        </div>
+                        <div class="rectangle-inner rectangle-inner-2">
+                            <div class="info">{{ $t('main.holat.free') }}:</div>
+                            <div class="son">{{ pointedLocation.all_area_tanlovda }} {{ $t('ga') }}</div>
                         </div>
                     </div>
                 </div>
@@ -88,8 +96,10 @@ export default {
         return {
             pointedLocation: {
                 region: null,
-                count: null,
-                all_area: null,
+                count_ajiratilgan: null,
+                all_area_ajiratilgan: null,
+                count_tanlovda: null,
+                all_area_tanlovda: null,
             }
         }
     },

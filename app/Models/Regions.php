@@ -33,11 +33,13 @@ class Regions extends Model
 
     public function new_lands()
     {
-        return $this->hasMany(Land::class,'region_id','regionid')->whereNull('parent_id');
+        return $this->hasMany(Land::class,'region_id','regionid')
+            ->whereNotNull('parent_id')->whereIn('status_id', [31, 33]);
     }
     public function lands_auction()
     {
-        return $this->hasMany(Land::class,'region_id','regionid')->whereNull('parent_id');
+        return $this->hasMany(Land::class,'region_id','regionid')
+            ->whereNotNull('parent_id')->whereIn('status_id', [14,16,17]);
     }
 
     public function planned_reduced()
