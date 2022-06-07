@@ -149,7 +149,10 @@ class LandController extends Controller
                     ->where('status_id', '!=', 25)->sum('area') )),
         ];
         $ajratilgan_lands = [
-            'area' => number_format(round(Land::whereNull('parent_id')->where('is_merged_lot', 0)->sum('area'))),
+            'count' => number_format(round(Land::query()->whereNotNull('parent_id')
+                ->whereIn('status_id', [31, 33])->count() )),
+            'area' => number_format(round(Land::query()->whereNotNull('parent_id')
+                ->whereIn('status_id', [31, 33])->sum('area'))),
         ];
         $tanlovdagi_lands = [
             'count' => number_format(round(Land::query()->whereNotNull('parent_id')
