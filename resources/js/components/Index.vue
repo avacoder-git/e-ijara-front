@@ -1,11 +1,11 @@
 <template>
-    <div >
-        <Preloader></Preloader>
-        <div>
+    <div>
+        <Preloader v-if="show"></Preloader>
+        <template>
             <Navbar></Navbar>
             <router-view></router-view>
             <Footer></Footer>
-        </div>
+        </template>
     </div>
 </template>
 
@@ -16,7 +16,24 @@ import Preloader from "./Modules/Preloader";
 
 export default {
     name: "Index",
-    components: {Navbar, Footer, Preloader}
+    components: {Navbar, Footer, Preloader},
+
+    data() {
+        return {
+            show: true
+        }
+    },
+    mounted() {
+        this.showToggle()
+    },
+    methods: {
+        showToggle() {
+            setTimeout(() => {
+                this.show = false
+            }, 1000)
+        }
+
+    }
 }
 </script>
 

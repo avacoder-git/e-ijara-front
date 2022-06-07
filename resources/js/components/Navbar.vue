@@ -266,7 +266,7 @@
             <div class="modal-dialog  modal-dialog-centered" role="document">
 
                 <div class="modal-content overflow-hidden">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal"  data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <div class="row">
@@ -349,10 +349,10 @@ export default {
             this.agree = !this.agree
         },
         redirect() {
-            var client_id = "at_agrosanoat_markazi"
+            var client_id = process.env.MIX_CLIENT_ID
             var client_secret = process.env.MIX_CLIENT_SECRET
-            var scope = "at_agrosanoat_markazi"
-            var redirect_uri = "http://ijara.front.git"
+            var scope = process.env.MIX_SCOPE
+            var redirect_uri = process.env.MIX_APP_URL
             window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" +
                 redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
         },
@@ -377,6 +377,9 @@ export default {
     },
     mounted() {
         this.authcheck = localStorage.getItem('authcheck')
+        $('.close').click(function (){
+            $('.modal').modal('hide')
+        })
 
 
         $(function () {

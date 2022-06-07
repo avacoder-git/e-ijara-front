@@ -77,13 +77,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AllLands",
   data: function data() {
     return {
       data: null,
-      data2: null,
-      data3: null,
+      saved: [],
       links: null,
       meta: null,
       isLoading: false,
@@ -107,6 +107,23 @@ __webpack_require__.r(__webpack_exports__);
       })["finally"](function () {
         _this.isLoading = false;
       });
+    },
+    saveLand: function saveLand(id) {
+      var auth = localStorage.getItem('authcheck');
+
+      if (auth) {
+        var saved = this.saved;
+        var index = saved.indexOf(id);
+        if (saved.includes(id)) saved.splice(index, 1);else {
+          axios.get("/api/save-land/".concat(auth, "/").concat(id)).then(function (response) {
+            if (response) console.log(response);
+          });
+          saved.push(id);
+        }
+        this.saved = saved;
+      } else {
+        $("#login-modal").modal('show');
+      }
     }
   },
   mounted: function mounted() {
@@ -300,7 +317,7 @@ var render = function () {
                         "aria-selected": "true",
                       },
                     },
-                    [_vm._v(_vm._s(_vm.$t("main.lands.first.name")))]
+                    [_vm._v(_vm._s(_vm.$t("main.statistics.tanlovdagi")))]
                   ),
                 ]
               ),
@@ -401,7 +418,29 @@ var render = function () {
                                           [_vm._v(_vm._s(item.area) + " Ga")]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(0, true),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "rectangle-save",
+                                            class: _vm.saved.includes(item.id)
+                                              ? "rectangle-save-2"
+                                              : "rectangle-save-1",
+                                            on: {
+                                              click: function ($event) {
+                                                $event.preventDefault()
+                                                return _vm.saveLand(item.id)
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("img", {
+                                              attrs: {
+                                                src: "/image/Bookmark.svg",
+                                                alt: "",
+                                              },
+                                            }),
+                                          ]
+                                        ),
                                       ]
                                     ),
                                   ]
@@ -464,16 +503,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "rectangle-save" }, [
-      _c("img", { attrs: { src: "/image/Bookmark.svg", alt: "" } }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

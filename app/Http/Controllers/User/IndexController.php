@@ -13,16 +13,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+
 class IndexController extends Controller
 {
     public function dashboard()
     {
-        $applications = Application::with(['region','district','land_purpose','status'])
+        $applications = Application::with(['region', 'district', 'land_purpose', 'status'])
             ->where('user_id', Auth::id())
             ->orderBy('id', 'desc')
             ->get();
         $land_purposes = LandPurposes::all();
-        return view('user.main', compact('applications','land_purposes'));
+        return view('user.main', compact('applications', 'land_purposes'));
     }
 
     public function logout()
@@ -59,8 +60,8 @@ class IndexController extends Controller
         $data = $request->validated();
         $data['user_id'] = auth()->user()->id;
         $data['status_id'] = 1;
-        $geometry = json_decode( $data['geojson'],true)['geometry'];
-        $geometry['csr'] = ['type'=> 'name','properties' => ['name'=>'EPSG:4326']];
+        $geometry = json_decode($data['geojson'], true)['geometry'];
+        $geometry['csr'] = ['type' => 'name', 'properties' => ['name' => 'EPSG:4326']];
         $geometry = json_encode($geometry);
 
         unset($data['geojson']);
@@ -74,15 +75,18 @@ class IndexController extends Controller
 
     public function saveLand($user, $land)
     {
-        SavedLand::query()->create([
-           'land_id' => $land,
-           'user_id' => $user,
-        ]);
+        $count = SavedLand::query()->where('user_id', $user)->where('land_id', $land)->first();
 
-        return true;
+        if ($count)
+            $count->delete();
+        else
+            SavedLand::query()->create([
+                'land_id' => $land,
+                'user_id' => $user,
+            ]);
+
+        return response()->json(['ok' => true]);
     }
-
-
 
 
 }

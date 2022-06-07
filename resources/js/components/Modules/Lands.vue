@@ -5,12 +5,13 @@
                 <h1>{{ $t("main.lands.name") }}</h1>
             </div>
         </div>
+
         <div class="row">
             <div class="col-12 " id="fields">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                           aria-controls="home" aria-selected="true">{{ $t("main.lands.first.name") }}</a>
+                           aria-controls="home" aria-selected="true">{{ $t("main.statistics.tanlovdagi") }}</a>
                     </li>
                     <li class="date-list d-sm-none">
                         <div class="date"><router-link :to="{name: 'all'}">{{ $t("seeAll") }}<img src="image/left.svg"
@@ -36,7 +37,8 @@
 
                                     <div class="rectangle-footer">
                                         <div class="rectangle-ga">{{ item.area }} Ga</div>
-                                        <button class="rectangle-save">
+                                        <button class="rectangle-save" :class="saved.includes(item.id) ? 'rectangle-save-2': 'rectangle-save-1' "
+                                                @click.prevent="saveLand(item.id)">
                                             <img src="/image/Bookmark.svg" alt="">
                                         </button>
                                     </div>
@@ -63,8 +65,7 @@ export default {
     data() {
         return {
             data: null,
-            data2: null,
-            data3: null,
+            saved: [],
             bg_photo: [
                 '/foto/photo_2022-01-23_11-08-18.jpg',
                 '/foto/photo_2022-01-23_11-10-35.jpg',
@@ -117,13 +118,44 @@ export default {
             axios.get('/api/front/lands',{params: {status_id:2}})
                 .then(response => {
                     this.data = response.data.data
-
                 })
+        },
+        saveLand(id)
+        {
+            var auth = localStorage.getItem('authcheck')
+
+            if (auth)
+            {
+                var saved = this.saved
+                var index = saved.indexOf(id)
+                if (saved.includes(id))
+                    saved.splice(index,1)
+                else
+                {
+                    axios.get(`/api/save-land/${auth}/${id}`)
+                    .then(response => {
+                        if (response)
+                            console.log(response);
+                    })
+                    saved.push(id)
+                }
+                this.saved  = saved
+
+
+
+            }
+            else
+            {
+                $("#login-modal").modal('show')
+            }
+
         }
+
     },
 
     mounted() {
         this.getData()
+        this.saved = JSON.parse(localStorage.getItem('savedLands')) ?? []
 
     },
 

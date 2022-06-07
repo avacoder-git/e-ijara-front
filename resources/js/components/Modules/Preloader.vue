@@ -1,5 +1,5 @@
 <template>
-    <transition v-if="show">
+    <transition>
         <div class="preloader">
             <div class="logo">
                 <svg xmlns="http://www.w3.org/2000/svg" width="151" height="44" viewBox="0 0 151 44" fill="none">
@@ -63,25 +63,17 @@
 export default {
     name: "Preloader",
 
-    data(){
-        return {
-            show: true
-        }
-    },
-    mounted() {
-        this.showToggle()
-    },
-    methods:{
-        showToggle(){
-            setTimeout(() => {
-                this.show = false
-            }, 1000)
-        }
-
-    }
 }
 </script>
 
 <style scoped>
+.preloader{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 
 </style>

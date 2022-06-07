@@ -11,7 +11,7 @@
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                               aria-controls="home" aria-selected="true">{{ $t("main.lands.first.name") }}</a>
+                               aria-controls="home" aria-selected="true">{{ $t("main.statistics.tanlovdagi") }}</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -34,7 +34,8 @@
 
                                             <div class="rectangle-footer">
                                                 <div class="rectangle-ga">{{ item.area }} Ga</div>
-                                                <button class="rectangle-save">
+                                                <button class="rectangle-save" :class="saved.includes(item.id) ? 'rectangle-save-2': 'rectangle-save-1' "
+                                                        @click.prevent="saveLand(item.id)">
                                                     <img src="/image/Bookmark.svg" alt="">
                                                 </button>
                                             </div>
@@ -73,8 +74,7 @@ export default {
     data() {
         return {
             data: null,
-            data2: null,
-            data3: null,
+            saved: [],
             links: null,
             meta: null,
             isLoading: false,
@@ -141,6 +141,38 @@ export default {
                     this.isLoading = false;
                 });
         },
+
+        saveLand(id)
+        {
+            var auth = localStorage.getItem('authcheck')
+
+            if (auth)
+            {
+                var saved = this.saved
+                var index = saved.indexOf(id)
+                if (saved.includes(id))
+                    saved.splice(index,1)
+                else
+                {
+                    axios.get(`/api/save-land/${auth}/${id}`)
+                        .then(response => {
+                            if (response)
+                                console.log(response);
+                        })
+                    saved.push(id)
+                }
+                this.saved  = saved
+
+
+
+            }
+            else
+            {
+                $("#login-modal").modal('show')
+            }
+
+        }
+
 
     },
 

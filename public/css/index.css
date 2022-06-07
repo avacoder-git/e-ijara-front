@@ -507,6 +507,7 @@
 }
 .section-2 #fields .rectangle .rectangle-img img {
   height: 100%;
+  width: 100%;
 }
 .section-2 #fields .rectangle .rectangle-date {
   font-family: "Raleway";
@@ -571,8 +572,30 @@
   height: 40px;
   border-radius: 50%;
   padding: 10px;
-  background-color: white;
   border: 1px;
+  transition: 0.3s;
+}
+.section-2 #fields .rectangle .rectangle-footer .rectangle-save img {
+  display: block;
+  margin: auto;
+}
+.section-2 #fields .rectangle .rectangle-footer .rectangle-save-1 {
+  background-color: white;
+}
+.section-2 #fields .rectangle .rectangle-footer .rectangle-save-1:hover {
+  background-color: #08705F;
+}
+.section-2 #fields .rectangle .rectangle-footer .rectangle-save-1:hover img {
+  filter: brightness(0) invert(1);
+}
+.section-2 #fields .rectangle .rectangle-footer .rectangle-save-2:hover {
+  background-color: white;
+}
+.section-2 #fields .rectangle .rectangle-footer .rectangle-save-2 {
+  background-color: #08705F;
+}
+.section-2 #fields .rectangle .rectangle-footer .rectangle-save-2 img {
+  filter: brightness(0) invert(1);
 }
 .section-2 .about-video {
   height: 464px;

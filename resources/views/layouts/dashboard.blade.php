@@ -19,7 +19,7 @@
 
     <!-- Scripts -->
     <link href="{{ asset('assets/main.css') }}" rel="stylesheet">
-    <meta name="auth-check" content="{{ (auth()->check()) ? 'true' : 'false' }}">
+    <meta name="auth-check" content="{{ (auth()->check()) ? auth()->user()->id: 'false' }}">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 

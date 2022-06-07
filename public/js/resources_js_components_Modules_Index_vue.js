@@ -161,14 +161,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FieldStatusMap",
   data: function data() {
     return {
       pointedLocation: {
         region: null,
-        count: null,
-        all_area: null
+        count_ajiratilgan: null,
+        all_area_ajiratilgan: null,
+        count_tanlovda: null,
+        all_area_tanlovda: null
       }
     };
   },
@@ -585,13 +595,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Lands",
   data: function data() {
     return {
       data: null,
-      data2: null,
-      data3: null,
+      saved: [],
       bg_photo: ['/foto/photo_2022-01-23_11-08-18.jpg', '/foto/photo_2022-01-23_11-10-35.jpg', '/foto/photo_2022-01-23_11-10-39.jpg', '/foto/photo_2022-01-23_11-10-46.jpg', '/foto/photo_2022-01-23_11-10-51.jpg', '/foto/photo_2022-01-23_11-10-56.jpg', '/foto/photo_2022-01-23_11-11-01.jpg', '/foto/photo_2022-01-23_11-11-16.jpg', '/foto/photo_2022-01-23_11-11-22.jpg', '/foto/photo_2022-01-23_11-07-20.jpg', '/foto/photo_2022-01-23_11-07-36.jpg', '/foto/photo_2022-01-23_11-08-40.jpg', '/foto/photo_2022-01-23_11-07-42.jpg', '/foto/photo_2022-01-23_11-07-47.jpg', '/foto/photo_2022-01-23_11-07-53.jpg', '/foto/photo_2022-01-23_11-07-59.jpg', '/foto/photo_2022-01-23_11-08-04.jpg', '/foto/photo_2022-01-23_11-08-09.jpg', '/foto/photo_2022-01-23_11-08-14.jpg', '/foto/photo_2022-01-23_11-08-25.jpg', '/foto/photo_2022-01-23_11-08-30.jpg', '/foto/photo_2022-01-23_11-08-46.jpg', '/foto/photo_2022-01-23_11-08-51.jpg', '/foto/photo_2022-01-23_11-08-56.jpg', '/foto/photo_2022-01-23_11-09-06.jpg', '/foto/photo_2022-01-23_11-09-13.jpg', '/foto/photo_2022-01-23_11-09-19.jpg', '/foto/photo_2022-01-23_11-09-24.jpg', '/foto/photo_2022-01-23_11-09-29.jpg', '/foto/photo_2022-01-23_11-09-33.jpg', '/foto/photo_2022-01-23_11-09-39.jpg', '/foto/photo_2022-01-23_11-09-43.jpg', '/foto/photo_2022-01-23_11-09-48.jpg', '/foto/photo_2022-01-23_11-09-52.jpg', '/foto/photo_2022-01-23_11-10-00.jpg', '/foto/photo_2022-01-23_11-10-07.jpg', '/foto/photo_2022-01-23_11-10-12.jpg', '/foto/photo_2022-01-23_11-10-16.jpg', '/foto/photo_2022-01-23_11-10-21.jpg', '/foto/photo_2022-01-23_11-10-25.jpg', '/foto/photo_2022-01-23_11-10-30.jpg']
     };
   },
@@ -606,10 +617,30 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.data = response.data.data;
       });
+    },
+    saveLand: function saveLand(id) {
+      var auth = localStorage.getItem('authcheck');
+
+      if (auth) {
+        var saved = this.saved;
+        var index = saved.indexOf(id);
+        if (saved.includes(id)) saved.splice(index, 1);else {
+          axios.get("/api/save-land/".concat(auth, "/").concat(id)).then(function (response) {
+            if (response) console.log(response);
+          });
+          saved.push(id);
+        }
+        this.saved = saved;
+      } else {
+        $("#login-modal").modal('show');
+      }
     }
   },
   mounted: function mounted() {
+    var _JSON$parse;
+
     this.getData();
+    this.saved = (_JSON$parse = JSON.parse(localStorage.getItem('savedLands'))) !== null && _JSON$parse !== void 0 ? _JSON$parse : [];
   },
   updated: function updated() {
     setTimeout(function () {
@@ -23408,7 +23439,7 @@ var render = function () {
                 _vm._v(" "),
                 _c("div", { staticClass: "son" }, [
                   _vm._v(
-                    _vm._s(_vm.pointedLocation.count) +
+                    _vm._s(_vm.pointedLocation.count_ajiratilgan) +
                       " " +
                       _vm._s(_vm.$t("ta"))
                   ),
@@ -23422,7 +23453,35 @@ var render = function () {
                 _vm._v(" "),
                 _c("div", { staticClass: "son" }, [
                   _vm._v(
-                    _vm._s(_vm.pointedLocation.all_area) +
+                    _vm._s(_vm.pointedLocation.all_area_ajiratilgan) +
+                      " " +
+                      _vm._s(_vm.$t("ga"))
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "rectangle-inner" }, [
+                _c("div", { staticClass: "info" }, [
+                  _vm._v(_vm._s(_vm.$t("main.holat.general")) + ":"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "son" }, [
+                  _vm._v(
+                    _vm._s(_vm.pointedLocation.count_tanlovda) +
+                      " " +
+                      _vm._s(_vm.$t("ta"))
+                  ),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "rectangle-inner rectangle-inner-2" }, [
+                _c("div", { staticClass: "info" }, [
+                  _vm._v(_vm._s(_vm.$t("main.holat.free")) + ":"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "son" }, [
+                  _vm._v(
+                    _vm._s(_vm.pointedLocation.all_area_tanlovda) +
                       " " +
                       _vm._s(_vm.$t("ga"))
                   ),
@@ -23474,11 +23533,11 @@ var render = function () {
           _c("tr", [
             _c("th", [_vm._v(_vm._s(_vm.$t("main.holat.region")))]),
             _vm._v(" "),
-            _c("th", [_vm._v(_vm._s(_vm.$t("main.holat.new")))]),
+            _c("th", [_vm._v(_vm._s(_vm.$t("main.holat.ajratilgan")))]),
             _vm._v(" "),
             _c("th", [
               _vm._v(
-                _vm._s(_vm.$t("main.statistics.new")) +
+                _vm._s(_vm.$t("main.statistics.ajratilgan")) +
                   " (" +
                   _vm._s(_vm.$t("ga")) +
                   ")"
@@ -23782,7 +23841,7 @@ var render = function () {
                         "aria-selected": "true",
                       },
                     },
-                    [_vm._v(_vm._s(_vm.$t("main.lands.first.name")))]
+                    [_vm._v(_vm._s(_vm.$t("main.statistics.tanlovdagi")))]
                   ),
                 ]
               ),
@@ -23883,7 +23942,29 @@ var render = function () {
                                   _vm._v(_vm._s(item.area) + " Ga"),
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(0, true),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "rectangle-save",
+                                    class: _vm.saved.includes(item.id)
+                                      ? "rectangle-save-2"
+                                      : "rectangle-save-1",
+                                    on: {
+                                      click: function ($event) {
+                                        $event.preventDefault()
+                                        return _vm.saveLand(item.id)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src: "/image/Bookmark.svg",
+                                        alt: "",
+                                      },
+                                    }),
+                                  ]
+                                ),
                               ]),
                             ]
                           ),
@@ -23911,16 +23992,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "rectangle-save" }, [
-      _c("img", { attrs: { src: "/image/Bookmark.svg", alt: "" } }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

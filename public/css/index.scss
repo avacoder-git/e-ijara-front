@@ -647,6 +647,7 @@ $green: #08705F;
 
                 img {
                     height: 100%;
+                    width: 100%;
                 }
             }
 
@@ -691,8 +692,32 @@ $green: #08705F;
                     height: 40px;
                     border-radius: 50%;
                     padding: 10px;
-                    background-color: white;
                     border: 1px;
+                    transition: 0.3s;
+                    img{
+                        display: block;
+                        margin: auto;
+                    }
+                }
+                .rectangle-save-1{
+                    background-color: white;
+                }
+
+                .rectangle-save-1:hover{
+                    background-color: $green;
+                    img{
+                        filter:  brightness(0) invert(1);
+                    }
+                }
+                .rectangle-save-2:hover{
+                    background-color: white;
+                }
+
+                .rectangle-save-2{
+                    background-color: $green;
+                    img{
+                        filter:  brightness(0) invert(1);
+                    }
                 }
             }
         }
