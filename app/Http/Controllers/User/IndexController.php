@@ -7,6 +7,7 @@ use App\Http\Requests\PurposeStoreRequest;
 use App\Models\Application;
 use App\Models\LandPurposes;
 use App\Models\Regions;
+use App\Models\SavedLand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -68,9 +69,17 @@ class IndexController extends Controller
 
         $application = Application::create($data);
 
-
-
         return response()->json(['success' => true, 'message' => "Successfully created"]);
+    }
+
+    public function saveLand($user, $land)
+    {
+        SavedLand::query()->create([
+           'land_id' => $land,
+           'user_id' => $user,
+        ]);
+
+        return true;
     }
 
 

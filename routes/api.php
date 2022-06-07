@@ -66,7 +66,7 @@ Route::get('/json/districts/{region}', [\App\Http\Controllers\DistrictController
 Route::get('/json/district/{district}', [\App\Http\Controllers\DistrictController::class,'show']);
 Route::post('/application', [IndexController::class, 'submit'])->name('application.submit');
 
-
+Route::get('/save-land/{user}/{land}', [IndexController::class, 'saveLand']);
 
 //Route::middleware('auth')->get('/user', function (Request $request) {
 //    return $request->user();
