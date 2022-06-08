@@ -1,5 +1,5 @@
 <nav class="navbar  w-100 navbar-expand-lg" :class="this.$route.name !== 'index' ? 'not-gradient':'gradient'">
-    <a class="navbar-brand">
+    <a class="navbar-brand" href="/uz">
         <svg xmlns="http://www.w3.org/2000/svg" width="151" height="44" viewBox="0 0 151 44" fill="none">
             <path
                 d="M21.8879 16.2017C23.7746 16.2017 25.3041 14.6633 25.3041 12.7655C25.3041 10.8677 23.7746 9.32922 21.8879 9.32922C20.0012 9.32922 18.4717 10.8677 18.4717 12.7655C18.4717 14.6633 20.0012 16.2017 21.8879 16.2017Z"
