@@ -1,4 +1,4 @@
-<div class="app-sidebar sidebar-shadow">
+<div class="app-sidebar ">
     <div class="app-header__logo">
         <div class="logo-src">E-IJARA</div>
         <div class="header__pane ml-auto">
@@ -24,29 +24,41 @@
     <div class="scrollbar-sidebar">
         <div class="app-sidebar__inner">
             <ul class="vertical-nav-menu">
-                <li class="app-sidebar__heading">Dashboard</li>
                 <li>
                     <a href="{{ route('user.main') }}" @if(Route::currentRouteName() == 'user.main') class="mm-active" @endif>
                         <i class="metismenu-icon pe-7s-box1"></i>
                         Аризаларим
+                        <span></span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('user.application') }}" @if(Route::currentRouteName() == 'user.application') class="mm-active" @endif>
                         <i class="metismenu-icon pe-7s-note2"></i>
                         Ариза топширирш
+                        <span></span>
+
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('user.profile') }}" @if(Route::currentRouteName() == 'user.profile') class="mm-active" @endif>
                         <i class="metismenu-icon pe-7s-user"></i>
                         Малумотларим
+                        <span></span>
+
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('user.report') }}" @if(Route::currentRouteName() == 'user.report') class="mm-active" @endif>
                         <i class="metismenu-icon pe-7s-print"></i>
                         Хисоботлар
+                        <span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('user.logout') }}" @if(Route::currentRouteName() == 'user.report') class="mm-active" @endif>
+                        <i class="metismenu-icon pe-7s-print"></i>
+                        Chiqish
+                        <span></span>
                     </a>
                 </li>
             </ul>

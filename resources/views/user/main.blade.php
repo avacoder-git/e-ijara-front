@@ -6,7 +6,7 @@
         <div class="alert alert-info alert-dismissible fade show" role="alert">{{ session()->get('success') }}</div>
     @endif
 
-    <div class="card shadow">
+    <div class="card">
 
         <div class="card-header">
             Менинг аризиларим
