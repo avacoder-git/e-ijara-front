@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('user.logout') }}" @if(Route::currentRouteName() == 'user.report') class="mm-active" @endif>
+                    <a href="{{ route('user.logout') }}" @if(Route::currentRouteName() == 'user.report') class="mm-active" @endif id="logout"  >
                         <i class="metismenu-icon pe-7s-print"></i>
                         Chiqish
                         <span></span>
