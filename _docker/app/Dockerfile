@@ -19,6 +19,14 @@ RUN apt-get update && apt-get install -y \
 #Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get install -y git-core curl build-essential openssl libssl-dev \
+ && git clone https://github.com/nodejs/node.git \
+ && cd node \
+ && ./configure \
+ && make \
+ && sudo make install
+
+
 #Install Extensions
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install pdo pdo_pgsql pgsql zip exif pcntl
