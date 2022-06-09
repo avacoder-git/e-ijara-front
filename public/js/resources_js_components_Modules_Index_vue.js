@@ -188,6 +188,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/geojson/getCount/".concat(region_id)).then(function (response) {
         _this.pointedLocation = response.data;
+        console.log(_this.pointedLocation);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -610,12 +611,9 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData() {
       var _this = this;
 
-      axios.get('/api/front/lands', {
-        params: {
-          status_id: 2
-        }
-      }).then(function (response) {
+      axios.get('/api/front/lands').then(function (response) {
         _this.data = response.data.data;
+        console.log(_this.data);
       });
     },
     saveLand: function saveLand(id) {
@@ -23462,7 +23460,7 @@ var render = function () {
               _vm._v(" "),
               _c("div", { staticClass: "rectangle-inner" }, [
                 _c("div", { staticClass: "info" }, [
-                  _vm._v(_vm._s(_vm.$t("main.holat.general")) + ":"),
+                  _vm._v(_vm._s(_vm.$t("main.holat.tanlovdagi")) + ":"),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "son" }, [
@@ -23476,7 +23474,7 @@ var render = function () {
               _vm._v(" "),
               _c("div", { staticClass: "rectangle-inner rectangle-inner-2" }, [
                 _c("div", { staticClass: "info" }, [
-                  _vm._v(_vm._s(_vm.$t("main.holat.free")) + ":"),
+                  _vm._v(_vm._s(_vm.$t("main.statistics.tanlovdagi")) + ":"),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "son" }, [
@@ -23533,11 +23531,11 @@ var render = function () {
           _c("tr", [
             _c("th", [_vm._v(_vm._s(_vm.$t("main.holat.region")))]),
             _vm._v(" "),
-            _c("th", [_vm._v(_vm._s(_vm.$t("main.holat.ajratilgan")))]),
+            _c("th", [_vm._v(_vm._s(_vm.$t("main.holat.general")))]),
             _vm._v(" "),
             _c("th", [
               _vm._v(
-                _vm._s(_vm.$t("main.statistics.ajratilgan")) +
+                _vm._s(_vm.$t("main.holat.free")) +
                   " (" +
                   _vm._s(_vm.$t("ga")) +
                   ")"

@@ -115,9 +115,10 @@ export default {
 
     methods: {
         getData() {
-            axios.get('/api/front/lands',{params: {status_id:2}})
+            axios.get('/api/front/lands')
                 .then(response => {
                     this.data = response.data.data
+                    console.log(this.data);
                 })
         },
         saveLand(id)

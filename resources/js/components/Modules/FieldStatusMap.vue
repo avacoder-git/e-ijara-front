@@ -74,11 +74,11 @@
                             <div class="son">{{ pointedLocation.all_area_ajiratilgan }} {{ $t('ga') }}</div>
                         </div>
                         <div class="rectangle-inner">
-                            <div class="info">{{ $t('main.holat.general') }}:</div>
+                            <div class="info">{{ $t('main.holat.tanlovdagi') }}:</div>
                             <div class="son">{{ pointedLocation.count_tanlovda }} {{ $t('ta') }}</div>
                         </div>
                         <div class="rectangle-inner rectangle-inner-2">
-                            <div class="info">{{ $t('main.holat.free') }}:</div>
+                            <div class="info">{{ $t('main.statistics.tanlovdagi') }}:</div>
                             <div class="son">{{ pointedLocation.all_area_tanlovda }} {{ $t('ga') }}</div>
                         </div>
                     </div>
@@ -108,6 +108,7 @@ export default {
                 axios.get(`/api/geojson/getCount/${region_id}`)
                     .then(response => {
                         this.pointedLocation = response.data;
+                        console.log(this.pointedLocation);
                     })
                     .catch(error => {
                         console.log(error);

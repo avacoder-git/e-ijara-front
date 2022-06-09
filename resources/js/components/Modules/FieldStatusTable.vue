@@ -5,8 +5,8 @@
             <thead>
             <tr>
                 <th>{{ $t("main.holat.region") }}</th>
-                <th>{{ $t("main.holat.ajratilgan") }}</th>
-                <th>{{ $t("main.statistics.ajratilgan") }} ({{ $t("ga") }})</th>
+                <th>{{ $t("main.holat.general") }}</th>
+                <th>{{ $t("main.holat.free") }} ({{ $t("ga") }})</th>
                 <th>{{ $t("main.holat.tanlovdagi") }}</th>
                 <th>{{ $t("main.statistics.tanlovdagi") }} ({{ $t("ga") }})</th>
             </tr>

@@ -52,8 +52,25 @@ const routes = [
                     path: "all",
                     component: () => import('./components/Modules/AllLands'),
                     name:'all'
+                },
+                {
+                    path: "dashboard",
+                    component: {
+                        render (c) { return c('router-view')}
+                    },
+                    children: [
+                        {
+                            path: "/",
+                            component: () => import('./components/Auth/Dashboard'),
+                            name:'dashboard'
+                        },
+                        {
+                            path: "/applications",
+                            component: () => import('./components/Auth/Dashboard'),
+                            name:'dashboard.application'
+                        }
+                    ]
                 }
-
 
             ]
 

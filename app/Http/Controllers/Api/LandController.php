@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Front\LandCollection;
 use App\Http\Resources\LandCollectionResource;
 use App\Http\Resources\LandResource;
+use App\Models\LandAuctionLot;
 use App\Models\Regions;
 use App\Models\Land;
 use Carbon\Carbon;
@@ -75,27 +76,11 @@ class LandController extends Controller
 
     public function front(Request $request)
     {
-        $status = $request->status_id;
-        $query = "";
-        $lands = Land::select( 'regnum', 'address', 'area', 'id', 'updated_at');
-        switch ($status)
-        {
-            case 1: $lands = $lands->whereIn('status_id', [2,3]);
-            case 2: $lands = $lands->whereIn('status_id', [2,3]);
-            case 3: $lands = $lands->whereIn('status_id', [2,3]);
-        }
-
-
-
-        $lands = $lands->orderBy("updated_at",'desc')->paginate(16);
-
-
-
+        $lands = Land::select( 'regnum', 'address', 'area', 'id', 'updated_at')->whereIn("status_id",[14, 16, 17]);
+        $lands = $lands->paginate(16);
         return new LandCollection($lands);
 
     }
-
-
 
 
     public function GetCount()
@@ -132,13 +117,16 @@ class LandController extends Controller
         $lands = Land::query()
             ->select('count', 'sum(area)')
             ->where('region_id', $region->regionid);
+        $lands2 = Land::query()
+            ->select('count', 'sum(area)')
+            ->where('region_id', $region->regionid);
 
         return response()->json([
             'region' => $region->nameuz,
-            'count_ajiratilgan' => $lands->count(),
-            'all_area_ajiratilgan' => round($lands->sum('area'), 2),
-            'count_tanlovda' => $lands->count(),
-            'all_area_tanlovda' => round($lands->sum('area'), 2),
+            'count_ajiratilgan' => $lands->where('status_id', 18)->count(),
+            'all_area_ajiratilgan' => round($lands->where('status_id', 18)->sum('area'), 2),
+            'count_tanlovda' => $lands2->whereIn('status_id', [14, 16, 17])->count(),
+            'all_area_tanlovda' => round($lands2->whereIn('status_id', [14, 16, 17])->sum('area'), 2),
         ]);
     }
 

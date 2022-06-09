@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Front;
 
+use App\Models\LandAuctionLot;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,7 +22,8 @@ class LandResource extends JsonResource
             'area' => $this->area,
             'regnum' => $this->regnum,
             'address' => $this->address,
-            'updated_at' => $date->format("d.m.Y")
+            'updated_at' => $date->format("d.m.Y"),
+            'auction_lot' => LandAuctionLot::find($this->id)
         ];
     }
 }

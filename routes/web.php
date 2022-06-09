@@ -35,3 +35,5 @@ require __DIR__.'/auth.php';
 Route::get('/{any?}', function () {
     return view('template.app');
 })->where(['any'=> '[\/\w\.-]*'])->name('home');
+
+

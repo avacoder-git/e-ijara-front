@@ -106,6 +106,11 @@ class Land extends Model
         return $this->belongsTo(LandPurposes::class, 'purpose_id');
     }
 
+    public function auction_lot()
+    {
+        return $this->hasOne(LandAuctionLot::class, 'land_id', 'id');
+    }
+
 
     /**
      * Accessors

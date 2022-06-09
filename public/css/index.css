@@ -438,6 +438,88 @@
   font-style: italic;
 }
 
+.sidebar {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px 0 24px 16px;
+  list-style: none;
+  width: 200px;
+}
+.sidebar a {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 8px 0;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  /* Neutral/Black 1 */
+  color: #0D1012;
+}
+.sidebar .active {
+  color: #08705F;
+}
+.sidebar .active span {
+  width: 3px;
+  height: 34px;
+  background: #08705F;
+  border-radius: 3px 0px 0px 3px;
+}
+.sidebar .leave {
+  color: Red;
+}
+
+.dashboard {
+  gap: 16px;
+  display: flex;
+  padding: 16px;
+}
+.dashboard .card {
+  border-radius: 12px;
+  border: 0;
+  width: 100%;
+  padding: 24px;
+}
+.dashboard .card table th {
+  border: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid #F5F5F5;
+}
+.dashboard .card table th span {
+  border-left: 1px solid #F5F5F5;
+  color: #60676D;
+  font-size: 14px;
+  padding-left: 16px;
+  font-weight: 600;
+  font-family: "Raleway";
+  width: 90%;
+  display: block;
+}
+.dashboard .card table th:first-child span {
+  padding: 0;
+  border: 0;
+}
+.dashboard .card table td {
+  border: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid #F5F5F5;
+}
+.dashboard .card table td span {
+  border-left: 1px solid #F5F5F5;
+  font-size: 16px;
+  font-family: "Raleway";
+  padding-left: 16px;
+  width: 90%;
+  display: block;
+}
+.dashboard .card table td:first-child span {
+  padding: 0;
+  border: 0;
+}
+
 .section-2 {
   margin-top: 96px;
   padding: 0 60px;
