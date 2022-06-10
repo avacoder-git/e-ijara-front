@@ -45,6 +45,6 @@ class OneAuthController extends Controller
         }
 
         // redirect user on successfully authorization
-        return redirect()->route('user.application')->with('status', "Тизимга кирдингиз");
+        return redirect("uz/dashboard/applications/create");
     }
 }

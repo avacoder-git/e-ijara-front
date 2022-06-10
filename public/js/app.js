@@ -7062,17 +7062,29 @@ var routes = [{
       }
     },
     children: [{
-      path: "/",
-      component: function component() {
-        return __webpack_require__.e(/*! import() */ "resources_js_components_Auth_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Auth/Dashboard */ "./resources/js/components/Auth/Dashboard.vue"));
-      },
-      name: 'dashboard'
-    }, {
-      path: "/applications",
+      path: "applications",
       component: function component() {
         return __webpack_require__.e(/*! import() */ "resources_js_components_Auth_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Auth/Dashboard */ "./resources/js/components/Auth/Dashboard.vue"));
       },
       name: 'dashboard.application'
+    }, {
+      path: "applications/create",
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_components_Auth_Create_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Auth/Create */ "./resources/js/components/Auth/Create.vue"));
+      },
+      name: 'dashboard.application.create'
+    }, {
+      path: "applications/map",
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_components_Auth_Map_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Auth/Map */ "./resources/js/components/Auth/Map.vue"));
+      },
+      name: 'dashboard.application.map'
+    }, {
+      path: "info",
+      component: function component() {
+        return __webpack_require__.e(/*! import() */ "resources_js_components_Auth_Info_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Auth/Info */ "./resources/js/components/Auth/Info.vue"));
+      },
+      name: 'dashboard.info'
     }]
   }]
 }];
@@ -77100,6 +77112,11 @@ module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallan
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/amd options */
+/******/ 	(() => {
+/******/ 		__webpack_require__.amdO = {};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
 /******/ 		var deferred = [];
@@ -77174,7 +77191,7 @@ module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallan
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Modules_Index_vue":1,"resources_js_components_Modules_About_vue":1,"resources_js_components_Modules_Docs_vue":1,"resources_js_components_Modules_Manuals_vue":1,"resources_js_components_Modules_FAQ_vue":1,"resources_js_components_Modules_Contact_vue":1,"resources_js_components_Modules_Map_vue":1,"resources_js_components_Modules_AllLands_vue":1,"resources_js_components_Auth_Dashboard_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Modules_Index_vue":1,"resources_js_components_Modules_About_vue":1,"resources_js_components_Modules_Docs_vue":1,"resources_js_components_Modules_Manuals_vue":1,"resources_js_components_Modules_FAQ_vue":1,"resources_js_components_Modules_Contact_vue":1,"resources_js_components_Modules_Map_vue":1,"resources_js_components_Modules_AllLands_vue":1,"resources_js_components_Auth_Dashboard_vue":1,"resources_js_components_Auth_Create_vue":1,"resources_js_components_Auth_Map_vue":1,"resources_js_components_Auth_Info_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

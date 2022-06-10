@@ -60,14 +60,24 @@ const routes = [
                     },
                     children: [
                         {
-                            path: "/",
-                            component: () => import('./components/Auth/Dashboard'),
-                            name:'dashboard'
-                        },
-                        {
-                            path: "/applications",
+                            path: "applications",
                             component: () => import('./components/Auth/Dashboard'),
                             name:'dashboard.application'
+                        },
+                        {
+                            path: "applications/create",
+                            component: () => import('./components/Auth/Create'),
+                            name:'dashboard.application.create'
+                        },
+                        {
+                            path: "applications/map",
+                            component: () => import('./components/Auth/Map'),
+                            name:'dashboard.application.map'
+                        },
+                        {
+                            path: "info",
+                            component: () => import('./components/Auth/Info'),
+                            name:'dashboard.info'
                         }
                     ]
                 }

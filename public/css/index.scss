@@ -591,20 +591,27 @@ $green: #08705F;
 
     a {
         display: flex;
-        justify-content: space-between;
         text-decoration: none;
         padding: 8px 0;
+        align-items: center;
         @include text-18();
-    }
-
-    .active {
-        color: $green;
-
         span {
             width: 3px;
             height: 34px;
-            background: $green;
+            background: transparent;
             border-radius: 3px 0px 0px 3px;
+            transition: 0.2s;
+            margin-left: auto;
+        }
+        img{
+            margin-right: 18px;
+        }
+    }
+    .router-link-exact-active {
+        color: $green;
+
+        span {
+            background: $green;
         }
     }
 

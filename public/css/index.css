@@ -447,9 +447,9 @@
 }
 .sidebar a {
   display: flex;
-  justify-content: space-between;
   text-decoration: none;
   padding: 8px 0;
+  align-items: center;
   font-family: "Raleway";
   font-style: normal;
   font-weight: 500;
@@ -459,14 +459,22 @@
   /* Neutral/Black 1 */
   color: #0D1012;
 }
-.sidebar .active {
-  color: #08705F;
-}
-.sidebar .active span {
+.sidebar a span {
   width: 3px;
   height: 34px;
-  background: #08705F;
+  background: transparent;
   border-radius: 3px 0px 0px 3px;
+  transition: 0.2s;
+  margin-left: auto;
+}
+.sidebar a img {
+  margin-right: 18px;
+}
+.sidebar .router-link-exact-active {
+  color: #08705F;
+}
+.sidebar .router-link-exact-active span {
+  background: #08705F;
 }
 .sidebar .leave {
   color: Red;

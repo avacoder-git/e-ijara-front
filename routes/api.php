@@ -24,6 +24,14 @@ Route::get('/me', function () {
     else
         return response()->json(['user' => null]);
 });
+
+Route::prefix('auth')->group(function (){
+    Route::post("/eri", [\App\Http\Controllers\EriController::class,'auth']);
+});
+
+
+
+
 Route::post('/search', function (Request $request) {
     return LandResource::collection(\App\Models\Land::take(1)->get());
 });

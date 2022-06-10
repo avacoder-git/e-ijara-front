@@ -110,13 +110,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Sidebar",
   methods: {
@@ -366,10 +359,10 @@ var render = function () {
             "router-link",
             {
               staticClass: "sidebar-link",
-              attrs: { to: { name: "dashboard" } },
+              attrs: { to: { name: "dashboard.application" } },
             },
             [
-              _c("i", [_vm._v("ico")]),
+              _c("img", { attrs: { src: "/image/Vector.svg", alt: "" } }),
               _vm._v("\n                Arizalarim\n                "),
               _c("span"),
             ]
@@ -385,10 +378,10 @@ var render = function () {
             "router-link",
             {
               staticClass: "sidebar-link",
-              attrs: { to: { name: "dashboard.application" } },
+              attrs: { to: { name: "dashboard.application.create" } },
             },
             [
-              _c("i", [_vm._v("ico")]),
+              _c("img", { attrs: { src: "/image/Vector.svg", alt: "" } }),
               _vm._v("\n                Ariza topshirish\n                "),
               _c("span"),
             ]
@@ -404,30 +397,11 @@ var render = function () {
             "router-link",
             {
               staticClass: "sidebar-link",
-              attrs: { to: { name: "dashboard" } },
+              attrs: { to: { name: "dashboard.info" } },
             },
             [
-              _c("i", [_vm._v("ico")]),
+              _c("img", { attrs: { src: "/image/Profile.svg", alt: "" } }),
               _vm._v("\n                Ma'lumotlarim\n                "),
-              _c("span"),
-            ]
-          ),
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [
-          _c(
-            "router-link",
-            {
-              staticClass: "sidebar-link",
-              attrs: { to: { name: "dashboard" } },
-            },
-            [
-              _c("i", [_vm._v("ico")]),
-              _vm._v("\n                Xisobotlar\n                "),
               _c("span"),
             ]
           ),
@@ -440,7 +414,9 @@ var render = function () {
           "a",
           { staticClass: "sidebar-link leave", on: { click: _vm.leave } },
           [
-            _c("i", [_vm._v("ico")]),
+            _c("img", {
+              attrs: { src: "/image/Login.svg", height: "100%", alt: "" },
+            }),
             _vm._v("\n                Chiqish\n                "),
             _c("span"),
           ]
