@@ -137,6 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Auth */ "./resources/js/Auth.js");
 //
 //
 //
@@ -172,10 +173,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Sidebar",
+  data: function data() {
+    return {
+      username: this.auth.user
+    };
+  },
   methods: {
-    leave: function leave() {}
+    logout: function logout() {
+      _Auth__WEBPACK_IMPORTED_MODULE_0__["default"].logout();
+    }
   }
 });
 
@@ -644,7 +653,11 @@ var render = function () {
       _c("li", [
         _c(
           "a",
-          { staticClass: "sidebar-link leave", on: { click: _vm.leave } },
+          {
+            staticClass: "sidebar-link leave",
+            attrs: { href: "" },
+            on: { click: _vm.logout },
+          },
           [
             _c("img", {
               attrs: { src: "/image/Login.svg", height: "100%", alt: "" },

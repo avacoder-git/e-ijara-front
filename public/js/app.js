@@ -5421,6 +5421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../public/assets/js/e-imzo-client */ "./public/assets/js/e-imzo-client.js");
+/* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Auth */ "./resources/js/Auth.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 //
@@ -5453,6 +5454,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "EIMZO",
   data: function data() {
@@ -5467,12 +5469,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       errorText: null,
       keys: [],
       selectedKey: null,
-      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      eri_fullname: null,
+      eri_inn: null,
+      eri_pinfl: null,
+      eri_sn: null,
+      eri_data: 'authorization',
+      eri_hash: 'authorization'
     };
   },
   computed: {
     route: function route() {
-      return window.location.origin + "/eri/auth";
+      return window.location.origin + "";
     }
   },
   methods: {
@@ -5502,34 +5510,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     uiLoadKeys: function uiLoadKeys() {
       var dates = {
         convert: function convert(d) {
-          // Converts the date in d to a date-object. The input can be:
-          //   a date object: returned without modification
-          //  an array      : Interpreted as [year,month,day]. NOTE: month is 0-11.
-          //   a number     : Interpreted as number of milliseconds
-          //                  since 1 Jan 1970 (a timestamp)
-          //   a string     : Any format supported by the javascript engine, like
-          //                  "YYYY/MM/DD", "MM/DD/YYYY", "Jan 31 2009" etc.
-          //  an object     : Interpreted as an object with year, month and date
-          //                  attributes.  **NOTE** month is 0-11.
           return d.constructor === Date ? d : d.constructor === Array ? new Date(d[0], d[1], d[2]) : d.constructor === Number ? new Date(d) : d.constructor === String ? new Date(d) : _typeof(d) === "object" ? new Date(d.year, d.month, d.date) : NaN;
         },
         compare: function compare(a, b) {
-          // Compare two dates (could be of any type supported by the convert
-          // function above) and returns:
-          //  -1 : if a < b
-          //   0 : if a = b
-          //   1 : if a > b
-          // NaN : if a or b is an illegal date
-          // NOTE: The code inside isFinite does an assignment (=).
           return isFinite(a = this.convert(a).valueOf()) && isFinite(b = this.convert(b).valueOf()) ? (a > b) - (a < b) : NaN;
         },
         inRange: function inRange(d, start, end) {
-          // Checks if date in d is between dates in start and end.
-          // Returns a boolean or NaN:
-          //    true  : if d is between start and end (inclusive)
-          //    false : if d is before start or after end
-          //    NaN   : if one or more of the dates is illegal.
-          // NOTE: The code inside isFinite does an assignment (=).
           return isFinite(d = this.convert(d).valueOf()) && isFinite(start = this.convert(start).valueOf()) && isFinite(end = this.convert(end).valueOf()) ? start <= d && d <= end : NaN;
         }
       };
@@ -5586,27 +5572,49 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       itm.setAttribute('id', itmkey);
       return itm;
     },
+    sendAuth: function sendAuth() {
+      var _this = this;
+
+      axios.post("/api/auth/eri", {
+        eri_fullname: this.eri_fullname,
+        eri_inn: this.eri_inn,
+        eri_pinfl: this.eri_pinfl,
+        eri_data: this.eri_data,
+        eri_hash: this.eri_hash,
+        eri_sn: this.eri_sn
+      }).then(function (response) {
+        _Auth__WEBPACK_IMPORTED_MODULE_1__["default"].login(response.data.access_token, response.data.user); //set local storage
+
+        $('#login-modal').hide();
+        $('.modal-backdrop').remove();
+        $('.modal-open').removeClass('modal-open');
+
+        _this.$router.push({
+          name: "dashboard.application"
+        });
+      });
+    },
     sign: function sign() {
       var itm = $("#key").val();
 
       if (itm) {
         var id = document.getElementById(itm);
         var vo = JSON.parse(id.getAttribute('vo'));
-        var data = document.getElementById('eri_data').value;
+        var data = this.eri_data;
         var keyId = document.getElementById('keyId').innerHTML;
         var Eimzo = this;
-        console.log(vo);
-        document.getElementById('eri_fullname').value = vo.CN;
-        document.getElementById('eri_inn').value = vo.TIN;
-        document.getElementById('eri_pinfl').value = vo.PINFL;
-        document.getElementById('eri_sn').value = vo.serialNumber;
+        this.eri_fullname = vo.CN;
+        this.eri_inn = vo.TIN;
+        this.eri_pinfl = vo.PINFL;
+        this.eri_sn = vo.serialNumber;
         _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__["default"].loadKey(vo, function (id) {
           document.getElementById('keyId').innerHTML = id;
           _public_assets_js_e_imzo_client__WEBPACK_IMPORTED_MODULE_0__["default"].createPkcs7(id, data, null, function (pkcs7) {
-            document.getElementById('eri_hash').value = pkcs7;
+            Eimzo.eri_hash = pkcs7;
             document.getElementById('eri_sign').setAttribute('disabled', '');
-            document.getElementById('eri_sign').innerText = "Имзолаш (имзоланди)";
-            document.getElementById('eri_form').submit();
+            document.getElementById('eri_sign').innerText = "Имзолаш (имзоланди)"; // document.getElementById('eri_form').submit();
+
+            Eimzo.sendAuth();
           }, function (e, r) {
             Eimzo.isError = true;
 
@@ -6070,6 +6078,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6078,8 +6095,14 @@ __webpack_require__.r(__webpack_exports__);
     return {
       agree: false,
       lang: true,
-      authcheck: false
+      authcheck: false,
+      user: this.auth.user
     };
+  },
+  computed: {
+    userShorted: function userShorted() {
+      return this.user.firstname.charAt(0) + "." + this.user.lastname.charAt(0);
+    }
   },
   components: {
     EIMZO: _Modules_EIMZO__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -6855,6 +6878,71 @@ var EIMZOClient = {
 
 /***/ }),
 
+/***/ "./resources/js/Auth.js":
+/*!******************************!*\
+  !*** ./resources/js/Auth.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+
+
+var Auth = /*#__PURE__*/function () {
+  function Auth() {
+    _classCallCheck(this, Auth);
+
+    this.token = window.localStorage.getItem('token');
+    var userData = window.localStorage.getItem('user');
+    this.user = userData ? JSON.parse(userData) : null;
+
+    if (this.token) {
+      (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.headers.common.Authorization) = 'Bearer ' + this.token;
+    }
+  }
+
+  _createClass(Auth, [{
+    key: "login",
+    value: function login(token, user) {
+      window.localStorage.setItem('token', token);
+      window.localStorage.setItem('user', JSON.stringify(user));
+      (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.headers.common.Authorization) = 'Bearer ' + token;
+      this.token = token;
+      this.user = user;
+    }
+  }, {
+    key: "check",
+    value: function check() {
+      return !!this.token;
+    }
+  }, {
+    key: "logout",
+    value: function logout() {
+      // window.localStorage.clear();
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('user');
+      this.user = null;
+    }
+  }]);
+
+  return Auth;
+}();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new Auth());
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -6863,19 +6951,21 @@ var EIMZOClient = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _components_Index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Index */ "./resources/js/components/Index.vue");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LMap.js");
-/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LTileLayer.js");
-/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LMarker.js");
+/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LMap.js");
+/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LTileLayer.js");
+/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LMarker.js");
 /* harmony import */ var leaflet_dist_leaflet_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! leaflet/dist/leaflet.css */ "./node_modules/leaflet/dist/leaflet.css");
 /* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./i18n */ "./resources/js/i18n.js");
+/* harmony import */ var _Auth_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Auth.js */ "./resources/js/Auth.js");
+
 
 
 
@@ -6888,8 +6978,9 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-vue__WEBPACK_IMPORTED_MODULE_6__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]);
-var app = new vue__WEBPACK_IMPORTED_MODULE_6__["default"]({
+vue__WEBPACK_IMPORTED_MODULE_7__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_8__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_7__["default"].prototype.auth = _Auth_js__WEBPACK_IMPORTED_MODULE_6__["default"];
+var app = new vue__WEBPACK_IMPORTED_MODULE_7__["default"]({
   el: '#app',
   components: {
     'index': _components_Index__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -6898,10 +6989,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_6__["default"]({
   i18n: _i18n__WEBPACK_IMPORTED_MODULE_5__["default"],
   router: _router__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
-vue__WEBPACK_IMPORTED_MODULE_6__["default"].component('v-select', (vue_select__WEBPACK_IMPORTED_MODULE_3___default()));
-vue__WEBPACK_IMPORTED_MODULE_6__["default"].component('l-map', vue2_leaflet__WEBPACK_IMPORTED_MODULE_8__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_6__["default"].component('l-tile-layer', vue2_leaflet__WEBPACK_IMPORTED_MODULE_9__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_6__["default"].component('l-marker', vue2_leaflet__WEBPACK_IMPORTED_MODULE_10__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_7__["default"].component('v-select', (vue_select__WEBPACK_IMPORTED_MODULE_3___default()));
+vue__WEBPACK_IMPORTED_MODULE_7__["default"].component('l-map', vue2_leaflet__WEBPACK_IMPORTED_MODULE_9__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_7__["default"].component('l-tile-layer', vue2_leaflet__WEBPACK_IMPORTED_MODULE_10__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_7__["default"].component('l-marker', vue2_leaflet__WEBPACK_IMPORTED_MODULE_11__["default"]);
 
 /***/ }),
 
@@ -6992,8 +7083,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./i18n */ "./resources/js/i18n.js");
+/* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Auth */ "./resources/js/Auth.js");
+
 
 
 var routes = [{
@@ -7061,6 +7154,9 @@ var routes = [{
         return c('router-view');
       }
     },
+    meta: {
+      requiresAuth: true
+    },
     children: [{
       path: "applications",
       component: function component() {
@@ -7088,7 +7184,7 @@ var routes = [{
     }]
   }]
 }];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
   mode: 'history',
   routes: routes,
   baseURL: "www.uz",
@@ -7111,7 +7207,19 @@ router.beforeEach(function (to, from, next) {
 
 
   _i18n__WEBPACK_IMPORTED_MODULE_0__["default"].locale = language;
-  next();
+
+  if (to.matched.some(function (record) {
+    return record.meta.requiresAuth;
+  })) {
+    if (_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].check()) {
+      next();
+      return;
+    } else {
+      router.push('/uz');
+    }
+  } else {
+    next();
+  }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
@@ -58480,31 +58588,135 @@ var render = function () {
       _c("div", { staticClass: "none", attrs: { hidden: "", id: "keyId" } }),
       _vm._v(" "),
       _c("input", {
-        attrs: { type: "hidden", name: "eri_fullname", id: "eri_fullname" },
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.eri_fullname,
+            expression: "eri_fullname",
+          },
+        ],
+        attrs: { type: "hidden", id: "eri_fullname" },
+        domProps: { value: _vm.eri_fullname },
+        on: {
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.eri_fullname = $event.target.value
+          },
+        },
       }),
       _vm._v(" "),
       _c("input", {
-        attrs: { type: "hidden", name: "eri_inn", id: "eri_inn" },
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.eri_inn,
+            expression: "eri_inn",
+          },
+        ],
+        attrs: { type: "hidden", id: "eri_inn" },
+        domProps: { value: _vm.eri_inn },
+        on: {
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.eri_inn = $event.target.value
+          },
+        },
       }),
       _vm._v(" "),
       _c("input", {
-        attrs: { type: "hidden", name: "eri_pinfl", id: "eri_pinfl" },
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.eri_pinfl,
+            expression: "eri_pinfl",
+          },
+        ],
+        attrs: { type: "hidden", id: "eri_pinfl" },
+        domProps: { value: _vm.eri_pinfl },
+        on: {
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.eri_pinfl = $event.target.value
+          },
+        },
       }),
       _vm._v(" "),
-      _c("input", { attrs: { type: "hidden", name: "eri_sn", id: "eri_sn" } }),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.eri_sn,
+            expression: "eri_sn",
+          },
+        ],
+        attrs: { type: "hidden", id: "eri_sn" },
+        domProps: { value: _vm.eri_sn },
+        on: {
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.eri_sn = $event.target.value
+          },
+        },
+      }),
       _vm._v(" "),
       _c(
         "textarea",
         {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.eri_data,
+              expression: "eri_data",
+            },
+          ],
           staticClass: "none",
-          attrs: { hidden: "", name: "eri_data", id: "eri_data" },
+          attrs: { hidden: "", id: "eri_data" },
+          domProps: { value: _vm.eri_data },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.eri_data = $event.target.value
+            },
+          },
         },
         [_vm._v("authorization")]
       ),
       _vm._v(" "),
       _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.eri_hash,
+            expression: "eri_hash",
+          },
+        ],
         staticClass: "none",
-        attrs: { hidden: "", name: "eri_hash", id: "eri_hash" },
+        attrs: { hidden: "", id: "eri_hash" },
+        domProps: { value: _vm.eri_hash },
+        on: {
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.eri_hash = $event.target.value
+          },
+        },
       }),
       _vm._v(" "),
       _c("div", { staticClass: "text-center" }, [
@@ -59661,24 +59873,39 @@ var render = function () {
                   ),
                 ]),
                 _vm._v(" "),
-                _vm.authcheck
+                _vm.user
+                  ? [
+                      _c(
+                        "li",
+                        { staticClass: "nav-item" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "nav-link login",
+                              attrs: { to: { name: "dashboard.application" } },
+                            },
+                            [_vm._v(_vm._s(_vm.$t("nav.links.cabinet")))]
+                          ),
+                        ],
+                        1
+                      ),
+                    ]
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.user
                   ? [
                       _c("li", { staticClass: "nav-item" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "nav-link login",
-                            attrs: { href: "/dashboard" },
-                          },
-                          [_vm._v(_vm._s(_vm.$t("nav.links.cabinet")))]
-                        ),
+                        _c("button", { staticClass: "nav-link login" }, [
+                          _vm._v(_vm._s(_vm.userShorted)),
+                        ]),
                       ]),
                     ]
                   : _vm._e(),
                 _vm._v(" "),
-                !_vm.authcheck
+                !_vm.user
                   ? [
-                      !_vm.authcheck
+                      !_vm.user
                         ? _c("li", { staticClass: "nav-item" }, [
                             _c(
                               "a",
@@ -59688,6 +59915,7 @@ var render = function () {
                                 attrs: {
                                   "data-toggle": "modal",
                                   "data-target": "#login-modal",
+                                  "data-bt-target": "#login-modal",
                                 },
                               },
                               [_vm._v(_vm._s(_vm.$t("nav.links.login")))]
@@ -59705,60 +59933,62 @@ var render = function () {
       1
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal",
-        attrs: {
-          id: "check-application",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalLabel",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog  modal-dialog-centered",
-            attrs: { role: "document" },
+    _c("div", { staticStyle: { position: "initial" } }, [
+      _c(
+        "div",
+        {
+          staticClass: "modal",
+          attrs: {
+            id: "check-application",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true",
           },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header border-0" }, [
-                _c("h5", { staticClass: "modal-title" }, [
-                  _vm._v(_vm._s(_vm.$t("nav.links.check"))),
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog  modal-dialog-centered",
+              attrs: { role: "document" },
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-header border-0" }, [
+                  _c("h5", { staticClass: "modal-title" }, [
+                    _vm._v(_vm._s(_vm.$t("nav.links.check"))),
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2),
                 ]),
                 _vm._v(" "),
-                _vm._m(2),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body border-0" }, [
-                _c("label", { attrs: { for: "application_id" } }, [
-                  _vm._v(_vm._s(_vm.$t("appnum"))),
+                _c("div", { staticClass: "modal-body border-0" }, [
+                  _c("label", { attrs: { for: "application_id" } }, [
+                    _vm._v(_vm._s(_vm.$t("appnum"))),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control border-0 bg-light shadow-none",
+                    attrs: {
+                      id: "application_id",
+                      type: "text",
+                      placeholder: "0000000",
+                    },
+                  }),
                 ]),
                 _vm._v(" "),
-                _c("input", {
-                  staticClass: "form-control border-0 bg-light shadow-none",
-                  attrs: {
-                    id: "application_id",
-                    type: "text",
-                    placeholder: "0000000",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c("button", { staticClass: "btn btn-check1" }, [
-                  _vm._v(_vm._s(_vm.$t("check"))),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c("button", { staticClass: "btn btn-check1" }, [
+                    _vm._v(_vm._s(_vm.$t("check"))),
+                  ]),
                 ]),
               ]),
-            ]),
-          ]
-        ),
-      ]
-    ),
+            ]
+          ),
+        ]
+      ),
+    ]),
     _vm._v(" "),
     _c(
       "div",

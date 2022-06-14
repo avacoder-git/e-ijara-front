@@ -26,9 +26,12 @@ Route::get('/me', function () {
 });
 
 Route::prefix('auth')->group(function (){
-    Route::post("/eri", [\App\Http\Controllers\EriController::class,'auth']);
+    Route::post("/eri", [\App\Http\Controllers\Api\EriController::class,'auth']);
 });
 
+Route::group(['middleware' => "auth:api"], function (){
+    Route::get('applications', [\App\Http\Controllers\Api\ApplicationController::class, 'index']);
+});
 
 
 

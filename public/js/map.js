@@ -275,8 +275,6 @@ function removeMarkers2() {
         layerGroup.removeLayer(geojson1);
         layerGroup.removeLayer(geojson2);
     }
-
-
 }
 
 function makeDistrictList(regionId) {
@@ -346,8 +344,8 @@ var options = {
             }
         });
         layer.on('click', function (e){
-            var text = "Umumiy maydoni: " + feature.properties.area + " ga <br>"
-            var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Tasdiqlash</button>"
+            var text = "Umumiy maydoni: " + feature.properties.area + " ga <br><br>"
+            var btn = "<br><button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Tasdiqlash</button>"
             var add = "<button class='btn btn-success btn-select' data-id='" + feature.properties.id + "'>Yana tanlash</button>"
             var remove = "<button class='btn btn-danger btn-remove' data-id='" + feature.properties.id + "'>Bekor qilish</button>"
             var btn2 = selectedLands.includes(feature.properties.id) ? remove : add

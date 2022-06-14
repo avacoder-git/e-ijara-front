@@ -218,16 +218,22 @@
                                              data-target="#check-application" href="#">{{ $t('nav.links.check') }}</a>
                     </li>
 
-                    <template v-if="authcheck">
-                        <li class="nav-item"><a href="/dashboard" class="nav-link login">{{
+                    <template v-if="user ">
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'dashboard.application' }" class="nav-link login">{{
                                 $t('nav.links.cabinet')
-                            }}</a></li>
+                            }}</router-link></li>
                     </template>
-                    <template v-if="!authcheck">
+                    <template v-if="user">
+                        <li class="nav-item"><button class="nav-link login">{{
+                            userShorted
+                            }}</button></li>
+                    </template>
+                    <template v-if="!user">
 
-                        <li class="nav-item" v-if="!authcheck"><a class="nav-link login" data-toggle="modal"
-                                                                  style="cursor: pointer"
-                                                                  data-target="#login-modal">{{
+                        <li class="nav-item" v-if="!user"><a class="nav-link login" data-toggle="modal"
+                                                                  style="cursor: pointer" data-target="#login-modal"
+                                                                  data-bt-target="#login-modal">{{
                                 $t('nav.links.login')
                             }}</a></li>
                     </template>
@@ -235,29 +241,32 @@
             </div>
         </nav>
 
-        <div class="modal" id="check-application" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog  modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header border-0">
-                        <h5 class="modal-title">{{ $t('nav.links.check') }}</h5>
+        <div style="position: initial">
+            <div class="modal" id="check-application" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog  modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header border-0">
+                            <h5 class="modal-title">{{ $t('nav.links.check') }}</h5>
 
 
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body border-0">
-                        <label for="application_id">{{ $t("appnum") }}</label>
-                        <input id="application_id" type="text" placeholder="0000000"
-                               class="form-control border-0 bg-light shadow-none">
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-check1">{{ $t("check") }}</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body border-0">
+                            <label for="application_id">{{ $t("appnum") }}</label>
+                            <input id="application_id" type="text" placeholder="0000000"
+                                   class="form-control border-0 bg-light shadow-none">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-check1">{{ $t("check") }}</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="modal" id="login-modal" tabindex="-1" role="dialog"
@@ -338,9 +347,18 @@ export default {
         return {
             agree: false,
             lang: true,
-            authcheck: false
+            authcheck: false,
+            user: this.auth.user
+
         }
     },
+
+    computed:{
+        userShorted(){
+            return this.user.firstname.charAt(0) + "." + this.user.lastname.charAt(0)
+        }
+    },
+
 
     components: {EIMZO, $},
 
@@ -380,6 +398,8 @@ export default {
         $('.close').click(function (){
             $('.modal').modal('hide')
         })
+
+
 
 
         $(function () {

@@ -3525,9 +3525,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LMarker.js");
 /* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LControlZoom.js");
 /* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LGeoJson.js");
+/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LPopup.js");
 /* harmony import */ var _public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../public/assets/js/leaflet-geojson-vt */ "./public/assets/js/leaflet-geojson-vt.js");
 /* harmony import */ var _turf_turf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @turf/turf */ "./node_modules/@turf/turf/dist/es/index.js");
 /* harmony import */ var _public_assets_js_snoopy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../public/assets/js/snoopy */ "./public/assets/js/snoopy.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3604,29 +3617,13 @@ __webpack_require__.r(__webpack_exports__);
       attribution: '<a target="_blank" href="http://www.agro.uz"> www.agro.uz &copy; AgroDigital</a>',
       selectedRegion: null,
       selectedDistrict: null,
-      geojsonStyle: {
-        fillColor: "#ff0000",
-        color: "#000",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 0.7
-      },
+      geojson1: null,
+      geojson2: null,
       options: {
-        zoomControl: false // style: geojsonStyle
-
+        zoomControl: false
       },
-      mapOptions: {
-        style: function style(feature) {
-          return {
-            weight: 4,
-            fill: 'url(/img/land_bg.png)',
-            // opacity: 0.7,
-            // fillColor:'#000',
-            color: '#189987',
-            fillOpacity: 0.5
-          };
-        }
-      }
+      layerGroup: new (leaflet__WEBPACK_IMPORTED_MODULE_2___default().LayerGroup)(),
+      currentLatLng: [0, 0]
     };
   },
   components: {
@@ -3635,7 +3632,8 @@ __webpack_require__.r(__webpack_exports__);
     LMarker: vue2_leaflet__WEBPACK_IMPORTED_MODULE_8__["default"],
     LControlZoom: vue2_leaflet__WEBPACK_IMPORTED_MODULE_9__["default"],
     LGeoJson: vue2_leaflet__WEBPACK_IMPORTED_MODULE_10__["default"],
-    Sidebar: _Sidebar__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Sidebar: _Sidebar__WEBPACK_IMPORTED_MODULE_0__["default"],
+    LPopup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_11__["default"]
   },
   methods: {
     getRegions: function getRegions() {
@@ -3683,8 +3681,14 @@ __webpack_require__.r(__webpack_exports__);
 
         _this3.makeGeoJSON(geojson);
       });
+      this.removeMarkers();
       this.drawLands(this.selectedDistrict);
       this.drawCadLands(this.getCadNum(this.selectedDistrict));
+
+      if (this.geojson1 && this.geojson2) {
+        this.layerGroup.addLayer(this.geojson1);
+        this.layerGroup.addLayer(this.geojson2);
+      }
     },
     getCadNum: function getCadNum(id) {
       var data = this.districts;
@@ -3704,6 +3708,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     makeGeoJSON: function makeGeoJSON(geojson) {
       this.removeMarkers();
+      this.removeMarkers2();
       var geoJSON = leaflet__WEBPACK_IMPORTED_MODULE_2___default().geoJSON(geojson, {
         invert: true,
         onEachFeature: function onEachFeature(feature, layer) {
@@ -3712,6 +3717,12 @@ __webpack_require__.r(__webpack_exports__);
       }).addTo(this.$refs.map.mapObject);
       this.$refs.map.mapObject.fitBounds(geoJSON.getBounds());
     },
+    removeMarkers2: function removeMarkers2() {
+      if (this.geojson1 && this.geojson2) {
+        this.layerGroup.removeLayer(this.geojson1);
+        this.layerGroup.removeLayer(this.geojson2);
+      }
+    },
     removeMarkers: function removeMarkers() {
       var map = this.$refs.map.mapObject;
       map.eachLayer(function (layer) {
@@ -3719,10 +3730,12 @@ __webpack_require__.r(__webpack_exports__);
           map.removeLayer(layer);
         }
       });
+      this.removeMarkers2();
     },
     drawLands: function drawLands(id) {
       var _this5 = this;
 
+      var This = this;
       axios.get("/api/geojson/lands/".concat(id), {
         params: {
           not_null: 0
@@ -3748,19 +3761,16 @@ __webpack_require__.r(__webpack_exports__);
               });
             });
             layer.on('click', function (e) {
-              var text = "Umumiy maydoni: " + feature.properties.area + " ga <br>";
-              var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Tasdiqlash</button>";
-              var add = "<button class='btn btn-success btn-select' data-id='" + feature.properties.id + "'>Yana tanlash</button>";
-              var remove = "<button class='btn btn-danger btn-remove' data-id='" + feature.properties.id + "'>Bekor qilish</button>";
-              var btn2 = add;
               layer.setStyle({
                 fillColor: "#11ff00"
               });
-              var popup = leaflet__WEBPACK_IMPORTED_MODULE_2___default().popup().setLatLng(e.latlng).setContent('<p>Yerni tanladingniz<br />' + text + btn + btn2).openOn(this.map);
+              This.selectedLand = feature;
+              This.currentLatLng = e.latlng;
+              This.$refs.marker.mapObject.openPopup();
             });
           }
         };
-        leaflet__WEBPACK_IMPORTED_MODULE_2___default().geoJson(lands.data, options).addTo(_this5.$refs.map.mapObject);
+        _this5.geojson1 = leaflet__WEBPACK_IMPORTED_MODULE_2___default().geoJson(lands.data, options).addTo(_this5.$refs.map.mapObject);
       });
     },
     drawCadLands: function drawCadLands(prefix) {
@@ -3771,8 +3781,6 @@ __webpack_require__.r(__webpack_exports__);
           prefix: prefix
         }
       }).then(function (response) {
-        _this6.removeMarkers();
-
         var lands = response.data[0];
         var geojsonStyle = {
           fillColor: "#ff0000",
@@ -3787,7 +3795,7 @@ __webpack_require__.r(__webpack_exports__);
           debug: 0,
           style: geojsonStyle
         };
-        if (lands.features !== null) (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__["default"])(lands, options).addTo(_this6.$refs.map.mapObject);
+        if (lands.features !== null) _this6.geojson2 = (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__["default"])(lands, options).addTo(_this6.$refs.map.mapObject);
       });
     },
     drawLandFromParam: function drawLandFromParam($land) {
@@ -3852,6 +3860,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Auth */ "./resources/js/Auth.js");
 //
 //
 //
@@ -3887,10 +3896,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Sidebar",
+  data: function data() {
+    return {
+      username: this.auth.user
+    };
+  },
   methods: {
-    leave: function leave() {}
+    logout: function logout() {
+      _Auth__WEBPACK_IMPORTED_MODULE_0__["default"].logout();
+    }
   }
 });
 
@@ -4650,7 +4667,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vue2leaflet-map[data-v-b4ef9180] {\n    height: 400px;\n}\n.select-2[data-v-b4ef9180] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n}\n.d-flex[data-v-b4ef9180] {\n    gap: 24px;\n}\n.map[data-v-b4ef9180]{\n    margin-top: 16px;\n    border-radius: 12px;\n    overflow: hidden;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vue2leaflet-map[data-v-b4ef9180] {\n    height: 400px;\n}\n.select-2[data-v-b4ef9180] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n}\n.d-flex[data-v-b4ef9180] {\n    gap: 24px;\n}\n.map[data-v-b4ef9180] {\n    margin-top: 16px;\n    border-radius: 12px;\n    overflow: hidden;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -20997,6 +21014,45 @@ var render = function () {
                     _c("l-control-zoom", {
                       attrs: { position: "bottomright" },
                     }),
+                    _vm._v(" "),
+                    _c(
+                      "l-marker",
+                      {
+                        ref: "marker",
+                        attrs: { hidden: "", "lat-lng": _vm.currentLatLng },
+                      },
+                      [
+                        _vm.selectedLand
+                          ? [
+                              _c("l-popup", { ref: "popup" }, [
+                                _vm._v(
+                                  "\n                                Umumiy maydoni: " +
+                                    _vm._s(_vm.selectedLand.properties.area) +
+                                    " ga "
+                                ),
+                                _c("br"),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-primary" },
+                                  [_vm._v("Tasdiqlash")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn btn-success ml-2 btn-select",
+                                  },
+                                  [_vm._v("Yana tanlash")]
+                                ),
+                              ]),
+                            ]
+                          : _vm._e(),
+                      ],
+                      2
+                    ),
                   ],
                   1
                 ),
@@ -21095,7 +21151,11 @@ var render = function () {
       _c("li", [
         _c(
           "a",
-          { staticClass: "sidebar-link leave", on: { click: _vm.leave } },
+          {
+            staticClass: "sidebar-link leave",
+            attrs: { href: "" },
+            on: { click: _vm.logout },
+          },
           [
             _c("img", {
               attrs: { src: "/image/Login.svg", height: "100%", alt: "" },
@@ -21742,6 +21802,328 @@ var script = {
   },
   render: function render() {
     return null;
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    {},
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__vue_component__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LPopup.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LPopup.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          (0,leaflet__WEBPACK_IMPORTED_MODULE_0__.setOptions)(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var Popper = {
+  props: {
+    content: {
+      type: String,
+      default: null,
+      custom: true
+    }
+  },
+  mounted: function mounted () {
+    this.popperOptions = {};
+  },
+  methods: {
+    setContent: function setContent (newVal) {
+      if (this.mapObject && newVal !== null && newVal !== undefined) {
+        this.mapObject.setContent(newVal);
+      }
+    }
+  },
+  render: function render (h) {
+    if (this.$slots.default) {
+      return h('div', this.$slots.default);
+    }
+    return null;
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+/**
+ * Display a popup on the map
+ */
+var script = {
+  name: 'LPopup',
+  mixins: [Popper, Options],
+  props: {
+    latLng: {
+      type: [Object, Array],
+      default: function () { return []; },
+    },
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var options = optionsMerger(this.popperOptions, this);
+    this.mapObject = (0,leaflet__WEBPACK_IMPORTED_MODULE_0__.popup)(options);
+    if (this.latLng !== undefined) {
+      this.mapObject.setLatLng(this.latLng);
+    }
+    leaflet__WEBPACK_IMPORTED_MODULE_0__.DomEvent.on(this.mapObject, this.$listeners);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.mapObject.setContent(this.content || this.$el);
+    this.parentContainer = findRealParent(this.$parent);
+    this.parentContainer.mapObject.bindPopup(this.mapObject);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.parentContainer) {
+      if (this.parentContainer.unbindPopup) {
+        this.parentContainer.unbindPopup();
+      } else if (
+        this.parentContainer.mapObject &&
+        this.parentContainer.mapObject.unbindPopup
+      ) {
+        this.parentContainer.mapObject.unbindPopup();
+      }
+    }
   },
 };
 

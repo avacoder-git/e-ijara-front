@@ -209,8 +209,8 @@ $green: #08705F;
 
 .navbar {
     @include text-14();
-    padding: 26px 60px;
-    position: absolute;
+    padding: 26px 60px!important;
+    position: absolute!important;
     top: 0;
     z-index: 1000;
     background-image: linear-gradient(black, transparent);
@@ -617,6 +617,7 @@ $green: #08705F;
 
     .leave {
         color: Red;
+        cursor: pointer;
     }
 
 }
@@ -659,11 +660,13 @@ $green: #08705F;
                 border: 0;
                 padding: 14px 0;
                 border-bottom: 1px solid #F5F5F5;
+
                 span {
                     border-left: 1px solid #F5F5F5;
                     font-size: 16px;
                     font-family: 'Raleway';
-
+                    font-style: normal;
+                    font-weight: 500;
                     padding-left: 16px;
                     width: 90%;
                     display: block;

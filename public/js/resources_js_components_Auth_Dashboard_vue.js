@@ -60,6 +60,27 @@ __webpack_require__.r(__webpack_exports__);
   name: "Dashboard",
   components: {
     Sidebar: _Sidebar__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      applications: null
+    };
+  },
+  methods: {
+    getApplications: function getApplications() {
+      var _this = this;
+
+      axios('/api/applications', {
+        headers: {
+          Authorization: 'Bearer ' + window.localStorage.getItem('token')
+        }
+      }).then(function (response) {
+        _this.applications = response.data.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getApplications();
   }
 });
 
@@ -75,6 +96,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Auth */ "./resources/js/Auth.js");
 //
 //
 //
@@ -110,10 +132,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Sidebar",
+  data: function data() {
+    return {
+      username: this.auth.user
+    };
+  },
   methods: {
-    leave: function leave() {}
+    logout: function logout() {
+      _Auth__WEBPACK_IMPORTED_MODULE_0__["default"].logout();
+    }
   }
 });
 
@@ -279,7 +309,57 @@ var render = function () {
       _c(
         "div",
         { staticClass: "d-flex dashboard" },
-        [_c("Sidebar"), _vm._v(" "), _vm._m(0)],
+        [
+          _c("Sidebar", { ref: "sidebar" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card" }, [
+            _c("h1", [_vm._v("Mening arizalarim")]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table border-0" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.applications, function (application) {
+                  return _vm.applications
+                    ? _c("tr", [
+                        _c("td", [
+                          _c("span", [
+                            _vm._v(_vm._s(application.region.nameru)),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("span", [
+                            _vm._v(_vm._s(application.district.nameru)),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("span", [
+                            _vm._v(_vm._s(application.land_purpose.name_lat)),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("span", [_vm._v(_vm._s(application.period))]),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("span", [_vm._v(_vm._s(application.updated_at))]),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("span", [_vm._v(_vm._s(application.status.name))]),
+                        ]),
+                      ])
+                    : _vm._e()
+                }),
+                0
+              ),
+            ]),
+          ]),
+        ],
         1
       ),
     ]
@@ -290,41 +370,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("h1", [_vm._v("Mening arizalarim")]),
-      _vm._v(" "),
-      _c("table", { staticClass: "table border-0" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_c("span", [_vm._v("Viloyat")])]),
-            _vm._v(" "),
-            _c("th", [_c("span", [_vm._v("Tuman")])]),
-            _vm._v(" "),
-            _c("th", [_c("span", [_vm._v("Ijara maqsadi")])]),
-            _vm._v(" "),
-            _c("th", [_c("span", [_vm._v("Ijara muddati")])]),
-            _vm._v(" "),
-            _c("th", [_c("span", [_vm._v("Vaqti")])]),
-            _vm._v(" "),
-            _c("th", [_c("span", [_vm._v("Xolati")])]),
-          ]),
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_c("span", [_vm._v("Viloyat")])]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_c("span", [_vm._v("Viloyat")])]),
-            _vm._v(" "),
-            _c("td", [_c("span", [_vm._v("Tuman")])]),
-            _vm._v(" "),
-            _c("td", [_c("span", [_vm._v("Ijara maqsadi")])]),
-            _vm._v(" "),
-            _c("td", [_c("span", [_vm._v("Ijara muddati")])]),
-            _vm._v(" "),
-            _c("td", [_c("span", [_vm._v("Vaqti")])]),
-            _vm._v(" "),
-            _c("td", [_c("span", [_vm._v("Xolati")])]),
-          ]),
-        ]),
+        _c("th", [_c("span", [_vm._v("Tuman")])]),
+        _vm._v(" "),
+        _c("th", [_c("span", [_vm._v("Ijara maqsadi")])]),
+        _vm._v(" "),
+        _c("th", [_c("span", [_vm._v("Ijara muddati")])]),
+        _vm._v(" "),
+        _c("th", [_c("span", [_vm._v("Vaqti")])]),
+        _vm._v(" "),
+        _c("th", [_c("span", [_vm._v("Xolati")])]),
       ]),
     ])
   },
@@ -412,7 +470,11 @@ var render = function () {
       _c("li", [
         _c(
           "a",
-          { staticClass: "sidebar-link leave", on: { click: _vm.leave } },
+          {
+            staticClass: "sidebar-link leave",
+            attrs: { href: "" },
+            on: { click: _vm.logout },
+          },
           [
             _c("img", {
               attrs: { src: "/image/Login.svg", height: "100%", alt: "" },

@@ -188,7 +188,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/geojson/getCount/".concat(region_id)).then(function (response) {
         _this.pointedLocation = response.data;
-        console.log(_this.pointedLocation);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -613,7 +612,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/front/lands').then(function (response) {
         _this.data = response.data.data;
-        console.log(_this.data);
       });
     },
     saveLand: function saveLand(id) {

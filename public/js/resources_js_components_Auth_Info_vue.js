@@ -88,13 +88,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Dashboard",
   components: {
     Sidebar: _Sidebar__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      user: this.auth.user,
+      firstname: this.auth.user.firstname,
+      lastname: this.auth.user.lastname,
+      midname: this.auth.user.midname,
+      passport: this.auth.user.passport,
+      phone: this.auth.user.phone,
+      address: this.auth.user.address,
+      username: this.auth.user.username,
+      email: this.auth.user.email
+    };
+  },
+  computed: {
+    user_type: function user_type() {
+      return this.auth.user.user_type == 'Y' ? 'Yuridik shaxs' : 'Jismoniy shaxs';
+    }
   }
 });
 
@@ -110,6 +126,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Auth */ "./resources/js/Auth.js");
 //
 //
 //
@@ -145,10 +162,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Sidebar",
+  data: function data() {
+    return {
+      username: this.auth.user
+    };
+  },
   methods: {
-    leave: function leave() {}
+    logout: function logout() {
+      _Auth__WEBPACK_IMPORTED_MODULE_0__["default"].logout();
+    }
   }
 });
 
@@ -170,7 +195,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.check-offer[data-v-0e0dcc7a]{\n\n    margin-top: 20px;\n    background: #08705F;\n    border-radius: 8px;\n    color: white;\n    border: 1px solid  #08705F;\n    width: 310px;\n    text-align: center;\n    padding: 12px;\n    transition: 0.2s;\n    text-decoration: none;\n}\n.check-offer[data-v-0e0dcc7a]:hover{\n\n    background: white;\n    color: #08705F;\n}\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.check-offer[data-v-0e0dcc7a] {\n\n    margin-top: 20px;\n    background: #08705F;\n    border-radius: 8px;\n    color: white;\n    border: 1px solid #08705F;\n    width: 310px;\n    text-align: center;\n    padding: 12px;\n    transition: 0.2s;\n    text-decoration: none;\n}\n.check-offer[data-v-0e0dcc7a]:hover {\n\n    background: white;\n    color: #08705F;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -380,133 +405,291 @@ var render = function () {
       _c(
         "div",
         { staticClass: "d-flex dashboard" },
-        [_c("Sidebar"), _vm._v(" "), _vm._m(0)],
+        [
+          _c("Sidebar"),
+          _vm._v(" "),
+          _c("div", { staticClass: "card" }, [
+            _c("h1", [_vm._v("Foydalanuvchi ma'lumotlari")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "position-relative form-group" }, [
+                  _c("label", { attrs: { for: "exampleCity" } }, [
+                    _vm._v("Ismi"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.firstname,
+                        expression: "firstname",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", disabled: "" },
+                    domProps: { value: _vm.firstname },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.firstname = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "position-relative form-group" }, [
+                  _c("label", { attrs: { for: "exampleState" } }, [
+                    _vm._v("Familiyasi"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.lastname,
+                        expression: "lastname",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", disabled: "" },
+                    domProps: { value: _vm.lastname },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.lastname = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "position-relative form-group" }, [
+                  _c("label", { attrs: { for: "exampleZip" } }, [
+                    _vm._v("Otasining ismi"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.midname,
+                        expression: "midname",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", value: "", disabled: "" },
+                    domProps: { value: _vm.midname },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.midname = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "position-relative form-group" }, [
+                  _c("label", { attrs: { for: "exampleCity" } }, [
+                    _vm._v("Passport raqami"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.passport,
+                        expression: "passport",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", value: "", disabled: "" },
+                    domProps: { value: _vm.passport },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.passport = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "position-relative form-group" }, [
+                  _c("label", { attrs: { for: "exampleState" } }, [
+                    _vm._v("Телефон рақами"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.phone,
+                        expression: "phone",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", disabled: "" },
+                    domProps: { value: _vm.phone },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.phone = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "position-relative form-group" }, [
+                  _c("label", { attrs: { for: "exampleZip" } }, [
+                    _vm._v("Манзили"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.address,
+                        expression: "address",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", disabled: "" },
+                    domProps: { value: _vm.address },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.address = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "position-relative form-group" }, [
+                  _c("label", { attrs: { for: "exampleCity" } }, [
+                    _vm._v("Login"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.username,
+                        expression: "username",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "exampleCity", type: "text", disabled: "" },
+                    domProps: { value: _vm.username },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.username = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "position-relative form-group" }, [
+                  _c("label", { attrs: { for: "exampleState" } }, [
+                    _vm._v("Elektron pochta manzili"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.email,
+                        expression: "email",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "exampleState", type: "text", disabled: "" },
+                    domProps: { value: _vm.email },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.email = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-3" }, [
+                _c("div", { staticClass: "position-relative form-group" }, [
+                  _c("label", { attrs: { for: "exampleZip" } }, [
+                    _vm._v("Fuqaro"),
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user_type,
+                        expression: "user_type ",
+                      },
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "exampleZip", type: "text", disabled: "" },
+                    domProps: { value: _vm.user_type },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.user_type = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+            ]),
+          ]),
+        ],
         1
       ),
     ]
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("h1", [_vm._v("Foydalanuvchi ma'lumotlari")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-row" }, [
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "position-relative form-group" }, [
-            _c("label", { attrs: { for: "exampleCity" } }, [_vm._v("Ismi")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "text", value: "", disabled: "" },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "position-relative form-group" }, [
-            _c("label", { attrs: { for: "exampleState" } }, [
-              _vm._v("Familiyasi"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "text", value: "", disabled: "" },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "position-relative form-group" }, [
-            _c("label", { attrs: { for: "exampleZip" } }, [
-              _vm._v("Otasining ismi"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "text", value: "", disabled: "" },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "position-relative form-group" }, [
-            _c("label", { attrs: { for: "exampleCity" } }, [
-              _vm._v("Passport raqami"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "text", value: "", disabled: "" },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "position-relative form-group" }, [
-            _c("label", { attrs: { for: "exampleState" } }, [
-              _vm._v("Телефон рақами"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "text", disabled: "" },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "position-relative form-group" }, [
-            _c("label", { attrs: { for: "exampleZip" } }, [_vm._v("Манзили")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { type: "text", disabled: "" },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "position-relative form-group" }, [
-            _c("label", { attrs: { for: "exampleCity" } }, [_vm._v("Login")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { id: "exampleCity", type: "text", disabled: "" },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "position-relative form-group" }, [
-            _c("label", { attrs: { for: "exampleState" } }, [
-              _vm._v("Elektron pochta manzili"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { id: "exampleState", type: "text", disabled: "" },
-            }),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("div", { staticClass: "position-relative form-group" }, [
-            _c("label", { attrs: { for: "exampleZip" } }, [_vm._v("Fuqaro")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: { id: "exampleZip", type: "text", disabled: "" },
-            }),
-          ]),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -590,7 +773,11 @@ var render = function () {
       _c("li", [
         _c(
           "a",
-          { staticClass: "sidebar-link leave", on: { click: _vm.leave } },
+          {
+            staticClass: "sidebar-link leave",
+            attrs: { href: "" },
+            on: { click: _vm.logout },
+          },
           [
             _c("img", {
               attrs: { src: "/image/Login.svg", height: "100%", alt: "" },

@@ -7,12 +7,13 @@ import vSelect from 'vue-select'
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 import i18n from './i18n'
+import Auth from './Auth.js';
 
 require('./bootstrap');
 
 Vue.use(VueRouter)
 
-
+Vue.prototype.auth = Auth;
 
 const app = new Vue({
     el: '#app',

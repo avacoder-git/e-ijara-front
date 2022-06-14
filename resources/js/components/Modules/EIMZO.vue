@@ -13,12 +13,12 @@
 
         <div hidden id="keyId" class="none"></div>
 
-        <input type="hidden" name="eri_fullname" id="eri_fullname">
-        <input type="hidden" name="eri_inn" id="eri_inn">
-        <input type="hidden" name="eri_pinfl" id="eri_pinfl">
-        <input type="hidden" name="eri_sn" id="eri_sn">
-        <textarea hidden class="none" name="eri_data" id="eri_data">authorization</textarea>
-        <textarea hidden class="none" name="eri_hash" id="eri_hash"></textarea>
+        <input type="hidden" v-model="eri_fullname" id="eri_fullname">
+        <input type="hidden" v-model="eri_inn" id="eri_inn">
+        <input type="hidden" v-model="eri_pinfl" id="eri_pinfl">
+        <input type="hidden" v-model="eri_sn" id="eri_sn">
+        <textarea hidden class="none" v-model="eri_data" id="eri_data">authorization</textarea>
+        <textarea hidden class="none" v-model="eri_hash" id="eri_hash"></textarea>
 
         <div class="text-center">
             <button class="btn btn-check1" id="eri_sign" @click.prevent="sign" type="button">Kirish</button>
@@ -30,8 +30,7 @@
 <script>
 
 import EIMZOClient from "../../../../public/assets/js/e-imzo-client";
-
-
+import Auth from "../../Auth";
 export default {
     name: "EIMZO",
     data() {
@@ -47,17 +46,22 @@ export default {
             keys: [],
             selectedKey: null,
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            eri_fullname: null,
+            eri_inn: null,
+            eri_pinfl: null,
+            eri_sn: null,
+            eri_data: 'authorization',
+            eri_hash: 'authorization',
 
         }
     },
 
     computed:
-    {
-        route()
         {
-            return window.location.origin + "/eri/auth"
-        }
-    },
+            route() {
+                return window.location.origin + ""
+            }
+        },
 
     methods: {
         AppLoad() {
@@ -81,7 +85,7 @@ export default {
                         Eimzo.uiLoadKeys()
                     }, function (e, r) {
                         Eimzo.isError = true
-                        if(r)
+                        if (r)
                             Eimzo.errorText = r
                         else
                             Eimzo.errorText = Eimzo.errorCAPIWS
@@ -99,15 +103,6 @@ export default {
         uiLoadKeys() {
             var dates = {
                 convert: function (d) {
-                    // Converts the date in d to a date-object. The input can be:
-                    //   a date object: returned without modification
-                    //  an array      : Interpreted as [year,month,day]. NOTE: month is 0-11.
-                    //   a number     : Interpreted as number of milliseconds
-                    //                  since 1 Jan 1970 (a timestamp)
-                    //   a string     : Any format supported by the javascript engine, like
-                    //                  "YYYY/MM/DD", "MM/DD/YYYY", "Jan 31 2009" etc.
-                    //  an object     : Interpreted as an object with year, month and date
-                    //                  attributes.  **NOTE** month is 0-11.
                     return (
                         d.constructor === Date ? d :
                             d.constructor === Array ? new Date(d[0], d[1], d[2]) :
@@ -118,13 +113,6 @@ export default {
                     );
                 },
                 compare: function (a, b) {
-                    // Compare two dates (could be of any type supported by the convert
-                    // function above) and returns:
-                    //  -1 : if a < b
-                    //   0 : if a = b
-                    //   1 : if a > b
-                    // NaN : if a or b is an illegal date
-                    // NOTE: The code inside isFinite does an assignment (=).
                     return (
                         isFinite(a = this.convert(a).valueOf()) &&
                         isFinite(b = this.convert(b).valueOf()) ?
@@ -133,12 +121,6 @@ export default {
                     );
                 },
                 inRange: function (d, start, end) {
-                    // Checks if date in d is between dates in start and end.
-                    // Returns a boolean or NaN:
-                    //    true  : if d is between start and end (inclusive)
-                    //    false : if d is before start or after end
-                    //    NaN   : if one or more of the dates is illegal.
-                    // NOTE: The code inside isFinite does an assignment (=).
                     return (
                         isFinite(d = this.convert(d).valueOf()) &&
                         isFinite(start = this.convert(start).valueOf()) &&
@@ -181,7 +163,7 @@ export default {
                 }
             }, function (e, r) {
                 Eimzo.isError = true
-                if(r)
+                if (r)
                     Eimzo.errorText = r
                 else
                     console.log(e)
@@ -205,28 +187,47 @@ export default {
             itm.setAttribute('id', itmkey);
             return itm;
         },
+        sendAuth() {
+            axios.post("/api/auth/eri", {
+                eri_fullname: this.eri_fullname,
+                eri_inn: this.eri_inn,
+                eri_pinfl: this.eri_pinfl,
+                eri_data: this.eri_data,
+                eri_hash: this.eri_hash,
+                eri_sn: this.eri_sn
+            })
+                .then(response => {
+                    Auth.login(response.data.access_token, response.data.user); //set local storage
+                    $('#login-modal').hide()
+                    $('.modal-backdrop').remove()
+                    $('.modal-open').removeClass('modal-open')
+                    this.$router.push({name: "dashboard.application"});
+                })
+        },
+
+
         sign() {
             var itm = $("#key").val()
             if (itm) {
                 var id = document.getElementById(itm);
                 var vo = JSON.parse(id.getAttribute('vo'));
-                var data = document.getElementById('eri_data').value;
+                var data = this.eri_data;
                 var keyId = document.getElementById('keyId').innerHTML;
                 var Eimzo = this
-                console.log(vo);
 
-                document.getElementById('eri_fullname').value = vo.CN;
-                document.getElementById('eri_inn').value = vo.TIN;
-                document.getElementById('eri_pinfl').value = vo.PINFL;
-                document.getElementById('eri_sn').value = vo.serialNumber;
+                this.eri_fullname = vo.CN;
+                this.eri_inn = vo.TIN;
+                this.eri_pinfl = vo.PINFL;
+                this.eri_sn = vo.serialNumber;
 
                 EIMZOClient.loadKey(vo, function (id) {
                     document.getElementById('keyId').innerHTML = id;
                     EIMZOClient.createPkcs7(id, data, null, function (pkcs7) {
-                        document.getElementById('eri_hash').value = pkcs7;
+                        Eimzo.eri_hash = pkcs7;
                         document.getElementById('eri_sign').setAttribute('disabled', '');
                         document.getElementById('eri_sign').innerText = "Имзолаш (имзоланди)";
-                        document.getElementById('eri_form').submit();
+                        // document.getElementById('eri_form').submit();
+                        Eimzo.sendAuth()
                     }, function (e, r) {
                         Eimzo.isError = true
                         if (r) {
@@ -246,7 +247,7 @@ export default {
                     Eimzo.isError = true
                     if (r) {
                         if (r.indexOf("BadPaddingException") != -1) {
-                            Eimzo.errorText  = errorWrongPassword
+                            Eimzo.errorText = errorWrongPassword
                         } else {
                             Eimzo.errorText = r
                         }

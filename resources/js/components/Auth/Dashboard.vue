@@ -2,7 +2,7 @@
     <div class="bg-gray-100" style="padding-top: 100px">
 
         <div class="d-flex dashboard">
-            <Sidebar></Sidebar>
+            <Sidebar ref="sidebar"></Sidebar>
 
             <div class="card">
 
@@ -21,13 +21,13 @@
                     </thead>
 
                     <tbody>
-                    <tr>
-                        <td><span>Viloyat</span></td>
-                        <td><span>Tuman</span></td>
-                        <td><span>Ijara maqsadi</span></td>
-                        <td><span>Ijara muddati</span></td>
-                        <td><span>Vaqti</span></td>
-                        <td><span>Xolati</span></td>
+                    <tr v-if="applications" v-for="application in applications">
+                        <td><span>{{ application.region.nameru }}</span></td>
+                        <td><span>{{ application.district.nameru }}</span></td>
+                        <td><span>{{ application.land_purpose.name_lat }}</span></td>
+                        <td><span>{{ application.period }}</span></td>
+                        <td><span>{{ application.updated_at }}</span></td>
+                        <td><span>{{ application.status.name }}</span></td>
                     </tr>
                     </tbody>
                 </table>
@@ -49,6 +49,31 @@ import Sidebar from "../Sidebar";
 export default {
     name: "Dashboard",
     components: {Sidebar},
+
+    data(){
+        return {
+            applications: null
+        }
+    },
+
+    methods:{
+
+        getApplications(){
+            axios('/api/applications',{
+                headers: {
+                    Authorization: 'Bearer ' + window.localStorage.getItem('token'),
+                }
+            }).then(response =>{
+                this.applications = response.data.data
+            })
+        }
+
+    },
+
+
+    mounted() {
+        this.getApplications()
+    }
 }
 </script>
 

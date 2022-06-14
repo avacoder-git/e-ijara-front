@@ -23,7 +23,7 @@
                 </router-link>
             </li>
             <li>
-                <a @click="leave" class="sidebar-link leave">
+                <a href="" @click="logout" class="sidebar-link leave">
                     <img src="/image/Login.svg" height="100%" alt="">
                     Chiqish
                     <span></span>
@@ -34,13 +34,20 @@
 </template>
 
 <script>
+import Auth from "../Auth";
 export default {
     name: "Sidebar",
 
+    data(){
+        return {
+            username: this.auth.user
+        }
+    },
+
 
     methods:{
-        leave(){
-
+        logout(){
+            Auth.logout()
         }
     }
 

@@ -118,7 +118,6 @@ export default {
             axios.get('/api/front/lands')
                 .then(response => {
                     this.data = response.data.data
-                    console.log(this.data);
                 })
         },
         saveLand(id)

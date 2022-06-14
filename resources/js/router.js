@@ -1,5 +1,7 @@
 import VueRouter from 'vue-router'
 import i18n from "./i18n";
+import Auth from "./Auth"
+
 const routes = [
     {
 
@@ -58,6 +60,10 @@ const routes = [
                     component: {
                         render (c) { return c('router-view')}
                     },
+                    meta: {
+                        requiresAuth: true
+                    },
+
                     children: [
                         {
                             path: "applications",
@@ -109,7 +115,16 @@ router.beforeEach((to, from, next) => {
 
     // set the current language for i18n.
     i18n.locale = language
-    next()
+    if (to.matched.some(record => record.meta.requiresAuth) ) {
+        if (Auth.check()) {
+            next();
+            return;
+        } else {
+            router.push('/uz');
+        }
+    } else {
+        next();
+    }
 })
 
 

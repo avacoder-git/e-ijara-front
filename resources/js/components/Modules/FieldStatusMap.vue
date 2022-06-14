@@ -108,7 +108,6 @@ export default {
                 axios.get(`/api/geojson/getCount/${region_id}`)
                     .then(response => {
                         this.pointedLocation = response.data;
-                        console.log(this.pointedLocation);
                     })
                     .catch(error => {
                         console.log(error);

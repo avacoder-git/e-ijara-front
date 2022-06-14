@@ -36,6 +36,18 @@
                                       :attribution="attribution"></l-tile-layer>
                         <l-control-zoom position="bottomright"></l-control-zoom>
 
+                        <l-marker hidden ref="marker" :lat-lng="currentLatLng">
+                            <template v-if="selectedLand">
+                                <l-popup ref="popup">
+                                    Umumiy maydoni: {{ selectedLand.properties.area }} ga <br><br>
+                                    <button class='btn btn-primary'>Tasdiqlash</button>
+                                    <button class='btn btn-success ml-2 btn-select'>Yana tanlash</button>
+                                    <!--                                <button class='btn btn-danger ml-2 btn-remove' data-id='" + feature.properties.id + "'>Bekor qilish</button>-->
+                                </l-popup>
+                            </template>
+
+                        </l-marker>
+
                     </l-map>
                 </div>
             </div>
@@ -53,7 +65,7 @@
 import Sidebar from "../Sidebar";
 import 'vue-select/dist/vue-select.css';
 import L from 'leaflet';
-import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson, LGridLayer} from 'vue2-leaflet';
+import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson, LGridLayer, LPopup} from 'vue2-leaflet';
 import vt from "../../../../public/assets/js/leaflet-geojson-vt"
 import turf from "@turf/turf"
 import snoopy from "../../../../public/assets/js/snoopy";
@@ -64,8 +76,8 @@ export default {
     data() {
         return {
             map: null,
-            selectedLands : [],
-            selectedLandAreas : 0,
+            selectedLands: [],
+            selectedLandAreas: 0,
             regions: [],
             districts: [],
             lands: [],
@@ -79,31 +91,13 @@ export default {
                 '<a target="_blank" href="http://www.agro.uz"> www.agro.uz &copy; AgroDigital</a>',
             selectedRegion: null,
             selectedDistrict: null,
-            geojsonStyle: {
-                fillColor: "#ff0000",
-                color: "#000",
-                weight: 1,
-                opacity: 1,
-                fillOpacity: 0.7,
-            },
+            geojson1: null,
+            geojson2: null,
             options: {
                 zoomControl: false,
-
-                // style: geojsonStyle
             },
-            mapOptions: {
-                style: function style(feature) {
-                    return {
-                        weight: 4,
-                        fill: 'url(/img/land_bg.png)',
-                        // opacity: 0.7,
-                        // fillColor:'#000',
-                        color: '#189987',
-                        fillOpacity: 0.5
-                    };
-                },
-            }
-
+            layerGroup: new L.LayerGroup(),
+            currentLatLng: [0, 0]
         };
     },
     components: {
@@ -112,7 +106,8 @@ export default {
         LMarker,
         LControlZoom,
         LGeoJson,
-        Sidebar
+        Sidebar,
+        LPopup
     },
     methods: {
         getRegions() {
@@ -156,9 +151,13 @@ export default {
                     var geojson = response.data
                     this.makeGeoJSON(geojson)
                 })
+            this.removeMarkers()
             this.drawLands(this.selectedDistrict)
             this.drawCadLands(this.getCadNum(this.selectedDistrict))
-
+            if (this.geojson1 && this.geojson2) {
+                this.layerGroup.addLayer(this.geojson1);
+                this.layerGroup.addLayer(this.geojson2);
+            }
         },
 
         getCadNum(id) {
@@ -178,6 +177,7 @@ export default {
         },
         makeGeoJSON(geojson) {
             this.removeMarkers()
+            this.removeMarkers2()
             let geoJSON = L.geoJSON(geojson,
                 {
                     invert: true,
@@ -188,6 +188,12 @@ export default {
 
             this.$refs.map.mapObject.fitBounds(geoJSON.getBounds());
         },
+        removeMarkers2() {
+            if (this.geojson1 && this.geojson2) {
+                this.layerGroup.removeLayer(this.geojson1);
+                this.layerGroup.removeLayer(this.geojson2);
+            }
+        },
         removeMarkers() {
             var map = this.$refs.map.mapObject
             map.eachLayer(function (layer) {
@@ -196,9 +202,11 @@ export default {
                 }
 
             });
+            this.removeMarkers2()
 
         },
         drawLands(id) {
+            var This = this
             axios.get(`/api/geojson/lands/${id}`, {params: {not_null: 0}})
                 .then(response => {
                     var lands = response.data
@@ -218,38 +226,31 @@ export default {
                         style: geojsonStyle,
                         onEachFeature: function (feature, layer) {
 
-                            layer.on('mouseover', function (e){
-                                layer.setStyle( {
+                            layer.on('mouseover', function (e) {
+                                layer.setStyle({
                                     color: '#2262CC'
                                 });
                             })
-                            layer.on('click', function (e){
-                                var text = "Umumiy maydoni: " + feature.properties.area + " ga <br>"
-                                var btn = "<button class='btn btn-primary' data-toggle='modal' data-target='#values_modal'>Tasdiqlash</button>"
-                                var add = "<button class='btn btn-success btn-select' data-id='" + feature.properties.id + "'>Yana tanlash</button>"
-                                var remove = "<button class='btn btn-danger btn-remove' data-id='" + feature.properties.id + "'>Bekor qilish</button>"
-                                var btn2 =  add
+                            layer.on('click', function (e) {
                                 layer.setStyle({
                                     fillColor: "#11ff00",
                                 });
-
-                                var popup = L.popup()
-                                    .setLatLng(e.latlng)
-                                    .setContent('<p>Yerni tanladingniz<br />' + text + btn + btn2)
-                                    .openOn(this.map);
+                                This.selectedLand = feature
+                                This.currentLatLng = e.latlng
+                                This.$refs.marker.mapObject.openPopup()
 
                             })
 
                         }
                     };
-                   L.geoJson(lands.data,options).addTo(this.$refs.map.mapObject);
+                    this.geojson1 = L.geoJson(lands.data, options).addTo(this.$refs.map.mapObject);
                 })
 
         },
+
         drawCadLands(prefix) {
             axios.get(`https://api.agro.uz/gis_bridge/eijara`, {params: {prefix}})
                 .then(response => {
-                    this.removeMarkers()
                     var lands = response.data[0]
 
                     var geojsonStyle = {
@@ -264,12 +265,11 @@ export default {
                         maxZoom: 20,
                         tolerance: 3,
                         debug: 0,
-                        style: geojsonStyle
+                        style: geojsonStyle,
+
                     };
                     if (lands.features !== null)
-                        vt(lands, options).addTo(this.$refs.map.mapObject);
-
-
+                        this.geojson2 = vt(lands, options).addTo(this.$refs.map.mapObject);
                 })
 
         },
@@ -343,7 +343,7 @@ export default {
     gap: 24px;
 }
 
-.map{
+.map {
     margin-top: 16px;
     border-radius: 12px;
     overflow: hidden;
