@@ -6,24 +6,32 @@
 
             <div class="col">
                 <div class="card">
-                    <h1>Ochiq xarita</h1>
-                    <div class="d-flex mt-3">
-                        <v-select
-                            @change="setDistricts"
-                            v-model="selectedRegion"
-                            @input="setDistricts"
-                            :reduce="(option) => option.regioncode"
-                            class="select-2"
-                            label="nameuz"
-                            :options="regions"></v-select>
-                        <v-select
-                            v-model="selectedDistrict"
-                            @change="setMap()"
-                            @input="setMap"
-                            class="select-2"
-                            :reduce="(option) => option.id"
-                            label="nameuz"
-                            :options="districts"></v-select>
+                    <div class="row">
+                        <div class="col-6">
+                            <h1>Ochiq xarita</h1>
+                            <div class="d-flex  mt-2">
+                                <v-select
+                                    @change="setDistricts"
+                                    v-model="selectedRegion"
+                                    @input="setDistricts"
+                                    :reduce="(option) => option.regioncode"
+                                    class="select-2"
+                                    label="nameuz"
+                                    :options="regions"></v-select>
+                                <v-select
+                                    v-model="selectedDistrict"
+                                    @change="setMap()"
+                                    @input="setMap"
+                                    class="select-2"
+                                    :reduce="(option) => option.id"
+                                    label="nameuz"
+                                    :options="districts"></v-select>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-4">
+                            <h5><b>Tanlangan yerlar soni</b>: {{ selectedLands.length }} ta</h5>
+                            <h5><b>Tanlangan yerlar maydoni</b>: {{ selectedLandAreas }} ga</h5>
+                        </div>
                     </div>
                 </div>
                 <div class="map">
@@ -36,13 +44,23 @@
                                       :attribution="attribution"></l-tile-layer>
                         <l-control-zoom position="bottomright"></l-control-zoom>
 
-                        <l-marker hidden ref="marker" :lat-lng="currentLatLng">
-                            <template v-if="selectedLand">
+                        <l-marker ref="marker" :lat-lng="currentLatLng">
+                            <l-icon :icon-url="customIcon"></l-icon>
+
+                            <template v-if="selectedLand && layer">
                                 <l-popup ref="popup">
                                     Umumiy maydoni: {{ selectedLand.properties.area }} ga <br><br>
                                     <button class='btn btn-primary'>Tasdiqlash</button>
-                                    <button class='btn btn-success ml-2 btn-select'>Yana tanlash</button>
-                                    <!--                                <button class='btn btn-danger ml-2 btn-remove' data-id='" + feature.properties.id + "'>Bekor qilish</button>-->
+                                    <template v-if="selectedLands.includes(selectedLand.properties.id)">
+                                        <button class='btn btn-danger ml-1 btn-remove'
+                                                @click="removeLand(selectedLand, layer)">Bekor qilish
+                                        </button>
+                                    </template>
+                                    <template v-if="!selectedLands.includes(selectedLand.properties.id)">
+                                        <button @click="selectLand(selectedLand, layer)"
+                                                class='btn btn-success ml-1 btn-select'>Yana tanlash
+                                        </button>
+                                    </template>
                                 </l-popup>
                             </template>
 
@@ -65,10 +83,13 @@
 import Sidebar from "../Sidebar";
 import 'vue-select/dist/vue-select.css';
 import L from 'leaflet';
-import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson, LGridLayer, LPopup} from 'vue2-leaflet';
+import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson, LPopup, LIcon} from 'vue2-leaflet';
 import vt from "../../../../public/assets/js/leaflet-geojson-vt"
-import turf from "@turf/turf"
 import snoopy from "../../../../public/assets/js/snoopy";
+import {Icon} from 'leaflet';
+
+delete Icon.Default.prototype._getIconUrl;
+import customIcon from "../../../../public/image/marker.png"
 
 
 export default {
@@ -97,7 +118,17 @@ export default {
                 zoomControl: false,
             },
             layerGroup: new L.LayerGroup(),
-            currentLatLng: [0, 0]
+            currentLatLng: [0, 0],
+            customIcon,
+            layer: null,
+            geojsonStyle: {
+                fillColor: "#0090ff",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.7,
+            },
+
         };
     },
     components: {
@@ -107,7 +138,8 @@ export default {
         LControlZoom,
         LGeoJson,
         Sidebar,
-        LPopup
+        LPopup,
+        LIcon
     },
     methods: {
         getRegions() {
@@ -130,8 +162,6 @@ export default {
 
                 })
         },
-
-
         getDistricts(regioncode) {
             axios.get(`/api/json/districts/${regioncode}`)
                 .then(response => {
@@ -159,7 +189,6 @@ export default {
                 this.layerGroup.addLayer(this.geojson2);
             }
         },
-
         getCadNum(id) {
             var data = this.districts
             for (let i = 0; i < data.length; i++)
@@ -167,7 +196,6 @@ export default {
                     return data[i].cad_num
 
         },
-
         getRegionGeoJSON($region) {
             axios.get(`/api/json/regions/${$region}`)
                 .then(response => {
@@ -211,19 +239,11 @@ export default {
                 .then(response => {
                     var lands = response.data
 
-                    var geojsonStyle = {
-                        fillColor: "#0090ff",
-                        color: "#000",
-                        weight: 1,
-                        opacity: 1,
-                        fillOpacity: 0.7,
-                    };
-
                     var options = {
                         maxZoom: 20,
                         tolerance: 3,
                         debug: 0,
-                        style: geojsonStyle,
+                        style: this.geojsonStyle,
                         onEachFeature: function (feature, layer) {
 
                             layer.on('mouseover', function (e) {
@@ -231,14 +251,20 @@ export default {
                                     color: '#2262CC'
                                 });
                             })
+                            layer.on("mouseout", function (e) {
+                                if (!This.selectedLands.includes(feature.properties.id))
+                                {
+                                    layer.setStyle(This.geojsonStyle);
+                                }
+                            });
                             layer.on('click', function (e) {
                                 layer.setStyle({
                                     fillColor: "#11ff00",
                                 });
+                                This.layer = layer
                                 This.selectedLand = feature
                                 This.currentLatLng = e.latlng
                                 This.$refs.marker.mapObject.openPopup()
-
                             })
 
                         }
@@ -247,7 +273,6 @@ export default {
                 })
 
         },
-
         drawCadLands(prefix) {
             axios.get(`https://api.agro.uz/gis_bridge/eijara`, {params: {prefix}})
                 .then(response => {
@@ -279,19 +304,12 @@ export default {
                     response
                     this.removeMarkers()
                     var lands = response.data
-                    var geojsonStyle = {
-                        fillColor: "#0088ff",
-                        color: "#000",
-                        weight: 1,
-                        opacity: 1,
-                        fillOpacity: 0.7,
-                    };
 
                     var options = {
                         maxZoom: 20,
                         tolerance: 3,
                         debug: 0,
-                        style: geojsonStyle
+                        style: this.geojsonStyle
                     };
 
                     var geojson = {
@@ -310,8 +328,24 @@ export default {
 
                 })
 
-        }
+        },
+        selectLand(feature) {
+            if (!this.selectedLands.includes(feature.properties.id)) {
+                this.$refs.map.mapObject.closePopup();
+                this.selectedLands.push(feature.properties.id)
+                this.selectedLandAreas += parseInt(feature.properties.area)
+            }
+        },
+        removeLand(feature, layer) {
+            if (this.selectedLands.includes(feature.properties.id)) {
+                this.$refs.map.mapObject.closePopup();
+                var index = this.selectedLands.indexOf(feature.properties.id)
+                this.selectedLands.splice(index)
+                this.selectedLandAreas -= parseInt(feature.properties.area)
+                layer.setStyle(this.geojsonStyle);
 
+            }
+        }
     },
 
 
@@ -320,7 +354,6 @@ export default {
         if (this.$route.query.land) {
             this.drawLandFromParam(this.$route.query.land)
         }
-        const map = this.$refs.map.mapObject;
         snoopy()
     }
 

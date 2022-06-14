@@ -382,7 +382,6 @@ var options = {
                     console.log(selectedLands);
                     selectedLandAreas -= parseInt(feature.properties.area)
                     $("#area").val(selectedLandAreas)
-
                 }
             })
         })
