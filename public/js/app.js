@@ -6087,6 +6087,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6117,7 +6122,7 @@ __webpack_require__.r(__webpack_exports__);
       var client_secret = "nCeV5BFAcruvPxW9sK721qdR";
       var scope = "at_agrosanoat_markazi";
       var redirect_uri = "http://ijara.front.git";
-      window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" + redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
+      window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" + redirect_uri + "/one-auth&scope=" + scope + "&state=testState";
     },
     openLang: function openLang() {
       this.lang = false;
@@ -7147,6 +7152,12 @@ var routes = [{
       return __webpack_require__.e(/*! import() */ "resources_js_components_Modules_AllLands_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Modules/AllLands */ "./resources/js/components/Modules/AllLands.vue"));
     },
     name: 'all'
+  }, {
+    path: "redirect",
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_components_Auth_Redirect_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Auth/Redirect */ "./resources/js/components/Auth/Redirect.vue"));
+    },
+    name: 'redirect'
   }, {
     path: "dashboard",
     component: {
@@ -59885,7 +59896,12 @@ var render = function () {
                               staticClass: "nav-link login",
                               attrs: { to: { name: "dashboard.application" } },
                             },
-                            [_vm._v(_vm._s(_vm.$t("nav.links.cabinet")))]
+                            [
+                              _vm._v(
+                                _vm._s(_vm.$t("nav.links.cabinet")) +
+                                  "\n                        "
+                              ),
+                            ]
                           ),
                         ],
                         1
@@ -59897,7 +59913,10 @@ var render = function () {
                   ? [
                       _c("li", { staticClass: "nav-item" }, [
                         _c("button", { staticClass: "nav-link login" }, [
-                          _vm._v(_vm._s(_vm.userShorted)),
+                          _vm._v(
+                            _vm._s(_vm.userShorted) +
+                              "\n                        "
+                          ),
                         ]),
                       ]),
                     ]
@@ -77421,7 +77440,7 @@ module.exports = JSON.parse('{"main":{"text":"Qishloq xo‘jaligiga mo‘ljallan
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Modules_Index_vue":1,"resources_js_components_Modules_About_vue":1,"resources_js_components_Modules_Docs_vue":1,"resources_js_components_Modules_Manuals_vue":1,"resources_js_components_Modules_FAQ_vue":1,"resources_js_components_Modules_Contact_vue":1,"resources_js_components_Modules_Map_vue":1,"resources_js_components_Modules_AllLands_vue":1,"resources_js_components_Auth_Dashboard_vue":1,"resources_js_components_Auth_Create_vue":1,"resources_js_components_Auth_Map_vue":1,"resources_js_components_Auth_Info_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Modules_Index_vue":1,"resources_js_components_Modules_About_vue":1,"resources_js_components_Modules_Docs_vue":1,"resources_js_components_Modules_Manuals_vue":1,"resources_js_components_Modules_FAQ_vue":1,"resources_js_components_Modules_Contact_vue":1,"resources_js_components_Modules_Map_vue":1,"resources_js_components_Modules_AllLands_vue":1,"resources_js_components_Auth_Redirect_vue":1,"resources_js_components_Auth_Dashboard_vue":1,"resources_js_components_Auth_Create_vue":1,"resources_js_components_Auth_Map_vue":1,"resources_js_components_Auth_Info_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

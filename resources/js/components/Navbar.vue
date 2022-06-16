@@ -221,19 +221,24 @@
                     <template v-if="user ">
                         <li class="nav-item">
                             <router-link :to="{ name: 'dashboard.application' }" class="nav-link login">{{
-                                $t('nav.links.cabinet')
-                            }}</router-link></li>
+                                    $t('nav.links.cabinet')
+                                }}
+                            </router-link>
+                        </li>
                     </template>
                     <template v-if="user">
-                        <li class="nav-item"><button class="nav-link login">{{
-                            userShorted
-                            }}</button></li>
+                        <li class="nav-item">
+                            <button class="nav-link login">{{
+                                    userShorted
+                                }}
+                            </button>
+                        </li>
                     </template>
                     <template v-if="!user">
 
                         <li class="nav-item" v-if="!user"><a class="nav-link login" data-toggle="modal"
-                                                                  style="cursor: pointer" data-target="#login-modal"
-                                                                  data-bt-target="#login-modal">{{
+                                                             style="cursor: pointer" data-target="#login-modal"
+                                                             data-bt-target="#login-modal">{{
                                 $t('nav.links.login')
                             }}</a></li>
                     </template>
@@ -275,7 +280,7 @@
             <div class="modal-dialog  modal-dialog-centered" role="document">
 
                 <div class="modal-content overflow-hidden">
-                    <button type="button" class="close" data-bs-dismiss="modal"  data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <div class="row">
@@ -353,8 +358,8 @@ export default {
         }
     },
 
-    computed:{
-        userShorted(){
+    computed: {
+        userShorted() {
             return this.user.firstname.charAt(0) + "." + this.user.lastname.charAt(0)
         }
     },
@@ -372,7 +377,7 @@ export default {
             var scope = process.env.MIX_SCOPE
             var redirect_uri = process.env.MIX_APP_URL
             window.location.href = "https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=" + client_id + "&redirect_uri=" +
-                redirect_uri + "/oneauth/auth&scope=" + scope + "&state=testState";
+                redirect_uri + "/one-auth&scope=" + scope + "&state=testState";
         },
 
         openLang() {
@@ -395,11 +400,9 @@ export default {
     },
     mounted() {
         this.authcheck = localStorage.getItem('authcheck')
-        $('.close').click(function (){
+        $('.close').click(function () {
             $('.modal').modal('hide')
         })
-
-
 
 
         $(function () {

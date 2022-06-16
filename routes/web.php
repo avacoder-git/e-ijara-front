@@ -28,7 +28,8 @@ Route::get('/report/export',[\App\Http\Controllers\LandExportController::class,'
 //})->middleware(['auth'])->name('home');
 
 require __DIR__.'/auth.php';
-    require __DIR__.'/user.php';
+require __DIR__.'/user.php';
+Route::get("/one-auth", [\App\Http\Controllers\Api\OneAuthController::class,'auth']);
 
 
 

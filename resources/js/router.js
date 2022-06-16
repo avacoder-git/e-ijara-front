@@ -56,6 +56,11 @@ const routes = [
                     name:'all'
                 },
                 {
+                    path: "redirect",
+                    component: () => import('./components/Auth/Redirect'),
+                    name:'redirect'
+                },
+                {
                     path: "dashboard",
                     component: {
                         render (c) { return c('router-view')}
