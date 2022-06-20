@@ -79,6 +79,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AllLands",
   data: function data() {
@@ -88,26 +120,98 @@ __webpack_require__.r(__webpack_exports__);
       links: null,
       meta: null,
       isLoading: false,
+      regions: [],
+      districts: [],
+      selectedRegion: null,
+      selectedDistrict: null,
+      auction_lot: null,
       bg_photo: ['/foto/photo_2022-01-23_11-08-18.jpg', '/foto/photo_2022-01-23_11-10-35.jpg', '/foto/photo_2022-01-23_11-10-39.jpg', '/foto/photo_2022-01-23_11-10-46.jpg', '/foto/photo_2022-01-23_11-10-51.jpg', '/foto/photo_2022-01-23_11-10-56.jpg', '/foto/photo_2022-01-23_11-11-01.jpg', '/foto/photo_2022-01-23_11-11-16.jpg', '/foto/photo_2022-01-23_11-11-22.jpg', '/foto/photo_2022-01-23_11-07-20.jpg', '/foto/photo_2022-01-23_11-07-36.jpg', '/foto/photo_2022-01-23_11-08-40.jpg', '/foto/photo_2022-01-23_11-07-42.jpg', '/foto/photo_2022-01-23_11-07-47.jpg', '/foto/photo_2022-01-23_11-07-53.jpg', '/foto/photo_2022-01-23_11-07-59.jpg', '/foto/photo_2022-01-23_11-08-04.jpg', '/foto/photo_2022-01-23_11-08-09.jpg', '/foto/photo_2022-01-23_11-08-14.jpg', '/foto/photo_2022-01-23_11-08-25.jpg', '/foto/photo_2022-01-23_11-08-30.jpg', '/foto/photo_2022-01-23_11-08-46.jpg', '/foto/photo_2022-01-23_11-08-51.jpg', '/foto/photo_2022-01-23_11-08-56.jpg', '/foto/photo_2022-01-23_11-09-06.jpg', '/foto/photo_2022-01-23_11-09-13.jpg', '/foto/photo_2022-01-23_11-09-19.jpg', '/foto/photo_2022-01-23_11-09-24.jpg', '/foto/photo_2022-01-23_11-09-29.jpg', '/foto/photo_2022-01-23_11-09-33.jpg', '/foto/photo_2022-01-23_11-09-39.jpg', '/foto/photo_2022-01-23_11-09-43.jpg', '/foto/photo_2022-01-23_11-09-48.jpg', '/foto/photo_2022-01-23_11-09-52.jpg', '/foto/photo_2022-01-23_11-10-00.jpg', '/foto/photo_2022-01-23_11-10-07.jpg', '/foto/photo_2022-01-23_11-10-12.jpg', '/foto/photo_2022-01-23_11-10-16.jpg', '/foto/photo_2022-01-23_11-10-21.jpg', '/foto/photo_2022-01-23_11-10-25.jpg', '/foto/photo_2022-01-23_11-10-30.jpg']
     };
   },
   methods: {
+    getRegionById: function getRegionById(id) {
+      for (var i = 0; i < this.regions.length; i++) {
+        if (this.regions[i].id === id) return this.regions[i];
+      }
+
+      return false;
+    },
+    getDistrictById: function getDistrictById(id) {
+      for (var i = 0; i < this.districts.length; i++) {
+        if (this.districts[i].id === id) return this.districts[i];
+      }
+
+      return false;
+    },
     getData: function getData() {
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       window.scrollTo(0, 0);
       this.isLoading = true;
-      axios.get("/api/save-land/".concat(id), {
-        headers: {
-          "Authorization": "Bearer " + auth
+      axios.get('/api/front/lands', {
+        params: {
+          status_id: 2,
+          page: page,
+          region_id: this.getRegionById(this.selectedRegion).regioncode,
+          district_id: this.getDistrictById(this.selectedDistrict).cad_num
         }
       }).then(function (response) {
-        if (response) console.log(response);
+        _this.data = response.data;
       })["finally"](function () {
         _this.isLoading = false;
       });
     },
+    filter: function filter() {
+      var _this2 = this;
+
+      axios.get('/api/front/lands', {
+        params: {
+          region_id: this.getRegionById(this.selectedRegion).regioncode,
+          district_id: this.getDistrictById(this.selectedDistrict).cad_num
+        }
+      }).then(function (response) {
+        _this2.data = response.data;
+      })["finally"](function () {
+        _this2.isLoading = false;
+      });
+    },
+    getRegions: function getRegions() {
+      var _this3 = this;
+
+      axios.get('/api/json/regions').then(function (response) {
+        var _response$data, _this3$selectedRegion, _this3$selectedDistri;
+
+        _this3.regions = (_response$data = response.data) !== null && _response$data !== void 0 ? _response$data : [];
+
+        _this3.regions.push({
+          id: 0,
+          nameuz: _this3.$t("main.holat.region"),
+          regioncode: 0
+        });
+
+        _this3.selectedRegion = (_this3$selectedRegion = _this3.selectedRegion) !== null && _this3$selectedRegion !== void 0 ? _this3$selectedRegion : 0;
+
+        _this3.districts.push({
+          id: 0,
+          nameuz: "Tuman (shaxar)",
+          regioncode: 0
+        });
+
+        _this3.selectedDistrict = (_this3$selectedDistri = _this3.selectedDistrict) !== null && _this3$selectedDistri !== void 0 ? _this3$selectedDistri : 0;
+      });
+    },
+    getDistricts: function getDistricts(regioncode) {
+      var _this4 = this;
+
+      axios.get("/api/json/districts/".concat(regioncode)).then(function (response) {
+        _this4.districts = response.data;
+      });
+    },
+    setDistricts: function setDistricts() {
+      this.getDistricts(this.getRegionById(this.selectedRegion).regioncode);
+    },
+    setMap: function setMap() {},
     saveLand: function saveLand(id) {
       var auth = localStorage.getItem('authcheck');
 
@@ -128,6 +232,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getData();
+    this.getRegions();
   }
 });
 
@@ -149,7 +254,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-328a075a] {\n    gap: 8px;\n    justify-content: center;\n    margin-top: 64px;\n}\n.pagination .page-item .page-link[data-v-328a075a] {\n    border-radius: 4px;\n    color: #313131;\n\n    font-family: 'Raleway';\n    font-style: normal;\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    cursor: pointer;\n}\n.pagination .page-item .active[data-v-328a075a] {\n    background: rgba(8, 112, 95, 0.1);\n}\n.loading[data-v-328a075a] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-color: rgba(0, 0, 0, 0.5);\n    z-index: 1000;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-328a075a] {\n    gap: 8px;\n    justify-content: center;\n    margin-top: 64px;\n}\n.pagination .page-item .page-link[data-v-328a075a] {\n    border-radius: 4px;\n    color: #313131;\n\n    font-family: 'Raleway';\n    font-style: normal;\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    cursor: pointer;\n}\n.pagination .page-item .active[data-v-328a075a] {\n    background: rgba(8, 112, 95, 0.1);\n}\n.loading[data-v-328a075a] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-color: rgba(0, 0, 0, 0.5);\n    z-index: 1000;\n}\n.select-2[data-v-328a075a] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n    outline: none;\n    border: 1px solid #08705F;\n    padding: 12px;\n}\n.d-flex[data-v-328a075a] {\n    gap: 24px;\n}\n.filter[data-v-328a075a] {\n    background-color: #08705F;\n    color: white;\n    transition: 0.2s;\n}\n.filter[data-v-328a075a]:hover {\n    color: #08705F;\n    background-color: white;\n    transition: 0.2s;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -289,6 +394,142 @@ var render = function () {
         _c("div", { staticClass: "col-lg-12 mt-4" }, [
           _c("h1", [_vm._v(_vm._s(_vm.$t("main.lands.name")))]),
         ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "d-flex  my-4" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.selectedRegion,
+                expression: "selectedRegion",
+              },
+            ],
+            staticClass: "select-2",
+            attrs: {
+              reduce: function (option) {
+                return option.regioncode
+              },
+              label: "nameuz",
+            },
+            on: {
+              change: [
+                function ($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function (o) {
+                      return o.selected
+                    })
+                    .map(function (o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.selectedRegion = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                _vm.setDistricts,
+              ],
+            },
+          },
+          _vm._l(_vm.regions, function (region) {
+            return _vm.regions
+              ? _c(
+                  "option",
+                  { attrs: { value: "" }, domProps: { value: region.id } },
+                  [_vm._v(_vm._s(region.nameuz) + "\n                ")]
+                )
+              : _vm._e()
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.selectedDistrict,
+                expression: "selectedDistrict",
+              },
+            ],
+            staticClass: "select-2",
+            attrs: {
+              reduce: function (option) {
+                return option.id
+              },
+              label: "nameuz",
+              options: _vm.districts,
+            },
+            on: {
+              change: function ($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function (o) {
+                    return o.selected
+                  })
+                  .map(function (o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selectedDistrict = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              },
+            },
+          },
+          _vm._l(_vm.districts, function (district) {
+            return _vm.districts
+              ? _c(
+                  "option",
+                  { attrs: { value: "" }, domProps: { value: district.id } },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(district.nameuz) +
+                        "\n                "
+                    ),
+                  ]
+                )
+              : _vm._e()
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.auction_lot,
+              expression: "auction_lot",
+            },
+          ],
+          staticClass: "select-2",
+          attrs: { type: "text", placeholder: "Auksion lot raqami" },
+          domProps: { value: _vm.auction_lot },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.auction_lot = $event.target.value
+            },
+          },
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "select-2 filter",
+            attrs: { type: "button" },
+            on: { click: _vm.filter },
+          },
+          [_vm._v("Filterlash")]
+        ),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [

@@ -218,7 +218,7 @@
                                              data-target="#check-application" href="#">{{ $t('nav.links.check') }}</a>
                     </li>
 
-                    <template v-if="user ">
+                    <template v-if="this.auth.user">
                         <li class="nav-item">
                             <router-link :to="{ name: 'dashboard.application' }" class="nav-link login">{{
                                     $t('nav.links.cabinet')
@@ -226,7 +226,7 @@
                             </router-link>
                         </li>
                     </template>
-                    <template v-if="user">
+                    <template v-if="this.auth.user">
                         <li class="nav-item">
                             <button class="nav-link login">{{
                                     userShorted
@@ -234,9 +234,9 @@
                             </button>
                         </li>
                     </template>
-                    <template v-if="!user">
+                    <template v-if="!this.auth.user">
 
-                        <li class="nav-item" v-if="!user"><a class="nav-link login" data-toggle="modal"
+                        <li class="nav-item" v-if="!this.auth.user"><a class="nav-link login" data-toggle="modal"
                                                              style="cursor: pointer" data-target="#login-modal"
                                                              data-bt-target="#login-modal">{{
                                 $t('nav.links.login')
@@ -360,7 +360,7 @@ export default {
 
     computed: {
         userShorted() {
-            return this.user.firstname.charAt(0) + "." + this.user.lastname.charAt(0)
+            return this.auth.user.firstname.charAt(0) + "." + this.auth.user.lastname.charAt(0)
         }
     },
 

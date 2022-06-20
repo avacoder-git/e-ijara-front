@@ -177,5 +177,40 @@
             ]
         }
     },
+    "dashboard": {
+        "sidebar": [
+            "Мои предложении",
+            "Внести прдложение",
+            "Мои данные",
+            "Сохраненные участки",
+            "Выход"
+        ],
+        "saved": "Сохраненные участки",
+        "my":
+        {
+            "applications": "Мои предложении",
+            "region": "Регион",
+            "district": "Район",
+            "purpose": "Цель аренды",
+            "expire": "Срок взять аренды",
+            "yil": "год",
+            "time": "Время",
+            "status": "Статус"
+        },
+        "info": {
+            "title": "Данные пользователья",
+            "firstname": "Имя",
+            "lastname": "Фамилия",
+            "thirdname": "Отчество",
+            "passport": "Пасспорт номер",
+            "phone": "Телефон",
+            "address": "Адрес",
+            "login": "Логин",
+            "email": "Электронная поста",
+            "fuqaro": "Лицо"
+        },
+        "tanlangan": "Tanlangan yerlar soni",
+        "tanlangan_area": "Tanlangan yerlar umumiy maydoni"
+    },
     "allrights": "© 2022 все права защищены."
 }

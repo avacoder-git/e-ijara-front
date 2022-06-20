@@ -6,68 +6,51 @@
 
             <div class="card">
 
-                <h1>Saqlangan yerlar</h1>
+                <h1>{{ $t("dashboard.saved") }}</h1>
 
 
-                <div class="container-fluid section-2">
-                    <div class="row">
-                        <div class="col-12 " id="fields">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                       aria-controls="home" aria-selected="true">{{
-                                            $t("main.statistics.tanlovdagi")
-                                        }}</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" v-if="data" id="home" role="tabpanel"
-                                     aria-labelledby="home-tab">
-                                    <div class="loading" v-if="isLoading"></div>
-                                    <div class="row">
-                                        <template v-for="item in data.data">
-                                            <div class="col-lg-3">
-                                                <div class="rectangle position-relative">
-                                                    <div class="rectangle-img"><img
-                                                        :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]"
-                                                        alt=""></div>
-                                                    <div class="d-flex justify-content-between">
-                                                        <div class="rectangle-lot">{{ item.updated_at }}</div>
-                                                        <div class="rectangle-lot">{{ item.regnum }}</div>
-                                                    </div>
-                                                    <div class="rectangle-name mb-auto">
-                                                        {{ item.address }}
-                                                    </div>
+                <div class="container-fluid section-2" id="saved">
+                    <div class="loading" v-if="isLoading"></div>
 
-                                                    <div class="rectangle-footer">
-                                                        <div class="rectangle-ga">{{ item.area }} Ga</div>
-                                                        <button class="rectangle-save"
-                                                                :class="saved.includes(item.id) ? 'rectangle-save-2': 'rectangle-save-1' "
-                                                                @click.prevent="saveLand(item.id)">
-                                                            <img src="/image/Bookmark.svg" alt="">
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </template>
+                    <div class="row" v-if="data">
+
+                        <template v-for="item in data.data">
+                            <div class="col-lg-3" v-if="item.id">
+                                <div class="rectangle position-relative">
+                                    <div class="rectangle-img"><img
+                                        :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]"
+                                        alt=""></div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="rectangle-lot">{{ item.created_at }}</div>
+                                        <div class="rectangle-lot">{{ item.regnum }}</div>
                                     </div>
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="pagination">
-                                            <li class="page-item" v-for="(item, index) in data.meta.links">
-                                                <a class="page-link" :class="item.active? 'active' : ''"
-                                                   @click.prevent="getData(item.label)">
-                                                    {{
-                                                        index === 0 ? "<" : index + 1 === data.meta.links.length ? ">" : item.label
-                                                    }}</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
+                                    <div class="rectangle-name mb-auto">
+                                        {{ item.region  }}  {{ item.district  }}
+                                    </div>
+
+                                    <div class="rectangle-footer">
+                                        <div class="rectangle-ga">{{ item.area }} Ga</div>
+                                        <button class="rectangle-save"
+                                                :class="saved.includes(item.id) ? 'rectangle-save-2': 'rectangle-save-1' "
+                                                @click.prevent="saveLand(item.id)">
+                                            <img src="/image/Bookmark.svg" alt="">
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-
-
-                        </div>
+                        </template>
                     </div>
+                    <nav aria-label="Page navigation example" v-if="data">
+                        <ul class="pagination">
+                            <li class="page-item" v-for="(item, index) in data.meta.links">
+                                <a class="page-link" :class="item.active? 'active' : ''"
+                                   @click.prevent="getData(item.label)">
+                                    {{
+                                        index === 0 ? "<" : index + 1 === data.meta.links.length ? ">" : item.label
+                                    }}</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -142,6 +125,7 @@ export default {
     methods: {
         getData() {
             var auth = localStorage.getItem('token')
+            this.isLoading = true;
 
             axios.get('/api/saved-lands', {
                 headers: {
@@ -149,16 +133,45 @@ export default {
                 }
             })
                 .then(response => {
-                    this.data = response.data.data
+                    this.data = response.data
+                    this.saved = response.data.data
                 })
+                .finally(() => {
+                    this.isLoading = false;
+                });
+        },
+        getSavedLandByID(id)
+        {
+            var saved = this.saved
+            for (let i = 0; i < saved.length; i++)
+            {
+                if (saved[i].id === id)
+                    return saved[i]
+            }
+
+            return  false
+
         },
         saveLand(id) {
             var auth = localStorage.getItem('token')
             if (auth) {
                 var saved = this.saved
-                var index = saved.indexOf(id)
-                if (saved.includes(id))
+                var index = saved.indexOf(this.getSavedLandByID(id))
+                if (saved.includes(this.getSavedLandByID(id)))
+                {
                     saved.splice(index, 1)
+                    axios.get(`/api/save-land/${id}`, {
+                        headers: {
+                            "Authorization": "Bearer " + auth
+                        }
+                    })
+                        .then(response => {
+                            if (response)
+                            {
+                                getData()
+                            }
+                        })
+                }
                 else {
                     axios.get(`/api/save-land/${id}`, {
                         headers: {
@@ -167,7 +180,9 @@ export default {
                     })
                         .then(response => {
                             if (response)
-                                console.log(response);
+                            {
+                                getData()
+                            }
                         })
                     saved.push(id)
                 }
@@ -221,7 +236,15 @@ export default {
     margin-top: 64px;
 
 }
-
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
 .pagination .page-item .page-link {
     border-radius: 4px;
     color: #313131;

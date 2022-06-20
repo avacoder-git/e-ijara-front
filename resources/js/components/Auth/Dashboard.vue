@@ -6,17 +6,17 @@
 
             <div class="card">
 
-                <h1>Mening arizalarim</h1>
+                <h1>{{ $t("dashboard.my.applications") }}</h1>
 
                 <table class="table border-0">
                     <thead>
                     <tr>
-                        <th><span>Viloyat</span></th>
-                        <th><span>Tuman</span></th>
-                        <th><span>Ijara maqsadi</span></th>
-                        <th><span>Ijara muddati</span></th>
-                        <th><span>Vaqti</span></th>
-                        <th><span>Xolati</span></th>
+                        <th><span>{{ $t("dashboard.my.region") }}</span></th>
+                        <th><span>{{ $t("dashboard.my.district") }}</span></th>
+                        <th><span>{{ $t("dashboard.my.purpose") }}</span></th>
+                        <th><span>{{ $t("dashboard.my.expire") }}</span></th>
+                        <th><span>{{ $t("dashboard.my.time") }}</span></th>
+                        <th><span>{{ $t("dashboard.my.status") }}</span></th>
                     </tr>
                     </thead>
 
@@ -25,7 +25,7 @@
                         <td><span>{{ application.region.nameru }}</span></td>
                         <td><span>{{ application.district.nameru }}</span></td>
                         <td><span>{{ application.land_purpose.name_lat }}</span></td>
-                        <td><span>{{ application.period }}</span></td>
+                        <td><span>{{ application.period }} {{ $t("dashboard.my.yil") }} </span></td>
                         <td><span>{{ application.updated_at }}</span></td>
                         <td><span>{{ application.status.name }}</span></td>
                     </tr>

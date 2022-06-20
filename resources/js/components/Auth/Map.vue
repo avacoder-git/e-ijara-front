@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-6">
-                            <h1>Ochiq xarita</h1>
+                            <h1>{{ $t("nav.links.map")}}</h1>
                             <div class="d-flex  mt-2">
                                 <v-select
                                     @change="setDistricts"
@@ -29,8 +29,8 @@
                             </div>
                         </div>
                         <div class="col-6 mt-4">
-                            <h5><b>Tanlangan yerlar soni</b>: {{ selectedLands.length }} ta</h5>
-                            <h5><b>Tanlangan yerlar maydoni</b>: {{ selectedLandAreas }} ga</h5>
+                            <h5><b>{{ $t("dashboard.tanlangan")  }}</b>: {{ selectedLands.length }} ta</h5>
+                            <h5><b>{{  $t("dashboard.tanlangan_area") }}</b>: {{ selectedLandAreas }} ga</h5>
                         </div>
                     </div>
                 </div>
@@ -72,11 +72,8 @@
                     </l-map>
                 </div>
             </div>
-
-
         </div>
-
-        <div class="modal fade bd-example-modal-lg-2" id="values_modal" tabindex="-1" role="dialog"
+        <div class="modal  bd-example-modal-lg-2" id="values_modal" tabindex="-1" role="dialog"
              aria-labelledby="myLargeModalLabel" aria-hidden="true">
 
 
@@ -237,7 +234,6 @@ export default {
         LIcon
     },
     methods: {
-
         getRegionById(id) {
             for (let i = 0; i < this.regions.length; i++) {
                 if (this.regions[i].id === id)
@@ -254,8 +250,6 @@ export default {
             return false
 
         },
-
-
         getRegions() {
             axios.get('/api/json/regions')
                 .then(response => {
@@ -276,9 +270,6 @@ export default {
 
                 })
         },
-
-
-
         getDistricts(regioncode) {
             axios.get(`/api/json/districts/${regioncode}`)
                 .then(response => {
@@ -506,7 +497,7 @@ export default {
 <style scoped>
 
 .vue2leaflet-map {
-    height: 400px;
+    height: 600px;
 }
 
 .select-2 {

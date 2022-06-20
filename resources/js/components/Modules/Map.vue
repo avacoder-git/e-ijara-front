@@ -79,7 +79,7 @@ export default {
             selectedRegion: null,
             selectedDistrict: null,
             geojsonStyle: {
-                fillColor: "#ff0000",
+                fillColor: "#0090ff",
                 color: "#000",
                 weight: 1,
                 opacity: 1,
@@ -90,6 +90,7 @@ export default {
 
                 // style: geojsonStyle
             },
+
             mapOptions: {
                 style: function style(feature) {
                     return {
@@ -207,26 +208,12 @@ export default {
                     this.removeMarkers()
                     var lands = response.data
 
-                    var geojsonStyle = {
-                        fillColor: "#0090ff",
-                        color: "#000",
-                        weight: 1,
-                        opacity: 1,
-                        fillOpacity: 0.7,
-                    };
-
                     var options = {
                         maxZoom: 20,
                         tolerance: 3,
                         debug: 0,
-                        style: geojsonStyle
+                        style: this.geojsonStyle,
                     };
-
-                    var geojson = {
-                        features: lands.data,
-                        type: "FeatureCollection"
-                    }
-
                     vt(geojson, options).addTo(this.$refs.map.mapObject);
 
 

@@ -3601,7 +3601,7 @@ __webpack_require__.r(__webpack_exports__);
       selectedRegion: null,
       selectedDistrict: null,
       geojsonStyle: {
-        fillColor: "#ff0000",
+        fillColor: "#0090ff",
         color: "#000",
         weight: 1,
         opacity: 1,
@@ -3727,22 +3727,11 @@ __webpack_require__.r(__webpack_exports__);
         _this5.removeMarkers();
 
         var lands = response.data;
-        var geojsonStyle = {
-          fillColor: "#0090ff",
-          color: "#000",
-          weight: 1,
-          opacity: 1,
-          fillOpacity: 0.7
-        };
         var options = {
           maxZoom: 20,
           tolerance: 3,
           debug: 0,
-          style: geojsonStyle
-        };
-        var geojson = {
-          features: lands.data,
-          type: "FeatureCollection"
+          style: _this5.geojsonStyle
         };
         (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_2__["default"])(geojson, options).addTo(_this5.$refs.map.mapObject);
       });

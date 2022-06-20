@@ -108,7 +108,7 @@ class Land extends Model
 
     public function auction_lot()
     {
-        return $this->hasOne(LandAuctionLot::class, 'land_id', 'id');
+        return $this->hasOne(LandAuctionLot::class);
     }
 
 

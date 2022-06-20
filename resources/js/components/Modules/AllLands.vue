@@ -6,6 +6,38 @@
                     <h1>{{ $t("main.lands.name") }}</h1>
                 </div>
             </div>
+
+
+            <div class="d-flex  my-4">
+                <select
+                    @change="setDistricts"
+                    v-model="selectedRegion"
+                    :reduce="(option) => option.regioncode"
+                    class="select-2"
+                    label="nameuz">
+                    <option value="" v-if="regions" v-for="region in regions" :value="region.id">{{
+                            region.nameuz
+                        }}
+                    </option>
+                </select>
+                <select
+                    v-model="selectedDistrict"
+                    class="select-2"
+                    :reduce="(option) => option.id"
+                    label="nameuz"
+                    :options="districts">
+                    <option value="" v-if="districts" v-for="district in districts" :value="district.id">
+                        {{ district.nameuz }}
+                    </option>
+
+                </select>
+
+                <input type="text" placeholder="Auksion lot raqami" class="select-2" v-model="auction_lot">
+                <button type="button" @click="filter" class="select-2 filter">Filterlash</button>
+
+            </div>
+
+
             <div class="row">
                 <div class="col-12 " id="fields">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -79,7 +111,11 @@ export default {
             links: null,
             meta: null,
             isLoading: false,
-
+            regions: [],
+            districts: [],
+            selectedRegion: null,
+            selectedDistrict: null,
+            auction_lot: null,
             bg_photo: [
                 '/foto/photo_2022-01-23_11-08-18.jpg',
                 '/foto/photo_2022-01-23_11-10-35.jpg',
@@ -128,25 +164,95 @@ export default {
 
 
     methods: {
-        getData(page = 1) {
+        getRegionById(id) {
+            for (let i = 0; i < this.regions.length; i++) {
+                if (this.regions[i].id === id)
+                    return this.regions[i];
+
+            }
+            return false
+        },
+        getDistrictById(id) {
+            for (let i = 0; i < this.districts.length; i++) {
+                if (this.districts[i].id === id)
+                    return this.districts[i];
+            }
+            return false
+
+        },
+
+        getData(page = 1,) {
             window.scrollTo(0, 0);
 
             this.isLoading = true;
 
-            axios.get(`/api/save-land/${id}`, {
-                headers: {
-                    "Authorization": "Bearer " + auth
+            axios.get('/api/front/lands', {
+                params: {
+                    status_id: 2, page,
+                    region_id: this.getRegionById(this.selectedRegion).regioncode,
+                    district_id: this.getDistrictById(this.selectedDistrict).cad_num
                 }
             })
                 .then(response => {
-                    if (response)
-                        console.log(response);
+                    this.data = response.data
+
                 })
                 .finally(() => {
                     this.isLoading = false;
                 });
         },
 
+        filter() {
+            axios.get('/api/front/lands', {
+                params: {
+                    region_id: this.getRegionById(this.selectedRegion).regioncode,
+                    district_id: this.getDistrictById(this.selectedDistrict).cad_num
+                }
+            })
+                .then(response => {
+                    this.data = response.data
+
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                });
+        },
+        getRegions() {
+            axios.get('/api/json/regions')
+                .then(response => {
+                    this.regions = response.data ?? []
+                    this.regions.push({
+                        id: 0,
+                        nameuz: this.$t("main.holat.region"),
+                        regioncode: 0
+
+                    })
+                    this.selectedRegion = this.selectedRegion ?? 0
+                    this.districts.push({
+                        id: 0,
+                        nameuz: "Tuman (shaxar)",
+                        regioncode: 0
+                    })
+                    this.selectedDistrict = this.selectedDistrict ?? 0
+
+                })
+        },
+
+
+        getDistricts(regioncode) {
+            axios.get(`/api/json/districts/${regioncode}`)
+                .then(response => {
+                    this.districts = response.data
+                })
+        },
+        setDistricts() {
+
+            this.getDistricts(this.getRegionById(this.selectedRegion).regioncode)
+
+        },
+        setMap() {
+
+        },
         saveLand(id) {
             var auth = localStorage.getItem('authcheck')
 
@@ -177,6 +283,7 @@ export default {
 
     mounted() {
         this.getData()
+        this.getRegions()
 
     },
 
@@ -220,4 +327,28 @@ export default {
     z-index: 1000;
 }
 
+.select-2 {
+    height: 48px;
+    width: 237px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #08705F;
+    padding: 12px;
+}
+
+.d-flex {
+    gap: 24px;
+}
+
+.filter {
+    background-color: #08705F;
+    color: white;
+    transition: 0.2s;
+}
+
+.filter:hover {
+    color: #08705F;
+    background-color: white;
+    transition: 0.2s;
+}
 </style>

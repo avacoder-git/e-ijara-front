@@ -11,6 +11,7 @@ use App\Models\Regions;
 use App\Models\Land;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
@@ -76,7 +77,28 @@ class LandController extends Controller
 
     public function front(Request $request)
     {
-        $lands = Land::select( 'regnum', 'address', 'area', 'id', 'updated_at')->whereIn("status_id",[14, 16, 17]);
+        $lands = Land::select('regnum', 'address', 'area', 'id', 'updated_at')->whereIn("status_id", [14, 16, 17]);
+//        $lands = $lands->where(function ($query) {
+//            $query->whereHas('auction_lot');
+//        });
+
+        if ($request->district_id)
+            $lands = $lands->where("cad_number", 'LIKE', "%$request->district_id:%");
+        else
+            if ($request->region_id)
+                $lands = $lands->where("cad_number", 'LIKE', "%$request->region_id:%");
+            else
+                if (isset($request->auction_lot)) {
+                    $lot_number = $request->auction_lot;
+                    $lands = $lands->where(function ($query) use ($lot_number) {
+                        $query->whereHas('auction_lot', function ($query) use ($lot_number) {
+                            $query->where('lot_number', $lot_number);
+                        });
+                        $query->orWhere('lot_number', $lot_number);
+                    });
+                }
+
+
         $lands = $lands->paginate(16);
         return new LandCollection($lands);
 
@@ -139,23 +161,23 @@ class LandController extends Controller
             'area' => number_format(round(
                 Land::whereNull('parent_id')->where('is_merged_lot', 0)->sum('area') -
                 Land::query()->whereNotNull('parent_id')
-                    ->where('status_id', '!=', 25)->sum('area') )),
+                    ->where('status_id', '!=', 25)->sum('area'))),
         ];
         $ajratilgan_lands = [
             'count' => number_format(round(Land::query()->whereNotNull('parent_id')
-                ->whereIn('status_id', [31, 33])->count() )),
+                ->whereIn('status_id', [31, 33])->count())),
             'area' => number_format(round(Land::query()->whereNotNull('parent_id')
                 ->whereIn('status_id', [31, 33])->sum('area'))),
         ];
         $tanlovdagi_lands = [
             'count' => number_format(round(Land::query()->whereNotNull('parent_id')
-                ->whereIn('status_id', [14,16,17])->count() )),
+                ->whereIn('status_id', [14, 16, 17])->count())),
             'area' => number_format(round(Land::query()->whereNotNull('parent_id')
-                ->whereIn('status_id', [14,16,17])->sum('area'))),
+                ->whereIn('status_id', [14, 16, 17])->sum('area'))),
         ];
         $loyihalashdagi_lands = [
             'count' => number_format(round(Land::query()->whereNotNull('parent_id')
-                ->whereIn('status_id', [2, 3, 4, 5, 6, 7, 11, 12, 13, 15])->count() )),
+                ->whereIn('status_id', [2, 3, 4, 5, 6, 7, 11, 12, 13, 15])->count())),
             'area' => number_format(round(Land::query()->whereNotNull('parent_id')
                 ->whereIn('status_id', [2, 3, 4, 5, 6, 7, 11, 12, 13, 15])->sum('area'))),
         ];

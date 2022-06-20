@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PurposeStoreRequest;
 use App\Http\Resources\Front\LandCollection;
+use App\Http\Resources\SavedLandCollection;
+use App\Http\Resources\SavedLandResource;
 use App\Models\Application;
 use App\Models\LandPurposes;
 use App\Models\Regions;
@@ -75,7 +77,7 @@ class IndexController extends Controller
         return response()->json(['success' => true, 'message' => "Successfully created"]);
     }
 
-    public function saveLand( $land)
+    public function saveLand($land)
     {
         $user = auth()->user();
         $count = SavedLand::query()->where('user_id', $user->id)->where('land_id', $land)->first();
@@ -94,8 +96,8 @@ class IndexController extends Controller
     public function getSavedLands()
     {
         $user = auth()->user();
-        $lands =  SavedLand::query()->with('land')->where('user_id', $user->id)->paginate(16);
-        return new LandCollection($lands);
+        $lands = SavedLand::query()->with('land')->where('user_id', $user->id)->paginate(16);
+        return SavedLandResource::collection($lands);
     }
 
 

@@ -70,7 +70,7 @@
             "general": "Ajratilgan yerlar soni",
             "free": "Ajratilgan yerlarning jami maydoni",
             "region": "Xudud",
-            "new": "Ajiratilgan yerlar soni",
+            "new": "Tanlovdagi yerlar maydoni",
             "tanlovdagi": "Tanlovdagi yerlar soni"
         },
         "offer": {
@@ -177,5 +177,40 @@
             ]
         }
     },
-    "allrights": "© 2022 Barcha huquqlar himoyalangan."
+    "allrights": "© 2022 Barcha huquqlar himoyalangan.",
+    "dashboard": {
+        "sidebar": [
+            "Takliflarim",
+            "Taklif kiritish",
+            "Ma'lumotlarim",
+            "Saqlangan yerlar",
+            "Chiqish"
+        ],
+        "saved": "Saqlangan yerlar",
+        "my":
+            {
+                "applications": "Mening takliflarim",
+                "region": "Viloyat",
+                "district": "Tuman",
+                "purpose": "Ijara maqsadi",
+                "expire": "Ijara muddati",
+                "yil": "yil",
+                "time": "Vaqti",
+                "status": "Xolati"
+            },
+        "info": {
+            "title": "Foydalanuvchi ma'lumotlari",
+            "firstname": "Ismi",
+            "lastname": "Familiyasi",
+            "thirdname": "Otasining ismi",
+            "passport": "Passport raqami",
+            "phone": "Telefon raqami",
+            "address": "Manzili",
+            "login": "Login",
+            "email": "Elektron pochta manzili",
+            "fuqaro": "Fuqaro"
+        },
+        "tanlangan": "Tanlangan yerlar soni",
+        "tanlangan_area": "Tanlangan yerlar umumiy maydoni"
+    }
 }
