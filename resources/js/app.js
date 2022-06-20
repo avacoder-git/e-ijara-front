@@ -8,10 +8,13 @@ import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 import i18n from './i18n'
 import Auth from './Auth.js';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 require('./bootstrap');
 
 Vue.use(VueRouter)
+Vue.use(VueSweetalert2)
 
 Vue.prototype.auth = Auth;
 

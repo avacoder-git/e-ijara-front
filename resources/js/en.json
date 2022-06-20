@@ -1,0 +1,104 @@
+"сontent": [
+{
+"icon": "image/auksion.svg",
+"name": "Предложение",
+"text": "Поступает предложение от физических и юридических лиц"
+},
+{
+"icon": "image/uzdyl.svg",
+"name": "ГНПИ “ЎЗДАВЕРЛОЙИХА” ",
+"text": "Предложение рассмотривается и направляется в районный хокимият"
+},
+{
+"icon": "image/auksion.svg",
+"name": "РАЁННЫЙ МУНИЦИПАЛИТЕТ",
+"text": "Предложение рассмотривается и направляется в Государственную кадастровую палату    "
+},
+{
+"icon": "image/kadastr.svg",
+"name": "ГОСУДАРСТВЕННАЯ КАДАСТРОВАЯ ПАЛАТА",
+"text": "Оформляется кадастровый документ на земельный участок на имя районного муниципалитета"
+},
+{
+"icon": "image/uzdyl.svg",
+"name": "ГНПИ ЎЗДАВЕРЛОЙИХА” ",
+"text": "Разработывается Проект земельного участка"
+},
+{
+"icon": "image/agree.svg",
+"name": "УПОЛНОМОЧЕННЫЕ ОРГАНЫ",
+"text": "\"Проект земельного участка\" согласовывается с соответствующими организациями и ведомствами"
+},
+{
+"icon": "image/auksion.svg",
+"name": "ЭТП “Е-AUKSION”",
+"text": "Земельный участок выставляется на конкурс, с победителем подписывается договор аренды в одностороннем порядке "
+},
+{
+"icon": "image/auksion.svg",
+"name": "РАЁННЫЙ МУНИЦИПАЛИТЕТ",
+"text": "Договор аренты подписывается второй стороной"
+},
+{
+"icon": "image/kadastr.svg",
+"name": "ГОСУДАРСТВЕННАЯ КАДАСТРОВАЯ ПАЛАТА",
+"text": "Оформляются документы кадастра земли"
+},
+{
+"icon": "image/list.svg",
+"name": "ПОБЕДИТЕЛЬ",
+"text": "Все документы появляются в личном кабинете ЭТП \"Е-AUKSION \""
+}
+]
+"сontent": [
+{
+"icon": "image/auksion.svg",
+"name": "TAKLIF",
+"text": "Jismoniy va yuridik shaxslar tomonidan taklif kelib tushadi"
+},
+{
+"icon": "image/uzdyl.svg",
+"name": "“UZDAVYERLOYIHA” DILI ",
+"text": "Taklif o‘rganib chiqiladi va tuman hokimiyatiga yuboriladi"
+},
+{
+"icon": "image/auksion.svg",
+"name": "TUMAN HOKIMIYATI",
+"text": "Taklif o‘rganib chiqiladi va Davlat kadastrlari palatasiga buyurtma beriladi"
+},
+{
+"icon": "image/kadastr.svg",
+"name": "DAVLAT KADASTRLARI PALATASI",
+"text": "Yer uchastkasining kadastr hujjatlarini tuman hokimligi nomiga rasmiylashtiradi"
+},
+{
+"icon": "image/uzdyl.svg",
+"name": "“UZDAVYERLOYIHA” DILI ",
+"text": "Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi"
+},
+{
+"icon": "image/agree.svg",
+"name": "VAKOLATLI ORGANLAR",
+"text": "“Yer tuzish loyihasi” tegishli tashkilot va idoralar bilan kelishiladi"
+},
+{
+"icon": "image/auksion.svg",
+"name": "“Е-AUKSION” ESP",
+"text": "Bo‘sh yer tanlovga qo‘yiladi hamda g‘olib aniqlanadi va ijara shartnomasi bir tomonlama imzolanadi"
+},
+{
+"icon": "image/auksion.svg",
+"name": "TUMAN HOKIMIYATI",
+"text": "Ijara shartnomasi ikkinchi tomonlama imzolanadi"
+},
+{
+"icon": "image/kadastr.svg",
+"name": "DAVLAT KADASTRLARI PALATASI",
+"text": "Yerning kadastr xujjatlari rasmiylashtirladi"
+},
+{
+"icon": "image/list.svg",
+"name": "G'OLIB",
+"text": "“Ye-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi"
+}
+]

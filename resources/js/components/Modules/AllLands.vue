@@ -3,7 +3,7 @@
         <div class="container-fluid section-2">
             <div class="row">
                 <div class="col-lg-12 mt-4">
-                    <h1>{{ $t("main.lands.name")  }}</h1>
+                    <h1>{{ $t("main.lands.name") }}</h1>
                 </div>
             </div>
             <div class="row">
@@ -34,7 +34,8 @@
 
                                             <div class="rectangle-footer">
                                                 <div class="rectangle-ga">{{ item.area }} Ga</div>
-                                                <button class="rectangle-save" :class="saved.includes(item.id) ? 'rectangle-save-2': 'rectangle-save-1' "
+                                                <button class="rectangle-save"
+                                                        :class="saved.includes(item.id) ? 'rectangle-save-2': 'rectangle-save-1' "
                                                         @click.prevent="saveLand(item.id)">
                                                     <img src="/image/Bookmark.svg" alt="">
                                                 </button>
@@ -132,28 +133,29 @@ export default {
 
             this.isLoading = true;
 
-            axios.get('/api/front/lands', {params: {status_id: 2, page}})
+            axios.get(`/api/save-land/${id}`, {
+                headers: {
+                    "Authorization": "Bearer " + auth
+                }
+            })
                 .then(response => {
-                    this.data = response.data
-
+                    if (response)
+                        console.log(response);
                 })
                 .finally(() => {
                     this.isLoading = false;
                 });
         },
 
-        saveLand(id)
-        {
+        saveLand(id) {
             var auth = localStorage.getItem('authcheck')
 
-            if (auth)
-            {
+            if (auth) {
                 var saved = this.saved
                 var index = saved.indexOf(id)
                 if (saved.includes(id))
-                    saved.splice(index,1)
-                else
-                {
+                    saved.splice(index, 1)
+                else {
                     axios.get(`/api/save-land/${auth}/${id}`)
                         .then(response => {
                             if (response)
@@ -161,13 +163,10 @@ export default {
                         })
                     saved.push(id)
                 }
-                this.saved  = saved
+                this.saved = saved
 
 
-
-            }
-            else
-            {
+            } else {
                 $("#login-modal").modal('show')
             }
 

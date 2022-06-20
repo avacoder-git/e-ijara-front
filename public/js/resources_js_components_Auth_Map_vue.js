@@ -105,6 +105,100 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -118,6 +212,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
   name: "Map",
   data: function data() {
     return {
+      land_purposes: [],
       map: null,
       selectedLands: [],
       selectedLandAreas: 0,
@@ -162,6 +257,20 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
     LIcon: vue2_leaflet__WEBPACK_IMPORTED_MODULE_12__["default"]
   },
   methods: {
+    getRegionById: function getRegionById(id) {
+      for (var i = 0; i < this.regions.length; i++) {
+        if (this.regions[i].id === id) return this.regions[i];
+      }
+
+      return false;
+    },
+    getDistrictById: function getDistrictById(id) {
+      for (var i = 0; i < this.districts.length; i++) {
+        if (this.districts[i].id === id) return this.districts[i];
+      }
+
+      return false;
+    },
     getRegions: function getRegions() {
       var _this = this;
 
@@ -359,6 +468,10 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
         this.selectedLandAreas += parseInt(feature.properties.area);
       }
     },
+    confirm: function confirm(feature) {
+      this.selectLand(feature);
+      $("#values_modal").modal('show');
+    },
     removeLand: function removeLand(feature, layer) {
       if (this.selectedLands.includes(feature.properties.id)) {
         this.$refs.map.mapObject.closePopup();
@@ -367,9 +480,18 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
         this.selectedLandAreas -= parseInt(feature.properties.area);
         layer.setStyle(this.geojsonStyle);
       }
+    },
+    submit: function submit() {
+      $('.modal').modal('hide');
+      this.$router.push({
+        name: "dashboard.application"
+      });
+      this.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
     }
   },
   mounted: function mounted() {
+    var _this8 = this;
+
     this.getRegions();
 
     if (this.$route.query.land) {
@@ -377,6 +499,12 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
     }
 
     (0,_public_assets_js_snoopy__WEBPACK_IMPORTED_MODULE_4__["default"])();
+    $(".close1").click(function () {
+      $(".modal").modal('hide');
+    });
+    axios.get('/api/land_purposes').then(function (resp) {
+      _this8.land_purposes = resp.data.data;
+    });
   }
 });
 
@@ -393,6 +521,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Auth */ "./resources/js/Auth.js");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2119,11 +2254,24 @@ var render = function () {
                                   _c("br"),
                                   _c("br"),
                                   _vm._v(" "),
-                                  _c(
-                                    "button",
-                                    { staticClass: "btn btn-primary" },
-                                    [_vm._v("Tasdiqlash")]
-                                  ),
+                                  _vm.selectedLand
+                                    ? [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn btn-primary",
+                                            on: {
+                                              click: function ($event) {
+                                                return _vm.confirm(
+                                                  _vm.selectedLand
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("Tasdiqlash")]
+                                        ),
+                                      ]
+                                    : _vm._e(),
                                   _vm._v(" "),
                                   _vm.selectedLands.includes(
                                     _vm.selectedLand.properties.id
@@ -2196,10 +2344,266 @@ var render = function () {
         ],
         1
       ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade bd-example-modal-lg-2",
+          attrs: {
+            id: "values_modal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "myLargeModalLabel",
+            "aria-hidden": "true",
+          },
+        },
+        [
+          _c("div", { staticClass: "modal-dialog modal-lg" }, [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal-body ht-250 scrollbar-sm pos-relative",
+                  staticStyle: { "overflow-y": "auto" },
+                },
+                [
+                  _c("div", { staticClass: "main-card mb-3 " }, [
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v("Kerakli ma'lumotlar"),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Viloyat")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "d-none",
+                            attrs: {
+                              type: "number",
+                              name: "region_id",
+                              disabled: "",
+                              id: "region_id",
+                            },
+                          }),
+                          _vm._v(" "),
+                          _vm.selectedRegion
+                            ? _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  disabled: "",
+                                  id: "region_name",
+                                },
+                                domProps: {
+                                  value: _vm.getRegionById(_vm.selectedRegion)
+                                    .nameuz,
+                                },
+                              })
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "text-danger",
+                          attrs: { id: "error_region_id" },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Tanlangan yer tumani")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "d-none",
+                            attrs: {
+                              type: "number",
+                              name: "district_id",
+                              disabled: "",
+                              id: "district_id",
+                            },
+                          }),
+                          _vm._v(" "),
+                          _vm.selectedDistrict
+                            ? _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  disabled: "",
+                                  id: "district_name",
+                                },
+                                domProps: {
+                                  value: _vm.getDistrictById(
+                                    _vm.selectedDistrict
+                                  ).nameuz,
+                                },
+                              })
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "text-danger",
+                          attrs: { id: "error_distric_id" },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [
+                            _vm._v("Yer uchastkasini ijaraga olish maqsadi"),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: {
+                                name: "purpose",
+                                id: "purpose_id",
+                                required: "",
+                              },
+                            },
+                            [
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("Ijaraga olish maqsadini belgilang"),
+                              ]),
+                              _vm._v(" "),
+                              _vm._l(
+                                _vm.land_purposes,
+                                function (land_purpose) {
+                                  return _c(
+                                    "option",
+                                    { attrs: { value: "" } },
+                                    [_vm._v(_vm._s(land_purpose.name))]
+                                  )
+                                }
+                              ),
+                            ],
+                            2
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "text-danger",
+                          attrs: { id: "error_purpose_id" },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "input-group mb-3" }, [
+                          _c(
+                            "span",
+                            {
+                              staticClass: "input-group-text",
+                              attrs: { id: "basic-addon1" },
+                            },
+                            [_vm._v("Yer uchastkasining maydoni (ga)")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control disabled",
+                            attrs: { type: "text", disabled: "", id: "area" },
+                            domProps: { value: _vm.selectedLandAreas },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "text-danger",
+                          attrs: { id: "error_area" },
+                        }),
+                        _vm._v(" "),
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "text-danger",
+                          attrs: { id: "error_amount" },
+                        }),
+                        _vm._v(" "),
+                        _c("div", {
+                          staticClass: "text-danger",
+                          attrs: { id: "error" },
+                        }),
+                      ]),
+                    ]),
+                  ]),
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary close1",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                  },
+                  [_vm._v("Yopish")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn d-block btn-primary",
+                    staticStyle: { color: "white" },
+                    attrs: { type: "submit", id: "submit" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.submit()
+                      },
+                    },
+                  },
+                  [
+                    _vm._v(
+                      "Arizani\n                        topshirish\n                    "
+                    ),
+                  ]
+                ),
+              ]),
+            ]),
+          ]),
+        ]
+      ),
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [_vm._v("Ariza Topshirish")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close close1",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close",
+          },
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group" }, [
+      _c("div", { staticClass: "input-group-prepend" }, [
+        _c("span", { staticClass: "input-group-text" }, [
+          _vm._v("Ko‘zlanayotgan ijara muddati"),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { placeholder: "Amount", id: "amount", type: "number" },
+      }),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -2234,7 +2638,7 @@ var render = function () {
             },
             [
               _c("img", { attrs: { src: "/image/Vector.svg", alt: "" } }),
-              _vm._v("\n                Arizalarim\n                "),
+              _vm._v("\n                Takliflarim\n                "),
               _c("span"),
             ]
           ),
@@ -2253,7 +2657,7 @@ var render = function () {
             },
             [
               _c("img", { attrs: { src: "/image/Vector.svg", alt: "" } }),
-              _vm._v("\n                Ariza topshirish\n                "),
+              _vm._v("\n                Taklif kiritish\n                "),
               _c("span"),
             ]
           ),
@@ -2273,6 +2677,25 @@ var render = function () {
             [
               _c("img", { attrs: { src: "/image/Profile.svg", alt: "" } }),
               _vm._v("\n                Ma'lumotlarim\n                "),
+              _c("span"),
+            ]
+          ),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "li",
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "sidebar-link",
+              attrs: { to: { name: "dashboard.application.saved" } },
+            },
+            [
+              _c("img", { attrs: { src: "/image/Profile.svg", alt: "" } }),
+              _vm._v("\n                Saqlangan yerlar\n                "),
               _c("span"),
             ]
           ),

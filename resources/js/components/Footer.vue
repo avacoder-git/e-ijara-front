@@ -30,7 +30,8 @@
                         <div class="col-lg-3">
                             <div class="footer-header">{{ $t("nav.links.contact") }}</div>
                             <a href="" class="footer-link">Tel: <b> <a style="text-decoration: none" href="tel: +998996314221">+998 99 631 42 21</a> </b></a>
-                            <a href="" class="footer-link">Telegram: <b> <a style="text-decoration: none"  href="http://T.ME/EIJARASUPPORT" target="_blank">http://T.ME/EIJARASUPPORT</a> </b></a>
+                            <a href="" class="footer-link"><b> <a style="text-decoration: none"  href="http://T.ME/EIJARASUPPORT" target="_blank">
+                                <img src="image/telegram.png" width="30px" alt=""></a> </b></a>
                         </div>
 
                     </div>

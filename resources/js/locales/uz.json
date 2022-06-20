@@ -6,26 +6,6 @@
             "etap": "bosqich",
             "сontent": [
                 {
-                    "icon": "image/auksion.svg",
-                    "name": "TAKLIF",
-                    "text": "Jismoniy va yuridik shaxslar tomonidan taklif kelib tushadi"
-                },
-                {
-                    "icon": "image/uzdyl.svg",
-                    "name": "“UZDAVYERLOYIHA” DILI ",
-                    "text": "Taklif o‘rganib chiqiladi va tuman hokimiyatiga yuboriladi"
-                },
-                {
-                    "icon": "image/auksion.svg",
-                    "name": "TUMAN HOKIMIYATI",
-                    "text": "Taklif o‘rganib chiqiladi va Davlat kadastrlari palatasiga buyurtma beriladi"
-                },
-                {
-                    "icon": "image/kadastr.svg",
-                    "name": "DAVLAT KADASTRLARI PALATASI",
-                    "text": "Yer uchastkasining kadastr hujjatlarini tuman hokimligi nomiga rasmiylashtiradi"
-                },
-                {
                     "icon": "image/uzdyl.svg",
                     "name": "“UZDAVYERLOYIHA” DILI ",
                     "text": "Bo‘sh yerning “Yer tuzish loyihasi” ishlab chiqiladi"
@@ -55,6 +35,13 @@
                     "name": "G'OLIB",
                     "text": "“Ye-AUKSION” ESPdagi shaxsiy kabinetiga barcha xujjatlar kelib tushadi"
                 }
+            ]
+        },
+        "video": {
+            "about": "Tizim haqida",
+            "content": [
+                "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan  \"E-IJARA\" avtomatlashtirilgan axborot tizimining normativ-xuquqiy xujjatlari borasida",
+                "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan  \"E-IJARA\" avtomatlashtirilgan axborot tizimi haqida"
             ]
         },
         "lands": {

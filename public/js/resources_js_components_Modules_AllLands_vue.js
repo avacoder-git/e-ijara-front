@@ -78,6 +78,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AllLands",
   data: function data() {
@@ -97,13 +98,12 @@ __webpack_require__.r(__webpack_exports__);
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       window.scrollTo(0, 0);
       this.isLoading = true;
-      axios.get('/api/front/lands', {
-        params: {
-          status_id: 2,
-          page: page
+      axios.get("/api/save-land/".concat(id), {
+        headers: {
+          "Authorization": "Bearer " + auth
         }
       }).then(function (response) {
-        _this.data = response.data;
+        if (response) console.log(response);
       })["finally"](function () {
         _this.isLoading = false;
       });

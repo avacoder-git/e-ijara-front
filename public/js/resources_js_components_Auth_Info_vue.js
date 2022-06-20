@@ -162,6 +162,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Sidebar",
@@ -724,7 +731,7 @@ var render = function () {
             },
             [
               _c("img", { attrs: { src: "/image/Vector.svg", alt: "" } }),
-              _vm._v("\n                Arizalarim\n                "),
+              _vm._v("\n                Takliflarim\n                "),
               _c("span"),
             ]
           ),
@@ -743,7 +750,7 @@ var render = function () {
             },
             [
               _c("img", { attrs: { src: "/image/Vector.svg", alt: "" } }),
-              _vm._v("\n                Ariza topshirish\n                "),
+              _vm._v("\n                Taklif kiritish\n                "),
               _c("span"),
             ]
           ),
@@ -763,6 +770,25 @@ var render = function () {
             [
               _c("img", { attrs: { src: "/image/Profile.svg", alt: "" } }),
               _vm._v("\n                Ma'lumotlarim\n                "),
+              _c("span"),
+            ]
+          ),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "li",
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "sidebar-link",
+              attrs: { to: { name: "dashboard.application.saved" } },
+            },
+            [
+              _c("img", { attrs: { src: "/image/Profile.svg", alt: "" } }),
+              _vm._v("\n                Saqlangan yerlar\n                "),
               _c("span"),
             ]
           ),

@@ -155,7 +155,7 @@ var render = function () {
               domProps: { innerHTML: _vm._s(_vm.$t("contact.text")) },
             }),
             _vm._v(" "),
-            _c("h3", [
+            _c("h3", { staticClass: "mb-2" }, [
               _vm._v(
                 "\n                        " +
                   _vm._s(_vm.$t("contact.tel")) +
@@ -205,13 +205,13 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-4" }, [
         _vm._v(
-          "\n                            (+99871) 206-71-42\n                        "
+          "\n                            - (+99871) 206-71-42\n                        "
         ),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-4" }, [
         _vm._v(
-          "\n                            (+99871) 206-71-49\n                        "
+          "\n                            - (+99871) 206-71-49\n                        "
         ),
       ]),
     ])

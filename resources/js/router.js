@@ -81,6 +81,11 @@ const routes = [
                             name:'dashboard.application.create'
                         },
                         {
+                            path: "applications/saved",
+                            component: () => import('./components/Auth/Saved'),
+                            name:'dashboard.application.saved'
+                        },
+                        {
                             path: "applications/map",
                             component: () => import('./components/Auth/Map'),
                             name:'dashboard.application.map'

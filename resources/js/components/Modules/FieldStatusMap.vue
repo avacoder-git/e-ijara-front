@@ -78,7 +78,7 @@
                             <div class="son">{{ pointedLocation.count_tanlovda }} {{ $t('ta') }}</div>
                         </div>
                         <div class="rectangle-inner rectangle-inner-2">
-                            <div class="info">{{ $t('main.statistics.tanlovdagi') }}:</div>
+                            <div class="info">{{ $t('main.holat.new') }}:</div>
                             <div class="son">{{ pointedLocation.all_area_tanlovda }} {{ $t('ga') }}</div>
                         </div>
                     </div>

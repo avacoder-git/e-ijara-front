@@ -8,7 +8,7 @@
                 <th>{{ $t("main.holat.general") }}</th>
                 <th>{{ $t("main.holat.free") }} ({{ $t("ga") }})</th>
                 <th>{{ $t("main.holat.tanlovdagi") }}</th>
-                <th>{{ $t("main.statistics.tanlovdagi") }} ({{ $t("ga") }})</th>
+                <th>{{ $t("main.holat.new") }} ({{ $t("ga") }})</th>
             </tr>
             </thead>
             <tbody>

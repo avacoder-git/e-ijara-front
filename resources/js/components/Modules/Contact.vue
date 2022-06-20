@@ -9,15 +9,15 @@
                         <p v-html="$t('contact.text')">
                         </p>
 
-                        <h3>
+                        <h3 class="mb-2">
                             {{ $t("contact.tel") }}
                         </h3>
                         <div class="row">
                             <div class="col-lg-4">
-                                (+99871) 206-71-42
+                                - (+99871) 206-71-42
                             </div>
                             <div class="col-lg-4">
-                                (+99871) 206-71-49
+                                - (+99871) 206-71-49
                             </div>
                         </div>
                         <h3>

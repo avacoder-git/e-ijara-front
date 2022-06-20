@@ -7,11 +7,11 @@ use App\Http\Resources\LandPurposesResource;
 use App\Models\LandPurposes;
 use Illuminate\Support\Facades\Auth;
 
-class LandPurposesController extends Controller
+class   LandPurposesController extends Controller
 {
     public function index()
     {
-        return LandPurposesResource::collection(LandPurposes::where('person_type', Auth::check() ? Auth::user()->user_type : '')->get());
+        return LandPurposesResource::collection(LandPurposes::query()->get());
     }
 
 }

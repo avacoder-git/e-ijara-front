@@ -4,14 +4,14 @@
             <li>
                 <router-link :to="{ name: 'dashboard.application'}" class="sidebar-link">
                     <img src="/image/Vector.svg" alt="">
-                    Arizalarim
+                    Takliflarim
                     <span></span>
                 </router-link>
             </li>
             <li>
                 <router-link :to="{ name: 'dashboard.application.create'}" class="sidebar-link">
                     <img src="/image/Vector.svg" alt="">
-                    Ariza topshirish
+                    Taklif kiritish
                     <span></span>
                 </router-link>
             </li>
@@ -19,6 +19,13 @@
                 <router-link :to="{ name: 'dashboard.info'}" class="sidebar-link">
                     <img src="/image/Profile.svg" alt="">
                     Ma'lumotlarim
+                    <span></span>
+                </router-link>
+            </li>
+            <li>
+                <router-link :to="{ name: 'dashboard.application.saved'}" class="sidebar-link">
+                    <img src="/image/Profile.svg" alt="">
+                    Saqlangan yerlar
                     <span></span>
                 </router-link>
             </li>

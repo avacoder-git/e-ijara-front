@@ -7,7 +7,7 @@
 
                         <div id="videoCarousel" class="carousel slide" data-ride="carousel">
 
-                            <div class="carousel-inner"  role="listbox">
+                            <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
                                     <img src="image/video-thumbnail1.jpg" class="carousel-img" alt="Video">
                                     <div class="video-content">
@@ -20,18 +20,17 @@
                                                 </button>
                                                 <div class="w-100">
                                                     <div class="text-1">
-                                                        Tizim haqida videorolik
+                                                        {{ $t('main.video.about') }}
                                                     </div>
                                                     <div class="text-2">
-                                                        Bo'sh turgan er uchastkasi to'g'risidagi ma'lumotlarni ochiq
-                                                        elektron
-                                                        tanlovga
-                                                        qo'yish masalasini belgilangan tartibda ko'rib chiqish borasida.
+                                                        {{ $t('main.video.content[0]') }}
+
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
-                                                <button type="button" class="play-btn" data-video="1" data-toggle="modal"
+                                                <button type="button" class="play-btn" data-video="1"
+                                                        data-toggle="modal"
                                                         data-target="#video"><img
                                                     src="image/play_btn.svg" class="play-img" alt="">
                                                 </button>
@@ -52,13 +51,10 @@
                                                 </button>
                                                 <div class="w-100">
                                                     <div class="text-1">
-                                                        Tizim haqida videorolik
+                                                        {{ $t('main.video.about') }}
                                                     </div>
                                                     <div class="text-2">
-                                                        Bo'sh turgan er uchastkasi to'g'risidagi ma'lumotlarni ochiq
-                                                        elektron
-                                                        tanlovga
-                                                        qo'yish masalasini belgilangan tartibda ko'rib chiqish borasida.
+                                                        {{ $t('main.video.content[1]') }}
                                                     </div>
                                                 </div>
                                             </div>

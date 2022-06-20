@@ -122,8 +122,7 @@ export default {
         },
         saveLand(id)
         {
-            var auth = localStorage.getItem('authcheck')
-
+            var auth = localStorage.getItem('token')
             if (auth)
             {
                 var saved = this.saved
@@ -132,7 +131,11 @@ export default {
                     saved.splice(index,1)
                 else
                 {
-                    axios.get(`/api/save-land/${auth}/${id}`)
+                    axios.get(`/api/save-land/${id}`,{
+                        headers:{
+                            "Authorization": "Bearer " + auth
+                        }
+                    })
                     .then(response => {
                         if (response)
                             console.log(response);
@@ -140,9 +143,6 @@ export default {
                     saved.push(id)
                 }
                 this.saved  = saved
-
-
-
             }
             else
             {

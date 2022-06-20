@@ -50,7 +50,10 @@
                             <template v-if="selectedLand && layer">
                                 <l-popup ref="popup">
                                     Umumiy maydoni: {{ selectedLand.properties.area }} ga <br><br>
-                                    <button class='btn btn-primary'>Tasdiqlash</button>
+                                    <template v-if="selectedLand">
+                                        <button @click="confirm(selectedLand)" class='btn btn-primary'>Tasdiqlash</button>
+                                    </template>
+
                                     <template v-if="selectedLands.includes(selectedLand.properties.id)">
                                         <button class='btn btn-danger ml-1 btn-remove'
                                                 @click="removeLand(selectedLand, layer)">Bekor qilish
@@ -73,6 +76,97 @@
 
         </div>
 
+        <div class="modal fade bd-example-modal-lg-2" id="values_modal" tabindex="-1" role="dialog"
+             aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+
+            <div class="modal-dialog modal-lg">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Ariza Topshirish</h5>
+                        <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body ht-250 scrollbar-sm pos-relative" style="overflow-y: auto;">
+
+                        <div class="main-card mb-3 ">
+
+
+                            <div class="card-body">
+                                <h5 class="card-title">Kerakli ma'lumotlar</h5>
+                                <div>
+                                    <div class="form-group">
+                                        <label>Viloyat</label>
+                                        <input type="number" name="region_id" disabled class="d-none" id="region_id">
+                                        <input type="text" v-if="selectedRegion"
+                                               :value="getRegionById(selectedRegion).nameuz" class="form-control"
+                                               disabled id="region_name">
+                                    </div>
+                                    <div class="text-danger" id="error_region_id"></div>
+
+
+                                    <div class="form-group">
+                                        <label>Tanlangan yer tumani</label>
+                                        <input type="number" name="district_id" disabled class="d-none"
+                                               id="district_id">
+                                        <input type="text" class="form-control" v-if="selectedDistrict"
+                                               :value="getDistrictById(selectedDistrict).nameuz" disabled
+                                               id="district_name">
+                                    </div>
+                                    <div class="text-danger" id="error_distric_id"></div>
+
+                                    <div class="form-group">
+                                        <label>Yer uchastkasini ijaraga olish maqsadi</label>
+                                        <select name="purpose" id="purpose_id" class="form-control" required>
+                                            <option value="">Ijaraga olish maqsadini belgilang</option>
+                                            <!--                                            @foreach($land_purposes as $key => $item)-->
+                                            <option value="" v-for="land_purpose in land_purposes" >{{ land_purpose.name }}</option>
+                                            <!--                                            @endforeach-->
+                                        </select>
+                                    </div>
+                                    <div class="text-danger" id="error_purpose_id"></div>
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text"
+                                              id="basic-addon1">Yer uchastkasining maydoni (ga)</span>
+                                        <input type="text" class="form-control disabled" :value="selectedLandAreas"
+                                               disabled id="area">
+                                    </div>
+                                    <div class="text-danger" id="error_area"></div>
+
+
+                                    <div class="input-group">
+                                        <div class="input-group-prepend"><span class="input-group-text">Ko‘zlanayotgan ijara muddati</span>
+                                        </div>
+                                        <input placeholder="Amount" id="amount" type="number" class="form-control">
+                                    </div>
+                                    <div class="text-danger" id="error_amount"></div>
+
+
+                                    <div class="text-danger" id="error"></div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary close1" data-dismiss="modal">Yopish</button>
+                        <button type="submit" class="btn d-block btn-primary" @click="submit()" id="submit" style="color:white">Arizani
+                            topshirish
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -96,6 +190,7 @@ export default {
     name: "Map",
     data() {
         return {
+            land_purposes: [],
             map: null,
             selectedLands: [],
             selectedLandAreas: 0,
@@ -142,6 +237,25 @@ export default {
         LIcon
     },
     methods: {
+
+        getRegionById(id) {
+            for (let i = 0; i < this.regions.length; i++) {
+                if (this.regions[i].id === id)
+                    return this.regions[i];
+
+            }
+            return false
+        },
+        getDistrictById(id) {
+            for (let i = 0; i < this.districts.length; i++) {
+                if (this.districts[i].id === id)
+                    return this.districts[i];
+            }
+            return false
+
+        },
+
+
         getRegions() {
             axios.get('/api/json/regions')
                 .then(response => {
@@ -162,6 +276,9 @@ export default {
 
                 })
         },
+
+
+
         getDistricts(regioncode) {
             axios.get(`/api/json/districts/${regioncode}`)
                 .then(response => {
@@ -252,8 +369,7 @@ export default {
                                 });
                             })
                             layer.on("mouseout", function (e) {
-                                if (!This.selectedLands.includes(feature.properties.id))
-                                {
+                                if (!This.selectedLands.includes(feature.properties.id)) {
                                     layer.setStyle(This.geojsonStyle);
                                 }
                             });
@@ -336,6 +452,13 @@ export default {
                 this.selectedLandAreas += parseInt(feature.properties.area)
             }
         },
+
+        confirm(feature) {
+            this.selectLand(feature)
+            $("#values_modal").modal('show')
+        },
+
+
         removeLand(feature, layer) {
             if (this.selectedLands.includes(feature.properties.id)) {
                 this.$refs.map.mapObject.closePopup();
@@ -345,6 +468,17 @@ export default {
                 layer.setStyle(this.geojsonStyle);
 
             }
+        },
+
+        submit()
+        {
+
+
+
+            $('.modal').modal('hide')
+            this.$router.push({name: "dashboard.application"})
+            this.$swal('Taklif qabul qilindi!','Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin','success');
+
         }
     },
 
@@ -355,6 +489,15 @@ export default {
             this.drawLandFromParam(this.$route.query.land)
         }
         snoopy()
+
+        $(".close1").click(function () {
+            $(".modal").modal('hide')
+        })
+
+
+        axios.get('/api/land_purposes').then(resp => {
+            this.land_purposes = resp.data.data
+        });
     }
 
 }

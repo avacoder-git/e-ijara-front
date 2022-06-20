@@ -31,6 +31,9 @@ Route::prefix('auth')->group(function (){
 
 Route::group(['middleware' => "auth:api"], function (){
     Route::get('applications', [\App\Http\Controllers\Api\ApplicationController::class, 'index']);
+    Route::get('/save-land/{land}', [IndexController::class, 'saveLand']);
+    Route::get('/saved-lands', [IndexController::class, 'getSavedLands']);
+
 });
 
 
@@ -77,7 +80,7 @@ Route::get('/json/districts/{region}', [\App\Http\Controllers\DistrictController
 Route::get('/json/district/{district}', [\App\Http\Controllers\DistrictController::class,'show']);
 Route::post('/application', [IndexController::class, 'submit'])->name('application.submit');
 
-Route::get('/save-land/{user}/{land}', [IndexController::class, 'saveLand']);
+Route::get('/land_purposes', [\App\Http\Controllers\Api\LandPurposesController::class,'index']);
 
 //Route::middleware('auth')->get('/user', function (Request $request) {
 //    return $request->user();

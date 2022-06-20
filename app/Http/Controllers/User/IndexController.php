@@ -4,11 +4,13 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PurposeStoreRequest;
+use App\Http\Resources\Front\LandCollection;
 use App\Models\Application;
 use App\Models\LandPurposes;
 use App\Models\Regions;
 use App\Models\SavedLand;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
@@ -73,19 +75,27 @@ class IndexController extends Controller
         return response()->json(['success' => true, 'message' => "Successfully created"]);
     }
 
-    public function saveLand($user, $land)
+    public function saveLand( $land)
     {
-        $count = SavedLand::query()->where('user_id', $user)->where('land_id', $land)->first();
+        $user = auth()->user();
+        $count = SavedLand::query()->where('user_id', $user->id)->where('land_id', $land)->first();
 
         if ($count)
             $count->delete();
         else
             SavedLand::query()->create([
                 'land_id' => $land,
-                'user_id' => $user,
+                'user_id' => $user->id,
             ]);
 
         return response()->json(['ok' => true]);
+    }
+
+    public function getSavedLands()
+    {
+        $user = auth()->user();
+        $lands =  SavedLand::query()->with('land')->where('user_id', $user->id)->paginate(16);
+        return new LandCollection($lands);
     }
 
 
