@@ -262,7 +262,7 @@
                         </div>
                         <div class="modal-body border-0">
                             <label for="application_id">{{ $t("appnum") }}</label>
-                            <input id="application_id" type="text" placeholder="0000000"
+                            <input id="application_id" type="text" placeholder="..."
                                    class="form-control border-0 bg-light shadow-none">
                         </div>
                         <div class="modal-footer">
