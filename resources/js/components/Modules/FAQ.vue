@@ -11,13 +11,13 @@
                         <div class="card card-body">
 
                             <p class="m-0">
-                                <button class="question" type="button" data-id="1" @click="animate(index + 1)">
+                                <button class="question" :class="selected === index + 1  ? 'text-active':''"  type="button" data-id="1" @click="animate(index + 1)">
                                     <span>{{ faq.question }}</span>
-                                    <span class="icon"></span>
+                                    <span  :class="selected === index + 1  ? 'icon-active':'icon'" ></span>
                                 </button>
                             </p>
                             <div class="answer" :class="selected === index + 1  ? 'answer-active':''">
-                                <div class="" v-html="faq.answer">
+                                <div v-html="faq.answer">
                                 </div>
                             </div>
 
@@ -47,6 +47,7 @@ export default {
     methods: {
         animate(id) {
             this.selected = this.selected === id ? 0 : id
+
         }
     }
 
@@ -56,6 +57,17 @@ export default {
 
 <style scoped>
 
+.text-active{
+    color: #08705F!important;
+}
 
+.answer li{
+    color: #60676D!important;
+    font-family: 'Raleway'!important;
+    font-style: normal!important;
+    font-weight: 600!important;
+    font-size: 18px!important;
+    line-height: 28px!important;
+}
 
 </style>
