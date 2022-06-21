@@ -67,6 +67,7 @@ Route::prefix('geojson')->group(function () {
 
 
 Route::get('/front/lands', [\App\Http\Controllers\Api\LandController::class,'front']);
+Route::get('/status/{application}', [\App\Http\Controllers\Api\LandController::class,'status']);
 
 
 

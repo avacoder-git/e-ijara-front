@@ -262,11 +262,18 @@
                         </div>
                         <div class="modal-body border-0">
                             <label for="application_id">{{ $t("appnum") }}</label>
-                            <input id="application_id" type="text" placeholder="..."
+                            <input id="application_id" type="text" placeholder="..." v-model="status"
                                    class="form-control border-0 bg-light shadow-none">
+
+                            <div class="alert mt-2" v-if="message && alert" :class="alert"  role="alert">
+                                {{ message }}
+                            </div>
                         </div>
+
+
+
                         <div class="modal-footer">
-                            <button class="btn btn-check1">{{ $t("check") }}</button>
+                            <button class="btn btn-check1" @click="getStatus">{{ $t("check") }}</button>
                         </div>
                     </div>
                 </div>
@@ -353,7 +360,10 @@ export default {
             agree: false,
             lang: true,
             authcheck: false,
-            user: this.auth.user
+            user: this.auth.user,
+            status: null,
+            message: null,
+            alert: null
 
         }
     },
@@ -368,6 +378,21 @@ export default {
     components: {EIMZO, $},
 
     methods: {
+
+        getStatus()
+        {
+            axios.get(`/api/status/${this.status}`)
+            .then(response =>{
+                this.message = response.data.status
+
+                this.alert = response.data.ok? "alert-success" :  "alert-danger"
+            })
+
+
+        },
+
+
+
         agreeToggle() {
             this.agree = !this.agree
         },

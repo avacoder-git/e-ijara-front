@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Front\LandCollection;
 use App\Http\Resources\LandCollectionResource;
 use App\Http\Resources\LandResource;
+use App\Models\Application;
 use App\Models\LandAuctionLot;
 use App\Models\Regions;
 use App\Models\Land;
@@ -102,6 +103,12 @@ class LandController extends Controller
         $lands = $lands->paginate(16);
         return new LandCollection($lands);
 
+    }
+
+    public function status($application)
+    {
+        $application = Application::find($application);
+        return $application? response()->json(['ok'=> true,'status' => $application->status->name]): response()->json(['ok'=> false,'status' => "Taklif topilmadi"]);
     }
 
 
