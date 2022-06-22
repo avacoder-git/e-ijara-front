@@ -58,7 +58,7 @@ class OneAuthService
             'name' => $response->user_id,
             'password' => Hash::make(uniqid()),
             'auth_type' => 'oneid',
-            'user_type' => $response->user_type == 'L' ? 'Y' : 'J',
+            'user_type' => count($response->legal_info) ? 'Y' : 'J',
             'status' => 1
         ];
     }

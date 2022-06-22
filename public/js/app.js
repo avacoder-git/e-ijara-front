@@ -59765,27 +59765,22 @@ var render = function () {
               "ul",
               { staticClass: "navbar-nav" },
               [
-                _c(
-                  "li",
-                  { staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link nav-link-mini",
-                        attrs: { to: { name: "about" }, href: "#" },
-                      },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.$t("nav.links.about")) +
-                            "\n                    "
-                        ),
-                      ]
-                    ),
-                  ],
-                  1
-                ),
+                _c("li", { staticClass: "nav-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link nav-link-mini",
+                      attrs: { href: "videoCarousel" },
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.$t("nav.links.about")) +
+                          "\n                    "
+                      ),
+                    ]
+                  ),
+                ]),
                 _vm._v(" "),
                 _c(
                   "li",

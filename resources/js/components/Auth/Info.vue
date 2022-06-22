@@ -98,7 +98,7 @@ export default {
     },
     computed: {
         user_type() {
-            return this.auth.user.user_type == 'Y' ? 'Yuridik shaxs' : 'Jismoniy shaxs'
+            return this.auth.user.user_type === "Y" ? 'Yuridik shaxs' : 'Jismoniy shaxs'
         }
 
     }

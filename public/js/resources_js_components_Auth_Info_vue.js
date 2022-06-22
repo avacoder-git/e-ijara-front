@@ -109,7 +109,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     user_type: function user_type() {
-      return this.auth.user.user_type == 'Y' ? 'Yuridik shaxs' : 'Jismoniy shaxs';
+      return this.auth.user.user_type === "Y" ? 'Yuridik shaxs' : 'Jismoniy shaxs';
     }
   }
 });

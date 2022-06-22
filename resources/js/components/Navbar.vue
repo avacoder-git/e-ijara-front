@@ -170,9 +170,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link :to="{ name: 'about'}" class="nav-link nav-link-mini" href="#">
+                        <a href="videoCarousel" class="nav-link nav-link-mini">
                             {{ $t('nav.links.about') }}
-                        </router-link>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{name: 'map' }" class="nav-link nav-link-mini" href="#">{{
