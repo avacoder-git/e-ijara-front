@@ -18,12 +18,19 @@ class LandGeometryController extends Controller
     public function index(Request $request, District $district)
     {
         $area_id = $district->cad_num;
-        $where = $request->not_null ? " l.status_id not in (25)  and l.parent_id is not null and l.is_merged_lot = 0 or l.is_merged_lot = 1":" l.parent_id is null";
+        switch ($request->status)
+        {
+            case 1:$where = " l.parent_id is null and NOT EXISTS (SELECT 1 FROM lands    WHERE lands.parent_id = lands.id)";break;
+            case 2:$where = " l.status_id not in (25)  and l.parent_id is not null and l.is_merged_lot = 0 or l.is_merged_lot = 1";break;
+            case 3:$where = " l.status_id >= 17 and l.status_id != 33";break;
+            case 4: $where = " l.status_id = 33";break;
+        }
 
         $query = "select l.id, l.area, ST_AsGeoJSON(g.geometry) from lands l  inner join land_geometries g on g.land_id = l.id where l.cad_number like '%$area_id%' and $where";
-        $lands = cache()->remember("area-$area_id",60*60*24,function () use($query){
-            return DB::connection('ijaradb')->select($query);
-        });
+//        $lands = cache()->remember("area-$area_id-$request->status",60*60*24,function () use($query){
+//            return DB::connection('ijaradb')->select($query);
+//        });
+        $lands = DB::connection('ijaradb')->select($query);
         $data = new LandCollectionResource($lands, $area_id);
        return $data;
     }

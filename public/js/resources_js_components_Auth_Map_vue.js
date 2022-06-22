@@ -196,6 +196,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -314,8 +319,11 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
         _this3.makeGeoJSON(geojson);
       });
       this.removeMarkers();
-      this.drawLands(this.selectedDistrict);
+      this.drawLandsByStatus(this.selectedDistrict, 2);
+      this.drawLandsByStatus(this.selectedDistrict, 3);
+      this.drawLandsByStatus(this.selectedDistrict, 4);
       this.drawCadLands(this.getCadNum(this.selectedDistrict));
+      this.drawLands(this.selectedDistrict);
 
       if (this.geojson1 && this.geojson2) {
         this.layerGroup.addLayer(this.geojson1);
@@ -370,7 +378,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
       var This = this;
       axios.get("/api/geojson/lands/".concat(id), {
         params: {
-          not_null: 0
+          status: 1
         }
       }).then(function (response) {
         var lands = response.data;
@@ -381,9 +389,11 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
           style: _this5.geojsonStyle,
           onEachFeature: function onEachFeature(feature, layer) {
             layer.on('mouseover', function (e) {
-              layer.setStyle({
-                color: '#2262CC'
-              });
+              if (!This.selectedLands.includes(feature.properties.id)) {
+                layer.setStyle({
+                  color: '#2262CC'
+                });
+              }
             });
             layer.on("mouseout", function (e) {
               if (!This.selectedLands.includes(feature.properties.id)) {
@@ -398,14 +408,57 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
               This.selectedLand = feature;
               This.currentLatLng = e.latlng;
               This.$refs.marker.mapObject.openPopup();
+              This.selectLand(feature);
             });
           }
         };
         _this5.geojson1 = leaflet__WEBPACK_IMPORTED_MODULE_2___default().geoJson(lands.data, options).addTo(_this5.$refs.map.mapObject);
       });
     },
-    drawCadLands: function drawCadLands(prefix) {
+    drawLandsByStatus: function drawLandsByStatus(id, status) {
       var _this6 = this;
+
+      axios.get("/api/geojson/lands/".concat(id), {
+        params: {
+          status: status
+        }
+      }).then(function (response) {
+        console.log(response);
+        var lands = response.data.data;
+        var fillColor = null;
+
+        switch (status) {
+          case 2:
+            fillColor = "#ffc800";
+            break;
+
+          case 3:
+            fillColor = "#ff0000";
+            break;
+
+          case 4:
+            fillColor = "#ff5100";
+            break;
+        }
+
+        var geojsonStyle = {
+          fillColor: fillColor,
+          color: "#000",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.7
+        };
+        var options = {
+          maxZoom: 20,
+          tolerance: 3,
+          debug: 0,
+          style: geojsonStyle
+        };
+        if (lands.features !== null) (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__["default"])(lands, options).addTo(_this6.$refs.map.mapObject);
+      });
+    },
+    drawCadLands: function drawCadLands(prefix) {
+      var _this7 = this;
 
       axios.get("https://api.agro.uz/gis_bridge/eijara", {
         params: {
@@ -426,23 +479,23 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
           debug: 0,
           style: geojsonStyle
         };
-        if (lands.features !== null) _this6.geojson2 = (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__["default"])(lands, options).addTo(_this6.$refs.map.mapObject);
+        if (lands.features !== null) _this7.geojson2 = (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__["default"])(lands, options).addTo(_this7.$refs.map.mapObject);
       });
     },
     drawLandFromParam: function drawLandFromParam($land) {
-      var _this7 = this;
+      var _this8 = this;
 
       axios.get("/api/geojson/land/".concat($land)).then(function (response) {
         response;
 
-        _this7.removeMarkers();
+        _this8.removeMarkers();
 
         var lands = response.data;
         var options = {
           maxZoom: 20,
           tolerance: 3,
           debug: 0,
-          style: _this7.geojsonStyle
+          style: _this8.geojsonStyle
         };
         var geojson = {
           geometry: lands.data[0].geometry,
@@ -452,10 +505,10 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
           }
         };
         console.log(geojson);
-        geojson = (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__["default"])(geojson, options).addTo(_this7.$refs.map.mapObject);
+        geojson = (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__["default"])(geojson, options).addTo(_this8.$refs.map.mapObject);
         5;
 
-        _this7.$refs.map.mapObject.fitBounds(geojson.getBounds());
+        _this8.$refs.map.mapObject.fitBounds(geojson.getBounds());
       });
     },
     selectLand: function selectLand(feature) {
@@ -487,7 +540,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
     }
   },
   mounted: function mounted() {
-    var _this8 = this;
+    var _this9 = this;
 
     this.getRegions();
 
@@ -500,7 +553,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
       $(".modal").modal('hide');
     });
     axios.get('/api/land_purposes').then(function (resp) {
-      _this8.land_purposes = resp.data.data;
+      _this9.land_purposes = resp.data.data;
     });
   }
 });
@@ -2333,7 +2386,11 @@ var render = function () {
                                               },
                                             },
                                           },
-                                          [_vm._v("Tasdiqlash")]
+                                          [
+                                            _vm._v(
+                                              "Tasdiqlash\n                                    "
+                                            ),
+                                          ]
                                         ),
                                       ]
                                     : _vm._e(),
@@ -2536,7 +2593,12 @@ var render = function () {
                                   return _c(
                                     "option",
                                     { attrs: { value: "" } },
-                                    [_vm._v(_vm._s(land_purpose.name))]
+                                    [
+                                      _vm._v(
+                                        _vm._s(land_purpose.name) +
+                                          "\n                                        "
+                                      ),
+                                    ]
                                   )
                                 }
                               ),

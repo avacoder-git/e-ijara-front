@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-6">
-                            <h1>{{ $t("nav.links.map")}}</h1>
+                            <h1>{{ $t("nav.links.map") }}</h1>
                             <div class="d-flex  mt-2">
                                 <v-select
                                     @change="setDistricts"
@@ -29,8 +29,8 @@
                             </div>
                         </div>
                         <div class="col-6 mt-4">
-                            <h5><b>{{ $t("dashboard.tanlangan")  }}</b>: {{ selectedLands.length }} ta</h5>
-                            <h5><b>{{  $t("dashboard.tanlangan_area") }}</b>: {{ selectedLandAreas }} ga</h5>
+                            <h5><b>{{ $t("dashboard.tanlangan") }}</b>: {{ selectedLands.length }} ta</h5>
+                            <h5><b>{{ $t("dashboard.tanlangan_area") }}</b>: {{ selectedLandAreas }} ga</h5>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,8 @@
                                 <l-popup ref="popup">
                                     Umumiy maydoni: {{ selectedLand.properties.area }} ga <br><br>
                                     <template v-if="selectedLand">
-                                        <button @click="confirm(selectedLand)" class='btn btn-primary'>Tasdiqlash</button>
+                                        <button @click="confirm(selectedLand)" class='btn btn-primary'>Tasdiqlash
+                                        </button>
                                     </template>
 
                                     <template v-if="selectedLands.includes(selectedLand.properties.id)">
@@ -121,7 +122,10 @@
                                         <select name="purpose" id="purpose_id" class="form-control" required>
                                             <option value="">Ijaraga olish maqsadini belgilang</option>
                                             <!--                                            @foreach($land_purposes as $key => $item)-->
-                                            <option value="" v-for="land_purpose in land_purposes" >{{ land_purpose.name }}</option>
+                                            <option value="" v-for="land_purpose in land_purposes">{{
+                                                    land_purpose.name
+                                                }}
+                                            </option>
                                             <!--                                            @endforeach-->
                                         </select>
                                     </div>
@@ -154,7 +158,8 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary close1" data-dismiss="modal">Yopish</button>
-                        <button type="submit" class="btn d-block btn-primary" @click="submit()" id="submit" style="color:white">Arizani
+                        <button type="submit" class="btn d-block btn-primary" @click="submit()" id="submit"
+                                style="color:white">Arizani
                             topshirish
                         </button>
                     </div>
@@ -290,8 +295,12 @@ export default {
                     this.makeGeoJSON(geojson)
                 })
             this.removeMarkers()
-            this.drawLands(this.selectedDistrict)
+            this.drawLandsByStatus(this.selectedDistrict,2)
+            this.drawLandsByStatus(this.selectedDistrict,3)
+            this.drawLandsByStatus(this.selectedDistrict,4)
             this.drawCadLands(this.getCadNum(this.selectedDistrict))
+            this.drawLands(this.selectedDistrict)
+
             if (this.geojson1 && this.geojson2) {
                 this.layerGroup.addLayer(this.geojson1);
                 this.layerGroup.addLayer(this.geojson2);
@@ -343,7 +352,7 @@ export default {
         },
         drawLands(id) {
             var This = this
-            axios.get(`/api/geojson/lands/${id}`, {params: {not_null: 0}})
+            axios.get(`/api/geojson/lands/${id}`, {params: {status: 1}})
                 .then(response => {
                     var lands = response.data
 
@@ -355,9 +364,11 @@ export default {
                         onEachFeature: function (feature, layer) {
 
                             layer.on('mouseover', function (e) {
-                                layer.setStyle({
-                                    color: '#2262CC'
-                                });
+                                if (!This.selectedLands.includes(feature.properties.id)) {
+                                    layer.setStyle({
+                                        color: '#2262CC'
+                                    });
+                                }
                             })
                             layer.on("mouseout", function (e) {
                                 if (!This.selectedLands.includes(feature.properties.id)) {
@@ -372,6 +383,7 @@ export default {
                                 This.selectedLand = feature
                                 This.currentLatLng = e.latlng
                                 This.$refs.marker.mapObject.openPopup()
+                                This.selectLand(feature)
                             })
 
                         }
@@ -380,6 +392,39 @@ export default {
                 })
 
         },
+        drawLandsByStatus(id, status) {
+            axios.get(`/api/geojson/lands/${id}`, {params: {status}})
+                .then(response => {
+                    console.log(response);
+                    var lands = response.data.data
+                    var fillColor = null
+                    switch (status)
+                    {
+                        case 2: fillColor = "#ffc800";break;
+                        case 3: fillColor = "#ff0000";break;
+                        case 4: fillColor = "#ff5100";break;
+                    }
+                    var geojsonStyle = {
+                        fillColor,
+                        color: "#000",
+                        weight: 1,
+                        opacity: 1,
+                        fillOpacity: 0.7,
+                    };
+
+                    var options = {
+                        maxZoom: 20,
+                        tolerance: 3,
+                        debug: 0,
+                        style: geojsonStyle,
+
+                    };
+                    if (lands.features !== null)
+                        vt(lands, options).addTo(this.$refs.map.mapObject);
+                })
+
+        },
+
         drawCadLands(prefix) {
             axios.get(`https://api.agro.uz/gis_bridge/eijara`, {params: {prefix}})
                 .then(response => {
@@ -461,14 +506,12 @@ export default {
             }
         },
 
-        submit()
-        {
-
+        submit() {
 
 
             $('.modal').modal('hide')
             this.$router.push({name: "dashboard.application"})
-            this.$swal('Taklif qabul qilindi!','Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin','success');
+            this.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
 
         }
     },
