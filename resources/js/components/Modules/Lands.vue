@@ -24,12 +24,12 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="owl-carousel owl-custom" id="fields1Indicators">
                             <template v-for="item in data">
-                                <div class="rectangle position-relative">
+                                <a target="_blank" :href="`https://e-auksion.uz/lot-view?lot_id=${ item.lot_number }`" class="rectangle position-relative d-block">
                                     <div class="rectangle-img"><img
                                         :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
                                     <div class="d-flex justify-content-between">
                                         <div class="rectangle-lot">{{ item.updated_at }}</div>
-                                        <div class="rectangle-lot">{{ item.regnum }}</div>
+                                        <div class="rectangle-lot">{{ item.lot_number }}</div>
                                     </div>
                                     <div class="rectangle-name mb-auto">
                                         {{ item.address }}
@@ -37,12 +37,13 @@
 
                                     <div class="rectangle-footer">
                                         <div class="rectangle-ga">{{ item.area }} Ga</div>
-                                        <button class="rectangle-save" :class="saved.includes(item.id) ? 'rectangle-save-2': 'rectangle-save-1' "
+                                        <button class="rectangle-save"
+                                                :class="saved.includes(item.id) ? 'rectangle-save-2': 'rectangle-save-1' "
                                                 @click.prevent="saveLand(item.id)">
                                             <img src="/image/Bookmark.svg" alt="">
                                         </button>
                                     </div>
-                                </div>
+                                </a>
                             </template>
                         </div>
                     </div>
@@ -200,5 +201,14 @@ export default {
 </script>
 
 <style scoped>
+
+.rectangle{
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+.rectangle:hover{
+    transform: scale(1.05);
+}
 
 </style>

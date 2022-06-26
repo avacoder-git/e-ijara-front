@@ -482,7 +482,9 @@ var render = function () {
           _c("Sidebar"),
           _vm._v(" "),
           _c("div", { staticClass: "card" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.$t("dashboard.info.title")))]),
+            _c("h1", { staticClass: "text-center" }, [
+              _vm._v(_vm._s(_vm.$t("dashboard.info.title"))),
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-row" }, [
               _c("div", { staticClass: "col-md-3" }, [

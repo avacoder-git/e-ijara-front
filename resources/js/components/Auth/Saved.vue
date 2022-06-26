@@ -6,26 +6,54 @@
 
             <div class="card">
 
-                <h1>{{ $t("dashboard.saved") }}</h1>
+                <h1 class="text-center">{{ $t("dashboard.saved") }}</h1>
 
+                <div class="d-flex  my-4">
+                    <select
+                        @change="setDistricts"
+                        v-model="selectedRegion"
+                        :reduce="(option) => option.regioncode"
+                        class="select-2"
+                        label="nameuz">
+                        <option value="" v-if="regions" v-for="region in regions" :value="region.id">{{
+                                region.nameuz
+                            }}
+                        </option>
+                    </select>
+                    <select
+                        v-model="selectedDistrict"
+                        class="select-2"
+                        :reduce="(option) => option.id"
+                        label="nameuz"
+                        :options="districts">
+                        <option value="" v-if="districts" v-for="district in districts" :value="district.id">
+                            {{ district.nameuz }}
+                        </option>
 
-                <div class="container-fluid section-2" id="saved">
+                    </select>
+
+                    <input type="text" placeholder="Auksion lot raqami" class="select-2" v-model="auction_lot">
+                    <button type="button" @click="filter" class="select-2 filter">Izlash</button>
+
+                </div>
+
+                <div class="container-fluid" id="saved">
                     <div class="loading" v-if="isLoading"></div>
 
                     <div class="row" v-if="data">
 
                         <template v-for="item in data.data">
-                            <div class="col-lg-3" v-if="item.id">
+                            <div class="col-lg-4" v-if="item.id">
                                 <div class="rectangle position-relative">
                                     <div class="rectangle-img"><img
                                         :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]"
                                         alt=""></div>
                                     <div class="d-flex justify-content-between">
-                                        <div class="rectangle-lot">{{ item.created_at }}</div>
-                                        <div class="rectangle-lot">{{ item.regnum }}</div>
+                                        <div class="rectangle-lot">{{ item.updated_at }}</div>
+                                        <div class="rectangle-lot">{{ item.lot_number }}</div>
                                     </div>
                                     <div class="rectangle-name mb-auto">
-                                        {{ item.region  }}  {{ item.district  }}
+                                        {{ item.address  }}
                                     </div>
 
                                     <div class="rectangle-footer">
@@ -114,7 +142,11 @@ export default {
                 '/foto/photo_2022-01-23_11-10-30.jpg',
             ],
             isLoading: false,
-
+            regions: [],
+            districts: [],
+            selectedRegion: null,
+            selectedDistrict: null,
+            auction_lot: null,
         }
     },
     components: {
@@ -123,6 +155,73 @@ export default {
 
 
     methods: {
+        getRegionById(id) {
+            for (let i = 0; i < this.regions.length; i++) {
+                if (this.regions[i].id === id)
+                    return this.regions[i];
+
+            }
+            return false
+        },
+        getDistrictById(id) {
+            for (let i = 0; i < this.districts.length; i++) {
+                if (this.districts[i].id === id)
+                    return this.districts[i];
+            }
+            return false
+
+        },
+        filter() {
+            axios.get('/api/saved-lands', {
+                params: {
+                    region_id: this.getRegionById(this.selectedRegion).regioncode,
+                    district_id: this.getDistrictById(this.selectedDistrict).cad_num,
+                    lot_number: this.auction_lot,
+                }
+            })
+                .then(response => {
+                    this.data = response.data
+                    console.log(response);
+
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                });
+        },
+        getRegions() {
+            axios.get('/api/json/regions')
+                .then(response => {
+                    this.regions = response.data ?? []
+                    this.regions.push({
+                        id: 0,
+                        nameuz: this.$t("main.holat.region"),
+                        regioncode: 0
+
+                    })
+                    this.selectedRegion = this.selectedRegion ?? 0
+                    this.districts.push({
+                        id: 0,
+                        nameuz: "Tuman (shaxar)",
+                        regioncode: 0
+                    })
+                    this.selectedDistrict = this.selectedDistrict ?? 0
+
+                })
+        },
+
+
+        getDistricts(regioncode) {
+            axios.get(`/api/json/districts/${regioncode}`)
+                .then(response => {
+                    this.districts = response.data
+                })
+        },
+        setDistricts() {
+
+            this.getDistricts(this.getRegionById(this.selectedRegion).regioncode)
+
+        },
+
         getData() {
             var auth = localStorage.getItem('token')
             this.isLoading = true;
@@ -197,6 +296,8 @@ export default {
 
     mounted() {
         this.getData()
+        this.getRegions()
+
         this.saved = JSON.parse(localStorage.getItem('savedLands')) ?? []
 
     },
@@ -272,4 +373,28 @@ export default {
 }
 
 
+.select-2 {
+    height: 48px;
+    width: 237px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #08705F;
+    padding: 12px;
+}
+
+.d-flex {
+    gap: 24px;
+}
+
+.filter {
+    background-color: #08705F;
+    color: white;
+    transition: 0.2s;
+}
+
+.filter:hover {
+    color: #08705F;
+    background-color: white;
+    transition: 0.2s;
+}
 </style>

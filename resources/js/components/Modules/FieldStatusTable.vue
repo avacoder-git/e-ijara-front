@@ -12,7 +12,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-if="regions" v-for="region in regions">
+            <tr v-if="regions && region.new_lands_count" v-for="region in regions">
                 <td>{{ region.nameuz }}</td>
                 <td>{{ region.new_lands_count }}</td>
                 <td>{{ region.new_lands_sum_area }}</td>

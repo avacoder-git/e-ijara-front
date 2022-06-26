@@ -15,7 +15,7 @@
                             </div>
 
                             <div class="col-2 col-lg-1">
-                                <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <div><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
                             </div>
 
                         </div>
@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="col-2 col-lg-1">
-                                <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <div><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
                             </div>
 
                         </div>
@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="col-2 col-lg-1">
-                                <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <div href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
                             </div>
 
                         </div>
@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="col-2 col-lg-1">
-                                <a href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <div href=""><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
                             </div>
 
                         </div>

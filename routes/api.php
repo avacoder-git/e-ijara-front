@@ -33,7 +33,6 @@ Route::group(['middleware' => "auth:api"], function (){
     Route::get('applications', [\App\Http\Controllers\Api\ApplicationController::class, 'index']);
     Route::get('/save-land/{land}', [IndexController::class, 'saveLand']);
     Route::get('/saved-lands', [IndexController::class, 'getSavedLands']);
-
 });
 
 

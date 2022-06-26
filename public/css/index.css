@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .not-gradient {
   background-color: white !important;
   background-image: none !important;
@@ -171,7 +175,7 @@
   background-image: url("./../image/Rectangle 22020.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 203px;
+  height: 260px;
   width: 100%;
   padding: 16px 32px 16px 16px;
   position: relative;
@@ -303,6 +307,18 @@
 .tab-menu .active {
   color: #08705F;
   border-bottom: 2px solid #08705F;
+}
+
+.signin-left {
+  background-color: #08705F;
+  color: white;
+  padding: 50px;
+  height: 100%;
+}
+.signin-left img {
+  width: 50%;
+  display: block;
+  margin: 50px auto;
 }
 
 .container {
@@ -700,7 +716,7 @@
 .section-2 #fields .rectangle {
   width: 100%;
   height: 452px;
-  background: white !important;
+  background: #F5F5F5;
   border-radius: 24px;
   padding: 16px;
   margin-top: 24px;
@@ -1286,7 +1302,14 @@ footer .footer .section-2 a b {
 .modal-content .m-24 {
   margin-top: 24px;
 }
-.modal-content .checkbox-custom {
+.modal-content .close {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  z-index: 100;
+}
+
+.checkbox-custom {
   width: 18px;
   height: 18px;
   border: 2px solid #08705F;
@@ -1296,15 +1319,10 @@ footer .footer .section-2 a b {
   font-size: 16px;
   transition: 0.3s;
 }
-.modal-content .custom-checked {
+
+.custom-checked {
   background-color: #08705F;
   color: white;
-}
-.modal-content .close {
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  z-index: 100;
 }
 
 .cursor-pointer {
@@ -1329,6 +1347,11 @@ footer .footer .section-2 a b {
   display: block !important;
 }
 
+@media only screen and (max-width: 1600px) {
+  .section .rectangle {
+    height: 203px;
+  }
+}
 @media only screen and (max-width: 600px) {
   .navbar {
     padding: 20px;

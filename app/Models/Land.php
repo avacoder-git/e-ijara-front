@@ -124,6 +124,10 @@ class Land extends Model
     {
         return $this->hasMany(LandGeometry::class, 'land_id', 'id')->selectRaw('ST_AsGeoJSON(geometry)::json as geom');
     }
+    public function land_geometries()
+    {
+        return $this->belongsTo(LandGeometry::class, 'id', 'land_id')->selectRaw('ST_AsGeoJSON(geometry)::json as geom');
+    }
 
     public function inventory()
     {
@@ -145,6 +149,11 @@ class Land extends Model
         return $this->hasOne(LandFiles::class, 'land_id', 'id')->whereRelation('land_file_type','code','013')->latest();
 
     }
+    public function children()
+    {
+        return $this->hasMany(Land::class,'parent_id','id');
+    }
+
 
     public function land_merge_data()
     {

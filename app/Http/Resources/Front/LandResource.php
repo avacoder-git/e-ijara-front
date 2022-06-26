@@ -23,7 +23,7 @@ class LandResource extends JsonResource
             'regnum' => $this->regnum,
             'address' => $this->address,
             'updated_at' => $date->format("d.m.Y"),
-            'auction_lot' => LandAuctionLot::where('land_id', $this->id)->first()?LandAuctionLot::where('land_id', $this->id)->first()->lot_number:null,
+            'lot_number' => $this->lot_number,
         ];
     }
 }

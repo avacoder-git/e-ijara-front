@@ -21,6 +21,11 @@ const routes = [
                     name:'index'
                 },
                 {
+                    path: "oferta",
+                    component: () => import('./components/Modules/Oferta'),
+                    name:'oferta'
+                },
+                {
                     path: "about",
                     component: () => import('./components/Modules/About'),
                     name:'about'

@@ -386,7 +386,9 @@ var render = function () {
           _c("Sidebar", { ref: "sidebar" }),
           _vm._v(" "),
           _c("div", { staticClass: "card" }, [
-            _c("h1", [_vm._v(_vm._s(_vm.$t("dashboard.my.applications")))]),
+            _c("h1", { staticClass: "text-center" }, [
+              _vm._v(_vm._s(_vm.$t("dashboard.my.applications"))),
+            ]),
             _vm._v(" "),
             _c("table", { staticClass: "table border-0" }, [
               _c("thead", [

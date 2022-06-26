@@ -8,6 +8,7 @@ use App\Http\Resources\Front\LandCollection;
 use App\Http\Resources\SavedLandCollection;
 use App\Http\Resources\SavedLandResource;
 use App\Models\Application;
+use App\Models\Land;
 use App\Models\LandPurposes;
 use App\Models\Regions;
 use App\Models\SavedLand;
@@ -93,11 +94,28 @@ class IndexController extends Controller
         return response()->json(['ok' => true]);
     }
 
-    public function getSavedLands()
+    public function getSavedLands(Request $request)
     {
         $user = auth()->user();
-        $lands = SavedLand::query()->with('land')->where('user_id', $user->id)->paginate(16);
-        return SavedLandResource::collection($lands);
+        $lands = SavedLand::select('land_id')->where('user_id', $user->id)->get();
+        $ids = [];
+        foreach ($lands as $land) {
+            $ids[] = $land->land_id;
+        }
+        $lands = Land::select('regnum', 'address', 'area', 'id', 'updated_at', 'lot_number')->whereIn("id", $ids)->orderBy("id", "desc");
+
+        if ($request->district_id)
+            $lands = $lands->where("cad_number", 'LIKE', "%$request->district_id:%");
+        else
+            if ($request->region_id)
+                $lands = $lands->where("cad_number", 'LIKE', "%$request->region_id:%");
+            else
+                if (isset($request->lot_number)) {
+                    $lot_number = $request->lot_number;
+                    $lands = $lands->where("lot_number", $lot_number);
+                };
+        $lands = $lands->paginate();
+        return new LandCollection($lands);
     }
 
 

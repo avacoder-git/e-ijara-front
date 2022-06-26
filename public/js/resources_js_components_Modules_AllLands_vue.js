@@ -168,7 +168,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/front/lands', {
         params: {
           region_id: this.getRegionById(this.selectedRegion).regioncode,
-          district_id: this.getDistrictById(this.selectedDistrict).cad_num
+          district_id: this.getDistrictById(this.selectedDistrict).cad_num,
+          lot_number: this.auction_lot
         }
       }).then(function (response) {
         _this2.data = response.data;
@@ -211,7 +212,6 @@ __webpack_require__.r(__webpack_exports__);
     setDistricts: function setDistricts() {
       this.getDistricts(this.getRegionById(this.selectedRegion).regioncode);
     },
-    setMap: function setMap() {},
     saveLand: function saveLand(id) {
       var auth = localStorage.getItem('authcheck');
 
@@ -219,9 +219,7 @@ __webpack_require__.r(__webpack_exports__);
         var saved = this.saved;
         var index = saved.indexOf(id);
         if (saved.includes(id)) saved.splice(index, 1);else {
-          axios.get("/api/save-land/".concat(auth, "/").concat(id)).then(function (response) {
-            if (response) console.log(response);
-          });
+          axios.get("/api/save-land/".concat(auth, "/").concat(id)).then(function (response) {});
           saved.push(id);
         }
         this.saved = saved;
@@ -254,7 +252,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-328a075a] {\n    gap: 8px;\n    justify-content: center;\n    margin-top: 64px;\n}\n.pagination .page-item .page-link[data-v-328a075a] {\n    border-radius: 4px;\n    color: #313131;\n\n    font-family: 'Raleway';\n    font-style: normal;\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    cursor: pointer;\n}\n.pagination .page-item .active[data-v-328a075a] {\n    background: rgba(8, 112, 95, 0.1);\n}\n.loading[data-v-328a075a] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-color: rgba(0, 0, 0, 0.5);\n    z-index: 1000;\n}\n.select-2[data-v-328a075a] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n    outline: none;\n    border: 1px solid #08705F;\n    padding: 12px;\n}\n.d-flex[data-v-328a075a] {\n    gap: 24px;\n}\n.filter[data-v-328a075a] {\n    background-color: #08705F;\n    color: white;\n    transition: 0.2s;\n}\n.filter[data-v-328a075a]:hover {\n    color: #08705F;\n    background-color: white;\n    transition: 0.2s;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.rectangle[data-v-328a075a]{\n    transition: 0.2s;\n    text-decoration: none;\n    background: white!important;\n}\n.rectangle[data-v-328a075a]:hover{\n    transform: scale(1.05);\n}\n.pagination[data-v-328a075a] {\n    gap: 8px;\n    justify-content: center;\n    margin-top: 64px;\n}\n.pagination .page-item .page-link[data-v-328a075a] {\n    border-radius: 4px;\n    color: #313131;\n\n    font-family: 'Raleway';\n    font-style: normal;\n    font-weight: 500;\n    font-size: 16px;\n    line-height: 24px;\n    cursor: pointer;\n}\n.pagination .page-item .active[data-v-328a075a] {\n    background: rgba(8, 112, 95, 0.1);\n}\n.loading[data-v-328a075a] {\n    position: absolute;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-color: rgba(0, 0, 0, 0.5);\n    z-index: 1000;\n}\n.select-2[data-v-328a075a] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n    outline: none;\n    border: 1px solid #08705F;\n    padding: 12px;\n}\n.d-flex[data-v-328a075a] {\n    gap: 24px;\n}\n.filter[data-v-328a075a] {\n    background-color: #08705F;\n    color: white;\n    transition: 0.2s;\n}\n.filter[data-v-328a075a]:hover {\n    color: #08705F;\n    background-color: white;\n    transition: 0.2s;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -528,7 +526,7 @@ var render = function () {
             attrs: { type: "button" },
             on: { click: _vm.filter },
           },
-          [_vm._v("Filterlash")]
+          [_vm._v("Izlash")]
         ),
       ]),
       _vm._v(" "),
@@ -593,9 +591,16 @@ var render = function () {
                             return [
                               _c("div", { staticClass: "col-lg-3" }, [
                                 _c(
-                                  "div",
+                                  "a",
                                   {
-                                    staticClass: "rectangle position-relative",
+                                    staticClass:
+                                      "rectangle position-relative d-block",
+                                    attrs: {
+                                      target: "_blank",
+                                      href:
+                                        "https://e-auksion.uz/lot-view?lot_id=" +
+                                        item.lot_number,
+                                    },
                                   },
                                   [
                                     _c(
@@ -632,7 +637,7 @@ var render = function () {
                                         _c(
                                           "div",
                                           { staticClass: "rectangle-lot" },
-                                          [_vm._v(_vm._s(item.regnum))]
+                                          [_vm._v(_vm._s(item.lot_number))]
                                         ),
                                       ]
                                     ),

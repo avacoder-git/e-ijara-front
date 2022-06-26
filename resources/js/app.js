@@ -10,7 +10,8 @@ import i18n from './i18n'
 import Auth from './Auth.js';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-
+import '@geoman-io/leaflet-geoman-free';
+import '@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css';
 require('./bootstrap');
 
 Vue.use(VueRouter)

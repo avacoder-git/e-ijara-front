@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-6">
-                            <h1>{{ $t("nav.links.map") }}</h1>
+                            <h1  class="text-center">{{ $t("nav.links.map") }}</h1>
                             <div class="d-flex  mt-2">
                                 <v-select
                                     @change="setDistricts"
@@ -32,45 +32,50 @@
                             <h5><b>{{ $t("dashboard.tanlangan") }}</b>: {{ selectedLands.length }} ta</h5>
                             <h5><b>{{ $t("dashboard.tanlangan_area") }}</b>: {{ selectedLandAreas }} ga</h5>
                         </div>
+
                     </div>
-                </div>
-                <div class="map">
-                    <l-map
-                        ref="map"
-                        :options="options"
-                        :zoom="zoom"
-                        :center="center">
-                        <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains" :url="url"
-                                      :attribution="attribution"></l-tile-layer>
-                        <l-control-zoom position="bottomright"></l-control-zoom>
+                    <div class="map">
+                        <l-map
+                            ref="map"
+                            :options="options"
+                            :zoom="zoom"
+                            :center="center">
+                            <l-tile-layer :maxZoom="maxZoom" :subdomains="subdomains" :url="url"
+                                          :attribution="attribution"></l-tile-layer>
+                            <l-control-zoom position="bottomright"></l-control-zoom>
+                            <!--                        <l-marker ref="marker" :lat-lng="currentLatLng">-->
+                            <!--                            <l-icon :icon-url="customIcon"></l-icon>-->
 
-                        <l-marker ref="marker" :lat-lng="currentLatLng">
-                            <l-icon :icon-url="customIcon"></l-icon>
+                            <!--                            <template v-if="selectedLand && layer">-->
+                            <!--                                <l-popup ref="popup">-->
+                            <!--                                    Umumiy maydoni: {{ selectedLand.properties.area }} ga <br><br>-->
+                            <!--                                    <template v-if="selectedLand">-->
+                            <!--                                        <button @click="confirm(selectedLand)" class='btn btn-primary'>Tasdiqlash-->
+                            <!--                                        </button>-->
+                            <!--                                    </template>-->
 
-                            <template v-if="selectedLand && layer">
-                                <l-popup ref="popup">
-                                    Umumiy maydoni: {{ selectedLand.properties.area }} ga <br><br>
-                                    <template v-if="selectedLand">
-                                        <button @click="confirm(selectedLand)" class='btn btn-primary'>Tasdiqlash
-                                        </button>
-                                    </template>
+                            <!--                                    <template v-if="selectedLands.includes(selectedLand.properties.id)">-->
+                            <!--                                        <button class='btn btn-danger ml-1 btn-remove'-->
+                            <!--                                                @click="removeLand(selectedLand, layer)">Bekor qilish-->
+                            <!--                                        </button>-->
+                            <!--                                    </template>-->
+                            <!--                                    <template v-if="!selectedLands.includes(selectedLand.properties.id)">-->
+                            <!--                                        <button @click="selectLand(selectedLand, layer)"-->
+                            <!--                                                class='btn btn-success ml-1 btn-select'>Yana tanlash-->
+                            <!--                                        </button>-->
+                            <!--                                    </template>-->
+                            <!--                                </l-popup>-->
+                            <!--                            </template>-->
 
-                                    <template v-if="selectedLands.includes(selectedLand.properties.id)">
-                                        <button class='btn btn-danger ml-1 btn-remove'
-                                                @click="removeLand(selectedLand, layer)">Bekor qilish
-                                        </button>
-                                    </template>
-                                    <template v-if="!selectedLands.includes(selectedLand.properties.id)">
-                                        <button @click="selectLand(selectedLand, layer)"
-                                                class='btn btn-success ml-1 btn-select'>Yana tanlash
-                                        </button>
-                                    </template>
-                                </l-popup>
-                            </template>
+                            <!--                        </l-marker>-->
 
-                        </l-marker>
+                        </l-map>
 
-                    </l-map>
+                        <p class="check-offer" @click="confirm()" v-if="selectedLands.length">
+                            Tasdiqlash
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -83,7 +88,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Ariza Topshirish</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Taklif ma'lumotlari</h5>
                         <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -157,10 +162,9 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary close1" data-dismiss="modal">Yopish</button>
+                        <button type="button" class="btn btn-secondary close1" data-dismiss="modal">Bekor qilish</button>
                         <button type="submit" class="btn d-block btn-primary" @click="submit()" id="submit"
-                                style="color:white">Arizani
-                            topshirish
+                                style="color:white">Taklif kiritish
                         </button>
                     </div>
 
@@ -179,14 +183,13 @@
 import Sidebar from "../Sidebar";
 import 'vue-select/dist/vue-select.css';
 import L from 'leaflet';
-import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson, LPopup, LIcon} from 'vue2-leaflet';
+import {LMap, LTileLayer, LMarker, LControlZoom, LGeoJson, LPopup, LIcon, LControl} from 'vue2-leaflet';
 import vt from "../../../../public/assets/js/leaflet-geojson-vt"
 import snoopy from "../../../../public/assets/js/snoopy";
 import {Icon} from 'leaflet';
 
 delete Icon.Default.prototype._getIconUrl;
 import customIcon from "../../../../public/image/marker.png"
-
 
 export default {
     name: "Map",
@@ -223,8 +226,11 @@ export default {
                 color: "#000",
                 weight: 1,
                 opacity: 1,
-                fillOpacity: 0.7,
+                fillOpacity: 0.5,
             },
+            showConfirm: false,
+            drawType: 1,
+            drawnLayer: null,
 
         };
     },
@@ -236,7 +242,8 @@ export default {
         LGeoJson,
         Sidebar,
         LPopup,
-        LIcon
+        LIcon,
+        LControl
     },
     methods: {
         getRegionById(id) {
@@ -294,10 +301,12 @@ export default {
                     var geojson = response.data
                     this.makeGeoJSON(geojson)
                 })
+            this.addControls()
             this.removeMarkers()
-            this.drawLandsByStatus(this.selectedDistrict,2)
-            this.drawLandsByStatus(this.selectedDistrict,3)
-            this.drawLandsByStatus(this.selectedDistrict,4)
+            // this.drawLandsByStatus(this.selectedDistrict, 2)
+            // this.drawLandsByStatus(this.selectedDistrict, 3)
+            // this.drawLandsByStatus(this.selectedDistrict, 4)
+            // this.drawLandsByStatus(this.selectedDistrict, 5)
             this.drawCadLands(this.getCadNum(this.selectedDistrict))
             this.drawLands(this.selectedDistrict)
 
@@ -382,8 +391,8 @@ export default {
                                 This.layer = layer
                                 This.selectedLand = feature
                                 This.currentLatLng = e.latlng
-                                This.$refs.marker.mapObject.openPopup()
-                                This.selectLand(feature)
+                                // This.$refs.marker.mapObject.openPopup()
+                                This.selectLand(feature, layer)
                             })
 
                         }
@@ -392,24 +401,46 @@ export default {
                 })
 
         },
+        addControls() {
+            this.$refs.map.mapObject.pm.addControls({
+                position: 'topleft',
+                drawCircle: false,
+                drawMarker: false,
+                drawCircleMarker: false,
+                drawPolyline: false,
+                drawRectangle: false,
+                editLayers: false,
+                editMode: false,
+                dragMode: false,
+                cutPolygon: false,
+                removalMode: false
+            });
+        },
         drawLandsByStatus(id, status) {
             axios.get(`/api/geojson/lands/${id}`, {params: {status}})
                 .then(response => {
-                    console.log(response);
                     var lands = response.data.data
                     var fillColor = null
-                    switch (status)
-                    {
-                        case 2: fillColor = "#ffc800";break;
-                        case 3: fillColor = "#ff0000";break;
-                        case 4: fillColor = "#ff5100";break;
+                    switch (status) {
+                        case 2:
+                            fillColor = "#ffc800";
+                            break;
+                        case 3:
+                            fillColor = "#8000ff";
+                            break;
+                        case 4:
+                            fillColor = "#824800";
+                            break;
+                        case 5:
+                            fillColor = "#ff5f00";
+                            break;
                     }
                     var geojsonStyle = {
                         fillColor,
                         color: "#000",
                         weight: 1,
                         opacity: 1,
-                        fillOpacity: 0.7,
+                        fillOpacity: 1,
                     };
 
                     var options = {
@@ -472,7 +503,6 @@ export default {
 
                         }
                     }
-                    console.log(geojson);
 
                     geojson = vt(geojson, options).addTo(this.$refs.map.mapObject);
                     5
@@ -481,34 +511,37 @@ export default {
                 })
 
         },
-        selectLand(feature) {
+        selectLand(feature, layer) {
+            if (this.drawnLayer)
+                this.$refs.map.mapObject.removeLayer(this.drawnLayer)
+            if (this.drawType !== 1) {
+                this.selectedLandAreas = 0
+                this.selectedLands = []
+            }
             if (!this.selectedLands.includes(feature.properties.id)) {
                 this.$refs.map.mapObject.closePopup();
                 this.selectedLands.push(feature.properties.id)
                 this.selectedLandAreas += parseInt(feature.properties.area)
+
+            } else {
+                this.$refs.map.mapObject.closePopup();
+                var index = this.selectedLands.indexOf(feature.properties.id)
+                this.selectedLands.splice(index)
+                layer.setStyle(this.geojsonStyle);
+                if (this.selectedLandAreas)
+                    this.selectedLandAreas -= parseInt(feature.properties.area)
             }
+
+
+            this.drawType = 1
         },
 
-        confirm(feature) {
-            this.selectLand(feature)
+        confirm() {
             $("#values_modal").modal('show')
         },
 
 
-        removeLand(feature, layer) {
-            if (this.selectedLands.includes(feature.properties.id)) {
-                this.$refs.map.mapObject.closePopup();
-                var index = this.selectedLands.indexOf(feature.properties.id)
-                this.selectedLands.splice(index)
-                this.selectedLandAreas -= parseInt(feature.properties.area)
-                layer.setStyle(this.geojsonStyle);
-
-            }
-        },
-
         submit() {
-
-
             $('.modal').modal('hide')
             this.$router.push({name: "dashboard.application"})
             this.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
@@ -527,6 +560,24 @@ export default {
         $(".close1").click(function () {
             $(".modal").modal('hide')
         })
+        var map = this.$refs.map.mapObject
+        var This = this
+        map.on('pm:create', function (e) {
+            if (This.drawnLayer)
+                map.removeLayer(This.drawnLayer)
+            let geojson = e.layer.toGeoJSON().geometry.coordinates[0]
+            This.drawnLayer = e.layer
+            var latlong = [geojson[0][1], geojson[0][0]]
+            var seeArea = turf.area(e.layer.toGeoJSON());
+            seeArea = Math.round(seeArea)
+            seeArea = Math.round(seeArea / 10000)
+            var dataJSON = e.layer.toGeoJSON()
+            This.selectedLands = [1]
+            This.selectedLandAreas = seeArea
+            This.drawType = 0
+            This.geojson1.setStyle(this.geojsonStyle)
+
+        })
 
 
         axios.get('/api/land_purposes').then(resp => {
@@ -540,7 +591,7 @@ export default {
 <style scoped>
 
 .vue2leaflet-map {
-    height: 600px;
+    height: 400px;
 }
 
 .select-2 {
@@ -557,6 +608,28 @@ export default {
     margin-top: 16px;
     border-radius: 12px;
     overflow: hidden;
+}
+
+.check-offer {
+
+    margin: 20px auto;
+    background: #08705F;
+    border-radius: 8px;
+    color: white;
+    border: 1px solid #08705F;
+    width: 310px;
+    text-align: center;
+    padding: 12px;
+    transition: 0.2s;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.check-offer:hover {
+
+    background: white;
+    color: #08705F;
 }
 
 </style>

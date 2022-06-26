@@ -35,74 +35,12 @@
                             </div>
                         </div>
 
-
-<!--                        <div class="rectangle">-->
-<!--                            <div class="icon"><img src="image/uzdyl.svg" alt=""></div>-->
-<!--                            <div class="bosqich">{{ $t("main.levels.first.counter") }}</div>-->
-<!--                            <div class="rectangle-title">-->
-<!--                                {{ $t("main.levels.second.name") }}-->
-<!--                            </div>-->
-<!--                            <div class="rectangle-body">-->
-<!--                                {{ $t("main.levels.first.text") }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="rectangle">-->
-<!--                            <div class="icon"><img src="image/agree.svg" alt=""></div>-->
-<!--                            <div class="bosqich">{{ $t("main.levels.second.counter") }}</div>-->
-<!--                            <div class="rectangle-title">-->
-<!--                                {{ $t("main.levels.second.name") }}-->
-<!--                            </div>-->
-<!--                            <div class="rectangle-body">-->
-<!--                                {{ $t("main.levels.second.text") }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="rectangle">-->
-<!--                            <div class="icon"><img src="image/auksion.svg" alt=""></div>-->
-<!--                            <div class="bosqich">{{ $t("main.levels.third.counter") }}</div>-->
-<!--                            <div class="rectangle-title">-->
-<!--                                {{ $t("main.levels.third.name") }}-->
-<!--                            </div>-->
-<!--                            <div class="rectangle-body">-->
-<!--                                {{ $t("main.levels.third.text") }}-->
-
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="rectangle">-->
-<!--                            <div class="icon"><img src="image/auksion.svg" alt=""></div>-->
-<!--                            <div class="bosqich">{{ $t("main.levels.fourth.counter") }}</div>-->
-<!--                            <div class="rectangle-title">-->
-<!--                                {{ $t("main.levels.fourth.name") }}-->
-<!--                            </div>-->
-<!--                            <div class="rectangle-body">-->
-<!--                                {{ $t("main.levels.fourth.text") }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="rectangle">-->
-<!--                            <div class="icon"><img src="image/kadastr.svg" alt=""></div>-->
-<!--                            <div class="bosqich">{{ $t("main.levels.fifth.counter") }}</div>-->
-<!--                            <div class="rectangle-title">-->
-<!--                                {{ $t("main.levels.fifth.name") }}-->
-<!--                            </div>-->
-<!--                            <div class="rectangle-body">-->
-<!--                                {{ $t("main.levels.fifth.text") }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="rectangle">-->
-<!--                            <div class="icon"><img src="image/list.svg" alt=""></div>-->
-<!--                            <div class="bosqich">{{ $t("main.levels.sixth.counter") }}</div>-->
-<!--                            <div class="rectangle-title">-->
-<!--                                {{ $t("main.levels.sixth.name") }}-->
-<!--                            </div>-->
-<!--                            <div class="rectangle-body">-->
-<!--                                {{ $t("main.levels.sixth.text") }}-->
-<!--                            </div>-->
-<!--                        </div>-->
                     </div>
                 </div>
             </div>
         </div>
         <Lands></Lands>
-        <Video></Video>
+        <Video id="video"></Video>
         <Statistics></Statistics>
         <FieldStatus></FieldStatus>
         <div class="container-fluid d-sm-none section-2">
@@ -113,7 +51,7 @@
                             <div class="col-6">
                                 <h1>{{  $t("main.offer.name") }}</h1>
                                 <p>{{  $t("main.offer.text") }}</p>
-                                <a href="/dashboard" class="check-offer">{{  $t("offer") }}</a>
+                                <a href="" @click.prevent="takeOffer" class="check-offer">{{  $t("offer") }}</a>
                             </div>
                         </div>
                     </div>
@@ -164,7 +102,6 @@
 </template>
 
 <script>
-import jQuery from "jquery";
 import Video from "./Video";
 import FieldStatus from "./FieldStatus";
 import Statistics from "./Statistics";
@@ -241,6 +178,20 @@ export default {
     name: "Index",
     components: {Lands, Statistics, Video, jQuery, FieldStatus},
 
+    methods:{
+        takeOffer()
+        {
+            var auth = localStorage.getItem('token')
+            if (auth)
+            {
+                this.$router.push({name: "dashboard.application.create"})
+            }else {
+                $("#login-modal").modal("show")
+            }
+
+        }
+
+    },
 
     mounted() {
 

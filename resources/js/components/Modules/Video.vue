@@ -22,8 +22,7 @@
                                                     <div class="text-1">
                                                         {{ $t('main.video.about') }}
                                                     </div>
-                                                    <div class="text-2">
-                                                        {{ $t('main.video.content[0]') }}
+                                                    <div class="text-2" v-html="$t('main.video.content[0]')">
 
                                                     </div>
                                                 </div>
@@ -53,8 +52,7 @@
                                                     <div class="text-1">
                                                         {{ $t('main.video.about') }}
                                                     </div>
-                                                    <div class="text-2">
-                                                        {{ $t('main.video.content[1]') }}
+                                                    <div class="text-2" v-html="$t('main.video.content[1]')">
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,6 +130,9 @@ export default {
             })
             $('.play-btn').click(function () {
                 $(".video-" + $(this).data('video')).removeClass('d-none')
+                var media = $(".video-" + $(this).data('video')).get(0);
+                media.play()
+
             })
 
         })

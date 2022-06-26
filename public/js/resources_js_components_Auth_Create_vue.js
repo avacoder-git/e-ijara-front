@@ -117,9 +117,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Dashboard",
+  data: function data() {
+    return {
+      agree: false
+    };
+  },
+  methods: {
+    agreeToggle: function agreeToggle() {
+      this.agree = !this.agree;
+    },
+    redirect: function redirect() {
+      this.$router.push({
+        name: 'dashboard.application.map'
+      });
+    }
+  },
   components: {
     Sidebar: _Sidebar__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -213,7 +254,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.check-offer[data-v-f9de1670]{\n\n    margin-top: 20px;\n    background: #08705F;\n    border-radius: 8px;\n    color: white;\n    border: 1px solid  #08705F;\n    width: 310px;\n    text-align: center;\n    padding: 12px;\n    transition: 0.2s;\n    text-decoration: none;\n}\n.check-offer[data-v-f9de1670]:hover{\n\n    background: white;\n    color: #08705F;\n}\n\n\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.m-24[data-v-f9de1670]{\n    margin-top: 24px;\n}\n.check-offer[data-v-f9de1670] {\n    background: #08705F;\n    border-radius: 8px;\n    color: white;\n    border: 1px solid #08705F;\n    width: 310px;\n    text-align: center;\n    padding: 12px;\n    transition: 0.2s;\n    text-decoration: none;\n    margin: 20px  auto;\n}\n.disabled[data-v-f9de1670]{\n    opacity: .65;\n}\n.check-offer[data-v-f9de1670]:hover {\n\n    background: white;\n    color: #08705F;\n}\n#style-4[data-v-f9de1670]::-webkit-scrollbar-track {\n    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n    background-color: #F5F5F5;\n}\n#style-4[data-v-f9de1670]::-webkit-scrollbar {\n    width: 10px;\n    background-color: #F5F5F5;\n}\n#style-4[data-v-f9de1670]::-webkit-scrollbar-thumb {\n    background-color: #bdbdbd;\n    border: 1px solid #a8a8a8;\n    border-radius: 50rem;\n}\n\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -492,25 +533,59 @@ var render = function () {
         [
           _c("Sidebar"),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card" },
-            [
-              _c("h1", [_vm._v("Foydalanish shartlari")]),
-              _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "check-offer",
-                  attrs: { to: { name: "dashboard.application.map" } },
-                },
-                [_vm._v("Roziman")]
-              ),
-            ],
-            1
-          ),
+          _c("div", { staticClass: "card" }, [
+            _c("h1", { staticClass: "text-center" }, [
+              _vm._v("Foydalanish shartlari"),
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "d-flex justify-content-center flex-row m-24" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "checkbox-custom cursor-pointer",
+                    class: _vm.agree ? "custom-checked" : "",
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.agreeToggle.apply(null, arguments)
+                      },
+                    },
+                  },
+                  [_c("i", { staticClass: "fa fa-solid fa-check" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  {
+                    staticClass: "ml-3  cursor-pointer",
+                    on: {
+                      click: function ($event) {
+                        $event.preventDefault()
+                        return _vm.agreeToggle.apply(null, arguments)
+                      },
+                    },
+                  },
+                  [_vm._v("Men qoidalar bilan tanishib chiqdim")]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "check-offer",
+                class: _vm.agree ? "" : "disabled",
+                attrs: { disabled: !_vm.agree },
+                on: { click: _vm.redirect },
+              },
+              [_vm._v("Keyingisi")]
+            ),
+          ]),
         ],
         1
       ),
@@ -524,7 +599,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticStyle: { "overflow-y": "scroll", height: "60vh" } },
+      {
+        staticStyle: {
+          "overflow-y": "scroll",
+          height: "60vh",
+          padding: "20px",
+          border: "1px solid #c9c9c9",
+          background: "#ececec",
+          "border-radius": "10px",
+        },
+        attrs: { id: "style-4" },
+      },
       [
         _c("h6", { staticClass: "tx-color-01 h5 text-center" }, [
           _vm._v("«E-IJARA» axborot tizimiga xush kelibsiz!"),
@@ -542,7 +627,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mg-b-20 text-justify" }, [
           _vm._v(
-            "Ushbu Tizimga kirib, Siz ushbu Shartlarga roziligingizni bildirasiz.\n                    Ushbu Shartlarga qo‘shimchalar va o‘zgartirishlar kiritilishi mumkin va yangilangan Shartlar\n                    oldindan ogohlantirishsiz tizimga joylashtiriladi.\n                    “Agrosanoatni raqamlashtirish markazi” davlat muassasasi Foydalanuvchi yoki boshqa tomonlar oldida\n                    Tizimning ishlashi, Tizimda keltirilgan xizmatlar yoki mahsulotlar tufayli kelib chiqadigan har\n                    qanday yo‘qotishlar, shu jumladan, beparvolik yoki boshqa holatlar tufayli ma’lumotlarni yo’qotish,\n                    foyda yo‘qotish bilan bog‘liq to’g’ridan-to‘g‘ri va be’vosita yo‘qotishlar uchun javobgar emas.\n                "
+            "Ushbu Tizimga kirib, Siz ushbu Shartlarga roziligingizni bildirasiz.\n                    Ushbu Shartlarga qo‘shimchalar va o‘zgartirishlar kiritilishi mumkin va yangilangan Shartlar\n                    oldindan ogohlantirishsiz tizimga joylashtiriladi.\n                    “Agrosanoatni raqamlashtirish markazi” davlat muassasasi Foydalanuvchi yoki boshqa tomonlar\n                    oldida\n                    Tizimning ishlashi, Tizimda keltirilgan xizmatlar yoki mahsulotlar tufayli kelib chiqadigan har\n                    qanday yo‘qotishlar, shu jumladan, beparvolik yoki boshqa holatlar tufayli ma’lumotlarni\n                    yo’qotish,\n                    foyda yo‘qotish bilan bog‘liq to’g’ridan-to‘g‘ri va be’vosita yo‘qotishlar uchun javobgar emas.\n                "
           ),
         ]),
         _vm._v(" "),
@@ -552,7 +637,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mg-b-20 text-justify" }, [
           _vm._v(
-            "Ushbu Tizimda Siz, qishloq xo‘jaligiga mo‘ljallangan bo‘sh yer\n                    uchastkalarini ijaraga olish tartibiga doir normativ-huquqiy hujjatlar haqida ma‘lumot olishingiz va\n                    bo‘sh turgan yer uchastkasi to‘g‘risidagi ma’lumotlarni ochiq elecktron tanlovga qo‘yish masalasini\n                    belgilangan tartibda ko‘rib chiqish uchun takliflar kiritishingiz mumkin."
+            "Ushbu Tizimda Siz, qishloq xo‘jaligiga mo‘ljallangan bo‘sh yer\n                    uchastkalarini ijaraga olish tartibiga doir normativ-huquqiy hujjatlar haqida ma‘lumot\n                    olishingiz va\n                    bo‘sh turgan yer uchastkasi to‘g‘risidagi ma’lumotlarni ochiq elecktron tanlovga qo‘yish\n                    masalasini\n                    belgilangan tartibda ko‘rib chiqish uchun takliflar kiritishingiz mumkin."
           ),
         ]),
         _vm._v(" "),
@@ -562,7 +647,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mg-b-20 text-justify" }, [
           _vm._v(
-            "«E-IJARA» axborot tizimining ba’zi bo‘limlari parol bilan himoyalangan.\n                    Siz Tizimning parol bilan himoyalangan bo‘limlariga parolni qaytadan kiritishsiz kirishingiz uchun\n                    Tizim cookie fayllarni ishlatadi (cookies kompyuteringizda joylashgan bo‘lib sizning\n                    Internet-brauzeringiz boshqaruvi ostida bo‘ladi)."
+            "«E-IJARA» axborot tizimining ba’zi bo‘limlari parol bilan\n                    himoyalangan.\n                    Siz Tizimning parol bilan himoyalangan bo‘limlariga parolni qaytadan kiritishsiz kirishingiz\n                    uchun\n                    Tizim cookie fayllarni ishlatadi (cookies kompyuteringizda joylashgan bo‘lib sizning\n                    Internet-brauzeringiz boshqaruvi ostida bo‘ladi)."
           ),
         ]),
         _vm._v(" "),
@@ -572,7 +657,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mg-b-20 text-justify" }, [
           _vm._v(
-            "Shaxsiy kabinetingiz siz taqdim etgan elektron pochta manzili orqali\n                    identifikatsiyalashtiriladi, va siz loginingizdan (elektron pochta manzili) foydalanish huquqiga ega\n                    yagona shaxs hisoblanasiz. Shaxsiy kabinet va har qanday tanlagan parollaringiz sir saqlanishiga\n                    mas’uldirsiz, aks holda sizga akkauntingizga kirish taqiqlab qo‘yilishi mumkin.\n                    Sizning ruxsatingizdan qat’iy nazar, Shaxsiy kabinetingizdan har qanday foydalanishlarga siz\n                    javobgarsiz. Agar, Shaxsiy kabinet va/yoki parolingiz boshqa shaxs tomonidan foydalanilayotgani\n                    haqida shubha qilsangiz, darhol id.egov.uz manzili orqali parolingizni yangilang.\n                    Siz Tizimda bir Shaxsiy kabinetdan tashqari boshqa Shaxsiy kabinetlar bilan ro‘yxatdan o‘tmaslikka\n                    roziligingizni bildirasiz. Siz soxta nom bilan ro‘yxatdan o‘ta olmaysiz.\n                "
+            "Shaxsiy kabinetingiz siz taqdim etgan elektron pochta manzili orqali\n                    identifikatsiyalashtiriladi, va siz loginingizdan (elektron pochta manzili) foydalanish huquqiga\n                    ega\n                    yagona shaxs hisoblanasiz. Shaxsiy kabinet va har qanday tanlagan parollaringiz sir saqlanishiga\n                    mas’uldirsiz, aks holda sizga akkauntingizga kirish taqiqlab qo‘yilishi mumkin.\n                    Sizning ruxsatingizdan qat’iy nazar, Shaxsiy kabinetingizdan har qanday foydalanishlarga siz\n                    javobgarsiz. Agar, Shaxsiy kabinet va/yoki parolingiz boshqa shaxs tomonidan foydalanilayotgani\n                    haqida shubha qilsangiz, darhol id.egov.uz manzili orqali parolingizni yangilang.\n                    Siz Tizimda bir Shaxsiy kabinetdan tashqari boshqa Shaxsiy kabinetlar bilan ro‘yxatdan\n                    o‘tmaslikka\n                    roziligingizni bildirasiz. Siz soxta nom bilan ro‘yxatdan o‘ta olmaysiz.\n                "
           ),
         ]),
         _vm._v(" "),
@@ -589,13 +674,13 @@ var staticRenderFns = [
         _c("ul", [
           _c("li", [
             _vm._v(
-              "Tizimni ishlashini to‘xtatishga, ortiqcha yuklanishiga, zarar yetkazilishiga va boshqa salbiy\n                        oqibatlarga olib keladigan, hamda boshqa foydalanuvchilarning tizimdan real vaqt rejimida\n                        ishlashiga to‘sqinlik yoki halaqit berishga oid har qanday harakatlarni amalga oshirmaslikka;\n                    "
+              "Tizimni ishlashini to‘xtatishga, ortiqcha yuklanishiga, zarar yetkazilishiga va boshqa\n                        salbiy\n                        oqibatlarga olib keladigan, hamda boshqa foydalanuvchilarning tizimdan real vaqt rejimida\n                        ishlashiga to‘sqinlik yoki halaqit berishga oid har qanday harakatlarni amalga\n                        oshirmaslikka;\n                    "
             ),
           ]),
           _vm._v(" "),
           _c("li", [
             _vm._v(
-              "Tizimning normal ishlashiga halaqit beradigan har qanday qurilmalar, dasturiy ta’minotlar va\n                        jarayonlarni qo‘llamaslikka;"
+              "Tizimning normal ishlashiga halaqit beradigan har qanday qurilmalar, dasturiy ta’minotlar va\n                        jarayonlarni qo‘llamaslikka;\n                    "
             ),
           ]),
           _vm._v(" "),
@@ -605,13 +690,13 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("li", [
             _vm._v(
-              "Tizimga avtorizatsiyasiz kirishga xarakat qilmaslikka, hamda Tizimning ma’lumotlari joylashgan\n                        serverlar va Tizimning barcha bo‘limlari uzluksiz ishlashiga halaqit va zarar bermaslikka;"
+              "Tizimga avtorizatsiyasiz kirishga xarakat qilmaslikka, hamda Tizimning ma’lumotlari\n                        joylashgan\n                        serverlar va Tizimning barcha bo‘limlari uzluksiz ishlashiga halaqit va zarar bermaslikka;\n                    "
             ),
           ]),
           _vm._v(" "),
           _c("li", [
             _vm._v(
-              "Xizmatni rad etish yoki xizmat ko‘rsatishni taqiqlash orqali tizimning ishlashiga to‘sqinlik\n                        qilmaslikka;"
+              "Xizmatni rad etish yoki xizmat ko‘rsatishni taqiqlash orqali tizimning ishlashiga to‘sqinlik\n                        qilmaslikka;\n                    "
             ),
           ]),
           _vm._v(" "),
@@ -626,7 +711,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mg-b-20 text-justify" }, [
           _vm._v(
-            "\n                    «E-IJARA» axborot tizimidan foydalanganda, sizning shaxsiy ma’lumotlaringizni to‘plash, qayta\n                    ishlash va ishlatish haqida xabardorligingizni tasdiqlaysiz. Shaxsiy ma’lumotlarni yig‘ish, saqlash\n                    va qayta ishlashning maqsadi, foydalanuvchini shaxsiylashtirilgan Tizim xizmatlari bilan\n                    ta’minlashdir, jumladan, shaxsiy kabinet, avtorizatsiyalash, parolni eslatishga ruxsat berish, hamda\n                    xabarnomalar yuborish va foydalanuvchining talablarini bajarish kiradi.\n                    «E-IJARA» axborot tizimi xizmatlaridan foydalanishni ta’minlash uchun, shaxsiy ma’lumotlarni qayta\n                    ishlashga foydalanuvchining shaxsiy ma’lumotlarini yig‘ish, ro‘yxatdan o‘tkazish, to‘plash, saqlash,\n                    ulardan foydalanish, o‘chirish bilan bog‘liq har qanday harakatlar va/yoki faoliyat turlari kiradi.\n\n                "
+            "\n                    «E-IJARA» axborot tizimidan foydalanganda, sizning shaxsiy ma’lumotlaringizni to‘plash, qayta\n                    ishlash va ishlatish haqida xabardorligingizni tasdiqlaysiz. Shaxsiy ma’lumotlarni yig‘ish,\n                    saqlash\n                    va qayta ishlashning maqsadi, foydalanuvchini shaxsiylashtirilgan Tizim xizmatlari bilan\n                    ta’minlashdir, jumladan, shaxsiy kabinet, avtorizatsiyalash, parolni eslatishga ruxsat berish,\n                    hamda\n                    xabarnomalar yuborish va foydalanuvchining talablarini bajarish kiradi.\n                    «E-IJARA» axborot tizimi xizmatlaridan foydalanishni ta’minlash uchun, shaxsiy ma’lumotlarni\n                    qayta\n                    ishlashga foydalanuvchining shaxsiy ma’lumotlarini yig‘ish, ro‘yxatdan o‘tkazish, to‘plash,\n                    saqlash,\n                    ulardan foydalanish, o‘chirish bilan bog‘liq har qanday harakatlar va/yoki faoliyat turlari\n                    kiradi.\n\n                "
           ),
         ]),
         _vm._v(" "),
@@ -636,7 +721,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mg-b-20 text-justify" }, [
           _vm._v(
-            "«E-IJARA» axborot tizimidan foydalanganda, sizning shaxsiy\n                    ma’lumotlaringizni to‘plash, qayta ishlash va ishlatish haqida xabardorligingizni tasdiqlaysiz.\n                    Shaxsiy ma’lumotlarni yig‘ish, saqlash va qayta ishlashning maqsadi, foydalanuvchini\n                    shaxsiylashtirilgan Tizim xizmatlari bilan ta’minlashdir, jumladan, shaxsiy kabinet,\n                    avtorizatsiyalash, parolni eslatishga ruxsat berish, hamda xabarnomalar yuborish va\n                    foydalanuvchining talablarini bajarish kiradi.\n                    «E-IJARA» axborot tizimi xizmatlaridan foydalanishni ta’minlash uchun, shaxsiy ma’lumotlarni qayta\n                    ishlashga foydalanuvchining shaxsiy ma’lumotlarini yig‘ish, ro‘yxatdan o‘tkazish, to‘plash, saqlash,\n                    ulardan foydalanish, o‘chirish bilan bog‘liq har qanday harakatlar va/yoki faoliyat turlari kiradi.\n                "
+            "«E-IJARA» axborot tizimidan foydalanganda, sizning shaxsiy\n                    ma’lumotlaringizni to‘plash, qayta ishlash va ishlatish haqida xabardorligingizni tasdiqlaysiz.\n                    Shaxsiy ma’lumotlarni yig‘ish, saqlash va qayta ishlashning maqsadi, foydalanuvchini\n                    shaxsiylashtirilgan Tizim xizmatlari bilan ta’minlashdir, jumladan, shaxsiy kabinet,\n                    avtorizatsiyalash, parolni eslatishga ruxsat berish, hamda xabarnomalar yuborish va\n                    foydalanuvchining talablarini bajarish kiradi.\n                    «E-IJARA» axborot tizimi xizmatlaridan foydalanishni ta’minlash uchun, shaxsiy ma’lumotlarni\n                    qayta\n                    ishlashga foydalanuvchining shaxsiy ma’lumotlarini yig‘ish, ro‘yxatdan o‘tkazish, to‘plash,\n                    saqlash,\n                    ulardan foydalanish, o‘chirish bilan bog‘liq har qanday harakatlar va/yoki faoliyat turlari\n                    kiradi.\n                "
           ),
         ]),
       ]

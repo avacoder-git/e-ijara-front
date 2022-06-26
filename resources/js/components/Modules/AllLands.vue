@@ -33,7 +33,7 @@
                 </select>
 
                 <input type="text" placeholder="Auksion lot raqami" class="select-2" v-model="auction_lot">
-                <button type="button" @click="filter" class="select-2 filter">Filterlash</button>
+                <button type="button" @click="filter" class="select-2 filter">Izlash</button>
 
             </div>
 
@@ -53,12 +53,12 @@
                             <div class="row">
                                 <template v-for="item in data.data">
                                     <div class="col-lg-3">
-                                        <div class="rectangle position-relative">
+                                        <a target="_blank" :href="`https://e-auksion.uz/lot-view?lot_id=${ item.lot_number }`" class="rectangle position-relative d-block">
                                             <div class="rectangle-img"><img
                                                 :src="bg_photo[Math.floor(Math.random()*bg_photo.length)]" alt=""></div>
                                             <div class="d-flex justify-content-between">
                                                 <div class="rectangle-lot">{{ item.updated_at }}</div>
-                                                <div class="rectangle-lot">{{ item.regnum }}</div>
+                                                <div class="rectangle-lot">{{ item.lot_number }}</div>
                                             </div>
                                             <div class="rectangle-name mb-auto">
                                                 {{ item.address }}
@@ -72,7 +72,7 @@
                                                     <img src="/image/Bookmark.svg" alt="">
                                                 </button>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </template>
                             </div>
@@ -206,7 +206,8 @@ export default {
             axios.get('/api/front/lands', {
                 params: {
                     region_id: this.getRegionById(this.selectedRegion).regioncode,
-                    district_id: this.getDistrictById(this.selectedDistrict).cad_num
+                    district_id: this.getDistrictById(this.selectedDistrict).cad_num,
+                    lot_number: this.auction_lot
                 }
             })
                 .then(response => {
@@ -250,9 +251,7 @@ export default {
             this.getDistricts(this.getRegionById(this.selectedRegion).regioncode)
 
         },
-        setMap() {
 
-        },
         saveLand(id) {
             var auth = localStorage.getItem('authcheck')
 
@@ -264,8 +263,6 @@ export default {
                 else {
                     axios.get(`/api/save-land/${auth}/${id}`)
                         .then(response => {
-                            if (response)
-                                console.log(response);
                         })
                     saved.push(id)
                 }
@@ -293,6 +290,16 @@ export default {
 
 <style scoped>
 
+
+.rectangle{
+    transition: 0.2s;
+    text-decoration: none;
+    background: white!important;
+}
+
+.rectangle:hover{
+    transform: scale(1.05);
+}
 
 .pagination {
     gap: 8px;

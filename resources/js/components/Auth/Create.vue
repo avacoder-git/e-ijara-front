@@ -6,10 +6,11 @@
 
             <div class="card">
 
-                <h1>Foydalanish shartlari</h1>
+                <h1 class="text-center">Foydalanish shartlari</h1>
 
 
-                <div style="overflow-y: scroll; height: 60vh">
+                <div id="style-4"
+                     style="overflow-y: scroll; height: 60vh; padding: 20px; border: 1px solid #c9c9c9; background: #ececec; border-radius: 10px">
                     <h6 class="tx-color-01 h5 text-center">«E-IJARA» axborot tizimiga xush kelibsiz!</h6>
                     <p class="mg-b-20 text-justify">«E-IJARA» axborot tizimiga (o‘rinlarda - Tizim) kirganingizda yoki
                         foydalanganingizda, siz ushbu maxfiylik siyosati va foydalanish shartlarini to‘liq qabul
@@ -18,30 +19,38 @@
                     <p class="mg-b-20 text-justify">Ushbu Tizimga kirib, Siz ushbu Shartlarga roziligingizni bildirasiz.
                         Ushbu Shartlarga qo‘shimchalar va o‘zgartirishlar kiritilishi mumkin va yangilangan Shartlar
                         oldindan ogohlantirishsiz tizimga joylashtiriladi.
-                        “Agrosanoatni raqamlashtirish markazi” davlat muassasasi Foydalanuvchi yoki boshqa tomonlar oldida
+                        “Agrosanoatni raqamlashtirish markazi” davlat muassasasi Foydalanuvchi yoki boshqa tomonlar
+                        oldida
                         Tizimning ishlashi, Tizimda keltirilgan xizmatlar yoki mahsulotlar tufayli kelib chiqadigan har
-                        qanday yo‘qotishlar, shu jumladan, beparvolik yoki boshqa holatlar tufayli ma’lumotlarni yo’qotish,
+                        qanday yo‘qotishlar, shu jumladan, beparvolik yoki boshqa holatlar tufayli ma’lumotlarni
+                        yo’qotish,
                         foyda yo‘qotish bilan bog‘liq to’g’ridan-to‘g‘ri va be’vosita yo‘qotishlar uchun javobgar emas.
                     </p>
                     <h6 class="tx-color-01 h5 text-center">«E-IJARA» axborot tizimi </h6>
                     <p class="mg-b-20 text-justify">Ushbu Tizimda Siz, qishloq xo‘jaligiga mo‘ljallangan bo‘sh yer
-                        uchastkalarini ijaraga olish tartibiga doir normativ-huquqiy hujjatlar haqida ma‘lumot olishingiz va
-                        bo‘sh turgan yer uchastkasi to‘g‘risidagi ma’lumotlarni ochiq elecktron tanlovga qo‘yish masalasini
+                        uchastkalarini ijaraga olish tartibiga doir normativ-huquqiy hujjatlar haqida ma‘lumot
+                        olishingiz va
+                        bo‘sh turgan yer uchastkasi to‘g‘risidagi ma’lumotlarni ochiq elecktron tanlovga qo‘yish
+                        masalasini
                         belgilangan tartibda ko‘rib chiqish uchun takliflar kiritishingiz mumkin.</p>
                     <h6 class="tx-color-01 h5 text-center">Cookie-fayllar haqida ma’lumot</h6>
-                    <p class="mg-b-20 text-justify">«E-IJARA» axborot tizimining ba’zi bo‘limlari parol bilan himoyalangan.
-                        Siz Tizimning parol bilan himoyalangan bo‘limlariga parolni qaytadan kiritishsiz kirishingiz uchun
+                    <p class="mg-b-20 text-justify">«E-IJARA» axborot tizimining ba’zi bo‘limlari parol bilan
+                        himoyalangan.
+                        Siz Tizimning parol bilan himoyalangan bo‘limlariga parolni qaytadan kiritishsiz kirishingiz
+                        uchun
                         Tizim cookie fayllarni ishlatadi (cookies kompyuteringizda joylashgan bo‘lib sizning
                         Internet-brauzeringiz boshqaruvi ostida bo‘ladi).</p>
                     <h6 class="tx-color-01 h5 text-center">Tizimga kirish va shaxsiy kabinetingiz xavfsizligi</h6>
                     <p class="mg-b-20 text-justify">Shaxsiy kabinetingiz siz taqdim etgan elektron pochta manzili orqali
-                        identifikatsiyalashtiriladi, va siz loginingizdan (elektron pochta manzili) foydalanish huquqiga ega
+                        identifikatsiyalashtiriladi, va siz loginingizdan (elektron pochta manzili) foydalanish huquqiga
+                        ega
                         yagona shaxs hisoblanasiz. Shaxsiy kabinet va har qanday tanlagan parollaringiz sir saqlanishiga
                         mas’uldirsiz, aks holda sizga akkauntingizga kirish taqiqlab qo‘yilishi mumkin.
                         Sizning ruxsatingizdan qat’iy nazar, Shaxsiy kabinetingizdan har qanday foydalanishlarga siz
                         javobgarsiz. Agar, Shaxsiy kabinet va/yoki parolingiz boshqa shaxs tomonidan foydalanilayotgani
                         haqida shubha qilsangiz, darhol id.egov.uz manzili orqali parolingizni yangilang.
-                        Siz Tizimda bir Shaxsiy kabinetdan tashqari boshqa Shaxsiy kabinetlar bilan ro‘yxatdan o‘tmaslikka
+                        Siz Tizimda bir Shaxsiy kabinetdan tashqari boshqa Shaxsiy kabinetlar bilan ro‘yxatdan
+                        o‘tmaslikka
                         roziligingizni bildirasiz. Siz soxta nom bilan ro‘yxatdan o‘ta olmaysiz.
                     </p>
                     <h6 class="tx-color-01 h5 text-center">Foydalanish cheklovlari</h6>
@@ -49,29 +58,40 @@
                         faqatgina qonuniy maqsadlar uchun foydalanishingizga roziligingizni bildirasiz:
                     </p>
                     <ul>
-                        <li>Tizimni ishlashini to‘xtatishga, ortiqcha yuklanishiga, zarar yetkazilishiga va boshqa salbiy
+                        <li>Tizimni ishlashini to‘xtatishga, ortiqcha yuklanishiga, zarar yetkazilishiga va boshqa
+                            salbiy
                             oqibatlarga olib keladigan, hamda boshqa foydalanuvchilarning tizimdan real vaqt rejimida
-                            ishlashiga to‘sqinlik yoki halaqit berishga oid har qanday harakatlarni amalga oshirmaslikka;
+                            ishlashiga to‘sqinlik yoki halaqit berishga oid har qanday harakatlarni amalga
+                            oshirmaslikka;
                         </li>
                         <li>Tizimning normal ishlashiga halaqit beradigan har qanday qurilmalar, dasturiy ta’minotlar va
-                            jarayonlarni qo‘llamaslikka;</li>
+                            jarayonlarni qo‘llamaslikka;
+                        </li>
                         <li>Virus va boshqa zararli materiallarni qo‘llamaslikka;</li>
-                        <li>Tizimga avtorizatsiyasiz kirishga xarakat qilmaslikka, hamda Tizimning ma’lumotlari joylashgan
-                            serverlar va Tizimning barcha bo‘limlari uzluksiz ishlashiga halaqit va zarar bermaslikka;</li>
+                        <li>Tizimga avtorizatsiyasiz kirishga xarakat qilmaslikka, hamda Tizimning ma’lumotlari
+                            joylashgan
+                            serverlar va Tizimning barcha bo‘limlari uzluksiz ishlashiga halaqit va zarar bermaslikka;
+                        </li>
                         <li>Xizmatni rad etish yoki xizmat ko‘rsatishni taqiqlash orqali tizimning ishlashiga to‘sqinlik
-                            qilmaslikka;</li>
+                            qilmaslikka;
+                        </li>
                         <li>Tizimning normal ishlashiga to‘sqinlik qilmaslikka.</li>
                     </ul>
                     <h6 class="tx-color-01 h5 text-center">Majburiyatlar</h6>
                     <p class="mg-b-20 text-justify">
                         «E-IJARA» axborot tizimidan foydalanganda, sizning shaxsiy ma’lumotlaringizni to‘plash, qayta
-                        ishlash va ishlatish haqida xabardorligingizni tasdiqlaysiz. Shaxsiy ma’lumotlarni yig‘ish, saqlash
+                        ishlash va ishlatish haqida xabardorligingizni tasdiqlaysiz. Shaxsiy ma’lumotlarni yig‘ish,
+                        saqlash
                         va qayta ishlashning maqsadi, foydalanuvchini shaxsiylashtirilgan Tizim xizmatlari bilan
-                        ta’minlashdir, jumladan, shaxsiy kabinet, avtorizatsiyalash, parolni eslatishga ruxsat berish, hamda
+                        ta’minlashdir, jumladan, shaxsiy kabinet, avtorizatsiyalash, parolni eslatishga ruxsat berish,
+                        hamda
                         xabarnomalar yuborish va foydalanuvchining talablarini bajarish kiradi.
-                        «E-IJARA» axborot tizimi xizmatlaridan foydalanishni ta’minlash uchun, shaxsiy ma’lumotlarni qayta
-                        ishlashga foydalanuvchining shaxsiy ma’lumotlarini yig‘ish, ro‘yxatdan o‘tkazish, to‘plash, saqlash,
-                        ulardan foydalanish, o‘chirish bilan bog‘liq har qanday harakatlar va/yoki faoliyat turlari kiradi.
+                        «E-IJARA» axborot tizimi xizmatlaridan foydalanishni ta’minlash uchun, shaxsiy ma’lumotlarni
+                        qayta
+                        ishlashga foydalanuvchining shaxsiy ma’lumotlarini yig‘ish, ro‘yxatdan o‘tkazish, to‘plash,
+                        saqlash,
+                        ulardan foydalanish, o‘chirish bilan bog‘liq har qanday harakatlar va/yoki faoliyat turlari
+                        kiradi.
 
                     </p>
                     <h6 class="tx-color-01 h5 text-center">Shaxsiy ma’lumotlarni qayta ishlash</h6>
@@ -81,23 +101,29 @@
                         shaxsiylashtirilgan Tizim xizmatlari bilan ta’minlashdir, jumladan, shaxsiy kabinet,
                         avtorizatsiyalash, parolni eslatishga ruxsat berish, hamda xabarnomalar yuborish va
                         foydalanuvchining talablarini bajarish kiradi.
-                        «E-IJARA» axborot tizimi xizmatlaridan foydalanishni ta’minlash uchun, shaxsiy ma’lumotlarni qayta
-                        ishlashga foydalanuvchining shaxsiy ma’lumotlarini yig‘ish, ro‘yxatdan o‘tkazish, to‘plash, saqlash,
-                        ulardan foydalanish, o‘chirish bilan bog‘liq har qanday harakatlar va/yoki faoliyat turlari kiradi.
+                        «E-IJARA» axborot tizimi xizmatlaridan foydalanishni ta’minlash uchun, shaxsiy ma’lumotlarni
+                        qayta
+                        ishlashga foydalanuvchining shaxsiy ma’lumotlarini yig‘ish, ro‘yxatdan o‘tkazish, to‘plash,
+                        saqlash,
+                        ulardan foydalanish, o‘chirish bilan bog‘liq har qanday harakatlar va/yoki faoliyat turlari
+                        kiradi.
                     </p>
 
                 </div>
+                <div class="d-flex justify-content-center flex-row m-24">
+                    <div class="checkbox-custom cursor-pointer"
+                         :class="agree ? 'custom-checked' : ''" @click.prevent="agreeToggle"><i
+                        class="fa fa-solid fa-check"></i></div>
+                    <p class="ml-3  cursor-pointer" @click.prevent="agreeToggle"
+                       >Men qoidalar bilan tanishib chiqdim</p>
+                </div>
 
 
-
-                <router-link :to="{ name: 'dashboard.application.map' }" class="check-offer">Roziman</router-link>
-
+                <button  @click="redirect" :class="agree ? '' : 'disabled'" :disabled="!agree" class="check-offer">Keyingisi</button>
 
 
             </div>
         </div>
-
-
 
 
     </div>
@@ -110,34 +136,74 @@ import Sidebar from "../Sidebar";
 
 export default {
     name: "Dashboard",
+    data() {
+        return {
+            agree: false,
+        }
+
+    },
+
+    methods:{
+        agreeToggle() {
+            this.agree = !this.agree
+        },
+
+        redirect()
+        {
+            this.$router.push({ name: 'dashboard.application.map' })
+        }
+    },
+
     components: {Sidebar},
 }
 </script>
 
 <style scoped>
 
+.m-24{
+    margin-top: 24px;
+}
 
-.check-offer{
-
-    margin-top: 20px;
+.check-offer {
     background: #08705F;
     border-radius: 8px;
     color: white;
-    border: 1px solid  #08705F;
+    border: 1px solid #08705F;
     width: 310px;
     text-align: center;
     padding: 12px;
     transition: 0.2s;
     text-decoration: none;
+    margin: 20px  auto;
 
 }
 
-.check-offer:hover{
+.disabled{
+    opacity: .65;
+}
+
+.check-offer:hover {
 
     background: white;
     color: #08705F;
 }
 
+
+#style-4::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar-thumb {
+    background-color: #bdbdbd;
+    border: 1px solid #a8a8a8;
+    border-radius: 50rem;
+}
 
 
 </style>

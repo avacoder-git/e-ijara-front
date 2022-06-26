@@ -38,10 +38,10 @@
             ]
         },
         "video": {
-            "about": "Tizim haqida",
+            "about": "Tizim haqida videorolik",
             "content": [
-                "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan  \"E-IJARA\" avtomatlashtirilgan axborot tizimining normativ-xuquqiy xujjatlari borasida",
-                "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan  \"E-IJARA\" avtomatlashtirilgan axborot tizimi haqida"
+                "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan <br>  \"E-IJARA\" avtomatlashtirilgan axborot tizimining normativ-xuquqiy xujjatlari borasida",
+                "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan <br>  \"E-IJARA\" avtomatlashtirilgan axborot tizimi haqida"
             ]
         },
         "lands": {
@@ -75,7 +75,7 @@
         },
         "offer": {
             "name": "Siz taklif kiritmochimisiz?",
-            "text": "Bo'sh turgan yer uchastkasi to'g'risidagi ma'lumotlarni ochiq elektron tanlovga qo'yish masalasini belgilangan tartibda ko'rib chiqish uchun."
+            "text": "Bo'sh turgan yer uchastkasi to'g'risidagi ma'lumotlarni ochiq elektron tanlovga qo'yish masalasini belgilangan tartibda ko'rib chiqish uchun"
         },
         "useful": {
             "title": "Foydali havolalar",
@@ -163,7 +163,7 @@
         },
         "oneid": "Tizimga kirish OneID Yagona identifikatsiya tizimi yoki ERI orqali amalga oshiriladi."
     },
-    "oferta": "Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a href=''>foydalanish shartlariga</a> roziman.",
+    "oferta": "Shaxsiy maʼlumotlarimni uzatilishiga va tizimdan <a data-bs-dismiss=\"modal\" data-dismiss=\"modal\" id='oferta' href='/uz/oferta' target='_blank'>foydalanish shartlariga</a> roziman.",
     "footer": {
         "text": "Qishloq xo‘jaligiga mo‘ljallangan yer uchastkalarini ijaraga berish bo‘yicha materiallarni to‘plash, ko‘rib chiqish va vakolatli organlar va tashkilotlar bilan kelishishni amalga oshirishga mo‘ljallangan avtomatlashtirilgan axborot tizimi.",
         "menu": {

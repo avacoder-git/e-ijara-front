@@ -170,15 +170,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="videoCarousel" class="nav-link nav-link-mini">
+                        <a @click="scrollToElement" class="nav-link nav-link-mini" href="#video">
                             {{ $t('nav.links.about') }}
                         </a>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{name: 'map' }" class="nav-link nav-link-mini" href="#">{{
-                                $t('nav.links.map')
-                            }}
-                        </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{name: 'docs' }" class="nav-link nav-link-mini" href="#">
@@ -237,8 +233,9 @@
                     <template v-if="!this.auth.user">
 
                         <li class="nav-item" v-if="!this.auth.user"><a class="nav-link login" data-toggle="modal"
-                                                             style="cursor: pointer" data-target="#login-modal"
-                                                             data-bt-target="#login-modal">{{
+                                                                       style="cursor: pointer"
+                                                                       data-target="#login-modal"
+                                                                       data-bt-target="#login-modal">{{
                                 $t('nav.links.login')
                             }}</a></li>
                     </template>
@@ -265,11 +262,10 @@
                             <input id="application_id" type="text" placeholder="..." v-model="status"
                                    class="form-control border-0 bg-light shadow-none">
 
-                            <div class="alert mt-2" v-if="message && alert" :class="alert"  role="alert">
+                            <div class="alert mt-2" v-if="message && alert" :class="alert" role="alert">
                                 {{ message }}
                             </div>
                         </div>
-
 
 
                         <div class="modal-footer">
@@ -292,7 +288,13 @@
                     </button>
                     <div class="row">
                         <div class="col-lg-6 d-sm-none p-0 overflow-hidden">
-                            <img src="/image/bg.jpg" class="w-100 h-100" alt="">
+                            <div class="signin-left">
+                                <div class="signin-box"><h2 class="ijara-logo"><a href="http://cabinet.e-ijara.uz"><img
+                                    src="http://cabinet.e-ijara.uz/templates/ijara-cabinet/img/logo.svg"></a></h2>
+<!--                                    <p class="text-center px-5">{{ $t('main.text') }}</p>-->
+
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-6 p-lg-0">
                             <div class="login-content">
@@ -318,7 +320,7 @@
                                         <div class="d-flex flex-row m-24">
                                             <div class="checkbox-custom cursor-pointer"
                                                  :class="agree ? 'custom-checked' : ''" @click.prevent="agreeToggle"><i
-                                                class="fas fa-solid fa-check"></i></div>
+                                                class="fa fa-solid fa-check"></i></div>
                                             <p class="w-75 ml-3  cursor-pointer" @click.prevent="agreeToggle"
                                                v-html="$t('oferta')"></p>
                                         </div>
@@ -350,7 +352,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import EIMZO from "./Modules/EIMZO";
 
 export default {
@@ -363,7 +364,7 @@ export default {
             user: this.auth.user,
             status: null,
             message: null,
-            alert: null
+            alert: null,
 
         }
     },
@@ -379,18 +380,25 @@ export default {
 
     methods: {
 
-        getStatus()
+        scrollToElement()
         {
-            axios.get(`/api/status/${this.status}`)
-            .then(response =>{
-                this.message = response.data.status
 
-                this.alert = response.data.ok? "alert-success" :  "alert-danger"
-            })
-
+            this.$router.push("/uz")
+            // document.getElementById("video").scrollIntoView({ behavior: "smooth" });
 
         },
 
+
+        getStatus() {
+            axios.get(`/api/status/${this.status}`)
+                .then(response => {
+                    this.message = response.data.status
+
+                    this.alert = response.data.ok ? "alert-success" : "alert-danger"
+                })
+
+
+        },
 
 
         agreeToggle() {
@@ -426,9 +434,14 @@ export default {
     mounted() {
         this.authcheck = localStorage.getItem('authcheck')
         $('.close').click(function () {
-            $('.modal').modal('hide')
+            // $('.modal').modal('hide')
         })
+        var This = this
+        $("#oferta").click(function (){
+            $('.modal').modal('hide')
+            This.$router.push("/uz/oferta")
 
+        })
 
         $(function () {
             $('#langdropdown').click(function () {
@@ -486,5 +499,4 @@ export default {
     background-color: white;
     color: #08705F;
 }
-
 </style>

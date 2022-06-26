@@ -22,9 +22,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LGeoJson.js");
 /* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LPopup.js");
 /* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LIcon.js");
+/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/components/LControl.js");
 /* harmony import */ var _public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../public/assets/js/leaflet-geojson-vt */ "./public/assets/js/leaflet-geojson-vt.js");
 /* harmony import */ var _public_assets_js_snoopy__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../public/assets/js/snoopy */ "./public/assets/js/snoopy.js");
 /* harmony import */ var _public_image_marker_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../public/image/marker.png */ "./public/image/marker.png");
+//
+//
+//
+//
 //
 //
 //
@@ -244,8 +249,11 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
         color: "#000",
         weight: 1,
         opacity: 1,
-        fillOpacity: 0.7
-      }
+        fillOpacity: 0.5
+      },
+      showConfirm: false,
+      drawType: 1,
+      drawnLayer: null
     };
   },
   components: {
@@ -256,7 +264,8 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
     LGeoJson: vue2_leaflet__WEBPACK_IMPORTED_MODULE_10__["default"],
     Sidebar: _Sidebar__WEBPACK_IMPORTED_MODULE_0__["default"],
     LPopup: vue2_leaflet__WEBPACK_IMPORTED_MODULE_11__["default"],
-    LIcon: vue2_leaflet__WEBPACK_IMPORTED_MODULE_12__["default"]
+    LIcon: vue2_leaflet__WEBPACK_IMPORTED_MODULE_12__["default"],
+    LControl: vue2_leaflet__WEBPACK_IMPORTED_MODULE_13__["default"]
   },
   methods: {
     getRegionById: function getRegionById(id) {
@@ -318,10 +327,12 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
 
         _this3.makeGeoJSON(geojson);
       });
-      this.removeMarkers();
-      this.drawLandsByStatus(this.selectedDistrict, 2);
-      this.drawLandsByStatus(this.selectedDistrict, 3);
-      this.drawLandsByStatus(this.selectedDistrict, 4);
+      this.addControls();
+      this.removeMarkers(); // this.drawLandsByStatus(this.selectedDistrict, 2)
+      // this.drawLandsByStatus(this.selectedDistrict, 3)
+      // this.drawLandsByStatus(this.selectedDistrict, 4)
+      // this.drawLandsByStatus(this.selectedDistrict, 5)
+
       this.drawCadLands(this.getCadNum(this.selectedDistrict));
       this.drawLands(this.selectedDistrict);
 
@@ -406,13 +417,28 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
               });
               This.layer = layer;
               This.selectedLand = feature;
-              This.currentLatLng = e.latlng;
-              This.$refs.marker.mapObject.openPopup();
-              This.selectLand(feature);
+              This.currentLatLng = e.latlng; // This.$refs.marker.mapObject.openPopup()
+
+              This.selectLand(feature, layer);
             });
           }
         };
         _this5.geojson1 = leaflet__WEBPACK_IMPORTED_MODULE_2___default().geoJson(lands.data, options).addTo(_this5.$refs.map.mapObject);
+      });
+    },
+    addControls: function addControls() {
+      this.$refs.map.mapObject.pm.addControls({
+        position: 'topleft',
+        drawCircle: false,
+        drawMarker: false,
+        drawCircleMarker: false,
+        drawPolyline: false,
+        drawRectangle: false,
+        editLayers: false,
+        editMode: false,
+        dragMode: false,
+        cutPolygon: false,
+        removalMode: false
       });
     },
     drawLandsByStatus: function drawLandsByStatus(id, status) {
@@ -423,7 +449,6 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
           status: status
         }
       }).then(function (response) {
-        console.log(response);
         var lands = response.data.data;
         var fillColor = null;
 
@@ -433,11 +458,15 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
             break;
 
           case 3:
-            fillColor = "#ff0000";
+            fillColor = "#8000ff";
             break;
 
           case 4:
-            fillColor = "#ff5100";
+            fillColor = "#824800";
+            break;
+
+          case 5:
+            fillColor = "#ff5f00";
             break;
         }
 
@@ -446,7 +475,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
           color: "#000",
           weight: 1,
           opacity: 1,
-          fillOpacity: 0.7
+          fillOpacity: 1
         };
         var options = {
           maxZoom: 20,
@@ -504,32 +533,36 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
             name: $land
           }
         };
-        console.log(geojson);
         geojson = (0,_public_assets_js_leaflet_geojson_vt__WEBPACK_IMPORTED_MODULE_3__["default"])(geojson, options).addTo(_this8.$refs.map.mapObject);
         5;
 
         _this8.$refs.map.mapObject.fitBounds(geojson.getBounds());
       });
     },
-    selectLand: function selectLand(feature) {
+    selectLand: function selectLand(feature, layer) {
+      if (this.drawnLayer) this.$refs.map.mapObject.removeLayer(this.drawnLayer);
+
+      if (this.drawType !== 1) {
+        this.selectedLandAreas = 0;
+        this.selectedLands = [];
+      }
+
       if (!this.selectedLands.includes(feature.properties.id)) {
         this.$refs.map.mapObject.closePopup();
         this.selectedLands.push(feature.properties.id);
         this.selectedLandAreas += parseInt(feature.properties.area);
-      }
-    },
-    confirm: function confirm(feature) {
-      this.selectLand(feature);
-      $("#values_modal").modal('show');
-    },
-    removeLand: function removeLand(feature, layer) {
-      if (this.selectedLands.includes(feature.properties.id)) {
+      } else {
         this.$refs.map.mapObject.closePopup();
         var index = this.selectedLands.indexOf(feature.properties.id);
         this.selectedLands.splice(index);
-        this.selectedLandAreas -= parseInt(feature.properties.area);
         layer.setStyle(this.geojsonStyle);
+        if (this.selectedLandAreas) this.selectedLandAreas -= parseInt(feature.properties.area);
       }
+
+      this.drawType = 1;
+    },
+    confirm: function confirm() {
+      $("#values_modal").modal('show');
     },
     submit: function submit() {
       $('.modal').modal('hide');
@@ -551,6 +584,22 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
     (0,_public_assets_js_snoopy__WEBPACK_IMPORTED_MODULE_4__["default"])();
     $(".close1").click(function () {
       $(".modal").modal('hide');
+    });
+    var map = this.$refs.map.mapObject;
+    var This = this;
+    map.on('pm:create', function (e) {
+      if (This.drawnLayer) map.removeLayer(This.drawnLayer);
+      var geojson = e.layer.toGeoJSON().geometry.coordinates[0];
+      This.drawnLayer = e.layer;
+      var latlong = [geojson[0][1], geojson[0][0]];
+      var seeArea = turf.area(e.layer.toGeoJSON());
+      seeArea = Math.round(seeArea);
+      seeArea = Math.round(seeArea / 10000);
+      var dataJSON = e.layer.toGeoJSON();
+      This.selectedLands = [1];
+      This.selectedLandAreas = seeArea;
+      This.drawType = 0;
+      This.geojson1.setStyle(this.geojsonStyle);
     });
     axios.get('/api/land_purposes').then(function (resp) {
       _this9.land_purposes = resp.data.data;
@@ -902,7 +951,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vue2leaflet-map[data-v-b4ef9180] {\n    height: 600px;\n}\n.select-2[data-v-b4ef9180] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n}\n.d-flex[data-v-b4ef9180] {\n    gap: 24px;\n}\n.map[data-v-b4ef9180] {\n    margin-top: 16px;\n    border-radius: 12px;\n    overflow: hidden;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vue2leaflet-map[data-v-b4ef9180] {\n    height: 400px;\n}\n.select-2[data-v-b4ef9180] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n}\n.d-flex[data-v-b4ef9180] {\n    gap: 24px;\n}\n.map[data-v-b4ef9180] {\n    margin-top: 16px;\n    border-radius: 12px;\n    overflow: hidden;\n}\n.check-offer[data-v-b4ef9180] {\n\n    margin: 20px auto;\n    background: #08705F;\n    border-radius: 8px;\n    color: white;\n    border: 1px solid #08705F;\n    width: 310px;\n    text-align: center;\n    padding: 12px;\n    transition: 0.2s;\n    text-decoration: none;\n    cursor: pointer;\n    font-size: 18px;\n}\n.check-offer[data-v-b4ef9180]:hover {\n\n    background: white;\n    color: #08705F;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2249,7 +2298,9 @@ var render = function () {
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-6" }, [
-                  _c("h1", [_vm._v(_vm._s(_vm.$t("nav.links.map")))]),
+                  _c("h1", { staticClass: "text-center" }, [
+                    _vm._v(_vm._s(_vm.$t("nav.links.map"))),
+                  ]),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -2319,149 +2370,60 @@ var render = function () {
                   ]),
                 ]),
               ]),
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "map" },
-              [
-                _c(
-                  "l-map",
-                  {
-                    ref: "map",
-                    attrs: {
-                      options: _vm.options,
-                      zoom: _vm.zoom,
-                      center: _vm.center,
-                    },
-                  },
-                  [
-                    _c("l-tile-layer", {
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "map" },
+                [
+                  _c(
+                    "l-map",
+                    {
+                      ref: "map",
                       attrs: {
-                        maxZoom: _vm.maxZoom,
-                        subdomains: _vm.subdomains,
-                        url: _vm.url,
-                        attribution: _vm.attribution,
+                        options: _vm.options,
+                        zoom: _vm.zoom,
+                        center: _vm.center,
                       },
-                    }),
-                    _vm._v(" "),
-                    _c("l-control-zoom", {
-                      attrs: { position: "bottomright" },
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "l-marker",
-                      {
-                        ref: "marker",
-                        attrs: { "lat-lng": _vm.currentLatLng },
-                      },
-                      [
-                        _c("l-icon", { attrs: { "icon-url": _vm.customIcon } }),
-                        _vm._v(" "),
-                        _vm.selectedLand && _vm.layer
-                          ? [
-                              _c(
-                                "l-popup",
-                                { ref: "popup" },
-                                [
-                                  _vm._v(
-                                    "\n                                Umumiy maydoni: " +
-                                      _vm._s(_vm.selectedLand.properties.area) +
-                                      " ga "
-                                  ),
-                                  _c("br"),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _vm.selectedLand
-                                    ? [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass: "btn btn-primary",
-                                            on: {
-                                              click: function ($event) {
-                                                return _vm.confirm(
-                                                  _vm.selectedLand
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [
-                                            _vm._v(
-                                              "Tasdiqlash\n                                    "
-                                            ),
-                                          ]
-                                        ),
-                                      ]
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _vm.selectedLands.includes(
-                                    _vm.selectedLand.properties.id
-                                  )
-                                    ? [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "btn btn-danger ml-1 btn-remove",
-                                            on: {
-                                              click: function ($event) {
-                                                return _vm.removeLand(
-                                                  _vm.selectedLand,
-                                                  _vm.layer
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [
-                                            _vm._v(
-                                              "Bekor qilish\n                                    "
-                                            ),
-                                          ]
-                                        ),
-                                      ]
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  !_vm.selectedLands.includes(
-                                    _vm.selectedLand.properties.id
-                                  )
-                                    ? [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "btn btn-success ml-1 btn-select",
-                                            on: {
-                                              click: function ($event) {
-                                                return _vm.selectLand(
-                                                  _vm.selectedLand,
-                                                  _vm.layer
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [
-                                            _vm._v(
-                                              "Yana tanlash\n                                    "
-                                            ),
-                                          ]
-                                        ),
-                                      ]
-                                    : _vm._e(),
-                                ],
-                                2
-                              ),
-                            ]
-                          : _vm._e(),
-                      ],
-                      2
-                    ),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
+                    },
+                    [
+                      _c("l-tile-layer", {
+                        attrs: {
+                          maxZoom: _vm.maxZoom,
+                          subdomains: _vm.subdomains,
+                          url: _vm.url,
+                          attribution: _vm.attribution,
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("l-control-zoom", {
+                        attrs: { position: "bottomright" },
+                      }),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.selectedLands.length
+                    ? _c(
+                        "p",
+                        {
+                          staticClass: "check-offer",
+                          on: {
+                            click: function ($event) {
+                              return _vm.confirm()
+                            },
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Tasdiqlash\n                    "
+                          ),
+                        ]
+                      )
+                    : _vm._e(),
+                ],
+                1
+              ),
+            ]),
           ]),
         ],
         1
@@ -2658,7 +2620,7 @@ var render = function () {
                     staticClass: "btn btn-secondary close1",
                     attrs: { type: "button", "data-dismiss": "modal" },
                   },
-                  [_vm._v("Yopish")]
+                  [_vm._v("Bekor qilish")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -2673,11 +2635,7 @@ var render = function () {
                       },
                     },
                   },
-                  [
-                    _vm._v(
-                      "Arizani\n                        topshirish\n                    "
-                    ),
-                  ]
+                  [_vm._v("Taklif kiritish\n                    ")]
                 ),
               ]),
             ]),
@@ -2696,7 +2654,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Ariza Topshirish")]
+        [_vm._v("Taklif ma'lumotlari")]
       ),
       _vm._v(" "),
       _c(
@@ -2876,6 +2834,329 @@ var render = function () {
 var staticRenderFns = []
 render._withStripped = true
 
+
+
+/***/ }),
+
+/***/ "./node_modules/vue2-leaflet/dist/components/LControl.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue2-leaflet/dist/components/LControl.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var capitalizeFirstLetter = function (string) {
+  if (!string || typeof string.charAt !== 'function') {
+    return string;
+  }
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+var propsBinder = function (vueElement, leafletElement, props, options) {
+  var loop = function ( key ) {
+    var setMethodName = 'set' + capitalizeFirstLetter(key);
+    var deepValue =
+      props[key].type === Object ||
+      props[key].type === Array ||
+      Array.isArray(props[key].type);
+    if (props[key].custom && vueElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          vueElement[setMethodName](newVal, oldVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (setMethodName === 'setOptions') {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          (0,leaflet__WEBPACK_IMPORTED_MODULE_0__.setOptions)(leafletElement, newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    } else if (leafletElement[setMethodName]) {
+      vueElement.$watch(
+        key,
+        function (newVal, oldVal) {
+          leafletElement[setMethodName](newVal);
+        },
+        {
+          deep: deepValue,
+        }
+      );
+    }
+  };
+
+  for (var key in props) loop( key );
+};
+
+var collectionCleaner = function (options) {
+  var result = {};
+  for (var key in options) {
+    var value = options[key];
+    if (value !== null && value !== undefined) {
+      result[key] = value;
+    }
+  }
+  return result;
+};
+
+var optionsMerger = function (props, instance) {
+  var options =
+    instance.options && instance.options.constructor === Object
+      ? instance.options
+      : {};
+  props = props && props.constructor === Object ? props : {};
+  var result = collectionCleaner(options);
+  props = collectionCleaner(props);
+  var defaultProps = instance.$options.props;
+  for (var key in props) {
+    var def = defaultProps[key]
+      ? defaultProps[key].default &&
+        typeof defaultProps[key].default === 'function'
+        ? defaultProps[key].default.call()
+        : defaultProps[key].default
+      : Symbol('unique');
+    var isEqual = false;
+    if (Array.isArray(def)) {
+      isEqual = JSON.stringify(def) === JSON.stringify(props[key]);
+    } else {
+      isEqual = def === props[key];
+    }
+    if (result[key] && !isEqual) {
+      console.warn(
+        (key + " props is overriding the value passed in the options props")
+      );
+      result[key] = props[key];
+    } else if (!result[key]) {
+      result[key] = props[key];
+    }
+  }
+  return result;
+};
+
+var findRealParent = function (firstVueParent) {
+  var found = false;
+  while (firstVueParent && !found) {
+    if (firstVueParent.mapObject === undefined) {
+      firstVueParent = firstVueParent.$parent;
+    } else {
+      found = true;
+    }
+  }
+  return firstVueParent;
+};
+
+var ControlMixin = {
+  props: {
+    position: {
+      type: String,
+      default: 'topright'
+    }
+  },
+  mounted: function mounted () {
+    this.controlOptions = {
+      position: this.position
+    };
+  },
+  beforeDestroy: function beforeDestroy () {
+    if (this.mapObject) {
+      this.mapObject.remove();
+    }
+  }
+};
+
+var Options = {
+  props: {
+    /**
+     * Leaflet options to pass to the component constructor
+     */
+    options: {
+      type: Object,
+      default: function () { return ({}); }
+    }
+  }
+};
+
+//
+
+/**
+ * Add any custom component as a leaflet control
+ */
+var script = {
+  name: 'LControl',
+  mixins: [ControlMixin, Options],
+  props: {
+    disableClickPropagation: {
+      type: Boolean,
+      custom: true,
+      default: true,
+    },
+    disableScrollPropagation: {
+      type: Boolean,
+      custom: true,
+      default: false,
+    }
+  },
+  mounted: function mounted() {
+    var this$1 = this;
+
+    var LControl = leaflet__WEBPACK_IMPORTED_MODULE_0__.Control.extend({
+      element: undefined,
+      onAdd: function onAdd() {
+        return this.element;
+      },
+      setElement: function setElement(el) {
+        this.element = el;
+      },
+    });
+    var options = optionsMerger(this.controlOptions, this);
+    this.mapObject = new LControl(options);
+    propsBinder(this, this.mapObject, this.$options.props);
+    this.parentContainer = findRealParent(this.$parent);
+    this.mapObject.setElement(this.$el);
+    if (this.disableClickPropagation) {
+      leaflet__WEBPACK_IMPORTED_MODULE_0__.DomEvent.disableClickPropagation(this.$el);
+    }
+    if (this.disableScrollPropagation) {
+      leaflet__WEBPACK_IMPORTED_MODULE_0__.DomEvent.disableScrollPropagation(this.$el);
+    }
+    this.mapObject.addTo(this.parentContainer.mapObject);
+    this.$nextTick(function () {
+      /**
+       * Triggers when the component is ready
+       * @type {object}
+       * @property {object} mapObject - reference to leaflet map object
+       */
+      this$1.$emit('ready', this$1.mapObject);
+    });
+  },
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof shadowMode !== 'boolean') {
+        createInjectorSSR = createInjector;
+        createInjector = shadowMode;
+        shadowMode = false;
+    }
+    // Vue.extend constructor export interop.
+    var options = typeof script === 'function' ? script.options : script;
+    // render functions
+    if (template && template.render) {
+        options.render = template.render;
+        options.staticRenderFns = template.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (style) {
+                style.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (style) {
+        hook = shadowMode
+            ? function (context) {
+                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                style.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return script;
+}
+
+/* script */
+var __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._t("default")],2)};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  var __vue_inject_styles__ = undefined;
+  /* scoped */
+  var __vue_scope_id__ = undefined;
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var __vue_component__ = /*#__PURE__*/normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__vue_component__);
 
 
 /***/ }),

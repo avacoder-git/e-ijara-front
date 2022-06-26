@@ -274,12 +274,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Video__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Video */ "./resources/js/components/Modules/Video.vue");
-/* harmony import */ var _FieldStatus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FieldStatus */ "./resources/js/components/Modules/FieldStatus.vue");
-/* harmony import */ var _Statistics__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Statistics */ "./resources/js/components/Modules/Statistics.vue");
-/* harmony import */ var _Lands__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Lands */ "./resources/js/components/Modules/Lands.vue");
+/* harmony import */ var _Video__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Video */ "./resources/js/components/Modules/Video.vue");
+/* harmony import */ var _FieldStatus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FieldStatus */ "./resources/js/components/Modules/FieldStatus.vue");
+/* harmony import */ var _Statistics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Statistics */ "./resources/js/components/Modules/Statistics.vue");
+/* harmony import */ var _Lands__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Lands */ "./resources/js/components/Modules/Lands.vue");
 //
 //
 //
@@ -383,69 +381,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
@@ -516,11 +451,24 @@ $(function () {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Index",
   components: {
-    Lands: _Lands__WEBPACK_IMPORTED_MODULE_4__["default"],
-    Statistics: _Statistics__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Video: _Video__WEBPACK_IMPORTED_MODULE_1__["default"],
-    jQuery: (jquery__WEBPACK_IMPORTED_MODULE_0___default()),
-    FieldStatus: _FieldStatus__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Lands: _Lands__WEBPACK_IMPORTED_MODULE_3__["default"],
+    Statistics: _Statistics__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Video: _Video__WEBPACK_IMPORTED_MODULE_0__["default"],
+    jQuery: jQuery,
+    FieldStatus: _FieldStatus__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    takeOffer: function takeOffer() {
+      var auth = localStorage.getItem('token');
+
+      if (auth) {
+        this.$router.push({
+          name: "dashboard.application.create"
+        });
+      } else {
+        $("#login-modal").modal("show");
+      }
+    }
   },
   mounted: function mounted() {}
 });
@@ -538,6 +486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -923,8 +872,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Video",
   mounted: function mounted() {
@@ -940,10 +887,36 @@ __webpack_require__.r(__webpack_exports__);
       });
       $('.play-btn').click(function () {
         $(".video-" + $(this).data('video')).removeClass('d-none');
+        var media = $(".video-" + $(this).data('video')).get(0);
+        media.play();
       });
     });
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.rectangle[data-v-c6d3ba36]{\n    transition: 0.2s;\n    text-decoration: none;\n}\n.rectangle[data-v-c6d3ba36]:hover{\n    transform: scale(1.05);\n}\n\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
 
 /***/ }),
 
@@ -22537,6 +22510,36 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Lands_vue_vue_type_style_index_0_id_c6d3ba36_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Lands_vue_vue_type_style_index_0_id_c6d3ba36_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Lands_vue_vue_type_style_index_0_id_c6d3ba36_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./resources/js/components/Modules/FieldStatus.vue":
 /*!*********************************************************!*\
   !*** ./resources/js/components/Modules/FieldStatus.vue ***!
@@ -22706,15 +22709,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Lands_vue_vue_type_template_id_c6d3ba36_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Lands.vue?vue&type=template&id=c6d3ba36&scoped=true& */ "./resources/js/components/Modules/Lands.vue?vue&type=template&id=c6d3ba36&scoped=true&");
 /* harmony import */ var _Lands_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Lands.vue?vue&type=script&lang=js& */ "./resources/js/components/Modules/Lands.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Lands_vue_vue_type_style_index_0_id_c6d3ba36_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css& */ "./resources/js/components/Modules/Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Lands_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Lands_vue_vue_type_template_id_c6d3ba36_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
   _Lands_vue_vue_type_template_id_c6d3ba36_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -22919,6 +22924,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Video_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Video.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Video.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Video_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Modules/Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/Modules/Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css& ***!
+  \************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Lands_vue_vue_type_style_index_0_id_c6d3ba36_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modules/Lands.vue?vue&type=style&index=0&id=c6d3ba36&scoped=true&lang=css&");
+
 
 /***/ }),
 
@@ -23556,7 +23574,7 @@ var render = function () {
         _c(
           "tbody",
           _vm._l(_vm.regions, function (region) {
-            return _vm.regions
+            return _vm.regions && region.new_lands_count
               ? _c("tr", [
                   _c("td", [_vm._v(_vm._s(region.nameuz))]),
                   _vm._v(" "),
@@ -23619,9 +23637,9 @@ var render = function () {
         _c("div", { staticClass: "video-text" }, [
           _c("p", { staticClass: "text-center text-white" }, [
             _vm._v(
-              "\n                    " +
+              "\n                " +
                 _vm._s(_vm.$t("main.text")) +
-                "\n                "
+                "\n            "
             ),
           ]),
         ]),
@@ -23653,17 +23671,17 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", { staticClass: "rectangle-title" }, [
                     _vm._v(
-                      "\n                                " +
+                      "\n                            " +
                         _vm._s(level.name) +
-                        "\n                            "
+                        "\n                        "
                     ),
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "rectangle-body" }, [
                     _vm._v(
-                      "\n                                " +
+                      "\n                            " +
                         _vm._s(level.text) +
-                        "\n                            "
+                        "\n                        "
                     ),
                   ]),
                 ])
@@ -23676,7 +23694,7 @@ var render = function () {
       _vm._v(" "),
       _c("Lands"),
       _vm._v(" "),
-      _c("Video"),
+      _c("Video", { attrs: { id: "video" } }),
       _vm._v(" "),
       _c("Statistics"),
       _vm._v(" "),
@@ -23696,7 +23714,13 @@ var render = function () {
                     "a",
                     {
                       staticClass: "check-offer",
-                      attrs: { href: "/dashboard" },
+                      attrs: { href: "" },
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.takeOffer.apply(null, arguments)
+                        },
+                      },
                     },
                     [_vm._v(_vm._s(_vm.$t("offer")))]
                   ),
@@ -23725,9 +23749,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                                " +
+                      "\n                            " +
                         _vm._s(_vm.$t("main.useful.content[0]")) +
-                        "\n                            "
+                        "\n                        "
                     ),
                   ]),
                 ]),
@@ -23739,9 +23763,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                                " +
+                      "\n                            " +
                         _vm._s(_vm.$t("main.useful.content[1]")) +
-                        "\n                            "
+                        "\n                        "
                     ),
                   ]),
                 ]),
@@ -23751,9 +23775,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                                " +
+                      "\n                            " +
                         _vm._s(_vm.$t("main.useful.content[2]")) +
-                        "\n                            "
+                        "\n                        "
                     ),
                   ]),
                 ]),
@@ -23763,9 +23787,9 @@ var render = function () {
                   _vm._v(" "),
                   _c("div", [
                     _vm._v(
-                      "\n                                " +
+                      "\n                            " +
                         _vm._s(_vm.$t("main.useful.content[3]")) +
-                        "\n                            "
+                        "\n                        "
                     ),
                   ]),
                 ]),
@@ -23889,8 +23913,17 @@ var render = function () {
                       _vm._l(_vm.data, function (item) {
                         return [
                           _c(
-                            "div",
-                            { staticClass: "rectangle position-relative" },
+                            "a",
+                            {
+                              staticClass:
+                                "rectangle position-relative d-block",
+                              attrs: {
+                                target: "_blank",
+                                href:
+                                  "https://e-auksion.uz/lot-view?lot_id=" +
+                                  item.lot_number,
+                              },
+                            },
                             [
                               _c("div", { staticClass: "rectangle-img" }, [
                                 _c("img", {
@@ -23916,7 +23949,7 @@ var render = function () {
                                   ]),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "rectangle-lot" }, [
-                                    _vm._v(_vm._s(item.regnum)),
+                                    _vm._v(_vm._s(item.lot_number)),
                                   ]),
                                 ]
                               ),
@@ -24218,13 +24251,14 @@ var render = function () {
                                 ),
                               ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "text-2" }, [
-                                _vm._v(
-                                  "\n                                                    " +
-                                    _vm._s(_vm.$t("main.video.content[0]")) +
-                                    "\n\n                                                "
-                                ),
-                              ]),
+                              _c("div", {
+                                staticClass: "text-2",
+                                domProps: {
+                                  innerHTML: _vm._s(
+                                    _vm.$t("main.video.content[0]")
+                                  ),
+                                },
+                              }),
                             ]),
                           ]),
                           _vm._v(" "),
@@ -24256,13 +24290,14 @@ var render = function () {
                                 ),
                               ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "text-2" }, [
-                                _vm._v(
-                                  "\n                                                    " +
-                                    _vm._s(_vm.$t("main.video.content[1]")) +
-                                    "\n                                                "
-                                ),
-                              ]),
+                              _c("div", {
+                                staticClass: "text-2",
+                                domProps: {
+                                  innerHTML: _vm._s(
+                                    _vm.$t("main.video.content[1]")
+                                  ),
+                                },
+                              }),
                             ]),
                           ]),
                           _vm._v(" "),

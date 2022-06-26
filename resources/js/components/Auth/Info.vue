@@ -6,7 +6,7 @@
 
             <div class="card">
 
-                <h1>{{ $t("dashboard.info.title") }}</h1>
+                <h1  class="text-center">{{ $t("dashboard.info.title") }}</h1>
 
 
                 <div class="form-row">

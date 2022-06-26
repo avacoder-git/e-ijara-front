@@ -6,7 +6,7 @@
 
             <div class="card">
 
-                <h1>{{ $t("dashboard.my.applications") }}</h1>
+                <h1  class="text-center">{{ $t("dashboard.my.applications") }}</h1>
 
                 <table class="table border-0">
                     <thead>

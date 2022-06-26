@@ -78,10 +78,7 @@ class LandController extends Controller
 
     public function front(Request $request)
     {
-        $lands = Land::select('regnum', 'address', 'area', 'id', 'updated_at')->whereIn("status_id", [14, 16, 17]);
-//        $lands = $lands->where(function ($query) {
-//            $query->whereHas('auction_lot');
-//        });
+        $lands = Land::select('regnum', 'address', 'area', 'id', 'updated_at','lot_number')->whereIn("status_id", [17])->orderBy("id","desc");
 
         if ($request->district_id)
             $lands = $lands->where("cad_number", 'LIKE', "%$request->district_id:%");
@@ -89,21 +86,16 @@ class LandController extends Controller
             if ($request->region_id)
                 $lands = $lands->where("cad_number", 'LIKE', "%$request->region_id:%");
             else
-                if (isset($request->auction_lot)) {
-                    $lot_number = $request->auction_lot;
-                    $lands = $lands->where(function ($query) use ($lot_number) {
-                        $query->whereHas('auction_lot', function ($query) use ($lot_number) {
-                            $query->where('lot_number', $lot_number);
-                        });
-                        $query->orWhere('lot_number', $lot_number);
-                    });
+                if (isset($request->lot_number)) {
+                    $lot_number = $request->lot_number;
+                    $lands = $lands->where('lot_number', $lot_number);
                 }
 
 
         $lands = $lands->paginate(16);
         return new LandCollection($lands);
-
     }
+
 
     public function status($application)
     {
