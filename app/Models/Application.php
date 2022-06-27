@@ -47,5 +47,11 @@ class Application extends Model
         return $date->format("Y-m-d, H:i");
     }
 
+    public function lands()
+    {
+        $database = $this->getConnection()->getDatabaseName();
+        return $this->belongsToMany(Land::class,"$database.application_lands");
+    }
+
 
 }

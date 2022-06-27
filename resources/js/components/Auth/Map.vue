@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="row">
                         <div class="col-6">
-                            <h1  class="text-center">{{ $t("nav.links.map") }}</h1>
+                            <h1 class="text-center">{{ $t("nav.links.map") }}</h1>
                             <div class="d-flex  mt-2">
                                 <v-select
                                     @change="setDistricts"
@@ -108,6 +108,7 @@
                                         <input type="text" v-if="selectedRegion"
                                                :value="getRegionById(selectedRegion).nameuz" class="form-control"
                                                disabled id="region_name">
+                                        <div class="text-danger" v-if="errors">{{ errors.region_id }}</div>
                                     </div>
                                     <div class="text-danger" id="error_region_id"></div>
 
@@ -119,20 +120,24 @@
                                         <input type="text" class="form-control" v-if="selectedDistrict"
                                                :value="getDistrictById(selectedDistrict).nameuz" disabled
                                                id="district_name">
+                                        <div class="text-danger" v-if="errors">{{ errors.district_id }}</div>
+
                                     </div>
                                     <div class="text-danger" id="error_distric_id"></div>
 
                                     <div class="form-group">
                                         <label>Yer uchastkasini ijaraga olish maqsadi</label>
-                                        <select name="purpose" id="purpose_id" class="form-control" required>
+                                        <select name="purpose" id="purpose_id" class="form-control"
+                                                v-model="land_purpose" required>
                                             <option value="">Ijaraga olish maqsadini belgilang</option>
                                             <!--                                            @foreach($land_purposes as $key => $item)-->
-                                            <option value="" v-for="land_purpose in land_purposes">{{
+                                            <option :value="land_purpose.id" v-for="land_purpose in land_purposes">{{
                                                     land_purpose.name
                                                 }}
                                             </option>
-                                            <!--                                            @endforeach-->
                                         </select>
+                                        <div class="text-danger" v-if="errors">{{ errors.land_purpose_id }}</div>
+
                                     </div>
                                     <div class="text-danger" id="error_purpose_id"></div>
 
@@ -146,10 +151,12 @@
 
 
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">Ko‘zlanayotgan ijara muddati</span>
+                                        <div class="input-group-prepend"><span class="input-group-text">Ko‘zlanayotgan ijara muddati (yil)</span>
                                         </div>
-                                        <input placeholder="Amount" id="amount" type="number" class="form-control">
+                                        <input id="amount" type="number" v-model="period" class="form-control">
+
                                     </div>
+                                    <div class="text-danger" v-if="errors">{{ errors.period }}</div>
                                     <div class="text-danger" id="error_amount"></div>
 
 
@@ -162,7 +169,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary close1" data-dismiss="modal">Bekor qilish</button>
+                        <button type="button" class="btn btn-secondary close1" data-dismiss="modal">Bekor qilish
+                        </button>
                         <button type="submit" class="btn d-block btn-primary" @click="submit()" id="submit"
                                 style="color:white">Taklif kiritish
                         </button>
@@ -231,6 +239,9 @@ export default {
             showConfirm: false,
             drawType: 1,
             drawnLayer: null,
+            period: null,
+            land_purpose: null,
+            errors: null
 
         };
     },
@@ -248,7 +259,7 @@ export default {
     methods: {
         getRegionById(id) {
             for (let i = 0; i < this.regions.length; i++) {
-                if (this.regions[i].id === id)
+                if (this.regions[i].regioncode === id)
                     return this.regions[i];
 
             }
@@ -357,7 +368,6 @@ export default {
 
             });
             this.removeMarkers2()
-
         },
         drawLands(id) {
             var This = this
@@ -401,21 +411,6 @@ export default {
                 })
 
         },
-        addControls() {
-            this.$refs.map.mapObject.pm.addControls({
-                position: 'topleft',
-                drawCircle: false,
-                drawMarker: false,
-                drawCircleMarker: false,
-                drawPolyline: false,
-                drawRectangle: false,
-                editLayers: false,
-                editMode: false,
-                dragMode: false,
-                cutPolygon: false,
-                removalMode: false
-            });
-        },
         drawLandsByStatus(id, status) {
             axios.get(`/api/geojson/lands/${id}`, {params: {status}})
                 .then(response => {
@@ -453,9 +448,7 @@ export default {
                     if (lands.features !== null)
                         vt(lands, options).addTo(this.$refs.map.mapObject);
                 })
-
         },
-
         drawCadLands(prefix) {
             axios.get(`https://api.agro.uz/gis_bridge/eijara`, {params: {prefix}})
                 .then(response => {
@@ -535,17 +528,59 @@ export default {
 
             this.drawType = 1
         },
-
+        addControls() {
+            this.$refs.map.mapObject.pm.addControls({
+                position: 'topleft',
+                drawCircle: false,
+                drawMarker: false,
+                drawCircleMarker: false,
+                drawPolyline: false,
+                drawRectangle: false,
+                editLayers: false,
+                editMode: false,
+                dragMode: false,
+                cutPolygon: false,
+                removalMode: false
+            });
+        },
         confirm() {
             $("#values_modal").modal('show')
+        },
+        sendData() {
+            var token = window.localStorage.getItem("token")
+            var data = {
+                region_id: this.getRegionById(this.selectedRegion).id,
+                district_id: this.selectedDistrict,
+                draw_type: this.drawType,
+                land_purpose_id: this.land_purpose,
+                period: this.period,
+                geometry: this.drawnLayer ? this.drawnLayer.toGeoJSON() : null,
+                lands: this.selectedLands
+            }
+            var This = this
+            axios.post("/api/applications/store", data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            )
+                .then(response => {
+                    if (response.data.ok) {
+                        This.errors = null
+                        This.$router.push({name: "dashboard.application"})
+                        This.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
+                        $('.modal').modal('hide')
+                    } else {
+                        console.log(response.data.errors);
+                        This.errors = response.data.errors
+                    }
+                })
         },
 
 
         submit() {
-            $('.modal').modal('hide')
-            this.$router.push({name: "dashboard.application"})
-            this.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
-
+            this.sendData()
         }
     },
 
@@ -575,7 +610,8 @@ export default {
             This.selectedLands = [1]
             This.selectedLandAreas = seeArea
             This.drawType = 0
-            This.geojson1.setStyle(this.geojsonStyle)
+            if (This.geojson1)
+                This.geojson1.setStyle(this.geojsonStyle)
 
         })
 

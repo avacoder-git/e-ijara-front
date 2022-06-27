@@ -392,7 +392,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2 col-lg-1" }, [
-      _c("a", { attrs: { href: "" } }, [
+      _c("div", [
         _c("i", {
           staticClass: "fa fa-arrow-right",
           attrs: { "aria-hidden": "true" },
@@ -405,7 +405,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2 col-lg-1" }, [
-      _c("a", { attrs: { href: "" } }, [
+      _c("div", [
         _c("i", {
           staticClass: "fa fa-arrow-right",
           attrs: { "aria-hidden": "true" },
@@ -418,7 +418,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2 col-lg-1" }, [
-      _c("a", { attrs: { href: "" } }, [
+      _c("div", { attrs: { href: "" } }, [
         _c("i", {
           staticClass: "fa fa-arrow-right",
           attrs: { "aria-hidden": "true" },
@@ -431,7 +431,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2 col-lg-1" }, [
-      _c("a", { attrs: { href: "" } }, [
+      _c("div", { attrs: { href: "" } }, [
         _c("i", {
           staticClass: "fa fa-arrow-right",
           attrs: { "aria-hidden": "true" },

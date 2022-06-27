@@ -206,6 +206,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -253,7 +261,10 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
       },
       showConfirm: false,
       drawType: 1,
-      drawnLayer: null
+      drawnLayer: null,
+      period: null,
+      land_purpose: null,
+      errors: null
     };
   },
   components: {
@@ -270,7 +281,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
   methods: {
     getRegionById: function getRegionById(id) {
       for (var i = 0; i < this.regions.length; i++) {
-        if (this.regions[i].id === id) return this.regions[i];
+        if (this.regions[i].regioncode === id) return this.regions[i];
       }
 
       return false;
@@ -426,21 +437,6 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
         _this5.geojson1 = leaflet__WEBPACK_IMPORTED_MODULE_2___default().geoJson(lands.data, options).addTo(_this5.$refs.map.mapObject);
       });
     },
-    addControls: function addControls() {
-      this.$refs.map.mapObject.pm.addControls({
-        position: 'topleft',
-        drawCircle: false,
-        drawMarker: false,
-        drawCircleMarker: false,
-        drawPolyline: false,
-        drawRectangle: false,
-        editLayers: false,
-        editMode: false,
-        dragMode: false,
-        cutPolygon: false,
-        removalMode: false
-      });
-    },
     drawLandsByStatus: function drawLandsByStatus(id, status) {
       var _this6 = this;
 
@@ -561,15 +557,56 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
 
       this.drawType = 1;
     },
+    addControls: function addControls() {
+      this.$refs.map.mapObject.pm.addControls({
+        position: 'topleft',
+        drawCircle: false,
+        drawMarker: false,
+        drawCircleMarker: false,
+        drawPolyline: false,
+        drawRectangle: false,
+        editLayers: false,
+        editMode: false,
+        dragMode: false,
+        cutPolygon: false,
+        removalMode: false
+      });
+    },
     confirm: function confirm() {
       $("#values_modal").modal('show');
     },
-    submit: function submit() {
-      $('.modal').modal('hide');
-      this.$router.push({
-        name: "dashboard.application"
+    sendData: function sendData() {
+      var token = window.localStorage.getItem("token");
+      var data = {
+        region_id: this.getRegionById(this.selectedRegion).id,
+        district_id: this.selectedDistrict,
+        draw_type: this.drawType,
+        land_purpose_id: this.land_purpose,
+        period: this.period,
+        geometry: this.drawnLayer ? this.drawnLayer.toGeoJSON() : null,
+        lands: this.selectedLands
+      };
+      var This = this;
+      axios.post("/api/applications/store", data, {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        if (response.data.ok) {
+          This.errors = null;
+          This.$router.push({
+            name: "dashboard.application"
+          });
+          This.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
+          $('.modal').modal('hide');
+        } else {
+          console.log(response.data.errors);
+          This.errors = response.data.errors;
+        }
       });
-      this.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
+    },
+    submit: function submit() {
+      this.sendData();
     }
   },
   mounted: function mounted() {
@@ -599,7 +636,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
       This.selectedLands = [1];
       This.selectedLandAreas = seeArea;
       This.drawType = 0;
-      This.geojson1.setStyle(this.geojsonStyle);
+      if (This.geojson1) This.geojson1.setStyle(this.geojsonStyle);
     });
     axios.get('/api/land_purposes').then(function (resp) {
       _this9.land_purposes = resp.data.data;
@@ -2487,6 +2524,12 @@ var render = function () {
                                 },
                               })
                             : _vm._e(),
+                          _vm._v(" "),
+                          _vm.errors
+                            ? _c("div", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errors.region_id)),
+                              ])
+                            : _vm._e(),
                         ]),
                         _vm._v(" "),
                         _c("div", {
@@ -2522,6 +2565,12 @@ var render = function () {
                                 },
                               })
                             : _vm._e(),
+                          _vm._v(" "),
+                          _vm.errors
+                            ? _c("div", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errors.district_id)),
+                              ])
+                            : _vm._e(),
                         ]),
                         _vm._v(" "),
                         _c("div", {
@@ -2537,11 +2586,35 @@ var render = function () {
                           _c(
                             "select",
                             {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.land_purpose,
+                                  expression: "land_purpose",
+                                },
+                              ],
                               staticClass: "form-control",
                               attrs: {
                                 name: "purpose",
                                 id: "purpose_id",
                                 required: "",
+                              },
+                              on: {
+                                change: function ($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function (o) {
+                                      return o.selected
+                                    })
+                                    .map(function (o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.land_purpose = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                },
                               },
                             },
                             [
@@ -2554,7 +2627,7 @@ var render = function () {
                                 function (land_purpose) {
                                   return _c(
                                     "option",
-                                    { attrs: { value: "" } },
+                                    { domProps: { value: land_purpose.id } },
                                     [
                                       _vm._v(
                                         _vm._s(land_purpose.name) +
@@ -2567,6 +2640,12 @@ var render = function () {
                             ],
                             2
                           ),
+                          _vm._v(" "),
+                          _vm.errors
+                            ? _c("div", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errors.land_purpose_id)),
+                              ])
+                            : _vm._e(),
                         ]),
                         _vm._v(" "),
                         _c("div", {
@@ -2596,7 +2675,37 @@ var render = function () {
                           attrs: { id: "error_area" },
                         }),
                         _vm._v(" "),
-                        _vm._m(1),
+                        _c("div", { staticClass: "input-group" }, [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.period,
+                                expression: "period",
+                              },
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "amount", type: "number" },
+                            domProps: { value: _vm.period },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.period = $event.target.value
+                              },
+                            },
+                          }),
+                        ]),
+                        _vm._v(" "),
+                        _vm.errors
+                          ? _c("div", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errors.period)),
+                            ])
+                          : _vm._e(),
                         _vm._v(" "),
                         _c("div", {
                           staticClass: "text-danger",
@@ -2620,7 +2729,7 @@ var render = function () {
                     staticClass: "btn btn-secondary close1",
                     attrs: { type: "button", "data-dismiss": "modal" },
                   },
-                  [_vm._v("Bekor qilish")]
+                  [_vm._v("Bekor qilish\n                    ")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -2675,17 +2784,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group" }, [
-      _c("div", { staticClass: "input-group-prepend" }, [
-        _c("span", { staticClass: "input-group-text" }, [
-          _vm._v("Ko‘zlanayotgan ijara muddati"),
-        ]),
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text" }, [
+        _vm._v("Ko‘zlanayotgan ijara muddati (yil)"),
       ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { placeholder: "Amount", id: "amount", type: "number" },
-      }),
     ])
   },
 ]

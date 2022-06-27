@@ -20,7 +20,7 @@ class CreateApplicationsTable extends Migration
             $table->integer('district_id');
             $table->integer('land_purpose_id');
             $table->integer('period');
-            $table->geometry('geometry');
+            $table->geometry('geometry')->nullable();
             $table->integer('status_id');
             $table->timestamps();
 
