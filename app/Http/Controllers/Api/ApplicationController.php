@@ -54,7 +54,7 @@ class ApplicationController extends Controller
                     ApplicationLand::create($item);
                 }
             DB::commit();
-            return response()->json(["ok" => true, 'data' => $data]);
+            return response()->json(["ok" => true, 'application' => $application]);
         }catch (Exception $exception)
         {
             DB::rollBack();

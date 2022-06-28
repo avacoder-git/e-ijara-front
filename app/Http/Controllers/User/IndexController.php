@@ -109,11 +109,11 @@ class IndexController extends Controller
         else
             if ($request->region_id)
                 $lands = $lands->where("cad_number", 'LIKE', "%$request->region_id:%");
-            else
-                if (isset($request->lot_number)) {
-                    $lot_number = $request->lot_number;
-                    $lands = $lands->where("lot_number", $lot_number);
-                };
+//            else
+        if (isset($request->lot_number)) {
+            $lot_number = $request->lot_number;
+            $lands = $lands->where("lot_number", $lot_number);
+        };
         $lands = $lands->paginate();
         return new LandCollection($lands);
     }

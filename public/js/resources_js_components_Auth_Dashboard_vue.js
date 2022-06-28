@@ -55,6 +55,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Dashboard",
@@ -393,6 +395,8 @@ var render = function () {
             _c("table", { staticClass: "table border-0" }, [
               _c("thead", [
                 _c("tr", [
+                  _vm._m(0),
+                  _vm._v(" "),
                   _c("th", [
                     _c("span", [_vm._v(_vm._s(_vm.$t("dashboard.my.region")))]),
                   ]),
@@ -428,6 +432,10 @@ var render = function () {
                 _vm._l(_vm.applications, function (application) {
                   return _vm.applications
                     ? _c("tr", [
+                        _c("td", [
+                          _c("span", [_vm._v(_vm._s(application.id))]),
+                        ]),
+                        _vm._v(" "),
                         _c("td", [
                           _c("span", [
                             _vm._v(_vm._s(application.region.nameru)),
@@ -477,7 +485,14 @@ var render = function () {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("th", [_c("span", [_vm._v("ID")])])
+  },
+]
 render._withStripped = true
 
 

@@ -15,7 +15,7 @@
                                             <div class="col-lg-5  col-12">
                                                 <button type="button" class="play-btn d-lg-none" data-video="1"
                                                         data-toggle="modal"
-                                                        data-target="#video"><img
+                                                        data-target="#videoModal"><img
                                                     src="image/play_btn.svg" class="play-img" alt="">
                                                 </button>
                                                 <div class="w-100">
@@ -30,7 +30,7 @@
                                             <div class="col-lg-6">
                                                 <button type="button" class="play-btn" data-video="1"
                                                         data-toggle="modal"
-                                                        data-target="#video"><img
+                                                        data-target="#videoModal"><img
                                                     src="image/play_btn.svg" class="play-img" alt="">
                                                 </button>
                                             </div>
@@ -44,7 +44,7 @@
                                             <div class="col-lg-5">
                                                 <button type="button" class="play-btn d-lg-none"
                                                         data-video="2" data-toggle="modal"
-                                                        data-target="#video"><img
+                                                        data-target="#videoModal"><img
                                                     src="image/play_btn.svg" class="play-img"
                                                     alt="">
                                                 </button>
@@ -59,7 +59,7 @@
                                             <div class="col-lg-6 d-sm-none">
                                                 <button type="button" class="play-btn"
                                                         data-video="2" data-toggle="modal"
-                                                        data-target="#video"><img
+                                                        data-target="#videoModal"><img
                                                     src="image/play_btn.svg" class="play-img"
                                                     alt="">
                                                 </button>
@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal" id="video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog  modal-lg" role="document">
                 <div class="modal-content mt-5">
@@ -129,7 +129,7 @@ export default {
                 $(".video-mp4").addClass('d-none')
             })
             $('.play-btn').click(function () {
-                $(".video-" + $(this).data('video')).removeClass('d-none')
+                $(".video-1").removeClass('d-none')
                 var media = $(".video-" + $(this).data('video')).get(0);
                 media.play()
 

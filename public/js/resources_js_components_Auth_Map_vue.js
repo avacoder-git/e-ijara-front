@@ -214,6 +214,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -262,9 +269,10 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
       showConfirm: false,
       drawType: 1,
       drawnLayer: null,
-      period: null,
-      land_purpose: null,
-      errors: null
+      period: 0,
+      land_purpose: 0,
+      errors: null,
+      user: this.auth.user
     };
   },
   components: {
@@ -337,13 +345,14 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
         var geojson = response.data;
 
         _this3.makeGeoJSON(geojson);
-      });
-      this.addControls();
-      this.removeMarkers(); // this.drawLandsByStatus(this.selectedDistrict, 2)
-      // this.drawLandsByStatus(this.selectedDistrict, 3)
-      // this.drawLandsByStatus(this.selectedDistrict, 4)
-      // this.drawLandsByStatus(this.selectedDistrict, 5)
+      }); // this.addControls()
 
+      this.removeMarkers();
+      this.drawLandsByStatus(this.selectedDistrict, 2);
+      this.drawLandsByStatus(this.selectedDistrict, 3);
+      this.drawLandsByStatus(this.selectedDistrict, 4);
+      this.drawLandsByStatus(this.selectedDistrict, 5);
+      this.drawLandsByStatus(this.selectedDistrict, 6);
       this.drawCadLands(this.getCadNum(this.selectedDistrict));
       this.drawLands(this.selectedDistrict);
 
@@ -423,6 +432,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
               }
             });
             layer.on('click', function (e) {
+              leaflet__WEBPACK_IMPORTED_MODULE_2___default().geoJson(lands.data, options).addTo(This.$refs.map.mapObject);
               layer.setStyle({
                 fillColor: "#11ff00"
               });
@@ -454,7 +464,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
             break;
 
           case 3:
-            fillColor = "#8000ff";
+            fillColor = "#9500ff";
             break;
 
           case 4:
@@ -463,6 +473,10 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
 
           case 5:
             fillColor = "#ff5f00";
+            break;
+
+          case 6:
+            fillColor = "#11ff00";
             break;
         }
 
@@ -536,24 +550,24 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
       });
     },
     selectLand: function selectLand(feature, layer) {
-      if (this.drawnLayer) this.$refs.map.mapObject.removeLayer(this.drawnLayer);
-
-      if (this.drawType !== 1) {
-        this.selectedLandAreas = 0;
-        this.selectedLands = [];
-      }
-
-      if (!this.selectedLands.includes(feature.properties.id)) {
-        this.$refs.map.mapObject.closePopup();
-        this.selectedLands.push(feature.properties.id);
-        this.selectedLandAreas += parseInt(feature.properties.area);
-      } else {
-        this.$refs.map.mapObject.closePopup();
-        var index = this.selectedLands.indexOf(feature.properties.id);
-        this.selectedLands.splice(index);
-        layer.setStyle(this.geojsonStyle);
-        if (this.selectedLandAreas) this.selectedLandAreas -= parseInt(feature.properties.area);
-      }
+      // if (this.drawnLayer)
+      //     this.$refs.map.mapObject.removeLayer(this.drawnLayer)
+      // if (this.drawType !== 1) {
+      //     this.selectedLandAreas = 0
+      //     this.selectedLands = []
+      // }
+      // if (!this.selectedLands.includes(feature.properties.id)) {
+      this.selectedLands = [];
+      this.$refs.map.mapObject.closePopup();
+      this.selectedLands.push(feature.properties.id);
+      this.selectedLandAreas = parseFloat(feature.properties.area).toFixed(2); // } else {
+      //     this.$refs.map.mapObject.closePopup();
+      //     var index = this.selectedLands.indexOf(feature.properties.id)
+      //     this.selectedLands.splice(index)
+      //     layer.setStyle(this.geojsonStyle);
+      //     if (this.selectedLandAreas)
+      //         this.selectedLandAreas -= parseInt(feature.properties.area)
+      // }
 
       this.drawType = 1;
     },
@@ -569,7 +583,8 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
         editMode: false,
         dragMode: false,
         cutPolygon: false,
-        removalMode: false
+        removalMode: false,
+        drawText: false
       });
     },
     confirm: function confirm() {
@@ -597,7 +612,7 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
           This.$router.push({
             name: "dashboard.application"
           });
-          This.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
+          This.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini ' + response.data.application.id + ' tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
           $('.modal').modal('hide');
         } else {
           console.log(response.data.errors);
@@ -988,7 +1003,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vue2leaflet-map[data-v-b4ef9180] {\n    height: 400px;\n}\n.select-2[data-v-b4ef9180] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n}\n.d-flex[data-v-b4ef9180] {\n    gap: 24px;\n}\n.map[data-v-b4ef9180] {\n    margin-top: 16px;\n    border-radius: 12px;\n    overflow: hidden;\n}\n.check-offer[data-v-b4ef9180] {\n\n    margin: 20px auto;\n    background: #08705F;\n    border-radius: 8px;\n    color: white;\n    border: 1px solid #08705F;\n    width: 310px;\n    text-align: center;\n    padding: 12px;\n    transition: 0.2s;\n    text-decoration: none;\n    cursor: pointer;\n    font-size: 18px;\n}\n.check-offer[data-v-b4ef9180]:hover {\n\n    background: white;\n    color: #08705F;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vue2leaflet-map[data-v-b4ef9180] {\n    height: 400px;\n}\n.badge-custom[data-v-b4ef9180] {\n    width: 30px;\n    height: 10px;\n    border-radius: 50rem;\n}\n.select-2[data-v-b4ef9180] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n}\n.d-flex[data-v-b4ef9180] {\n    gap: 24px;\n}\n.map[data-v-b4ef9180] {\n    margin-top: 16px;\n    border-radius: 12px;\n    overflow: hidden;\n}\n.check-offer[data-v-b4ef9180] {\n\n    margin: 20px auto;\n    background: #08705F;\n    border-radius: 8px;\n    color: white;\n    border: 1px solid #08705F;\n    width: 310px;\n    text-align: center;\n    padding: 12px;\n    transition: 0.2s;\n    text-decoration: none;\n    cursor: pointer;\n    font-size: 18px;\n}\n.check-offer[data-v-b4ef9180]:hover {\n\n    background: white;\n    color: #08705F;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2461,6 +2476,26 @@ var render = function () {
                 1
               ),
             ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card mt-3" }, [
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(_vm.$t("dashboard.colors"), function (color) {
+                  return _c("div", { staticClass: "col-lg-4" }, [
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _c("div", {
+                        staticClass: "badge-custom",
+                        style: "background: " + color.color,
+                      }),
+                      _vm._v(" "),
+                      _c("div", [_vm._v(_vm._s(color.description))]),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]),
           ]),
         ],
         1
@@ -2618,7 +2653,7 @@ var render = function () {
                               },
                             },
                             [
-                              _c("option", { attrs: { value: "" } }, [
+                              _c("option", { attrs: { value: "0" } }, [
                                 _vm._v("Ijaraga olish maqsadini belgilang"),
                               ]),
                               _vm._v(" "),
@@ -2675,30 +2710,63 @@ var render = function () {
                           attrs: { id: "error_area" },
                         }),
                         _vm._v(" "),
-                        _c("div", { staticClass: "input-group" }, [
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.period,
-                                expression: "period",
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.period,
+                                  expression: "period",
+                                },
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                name: "amount",
+                                id: "amount",
+                                required: "",
                               },
-                            ],
-                            staticClass: "form-control",
-                            attrs: { id: "amount", type: "number" },
-                            domProps: { value: _vm.period },
-                            on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.period = $event.target.value
+                              on: {
+                                change: function ($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function (o) {
+                                      return o.selected
+                                    })
+                                    .map(function (o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.period = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                },
                               },
                             },
-                          }),
+                            [
+                              _c("option", { attrs: { value: "0" } }, [
+                                _vm._v("Ijaraga olish muddatini tanlang"),
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "10" } }, [
+                                _vm._v("10"),
+                              ]),
+                              _vm._v(" "),
+                              _vm.user.user_type == "F"
+                                ? _c("option", { attrs: { value: "30" } }, [
+                                    _vm._v("30"),
+                                  ])
+                                : _vm._e(),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.errors
+                            ? _c("div", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errors.land_purpose_id)),
+                              ])
+                            : _vm._e(),
                         ]),
                         _vm._v(" "),
                         _vm.errors
@@ -2778,16 +2846,6 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" }, [
-        _vm._v("Ko‘zlanayotgan ijara muddati (yil)"),
-      ]),
     ])
   },
 ]

@@ -34,6 +34,7 @@ Route::group(['middleware' => "auth:api"], function (){
     Route::post('/applications/store', [\App\Http\Controllers\Api\ApplicationController::class,'store']);
     Route::get('/save-land/{land}', [IndexController::class, 'saveLand']);
     Route::get('/saved-lands', [IndexController::class, 'getSavedLands']);
+
 });
 
 

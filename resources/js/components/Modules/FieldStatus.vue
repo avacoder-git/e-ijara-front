@@ -47,7 +47,7 @@ export default {
 
     computed:{
         moment: function () {
-            return moment().locale('uz').format('LLL');
+            return moment().locale('uz-Latn').format('Y') + "-yil " + " " + moment().locale('uz-Latn').format('Do-MMMM HH:mm');
         }
 
     }

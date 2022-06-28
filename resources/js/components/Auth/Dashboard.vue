@@ -11,6 +11,7 @@
                 <table class="table border-0">
                     <thead>
                     <tr>
+                        <th><span>ID</span></th>
                         <th><span>{{ $t("dashboard.my.region") }}</span></th>
                         <th><span>{{ $t("dashboard.my.district") }}</span></th>
                         <th><span>{{ $t("dashboard.my.purpose") }}</span></th>
@@ -22,6 +23,7 @@
 
                     <tbody>
                     <tr v-if="applications" v-for="application in applications">
+                        <td><span>{{ application.id }}</span></td>
                         <td><span>{{ application.region.nameru }}</span></td>
                         <td><span>{{ application.district.nameru }}</span></td>
                         <td><span>{{ application.land_purpose.name_lat }}</span></td>

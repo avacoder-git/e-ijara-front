@@ -75,30 +75,32 @@
                             Tasdiqlash
                         </p>
                     </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="row">
+                        <div class="col-lg-4" v-for="color in $t('dashboard.colors') ">
+                            <div class="d-flex align-items-center">
+                                <div class="badge-custom" :style="`background: ${color.color}` "></div>
+                                <div>{{ color.description }}</div>
+                            </div>
 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="modal  bd-example-modal-lg-2" id="values_modal" tabindex="-1" role="dialog"
              aria-labelledby="myLargeModalLabel" aria-hidden="true">
-
-
             <div class="modal-dialog modal-lg">
-
                 <div class="modal-content">
-
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Taklif ma'lumotlari</h5>
                         <button type="button" class="close close1" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-
                     <div class="modal-body ht-250 scrollbar-sm pos-relative" style="overflow-y: auto;">
-
                         <div class="main-card mb-3 ">
-
-
                             <div class="card-body">
                                 <h5 class="card-title">Kerakli ma'lumotlar</h5>
                                 <div>
@@ -129,7 +131,7 @@
                                         <label>Yer uchastkasini ijaraga olish maqsadi</label>
                                         <select name="purpose" id="purpose_id" class="form-control"
                                                 v-model="land_purpose" required>
-                                            <option value="">Ijaraga olish maqsadini belgilang</option>
+                                            <option value="0">Ijaraga olish maqsadini belgilang</option>
                                             <!--                                            @foreach($land_purposes as $key => $item)-->
                                             <option :value="land_purpose.id" v-for="land_purpose in land_purposes">{{
                                                     land_purpose.name
@@ -150,10 +152,15 @@
                                     <div class="text-danger" id="error_area"></div>
 
 
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">Ko‘zlanayotgan ijara muddati (yil)</span>
-                                        </div>
-                                        <input id="amount" type="number" v-model="period" class="form-control">
+                                    <div class="form-group">
+                                        <select name="amount" id="amount" class="form-control"
+                                                v-model="period" required>
+                                            <option  value="0">Ijaraga olish muddatini tanlang</option>
+
+                                                <option value="10">10</option>
+                                                <option value="30" v-if="user.user_type == 'F'">30</option>
+                                        </select>
+                                        <div class="text-danger" v-if="errors">{{ errors.land_purpose_id }}</div>
 
                                     </div>
                                     <div class="text-danger" v-if="errors">{{ errors.period }}</div>
@@ -239,9 +246,11 @@ export default {
             showConfirm: false,
             drawType: 1,
             drawnLayer: null,
-            period: null,
-            land_purpose: null,
-            errors: null
+            period: 0,
+            land_purpose: 0,
+            errors: null,
+            user: this.auth.user
+
 
         };
     },
@@ -312,12 +321,13 @@ export default {
                     var geojson = response.data
                     this.makeGeoJSON(geojson)
                 })
-            this.addControls()
+            // this.addControls()
             this.removeMarkers()
-            // this.drawLandsByStatus(this.selectedDistrict, 2)
-            // this.drawLandsByStatus(this.selectedDistrict, 3)
-            // this.drawLandsByStatus(this.selectedDistrict, 4)
-            // this.drawLandsByStatus(this.selectedDistrict, 5)
+            this.drawLandsByStatus(this.selectedDistrict, 2)
+            this.drawLandsByStatus(this.selectedDistrict, 3)
+            this.drawLandsByStatus(this.selectedDistrict, 4)
+            this.drawLandsByStatus(this.selectedDistrict, 5)
+            this.drawLandsByStatus(this.selectedDistrict, 6)
             this.drawCadLands(this.getCadNum(this.selectedDistrict))
             this.drawLands(this.selectedDistrict)
 
@@ -395,6 +405,7 @@ export default {
                                 }
                             });
                             layer.on('click', function (e) {
+                                L.geoJson(lands.data, options).addTo(This.$refs.map.mapObject)
                                 layer.setStyle({
                                     fillColor: "#11ff00",
                                 });
@@ -421,13 +432,16 @@ export default {
                             fillColor = "#ffc800";
                             break;
                         case 3:
-                            fillColor = "#8000ff";
+                            fillColor = "#9500ff";
                             break;
                         case 4:
                             fillColor = "#824800";
                             break;
                         case 5:
                             fillColor = "#ff5f00";
+                            break;
+                        case 6:
+                            fillColor = "#11ff00";
                             break;
                     }
                     var geojsonStyle = {
@@ -505,25 +519,26 @@ export default {
 
         },
         selectLand(feature, layer) {
-            if (this.drawnLayer)
-                this.$refs.map.mapObject.removeLayer(this.drawnLayer)
-            if (this.drawType !== 1) {
-                this.selectedLandAreas = 0
-                this.selectedLands = []
-            }
-            if (!this.selectedLands.includes(feature.properties.id)) {
-                this.$refs.map.mapObject.closePopup();
-                this.selectedLands.push(feature.properties.id)
-                this.selectedLandAreas += parseInt(feature.properties.area)
+            // if (this.drawnLayer)
+            //     this.$refs.map.mapObject.removeLayer(this.drawnLayer)
+            // if (this.drawType !== 1) {
+            //     this.selectedLandAreas = 0
+            //     this.selectedLands = []
+            // }
+            // if (!this.selectedLands.includes(feature.properties.id)) {
+            this.selectedLands = []
+            this.$refs.map.mapObject.closePopup();
+            this.selectedLands.push(feature.properties.id)
+            this.selectedLandAreas = parseFloat(feature.properties.area).toFixed(2);
 
-            } else {
-                this.$refs.map.mapObject.closePopup();
-                var index = this.selectedLands.indexOf(feature.properties.id)
-                this.selectedLands.splice(index)
-                layer.setStyle(this.geojsonStyle);
-                if (this.selectedLandAreas)
-                    this.selectedLandAreas -= parseInt(feature.properties.area)
-            }
+            // } else {
+            //     this.$refs.map.mapObject.closePopup();
+            //     var index = this.selectedLands.indexOf(feature.properties.id)
+            //     this.selectedLands.splice(index)
+            //     layer.setStyle(this.geojsonStyle);
+            //     if (this.selectedLandAreas)
+            //         this.selectedLandAreas -= parseInt(feature.properties.area)
+            // }
 
 
             this.drawType = 1
@@ -540,7 +555,8 @@ export default {
                 editMode: false,
                 dragMode: false,
                 cutPolygon: false,
-                removalMode: false
+                removalMode: false,
+                drawText: false
             });
         },
         confirm() {
@@ -569,7 +585,7 @@ export default {
                     if (response.data.ok) {
                         This.errors = null
                         This.$router.push({name: "dashboard.application"})
-                        This.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini 12345 tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
+                        This.$swal('Taklif qabul qilindi!', 'Taklifingizni ko\'rib chiqish holatini ' + response.data.application.id + ' tekshiruv kodi yordamida kuzatib borishingiz mumkin', 'success');
                         $('.modal').modal('hide')
                     } else {
                         console.log(response.data.errors);
@@ -628,6 +644,12 @@ export default {
 
 .vue2leaflet-map {
     height: 400px;
+}
+
+.badge-custom {
+    width: 30px;
+    height: 10px;
+    border-radius: 50rem;
 }
 
 .select-2 {

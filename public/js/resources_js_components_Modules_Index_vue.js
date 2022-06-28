@@ -61,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     moment: function moment() {
-      return moment__WEBPACK_IMPORTED_MODULE_2___default()().locale('uz').format('LLL');
+      return moment__WEBPACK_IMPORTED_MODULE_2___default()().locale('uz-Latn').format('Y') + "-yil " + " " + moment__WEBPACK_IMPORTED_MODULE_2___default()().locale('uz-Latn').format('Do-MMMM HH:mm');
     }
   }
 });
@@ -886,7 +886,7 @@ __webpack_require__.r(__webpack_exports__);
         $(".video-mp4").addClass('d-none');
       });
       $('.play-btn').click(function () {
-        $(".video-" + $(this).data('video')).removeClass('d-none');
+        $(".video-1").removeClass('d-none');
         var media = $(".video-" + $(this).data('video')).get(0);
         media.play();
       });
@@ -24332,7 +24332,7 @@ var staticRenderFns = [
           type: "button",
           "data-video": "1",
           "data-toggle": "modal",
-          "data-target": "#video",
+          "data-target": "#videoModal",
         },
       },
       [
@@ -24356,7 +24356,7 @@ var staticRenderFns = [
             type: "button",
             "data-video": "1",
             "data-toggle": "modal",
-            "data-target": "#video",
+            "data-target": "#videoModal",
           },
         },
         [
@@ -24380,7 +24380,7 @@ var staticRenderFns = [
           type: "button",
           "data-video": "2",
           "data-toggle": "modal",
-          "data-target": "#video",
+          "data-target": "#videoModal",
         },
       },
       [
@@ -24404,7 +24404,7 @@ var staticRenderFns = [
             type: "button",
             "data-video": "2",
             "data-toggle": "modal",
-            "data-target": "#video",
+            "data-target": "#videoModal",
           },
         },
         [
@@ -24476,7 +24476,7 @@ var staticRenderFns = [
       {
         staticClass: "modal",
         attrs: {
-          id: "video",
+          id: "videoModal",
           tabindex: "-1",
           role: "dialog",
           "aria-labelledby": "exampleModalLabel",
