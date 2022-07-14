@@ -216,32 +216,32 @@
             {
                 "id" : "0",
                 "color" : "red",
-                "description" : " Geoportaldan kelgan egasi bor yerlar"
+                "description" : "Yer maydonining mulkdori mavjud"
             },
             {
                 "id" : "1",
                 "color" : "#2262CC",
-                "description" : "Kadastrdan kelgan yangi butun yerlar"
+                "description" : "Yangi yer maydonlari"
             },
             {
                 "id" : "2",
                 "color" : "#ffc800",
-                "description" : "Auksiongacha bo'lgan yerlar"
+                "description" : "Loyihalashdagi yerlar"
             },
             {
                 "id" : "3",
                 "color" : "#8000ff",
-                "description" : "Auksionga qo'yilgan yerlar"
+                "description" : "Tanlovdagi yerlar"
             },
             {
                 "id" : "4",
                 "color" : "#824800",
-                "description" : "Auksiondan keyingi yerlar"
+                "description" : "Tanlovi yakunlangan yerlar"
             },
             {
                 "id" : "5",
                 "color" : "#ff5f00",
-                "description" : "Jarayoni to'liq yakunlangan yerlar"
+                "description" : "Ajratilgan yerlar"
             },
             {
                 "id" : "6",

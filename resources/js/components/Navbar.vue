@@ -175,6 +175,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <router-link :to="{name: 'map' }" class="nav-link nav-link-mini" href="#">{{
+                                $t('nav.links.map')
+                            }}
+                        </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{name: 'docs' }" class="nav-link nav-link-mini" href="#">

@@ -26,11 +26,21 @@ class StoreRequest extends FormRequest
         return [
             "lands" => "nullable|array",
             "geometry" => "nullable|array",
-            "land_purpose_id" => "required|numeric",
+            "land_purpose_id" => "required|numeric|not_in:0",
             "district_id" => "required|numeric|exists:districts,id",
             "region_id" => "required|numeric|exists:regions,id",
             "period" => "required|numeric",
             "draw_type" => "required|numeric",
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'land_purpose_id.required' => 'Ijara maqsadini kiriting',
+            'district_id.required' => 'Tumanni tanlang',
+            'region_id.required' => 'Viloyatni tanlang',
+            'period.required' => 'Ijaraga olish muddatini tanlang',
         ];
     }
 }

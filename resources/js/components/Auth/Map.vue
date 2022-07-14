@@ -395,7 +395,8 @@ export default {
                             layer.on('mouseover', function (e) {
                                 if (!This.selectedLands.includes(feature.properties.id)) {
                                     layer.setStyle({
-                                        color: '#2262CC'
+                                        color: '#2262CC',
+                                        opacity: 1
                                     });
                                 }
                             })
@@ -568,7 +569,7 @@ export default {
                 region_id: this.getRegionById(this.selectedRegion).id,
                 district_id: this.selectedDistrict,
                 draw_type: this.drawType,
-                land_purpose_id: this.land_purpose,
+                land_purpose_id: this.land_purpose??null,
                 period: this.period,
                 geometry: this.drawnLayer ? this.drawnLayer.toGeoJSON() : null,
                 lands: this.selectedLands
@@ -650,6 +651,7 @@ export default {
     width: 30px;
     height: 10px;
     border-radius: 50rem;
+    line-height: 16px;
 }
 
 .select-2 {

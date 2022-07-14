@@ -422,7 +422,8 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
             layer.on('mouseover', function (e) {
               if (!This.selectedLands.includes(feature.properties.id)) {
                 layer.setStyle({
-                  color: '#2262CC'
+                  color: '#2262CC',
+                  opacity: 1
                 });
               }
             });
@@ -591,12 +592,14 @@ delete leaflet__WEBPACK_IMPORTED_MODULE_2__.Icon.Default.prototype._getIconUrl;
       $("#values_modal").modal('show');
     },
     sendData: function sendData() {
+      var _this$land_purpose;
+
       var token = window.localStorage.getItem("token");
       var data = {
         region_id: this.getRegionById(this.selectedRegion).id,
         district_id: this.selectedDistrict,
         draw_type: this.drawType,
-        land_purpose_id: this.land_purpose,
+        land_purpose_id: (_this$land_purpose = this.land_purpose) !== null && _this$land_purpose !== void 0 ? _this$land_purpose : null,
         period: this.period,
         geometry: this.drawnLayer ? this.drawnLayer.toGeoJSON() : null,
         lands: this.selectedLands
@@ -1003,7 +1006,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vue2leaflet-map[data-v-b4ef9180] {\n    height: 400px;\n}\n.badge-custom[data-v-b4ef9180] {\n    width: 30px;\n    height: 10px;\n    border-radius: 50rem;\n}\n.select-2[data-v-b4ef9180] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n}\n.d-flex[data-v-b4ef9180] {\n    gap: 24px;\n}\n.map[data-v-b4ef9180] {\n    margin-top: 16px;\n    border-radius: 12px;\n    overflow: hidden;\n}\n.check-offer[data-v-b4ef9180] {\n\n    margin: 20px auto;\n    background: #08705F;\n    border-radius: 8px;\n    color: white;\n    border: 1px solid #08705F;\n    width: 310px;\n    text-align: center;\n    padding: 12px;\n    transition: 0.2s;\n    text-decoration: none;\n    cursor: pointer;\n    font-size: 18px;\n}\n.check-offer[data-v-b4ef9180]:hover {\n\n    background: white;\n    color: #08705F;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.vue2leaflet-map[data-v-b4ef9180] {\n    height: 400px;\n}\n.badge-custom[data-v-b4ef9180] {\n    width: 30px;\n    height: 10px;\n    border-radius: 50rem;\n    line-height: 16px;\n}\n.select-2[data-v-b4ef9180] {\n    height: 48px;\n    width: 237px;\n    border-radius: 8px;\n}\n.d-flex[data-v-b4ef9180] {\n    gap: 24px;\n}\n.map[data-v-b4ef9180] {\n    margin-top: 16px;\n    border-radius: 12px;\n    overflow: hidden;\n}\n.check-offer[data-v-b4ef9180] {\n\n    margin: 20px auto;\n    background: #08705F;\n    border-radius: 8px;\n    color: white;\n    border: 1px solid #08705F;\n    width: 310px;\n    text-align: center;\n    padding: 12px;\n    transition: 0.2s;\n    text-decoration: none;\n    cursor: pointer;\n    font-size: 18px;\n}\n.check-offer[data-v-b4ef9180]:hover {\n\n    background: white;\n    color: #08705F;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
